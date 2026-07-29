@@ -5,7 +5,7 @@ const projects = [
   {
     id: 1,
     category: 'Web App',
-    year: '2025',
+    year: '2026',
     title: 'Locazen',
     description:
       'Plateforme de gestion locative saisonnière à Sète — réservations, tarification dynamique, simulateur de revenus et interface propriétaires complète.',
@@ -18,7 +18,7 @@ const projects = [
   {
     id: 2,
     category: 'iOS App',
-    year: '2024',
+    year: '2026',
     title: 'Dev Mastery',
     description:
       'Apprends SwiftUI & Swift avec des cours structurés, défis pratiques, quiz et aide-mémoire. De débutant à expert, progresse à ton rythme.',
@@ -31,7 +31,7 @@ const projects = [
   {
     id: 3,
     category: 'iOS Game',
-    year: '2024',
+    year: '2026',
     title: 'Motastic',
     description:
       "Défis quotidiens, classements en temps réel et 14 mini-jeux variés : Le Petit Bac, L'intrus, Devine le drapeau, Mémoire célébrités et bien d'autres.",
@@ -68,8 +68,8 @@ export default function Projects() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // réalisations
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Projets</h2>
-          <p className="text-slate-400 text-base md:text-lg">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Projets</h2>
+          <p className="text-slate-500 text-base md:text-lg">
             Des produits réels, utilisés par de vraies personnes.
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function Projects() {
             <motion.div
               key={p.id}
               variants={cardVariants}
-              className="group glass rounded-2xl p-7 border border-white/5 hover:border-white/10 transition-all duration-300 relative overflow-hidden flex flex-col"
+              className="group glass rounded-2xl p-7 border border-gray-100 hover:border-gray-200 transition-all duration-300 relative overflow-hidden flex flex-col"
             >
               {/* Hover glow */}
               <div
@@ -99,8 +99,8 @@ export default function Projects() {
                 {p.category} · {p.year}
               </p>
 
-              <h3 className="text-xl font-bold text-white mb-3">{p.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">
                 {p.description}
               </p>
 
@@ -109,7 +109,7 @@ export default function Projects() {
                 {p.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-xs px-2.5 py-1 rounded-full border border-white/5 text-slate-500 bg-white/3"
+                    className="text-xs px-2.5 py-1 rounded-full border border-gray-200 text-slate-500 bg-gray-50"
                   >
                     {t}
                   </span>

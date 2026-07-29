@@ -12,9 +12,9 @@ const techs = [
   { name: 'Supabase',      color: '#3ECF8E' },
   { name: 'PostgreSQL',    color: '#4479A1' },
   { name: 'Figma',         color: '#A259FF' },
-  { name: 'GitHub',        color: '#e2e8f0' },
+  { name: 'GitHub',        color: '#374151' },
   { name: 'Framer',        color: '#0055FF' },
-  { name: 'Vercel',        color: '#e2e8f0' },
+  { name: 'Vercel',        color: '#374151' },
 ]
 
 const doubled = [...techs, ...techs]
@@ -32,7 +32,7 @@ export default function Stack() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // mon arsenal
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Technologies</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Technologies</h2>
         </motion.div>
       </div>
 
@@ -41,11 +41,11 @@ export default function Stack() {
         {/* Edge fades */}
         <div
           className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, #030712, transparent)' }}
+          style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to left, #030712, transparent)' }}
+          style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }}
         />
 
         <div className="animate-marquee gap-4">
@@ -58,7 +58,7 @@ export default function Stack() {
                 className="w-2 h-2 rounded-full shrink-0"
                 style={{ background: tech.color, boxShadow: `0 0 6px ${tech.color}88` }}
               />
-              <span className="text-sm text-slate-300 font-medium">{tech.name}</span>
+              <span className="text-sm text-slate-700 font-medium">{tech.name}</span>
             </div>
           ))}
         </div>
