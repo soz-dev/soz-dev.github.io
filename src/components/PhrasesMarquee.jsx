@@ -1,37 +1,51 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+
 const phrases = [
-  'Rapides, modernes, inoubliables.',
   "De l'idée à l'App Store.",
-  'Chaque pixel a son intention.',
   'Du concept à la mise en ligne.',
-  'Des produits qui font la différence.',
-  'Web & iOS, du premier commit au déploiement.',
+  'Chaque pixel a son intention.',
+  'Rapides, modernes, inoubliables.',
 ]
 
-const doubled = [...phrases, ...phrases]
-
 export default function PhrasesMarquee() {
-  return (
-    <div className="py-10 border-y border-gray-100 dark:border-white/5 overflow-hidden relative">
-      {/* Edge fades */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, var(--page-bg), transparent)' }}
-      />
-      <div
-        className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to left, var(--page-bg), transparent)' }}
-      />
+  const [index, setIndex] = useState(0)
 
-      <div className="animate-marquee">
-        {doubled.map((phrase, i) => (
-          <span key={i} className="whitespace-nowrap mx-8 text-sm font-mono text-slate-400 dark:text-slate-500">
-            <span className="text-purple-400 mr-1.5">//</span>
-            {phrase}
-            <span className="ml-8 text-purple-200 dark:text-purple-800">·</span>
-          </span>
-        ))}
+  useEffect(() => {
+    const id = setInterval(() => setIndex(i => (i + 1) % phrases.length), 3000)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <section className="py-24 grid-pattern relative overflow-hidden">
+      {/* Blob */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[500px] h-[300px] rounded-full blur-[100px] bg-purple-400/10 dark:bg-purple-700/15" />
       </div>
-    </div>
+
+      <div className="relative z-10 text-center px-8">
+        <div className="flex items-center justify-center gap-4">
+          <span className="font-mono text-purple-500 text-3xl md:text-5xl select-none">//</span>
+
+          <div style={{ overflow: 'hidden', height: 'clamp(2.5rem, 7vw, 5rem)', display: 'flex', alignItems: 'center' }}>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={index}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="text-gray-900 dark:text-white font-bold"
+                style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', lineHeight: 1.1, whiteSpace: 'nowrap' }}
+              >
+                {phrases[index]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
+
 
