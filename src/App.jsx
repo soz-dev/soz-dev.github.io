@@ -3,13 +3,14 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import Stats from "./components/Stats"
 import Services from "./components/Services"
+import Stack from "./components/Stack"
 import Process from "./components/Process"
 import About from "./components/About"
-import Stack from "./components/Stack"
 import Projects from "./components/Projects"
 import Pricing from "./components/Pricing"
 import FAQ from "./components/FAQ"
 import Contact from "./components/Contact"
+import PhrasesMarquee from "./components/PhrasesMarquee"
 import Footer from "./components/Footer"
 
 export default function App() {
@@ -30,13 +31,14 @@ export default function App() {
       <Hero />
       <Stats />
       <Services />
+      <Stack />
       <Process />
       <About />
       <Projects />
       <Pricing />
       <FAQ />
       <Contact />
-      <Stack />
+      <PhrasesMarquee />
       <Footer />
     </div>
   )
