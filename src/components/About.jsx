@@ -31,15 +31,15 @@ export default function About() {
             <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
               // à propos
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Derrière le code
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-5 text-base md:text-lg">
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base md:text-lg">
               Je suis <span className="font-semibold text-gray-900">Sofyan</span>, développeur
               web &amp; iOS indépendant. Je crée des sites qui convertissent et des apps qui se
               distinguent dès la première seconde sur l'App Store.
             </p>
-            <p className="text-slate-500 leading-relaxed mb-8 text-sm md:text-base">
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm md:text-base">
               Ce qui m'anime : transformer une idée brute en produit fini, utilisé par de vraies
               personnes. Je travaille avec soin, du premier commit à la mise en ligne.
             </p>
@@ -47,7 +47,7 @@ export default function About() {
               {traits.map((t) => (
                 <div key={t.text} className="flex items-center gap-2.5">
                   <t.icon className="w-4 h-4 shrink-0" style={{ color: t.color }} />
-                  <span className="text-sm text-slate-600 font-medium">{t.text}</span>
+                  <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{t.text}</span>
                 </div>
               ))}
             </div>
@@ -76,10 +76,10 @@ export default function About() {
               {miniStats.map((s) => (
                 <div
                   key={s.label}
-                  className="glass rounded-2xl p-5 border border-gray-100 text-center hover:border-gray-200 transition-colors"
+                  className="glass rounded-2xl p-5 border border-gray-100 dark:border-white/5 text-center hover:border-gray-200 dark:hover:border-white/10 transition-colors"
                 >
                   <div className="text-2xl font-bold gradient-text mb-1">{s.value}</div>
-                  <div className="text-xs text-slate-500 font-medium">{s.label}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{s.label}</div>
                 </div>
               ))}
             </div>

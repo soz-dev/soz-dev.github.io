@@ -29,7 +29,7 @@ export default function Contact() {
           </span>
 
           <h2
-            className="font-bold text-gray-900"
+            className="font-bold text-gray-900 dark:text-white"
             style={{
               fontSize: 'clamp(2.2rem, 6vw, 4rem)',
               lineHeight: 1.1,
@@ -42,7 +42,7 @@ export default function Contact() {
           </h2>
 
           <p
-            className="text-slate-500 leading-relaxed"
+            className="text-slate-500 dark:text-slate-400 leading-relaxed"
             style={{
               fontSize: '1.1rem',
               maxWidth: '460px',

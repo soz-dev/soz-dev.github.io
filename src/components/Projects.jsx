@@ -68,8 +68,8 @@ export default function Projects() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // réalisations
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Projets</h2>
-          <p className="text-slate-500 text-base md:text-lg">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Projets</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
             Des produits réels, utilisés par de vraies personnes.
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function Projects() {
             <motion.div
               key={p.id}
               variants={cardVariants}
-              className="group glass rounded-2xl p-7 border border-gray-100 hover:border-gray-200 transition-all duration-300 relative overflow-hidden flex flex-col"
+              className="group glass rounded-2xl p-7 border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-all duration-300 relative overflow-hidden flex flex-col"
             >
               {/* Hover glow */}
               <div
@@ -99,8 +99,8 @@ export default function Projects() {
                 {p.category} · {p.year}
               </p>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{p.title}</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5 flex-1">
                 {p.description}
               </p>
 
@@ -109,7 +109,7 @@ export default function Projects() {
                 {p.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-xs px-2.5 py-1 rounded-full border border-gray-200 text-slate-500 bg-gray-50"
+                    className="text-xs px-2.5 py-1 rounded-full border border-gray-200 dark:border-white/5 text-slate-500 bg-gray-50 dark:bg-white/3"
                   >
                     {t}
                   </span>

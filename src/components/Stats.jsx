@@ -9,7 +9,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-12 border-y border-gray-100">
+    <section className="py-12 border-y border-gray-100 dark:border-white/5">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ export default function Stats() {
               className="text-center"
             >
               <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{s.value}</div>
-              <div className="text-sm text-slate-500 font-medium">{s.label}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 font-medium">{s.label}</div>
             </motion.div>
           ))}
         </motion.div>
