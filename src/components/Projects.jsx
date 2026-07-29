@@ -37,7 +37,7 @@ const projects = [
       "Défis quotidiens, classements en temps réel et 14 mini-jeux variés : Le Petit Bac, L'intrus, Devine le drapeau, Mémoire célébrités et bien d'autres.",
     tech: ['Swift', 'SwiftUI', 'GameKit', 'iOS'],
     accentColor: '#a855f7',
-    link: 'https://apps.apple.com/us/app/motastic/id6760564637',
+    link: 'https://apps.apple.com/fr/app/motastic/id6760564637',
     linkLabel: 'App Store',
     appStore: true,
   },
