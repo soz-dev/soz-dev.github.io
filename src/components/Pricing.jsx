@@ -83,7 +83,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="tarifs" className="py-28 bg-gray-50/60">
+    <section id="tarifs" className="py-28 bg-gray-50/60 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -97,8 +97,8 @@ export default function Pricing() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // investissement
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">Tarifs</h2>
-          <p className="text-slate-500 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
             Des prix transparents, sans surprises. Chaque projet inclut un suivi personnalisé.
           </p>
         </motion.div>
@@ -114,8 +114,8 @@ export default function Pricing() {
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className={`relative glass rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
                 plan.popular
-                  ? 'border-purple-300 shadow-lg shadow-purple-100'
-                  : 'border-gray-100 hover:border-gray-200'
+                  ? 'border-purple-300 dark:border-purple-500/30 shadow-lg shadow-purple-100 dark:shadow-purple-900/10'
+                  : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
               }`}
             >
               {/* Popular badge */}
@@ -135,18 +135,18 @@ export default function Pricing() {
 
               {/* Price */}
               <div className="flex items-end gap-1 mb-3">
-                <span className="text-3xl md:text-4xl font-bold text-gray-900">{plan.price}€</span>
+                <span className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{plan.price}€</span>
                 {plan.suffix && (
                   <span className="text-slate-400 font-medium text-lg mb-0.5">{plan.suffix}</span>
                 )}
               </div>
 
-              <p className="text-slate-500 text-sm leading-relaxed mb-6">{plan.description}</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{plan.description}</p>
 
               {/* Features */}
               <ul className="space-y-2.5 mb-7 flex-1">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600">
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
                     <Check className="w-4 h-4 shrink-0 mt-0.5" style={{ color: plan.accentColor }} />
                     {f}
                   </li>
@@ -192,7 +192,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="text-center text-sm text-slate-400 font-mono mt-10"
+          className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
           // Tous les projets incluent 1 mois de support après livraison · Acompte 30% au démarrage
         </motion.p>

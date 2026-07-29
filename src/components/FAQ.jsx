@@ -39,12 +39,12 @@ const faqs = [
 
 function FAQItem({ item, isOpen, onToggle }) {
   return (
-    <div className={`glass rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-purple-200' : 'border-gray-100 hover:border-gray-200'}`}>
+    <div className={`glass rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-purple-200 dark:border-purple-500/30' : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'}`}>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
       >
-        <span className="text-sm md:text-base font-semibold text-gray-900">{item.q}</span>
+        <span className="text-sm md:text-base font-semibold text-gray-900 dark:text-white">{item.q}</span>
         <span
           className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200"
           style={{ background: isOpen ? 'rgba(168,85,247,0.12)' : 'rgba(0,0,0,0.04)' }}
@@ -66,7 +66,7 @@ function FAQItem({ item, isOpen, onToggle }) {
             transition={{ duration: 0.28, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p className="px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+            <p className="px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               {item.a}
             </p>
           </motion.div>
@@ -93,8 +93,8 @@ export default function FAQ() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // questions fréquentes
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">FAQ</h2>
-          <p className="text-slate-500 text-base md:text-lg">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
             Tout ce que vous voulez savoir avant de démarrer.
           </p>
         </motion.div>

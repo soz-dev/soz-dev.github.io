@@ -41,7 +41,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="processus" className="py-28 bg-gray-50/60">
+    <section id="processus" className="py-28 bg-gray-50/60 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,8 +54,8 @@ export default function Process() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // comment ça marche
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">Mon processus</h2>
-          <p className="text-slate-500 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Mon processus</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
             De l'idée à la mise en ligne — un processus clair, sans jargon, sans surprise.
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export default function Process() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="glass rounded-2xl p-6 border border-gray-100 hover:border-gray-200 transition-colors duration-300 flex items-start gap-5"
+              className="glass rounded-2xl p-6 border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-colors duration-300 flex items-start gap-5"
             >
               {/* Number + icon */}
               <div className="shrink-0 flex flex-col items-center gap-2">
@@ -82,8 +82,8 @@ export default function Process() {
               </div>
 
               <div className="pt-1">
-                <h3 className="text-base font-bold text-gray-900 mb-1.5">{step.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">{step.title}</h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{step.description}</p>
               </div>
             </motion.div>
           ))}

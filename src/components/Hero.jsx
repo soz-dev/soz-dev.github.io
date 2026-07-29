@@ -40,7 +40,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/25 text-xs font-mono text-slate-500 mb-10"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/25 text-xs font-mono text-slate-500 dark:text-slate-400 mb-10"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
           Disponible pour de nouveaux projets
@@ -53,7 +53,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="text-[clamp(3rem,10vw,7rem)] font-bold leading-[0.95] tracking-tight mb-8">
-            <span className="text-gray-900 block">Je conçois des</span>
+            <span className="text-gray-900 dark:text-white block">Je conçois des</span>
 
             {/* Mot central dynamique */}
             <span className="block" style={{ height: 'clamp(3.15rem,10.5vw,7.35rem)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -72,7 +72,7 @@ export default function Hero() {
               </AnimatePresence>
             </span>
 
-            <span className="text-gray-900 block">qui marquent.</span>
+            <span className="text-gray-900 dark:text-white block">qui marquent.</span>
           </h1>
         </motion.div>
 
@@ -92,7 +92,7 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.35 }}
-                className="text-slate-600 text-lg font-medium block"
+                className="text-slate-600 dark:text-slate-300 text-lg font-medium block"
               >
                 {words[index].subtitle}
               </motion.span>
@@ -115,7 +115,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-8 py-3.5 rounded-full border border-gray-200 text-slate-600 text-sm font-medium hover:border-gray-400 hover:text-gray-900 transition-all duration-300"
+            className="px-8 py-3.5 rounded-full border border-gray-200 dark:border-white/10 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-gray-400 dark:hover:border-white/25 hover:text-gray-900 dark:hover:text-white transition-all duration-300"
           >
             Me contacter →
           </a>
