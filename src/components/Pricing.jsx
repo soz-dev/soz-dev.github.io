@@ -10,7 +10,7 @@ const plans = [
     features: [
       'Design 100% libre au développeur',
       'Vous spécifiez uniquement les fonctions',
-      'Site vitrine ou landing page',
+      'Site vitrine simple (1 page)',
       'Responsive mobile & desktop',
       'Livraison express garantie',
     ],
