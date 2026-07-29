@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+/* =============================================================
+   BASE — dans @layer base pour que les utilities Tailwind
+   puissent l'overrider (cascade layers: base < utilities)
+   ============================================================= */
+@layer base {
+  body {
+    background: #030712;
+    color: #e2e8f0;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar        { width: 3px; }
+  ::-webkit-scrollbar-track  { background: #030712; }
+  ::-webkit-scrollbar-thumb  { background: #a855f7; border-radius: 99px; }
+  ::selection                { background: rgba(168,85,247,.3); color:#fff; }
+}
+
+/* =============================================================
+   CUSTOM UTILITIES — unlayered, noms uniques, pas de conflit
+   ============================================================= */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255,255,255,.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.glow-purple { box-shadow: 0 0 30px rgba(168,85,247,.35), 0 0 80px rgba(168,85,247,.1); }
+.glow-cyan   { box-shadow: 0 0 30px rgba(6,182,212,.35),  0 0 80px rgba(6,182,212,.1);  }
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(168,85,247,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.gradient-border              { position: relative; isolation: isolate; }
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(168,85,247,.6), rgba(6,182,212,.6));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.gradient-border:hover::before { opacity: 1; }
+
+/* =============================================================
+   ANIMATIONS
+   ============================================================= */
+@keyframes blob {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(40px,-60px) scale(1.12); }
+  66%     { transform: translate(-25px,25px) scale(.9); }
+}
+.animate-blob { animation: blob 9s ease-in-out infinite; }
+.delay-2      { animation-delay: 2s; }
+.delay-4      { animation-delay: 4s; }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { display:flex; width:max-content; animation: marquee 28s linear infinite; }
+
+@keyframes pulse-dot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%     { opacity:.5; transform:scale(.8); }
+}
+.animate-pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
