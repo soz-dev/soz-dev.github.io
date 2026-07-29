@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* =============================================================
@@ -7,8 +7,8 @@
    ============================================================= */
 @layer base {
   body {
-    background: #030712;
-    color: #e2e8f0;
+    background: #ffffff;
+    color: #111827;
     font-family: 'Space Grotesk', system-ui, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -16,9 +16,9 @@
   }
 
   ::-webkit-scrollbar        { width: 3px; }
-  ::-webkit-scrollbar-track  { background: #030712; }
+  ::-webkit-scrollbar-track  { background: #f1f5f9; }
   ::-webkit-scrollbar-thumb  { background: #a855f7; border-radius: 99px; }
-  ::selection                { background: rgba(168,85,247,.3); color:#fff; }
+  ::selection                { background: rgba(168,85,247,.25); color: #111827; }
 }
 
 /* =============================================================
@@ -32,10 +32,11 @@
 }
 
 .glass {
-  background: rgba(255,255,255,.03);
+  background: rgba(255,255,255,.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,.06);
+  border: 1px solid rgba(0,0,0,.07);
+  box-shadow: 0 1px 20px rgba(0,0,0,.05);
 }
 
 .glow-purple { box-shadow: 0 0 30px rgba(168,85,247,.35), 0 0 80px rgba(168,85,247,.1); }

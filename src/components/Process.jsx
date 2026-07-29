@@ -1,0 +1,94 @@
+import { motion } from 'framer-motion'
+import { MessageCircle, FileText, Palette, Code2, Rocket } from 'lucide-react'
+
+const steps = [
+  {
+    icon: MessageCircle,
+    color: '#a855f7',
+    number: '01',
+    title: 'Échange initial',
+    description: 'Appel gratuit de 30 min pour cerner votre projet, vos besoins et votre budget. Sans engagement.',
+  },
+  {
+    icon: FileText,
+    color: '#9333ea',
+    number: '02',
+    title: 'Devis & Planning',
+    description: 'Proposition chiffrée avec planning de livraison clair envoyée sous 48h. Pas de mauvaises surprises.',
+  },
+  {
+    icon: Palette,
+    color: '#7c3aed',
+    number: '03',
+    title: 'Design & Maquettes',
+    description: 'Maquettes interactives soumises à votre validation avant de toucher une ligne de code.',
+  },
+  {
+    icon: Code2,
+    color: '#06b6d4',
+    number: '04',
+    title: 'Développement',
+    description: 'Code propre, performant et responsive. Points d\'avancement réguliers pour rester alignés.',
+  },
+  {
+    icon: Rocket,
+    color: '#0891b2',
+    number: '05',
+    title: 'Mise en ligne',
+    description: 'Tests complets, déploiement et passation de tous les accès. Vous êtes 100% autonomes.',
+  },
+]
+
+export default function Process() {
+  return (
+    <section id="processus" className="py-28 bg-gray-50/60">
+      <div className="max-w-5xl mx-auto px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7 }}
+          className="mb-16"
+          style={{ textAlign: 'center' }}
+        >
+          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+            // comment ça marche
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">Mon processus</h2>
+          <p className="text-slate-500 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
+            De l'idée à la mise en ligne — un processus clair, sans jargon, sans surprise.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.55, delay: i * 0.08 }}
+              className="glass rounded-2xl p-6 border border-gray-100 hover:border-gray-200 transition-colors duration-300 flex items-start gap-5"
+            >
+              {/* Number + icon */}
+              <div className="shrink-0 flex flex-col items-center gap-2">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{ background: `${step.color}15`, border: `1px solid ${step.color}30` }}
+                >
+                  <step.icon className="w-5 h-5" style={{ color: step.color }} />
+                </div>
+                <span className="text-xs font-mono font-bold" style={{ color: step.color }}>{step.number}</span>
+              </div>
+
+              <div className="pt-1">
+                <h3 className="text-base font-bold text-gray-900 mb-1.5">{step.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

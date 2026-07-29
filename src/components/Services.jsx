@@ -58,10 +58,10 @@ export default function Services() {
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
             // ce que je crée
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
             Mes services
           </h2>
-          <p className="text-slate-400 text-base md:text-lg leading-relaxed" style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center' }}>
+          <p className="text-slate-500 text-base md:text-lg leading-relaxed" style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center' }}>
             Du concept à la mise en ligne — des produits digitaux qui font la différence.
           </p>
         </motion.div>
@@ -101,15 +101,15 @@ export default function Services() {
               <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>
                 {s.badge}
               </p>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {s.title}
               </h3>
-              <p className="text-slate-400 leading-relaxed mb-8">{s.description}</p>
+              <p className="text-slate-500 leading-relaxed mb-8">{s.description}</p>
 
               {/* Feature list */}
               <ul className="space-y-3">
                 {s.features.map((f) => (
-                  <li key={f.text} className="flex items-center gap-3 text-sm text-slate-300">
+                  <li key={f.text} className="flex items-center gap-3 text-sm text-slate-600">
                     <span
                       className="w-1.5 h-1.5 rounded-full shrink-0"
                       style={{ background: s.accentColor }}

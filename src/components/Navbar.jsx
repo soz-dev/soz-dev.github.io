@@ -1,39 +1,29 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Projets', href: '#projets' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services',  href: '#services'  },
+  { label: 'Projets',   href: '#projets'   },
+  { label: 'Tarifs',    href: '#tarifs'    },
+  { label: 'Contact',   href: '#contact'   },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'glass border-b border-white/5 py-3'
-          : 'bg-transparent py-6'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm py-4"
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
-          className="font-mono text-sm font-bold tracking-widest gradient-text select-none"
+          className="gradient-text select-none"
+          style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           SOZ_DEV
@@ -45,7 +35,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-400 hover:text-white transition-colors duration-200 tracking-wide"
+              className="text-sm text-slate-600 hover:text-gray-900 transition-colors duration-200 tracking-wide font-medium"
             >
               {link.label}
             </a>
@@ -55,7 +45,7 @@ export default function Navbar() {
         {/* CTA */}
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 text-sm font-medium rounded-full border border-purple-500/40 text-purple-300 hover:border-purple-400 hover:text-white hover:glow-purple transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 text-sm font-medium rounded-full border border-purple-400/60 text-purple-600 hover:border-purple-500 hover:text-purple-700 transition-all duration-300"
         >
           Me contacter
         </a>
@@ -66,9 +56,9 @@ export default function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
-          <span className={`block w-5 h-px bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-5 h-px bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-5 h-px bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`block w-5 h-px bg-gray-800 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-5 h-px bg-gray-800 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-5 h-px bg-gray-800 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </div>
 
@@ -77,14 +67,14 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden glass border-t border-white/5 px-6 py-4 flex flex-col gap-4"
+          className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4"
         >
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-sm text-slate-300 hover:text-white"
+              className="text-sm text-slate-600 hover:text-gray-900 font-medium"
             >
               {link.label}
             </a>
@@ -92,7 +82,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="text-sm text-purple-400 hover:text-purple-300"
+            className="text-sm text-purple-600 hover:text-purple-700 font-medium"
           >
             Me contacter →
           </a>
