@@ -3,7 +3,25 @@ import { Check, ArrowRight } from 'lucide-react'
 
 const plans = [
   {
+    name: 'Liberté Créative',
+    originalPrice: '790',
+    price: '500',
+    description: 'Vous définissez les fonctionnalités, le développeur a carte blanche sur le design. Résultat unique garanti.',
+    features: [
+      'Design 100% libre au développeur',
+      'Vous spécifiez uniquement les fonctions',
+      'Site vitrine ou landing page',
+      'Responsive mobile & desktop',
+      'Livraison express garantie',
+    ],
+    delay: '1 semaine',
+    accentColor: '#f59e0b',
+    popular: false,
+    bestSeller: true,
+  },
+  {
     name: 'Vitrine',
+    originalPrice: '1 190',
     price: '890',
     description: 'Parfait pour présenter votre activité et capter vos premiers clients en ligne.',
     features: [
@@ -16,9 +34,11 @@ const plans = [
     delay: '1-2 semaines',
     accentColor: '#a855f7',
     popular: false,
+    bestSeller: false,
   },
   {
     name: 'Site Pro',
+    originalPrice: '2 490',
     price: '1 890',
     description: 'Pour les entreprises qui veulent un site complet, rapide et bien référencé.',
     features: [
@@ -31,9 +51,11 @@ const plans = [
     delay: '2-3 semaines',
     accentColor: '#8b5cf6',
     popular: true,
+    bestSeller: false,
   },
   {
     name: 'E-Commerce',
+    originalPrice: '3 990',
     price: '2 990',
     description: 'Une boutique en ligne clé en main, prête à vendre dès le premier jour.',
     features: [
@@ -46,9 +68,11 @@ const plans = [
     delay: '3-5 semaines',
     accentColor: '#06b6d4',
     popular: false,
+    bestSeller: false,
   },
   {
     name: 'Application Web',
+    originalPrice: '6 490',
     price: '4 990',
     suffix: '+',
     description: 'SaaS, espace membre ou outil métier — avec authentification et base de données.',
@@ -62,9 +86,11 @@ const plans = [
     delay: 'Sur devis',
     accentColor: '#0891b2',
     popular: false,
+    bestSeller: false,
   },
   {
     name: 'App iOS',
+    originalPrice: '4 590',
     price: '3 490',
     suffix: '+',
     description: 'Application native Swift / SwiftUI, de l\'idée à la publication sur l\'App Store.',
@@ -78,6 +104,7 @@ const plans = [
     delay: '4-8 semaines',
     accentColor: '#a855f7',
     popular: false,
+    bestSeller: false,
   },
 ]
 
@@ -98,6 +125,9 @@ export default function Pricing() {
             // investissement
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-4" style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}>
+            🔥 Offre de lancement — Prix réduits sur toutes les formules
+          </div>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
             Des prix transparents, sans surprises. Chaque projet inclut un suivi personnalisé.
           </p>
@@ -113,11 +143,23 @@ export default function Pricing() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className={`relative glass rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
-                plan.popular
+                plan.bestSeller
+                  ? 'border-amber-300 dark:border-amber-500/30 shadow-lg shadow-amber-100 dark:shadow-amber-900/10'
+                  : plan.popular
                   ? 'border-purple-300 dark:border-purple-500/30 shadow-lg shadow-purple-100 dark:shadow-purple-900/10'
                   : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
               }`}
             >
+              {/* Best seller badge */}
+              {plan.bestSeller && (
+                <div
+                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold text-white whitespace-nowrap"
+                  style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}
+                >
+                  ⭐ Best Seller
+                </div>
+              )}
+
               {/* Popular badge */}
               {plan.popular && (
                 <div
@@ -134,11 +176,17 @@ export default function Pricing() {
               </p>
 
               {/* Price */}
-              <div className="flex items-end gap-1 mb-3">
-                <span className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{plan.price}€</span>
-                {plan.suffix && (
-                  <span className="text-slate-400 font-medium text-lg mb-0.5">{plan.suffix}</span>
-                )}
+              <div className="flex items-end gap-2 mb-3">
+                <div className="flex flex-col">
+                  <span className="text-sm text-slate-400 line-through font-medium">{plan.originalPrice}€</span>
+                  <div className="flex items-end gap-1">
+                    <span className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{plan.price}€</span>
+                    {plan.suffix && (
+                      <span className="text-slate-400 font-medium text-lg mb-0.5">{plan.suffix}</span>
+                    )}
+                  </div>
+                </div>
+                <span className="mb-1 px-2 py-0.5 rounded-md text-xs font-bold text-white" style={{ background: plan.bestSeller ? '#f59e0b' : '#ef4444' }}>PROMO</span>
               </div>
 
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{plan.description}</p>
