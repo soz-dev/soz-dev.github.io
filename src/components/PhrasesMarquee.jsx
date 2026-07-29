@@ -24,19 +24,17 @@ export default function PhrasesMarquee() {
       </div>
 
       <div className="relative z-10 text-center px-8">
-        <div className="flex items-center justify-center gap-4">
-          <span className="font-mono text-purple-500 text-3xl md:text-5xl select-none">//</span>
-
-          <div style={{ overflow: 'hidden', height: 'clamp(2.5rem, 7vw, 5rem)', display: 'flex', alignItems: 'center' }}>
+        <div className="flex items-center justify-center">
+          <div style={{ overflow: 'hidden', height: 'clamp(1.8rem, 4vw, 2.8rem)', display: 'flex', alignItems: 'center' }}>
             <AnimatePresence mode="wait">
               <motion.p
                 key={index}
-                initial={{ y: 40, opacity: 0 }}
+                initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -40, opacity: 0 }}
+                exit={{ y: -30, opacity: 0 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="text-gray-900 dark:text-white font-bold"
-                style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', lineHeight: 1.1, whiteSpace: 'nowrap' }}
+                className="text-gray-800 dark:text-slate-200 font-semibold text-center"
+                style={{ fontSize: 'clamp(1.1rem, 3vw, 2rem)', lineHeight: 1.1, whiteSpace: 'nowrap' }}
               >
                 {phrases[index]}
               </motion.p>

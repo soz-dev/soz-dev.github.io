@@ -16,6 +16,19 @@ const projects = [
     appStore: false,
   },
   {
+    id: 4,
+    category: 'iOS App',
+    year: '2026',
+    title: 'Locazen 12',
+    description:
+      'Application iOS de gestion locative saisonnière à Sète — consultez vos réservations, suivez vos revenus et gérez vos biens directement depuis votre iPhone.',
+    tech: ['Swift', 'SwiftUI', 'iOS'],
+    accentColor: '#0891b2',
+    link: 'https://apps.apple.com/fr/app/locazen-12/id6446256021',
+    linkLabel: 'App Store',
+    appStore: true,
+  },
+  {
     id: 2,
     category: 'iOS App',
     year: '2026',
