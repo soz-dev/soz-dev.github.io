@@ -32,11 +32,11 @@ export default function App() {
       <Services />
       <Process />
       <About />
-      <Stack />
       <Projects />
       <Pricing />
       <FAQ />
       <Contact />
+      <Stack />
       <Footer />
     </div>
   )
