@@ -26,9 +26,13 @@ export default function AdminLogin({ onLogin }) {
     <div className="min-h-screen bg-white dark:bg-[#0a0a12] flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <span className="text-2xl font-bold" style={{ fontFamily: 'Outfit, sans-serif' }}>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">soz-dev</span>
-          </span>
+          <div className="flex items-center justify-center gap-2.5 mb-1">
+            <img src="/logo-icon.png" alt="" className="h-9 w-9 hidden dark:block" width={36} height={36} />
+            <img src="/logo-icon-light.png" alt="" className="h-9 w-9 dark:hidden" width={36} height={36} />
+            <span className="text-2xl font-bold" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
+            </span>
+          </div>
           <p className="text-gray-500 dark:text-slate-500 text-sm mt-1">Espace admin</p>
         </div>
         <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl border border-gray-200 dark:border-white/10 p-7 space-y-4">

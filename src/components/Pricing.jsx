@@ -9,7 +9,7 @@ const plans = [
     name: 'Landing',
     originalPrice: '1 500',
     price: '390',
-    description: 'Une page qui présente ton activité et convertit. Idéal pour démarrer vite.',
+    description: 'Une page qui présente votre activité et convertit. Idéal pour démarrer vite.',
     features: [
       '1 page (~5 sections)',
       'Design responsive',
@@ -25,7 +25,7 @@ const plans = [
     name: 'Vitrine',
     originalPrice: '2 800',
     price: '690',
-    description: 'Plusieurs pages pour expliquer ton offre et rassurer tes clients.',
+    description: 'Plusieurs pages pour expliquer votre offre et rassurer vos clients.',
     features: [
       '2 à 5 pages',
       'Design cohérent',
@@ -203,7 +203,7 @@ export default function Pricing() {
                   e.currentTarget.style.borderColor = `${plan.accentColor}40`
                 }}
               >
-                Estimer mon projet
+                Estimer votre projet
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </motion.div>
@@ -217,7 +217,7 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle 200 €/mois
+          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de 200 €/mois
         </motion.p>
       </div>
     </section>

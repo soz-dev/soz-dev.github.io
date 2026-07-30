@@ -19,7 +19,7 @@ const cases = [
     accent: '#06b6d4',
     before: 'Idée de jeu de mots + classements, sans produit App Store.',
     after: 'App native SwiftUI : défis quotidiens, GameKit, 14 mini-jeux — publiée sur l’App Store.',
-    delay: 'Shipée avec workflow Cursor / Swift',
+    delay: 'Livrée avec workflow Cursor / Swift',
     outcome: 'Jeu live, classements temps réel',
     link: 'https://apps.apple.com/fr/app/motastic/id6760564637',
     linkLabel: 'App Store',
@@ -55,7 +55,7 @@ export default function CaseStudies() {
             Avant / après
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
-            Des projets réels — pas de vanity metrics. Le résultat compte plus que les chiffres gonflés.
+            Des projets réels — le résultat compte plus que les chiffres gonflés.
           </p>
         </motion.div>
 
@@ -129,7 +129,7 @@ export default function CaseStudies() {
             href="#devis"
             className="inline-flex items-center gap-2 text-sm font-semibold text-purple-500 hover:text-purple-400 transition-colors"
           >
-            Un projet comme ça pour toi
+            Un projet similaire pour vous
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>

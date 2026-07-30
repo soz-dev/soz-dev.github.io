@@ -414,7 +414,7 @@ export default function WebShowcase() {
             href="#devis"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
           >
-            Un site comme ça pour toi → devis
+            Un site comme celui-ci pour vous → devis
           </a>
           <p className="text-center text-xs text-slate-400 dark:text-slate-500 font-mono mt-4">
             Vrai code React — pas des captures d&apos;écran.

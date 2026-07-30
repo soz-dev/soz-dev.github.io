@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Send, Check, Copy } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Send, Check, Copy, CheckCircle2, RotateCcw } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
 import { parseOpt, fmt } from '../lib/formatUtils'
@@ -111,6 +111,7 @@ export default function DevisPublic() {
   const [questionnaire, setQuestionnaire] = useState({})
   const [step, setStep] = useState(0)
   const [copied, setCopied] = useState(false)
+  const [sent, setSent] = useState(false)
 
   const visibleSections = useMemo(
     () => SECTIONS.filter(s => !s.conditional || s.conditional(questionnaire)),
@@ -141,6 +142,11 @@ export default function DevisPublic() {
   const handleSend = () => {
     const subject = `Demande de devis – ${contact.projet_nom || 'Nouveau projet'}${contact.nom ? ' – ' + contact.nom : ''}`
     window.location.href = `mailto:sofyan.devpro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`
+    setSent(true)
+  }
+
+  const handleSendAgain = () => {
+    setSent(false)
   }
 
   const handleCopy = async () => {
@@ -174,11 +180,11 @@ export default function DevisPublic() {
             Devis en ligne
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
-            Ton devis en{' '}
+            Votre devis en{' '}
             <span className="gradient-text">2 minutes</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '460px', margin: '0 auto' }}>
-            Estimation instantanée, acompte 30 %, envoi direct par email. Sans engagement.
+            Estimation instantanée, acompte 30 %, envoi par email. Sans engagement.
           </p>
         </motion.div>
 
@@ -289,60 +295,104 @@ export default function DevisPublic() {
                 {/* RECAP / SEND */}
                 {isRecapStep && (
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: '#06b6d415', border: '1px solid #06b6d430' }}>
-                        ✉️
+                    {sent ? (
+                      <div className="text-center py-4">
+                        <div
+                          className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                          style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.35)' }}
+                        >
+                          <CheckCircle2 className="w-7 h-7 text-emerald-500" />
+                        </div>
+                        <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">
+                          Demande prête à envoyer
+                        </h3>
+                        <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
+                          <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
+                            Votre client mail s&apos;est ouvert — envoyez l&apos;email prérempli pour finaliser.
+                            Merci, nous vous recontactons rapidement.
+                          </p>
+                          <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">
+                            Nous ne pouvons pas confirmer l&apos;envoi depuis le site : finalisez dans votre application mail.
+                          </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                          <button
+                            type="button"
+                            onClick={handleSend}
+                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90"
+                            style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
+                          >
+                            <Send size={14} />
+                            Rouvrir l&apos;email
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleSendAgain}
+                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium"
+                          >
+                            <RotateCcw size={14} />
+                            Modifier / renvoyer
+                          </button>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">Prêt à envoyer</h3>
-                        <p className="text-xs text-slate-400">Je vous réponds sous 24h</p>
-                      </div>
-                    </div>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: '#06b6d415', border: '1px solid #06b6d430' }}>
+                            ✉️
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-gray-900 dark:text-white">Prêt à envoyer</h3>
+                            <p className="text-xs text-slate-400">Réponse sous 24h</p>
+                          </div>
+                        </div>
 
-                    {contact.nom && (
-                      <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6 text-sm">
-                        <p className="font-semibold text-gray-900 dark:text-white">{contact.nom}</p>
-                        {contact.email && <p className="text-gray-500 dark:text-slate-400 text-xs mt-0.5">{contact.email}</p>}
-                        {contact.entreprise && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.entreprise}</p>}
-                        {contact.projet_nom && <p className="text-purple-500 text-xs mt-1 font-medium">{contact.projet_nom}</p>}
-                      </div>
-                    )}
+                        {contact.nom && (
+                          <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6 text-sm">
+                            <p className="font-semibold text-gray-900 dark:text-white">{contact.nom}</p>
+                            {contact.email && <p className="text-gray-500 dark:text-slate-400 text-xs mt-0.5">{contact.email}</p>}
+                            {contact.entreprise && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.entreprise}</p>}
+                            {contact.projet_nom && <p className="text-purple-500 text-xs mt-1 font-medium">{contact.projet_nom}</p>}
+                          </div>
+                        )}
 
-                    {devis && devis.sousTotal > 0 && (
-                      <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6">
-                        <p className="text-xs text-gray-500 dark:text-slate-400 mb-1">Estimation calculée</p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">{fmt(devis.sousTotal)}</p>
-                      </div>
-                    )}
+                        {devis && devis.sousTotal > 0 && (
+                          <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6">
+                            <p className="text-xs text-gray-500 dark:text-slate-400 mb-1">Estimation calculée</p>
+                            <p className="text-2xl font-bold text-gray-900 dark:text-white">{fmt(devis.sousTotal)}</p>
+                          </div>
+                        )}
 
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-7">
-                      En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre application mail s'ouvre avec toutes vos réponses pré-remplies. Il suffit d'envoyer l'email.
-                    </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-7">
+                          En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre application mail s&apos;ouvre avec toutes vos réponses préremplies. Il reste à envoyer l&apos;email pour finaliser.
+                        </p>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <button
-                        onClick={handleSend}
-                        disabled={!contact.nom || !contact.email}
-                        className="flex-1 flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
-                        style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
-                      >
-                        <Send size={15} />
-                        Envoyer ma demande
-                      </button>
-                      <button
-                        onClick={handleCopy}
-                        className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 transition text-sm font-medium"
-                      >
-                        {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
-                        {copied ? 'Copié !' : 'Copier le texte'}
-                      </button>
-                    </div>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button
+                            onClick={handleSend}
+                            disabled={!contact.nom || !contact.email}
+                            className="flex-1 flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
+                            style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
+                          >
+                            <Send size={15} />
+                            Envoyer ma demande
+                          </button>
+                          <button
+                            onClick={handleCopy}
+                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 transition text-sm font-medium"
+                          >
+                            {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                            {copied ? 'Copié' : 'Copier le texte'}
+                          </button>
+                        </div>
 
-                    {!contact.email && (
-                      <p className="text-xs text-amber-400 mt-3 flex items-center gap-1.5">
-                        <span>⚠</span>
-                        Retournez à l'étape 1 pour renseigner votre nom et email.
-                      </p>
+                        {!contact.email && (
+                          <p className="text-xs text-amber-400 mt-3 flex items-center gap-1.5">
+                            <span>⚠</span>
+                            Retournez à l&apos;étape 1 pour renseigner votre nom et email.
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
                 )}

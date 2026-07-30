@@ -131,7 +131,7 @@ export const SECTIONS = [
         id: 'integrations', label: 'Intégrations souhaitées', type: 'multiselect',
         options: ['Google Analytics (inclus)', 'Mailchimp / Brevo (+120€)', 'Calendly (inclus)', 'CRM existant (+220€)', 'Zapier (+150€)', 'Autre'],
       },
-      { id: 'maintenance', label: 'Maintenance mensuelle (+200€/mois)', type: 'radio', options: ['Oui', 'Non'] },
+      { id: 'maintenance', label: 'Maintenance mensuelle (à partir de 200€/mois)', type: 'radio', options: ['Oui', 'Non'] },
       { id: 'seo', label: 'SEO / référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+150€)', 'Non nécessaire'] },
     ],
   },

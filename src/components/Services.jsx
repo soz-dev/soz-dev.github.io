@@ -8,7 +8,7 @@ const services = [
     badge: 'Sites web',
     title: 'Vitrines & sites pro',
     description:
-      'Landing pages, sites multi-pages et sites pro. React + Vite : rapides, SEO-friendly, mis en ligne pour toi.',
+      'Landing pages, sites multi-pages et sites pro. React + Vite : rapides, SEO-friendly, mis en ligne pour vous.',
     features: [
       { icon: LayoutTemplate, text: 'Landing & vitrines' },
       { icon: Layers, text: 'Sites multi-pages / blog' },
@@ -92,7 +92,7 @@ export default function Services() {
             Web + iOS, livrés de A à Z : sites, boutiques Stripe, outils métier et apps natives.
           </p>
           <a href="#devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-purple-400 transition-colors">
-            Estimer mon projet →
+            Estimer votre projet →
           </a>
         </motion.div>
 

@@ -68,7 +68,7 @@ export default function Hero() {
             href="#devis"
             className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
           >
-            Estimer mon projet
+            Estimer votre projet
           </a>
           <a
             href="#projets"

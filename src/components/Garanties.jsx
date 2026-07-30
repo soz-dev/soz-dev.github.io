@@ -5,19 +5,19 @@ const items = [
   {
     icon: ShieldCheck,
     title: 'Acompte 30 %',
-    desc: 'Tu démarres sans tout payer. Solde à la livraison.',
+    desc: 'Vous démarrez sans tout payer. Solde à la livraison.',
     color: '#a855f7',
   },
   {
     icon: RefreshCw,
     title: 'Révisions incluses',
-    desc: 'On itère jusqu’à ce que ça te convienne — pas de surprise.',
+    desc: 'Nous itérons jusqu’à ce que le résultat vous convienne — sans surprise.',
     color: '#06b6d4',
   },
   {
     icon: Headphones,
     title: '1 mois de support',
-    desc: 'Bugs, petits ajustements, questions — couverts après livraison.',
+    desc: 'Bugs, petits ajustements et questions — couverts après livraison.',
     color: '#8b5cf6',
   },
   {
@@ -43,7 +43,7 @@ export default function Garanties() {
             Engagements
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            Tranquille avant de signer
+            Des engagements clairs
           </h2>
         </motion.div>
 

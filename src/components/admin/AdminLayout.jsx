@@ -17,11 +17,15 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
   const sidebar = (
     <>
       <div className="p-5 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
-        <div>
-          <span className="text-lg font-bold" style={{ fontFamily: 'Outfit, sans-serif' }}>
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">soz-dev</span>
-          </span>
-          <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">// admin</p>
+        <div className="flex items-center gap-2.5">
+          <img src="/logo-icon-light.png" alt="" className="h-7 w-7 dark:hidden" width={28} height={28} />
+          <img src="/logo-icon.png" alt="" className="h-7 w-7 hidden dark:block" width={28} height={28} />
+          <div>
+            <span className="text-lg font-bold" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
+            </span>
+            <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
+          </div>
         </div>
         <button
           type="button"
@@ -86,9 +90,13 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a12] flex flex-col md:flex-row">
       <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#07070f]">
-        <span className="font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: 'Outfit, sans-serif' }}>
-          soz-dev
-        </span>
+        <div className="flex items-center gap-2">
+          <img src="/logo-icon-light.png" alt="" className="h-6 w-6 dark:hidden" width={24} height={24} />
+          <img src="/logo-icon.png" alt="" className="h-6 w-6 hidden dark:block" width={24} height={24} />
+          <span className="font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            SOZ_DEV
+          </span>
+        </div>
         <button
           type="button"
           onClick={() => setMobileOpen(true)}

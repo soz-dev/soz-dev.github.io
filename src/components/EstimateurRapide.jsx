@@ -68,7 +68,7 @@ export default function EstimateurRapide() {
             Estimation rapide
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-            Ton prix en 3 clics
+            Votre estimation en 3 clics
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base">
             Indication sous le marché — devis détaillé en 2 minutes.
@@ -183,7 +183,7 @@ export default function EstimateurRapide() {
                     href="#devis"
                     className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all glow-purple"
                   >
-                    Affiner mon devis
+                    Affiner votre devis
                     <ArrowRight className="w-4 h-4" />
                   </a>
                   <button

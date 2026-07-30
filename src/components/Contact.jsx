@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send } from 'lucide-react'
+import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send, CheckCircle2, RotateCcw } from 'lucide-react'
 
 export default function Contact() {
   const [mode, setMode] = useState(null) // null | 'info'
   const [form, setForm] = useState({ nom: '', email: '', message: '' })
+  const [sent, setSent] = useState(false)
 
   const handleDevis = () => {
     document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })
@@ -14,6 +15,7 @@ export default function Contact() {
     const subject = `Contact – ${form.nom || 'Visiteur'}`
     const body = `Nom : ${form.nom}\nEmail : ${form.email}\n\n${form.message}`
     window.location.href = `mailto:sofyan.devpro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSent(true)
   }
 
   const canSend = form.nom.trim() && form.email.trim() && form.message.trim()
@@ -37,7 +39,7 @@ export default function Contact() {
           className="text-center mb-12"
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase block mb-4">
-            Parlons-en
+            Contact
           </span>
           <h2 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Vous avez un projet{' '}
@@ -80,7 +82,7 @@ export default function Contact() {
 
               {/* Card Info */}
               <button
-                onClick={() => setMode('info')}
+                onClick={() => { setMode('info'); setSent(false) }}
                 className="group text-left glass rounded-2xl p-7 border border-gray-100 dark:border-white/8 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)' }}>
@@ -88,7 +90,7 @@ export default function Contact() {
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-2">Question / information</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">
-                  Une question sur mes services, mes tarifs, ma disponibilité ? Écrivez-moi directement.
+                  Une question sur mes services, mes tarifs ou ma disponibilité ? Écrivez-moi directement.
                 </p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 group-hover:gap-3 transition-all">
                   Envoyer un message <ArrowRight size={14} />
@@ -109,7 +111,7 @@ export default function Contact() {
               <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                 <div className="flex items-center gap-3 mb-7">
                   <button
-                    onClick={() => setMode(null)}
+                    onClick={() => { setMode(null); setSent(false) }}
                     className="w-8 h-8 rounded-lg flex items-center justify-center border border-gray-200 dark:border-white/10 text-gray-400 hover:text-gray-600 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 transition"
                   >
                     <ArrowLeft size={14} />
@@ -120,54 +122,96 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Nom *</label>
-                      <input
-                        type="text"
-                        value={form.nom}
-                        onChange={e => setForm(f => ({ ...f, nom: e.target.value }))}
-                        placeholder="Jean Dupont"
-                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
-                      />
+                {sent ? (
+                  <div className="text-center py-2">
+                    <div
+                      className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                      style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.35)' }}
+                    >
+                      <CheckCircle2 className="w-7 h-7 text-emerald-500" />
                     </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Email *</label>
-                      <input
-                        type="email"
-                        value={form.email}
-                        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                        placeholder="jean@exemple.com"
-                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
-                      />
+                    <h4 className="font-bold text-emerald-700 dark:text-emerald-400 text-lg mb-2">
+                      Message prêt à envoyer
+                    </h4>
+                    <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
+                      <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
+                        Votre client mail s&apos;est ouvert — envoyez l&apos;email prérempli pour finaliser.
+                        Merci, nous vous recontactons rapidement.
+                      </p>
+                      <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">
+                        Nous ne pouvons pas confirmer l&apos;envoi depuis le site : finalisez dans votre application mail.
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                      <button
+                        type="button"
+                        onClick={handleSend}
+                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90"
+                        style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
+                      >
+                        <Send size={14} />
+                        Rouvrir l&apos;email
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSent(false)}
+                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium"
+                      >
+                        <RotateCcw size={14} />
+                        Modifier / renvoyer
+                      </button>
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Message *</label>
-                    <textarea
-                      value={form.message}
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                      placeholder="Bonjour, je souhaitais vous demander..."
-                      rows={5}
-                      className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm resize-none"
-                    />
+                ) : (
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Nom *</label>
+                        <input
+                          type="text"
+                          value={form.nom}
+                          onChange={e => setForm(f => ({ ...f, nom: e.target.value }))}
+                          placeholder="Jean Dupont"
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Email *</label>
+                        <input
+                          type="email"
+                          value={form.email}
+                          onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                          placeholder="jean@exemple.com"
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 dark:text-slate-400 mb-1.5">Message *</label>
+                      <textarea
+                        value={form.message}
+                        onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                        placeholder="Bonjour, je souhaitais vous demander..."
+                        rows={5}
+                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm resize-none"
+                      />
+                    </div>
+
+                    <button
+                      onClick={handleSend}
+                      disabled={!canSend}
+                      className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.01] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
+                      style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
+                    >
+                      <Send size={15} />
+                      Envoyer le message
+                    </button>
+
+                    <p className="text-xs text-center text-slate-400 dark:text-slate-500">
+                      Votre application mail s&apos;ouvrira avec le message prérempli.
+                    </p>
                   </div>
-
-                  <button
-                    onClick={handleSend}
-                    disabled={!canSend}
-                    className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.01] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
-                    style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
-                  >
-                    <Send size={15} />
-                    Envoyer le message
-                  </button>
-
-                  <p className="text-xs text-center text-slate-400 dark:text-slate-500">
-                    Votre application mail s'ouvrira avec le message pré-rempli.
-                  </p>
-                </div>
+                )}
               </div>
             </motion.div>
           )}
@@ -199,4 +243,3 @@ export default function Contact() {
     </section>
   )
 }
-

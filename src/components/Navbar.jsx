@@ -21,11 +21,29 @@ export default function Navbar({ isDark, toggleDark }) {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="gradient-text select-none"
-          style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
+          className="flex items-center gap-2.5 select-none"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          SOZ_DEV
+          <img
+            src="/logo-icon-light.png"
+            alt=""
+            className="h-8 w-8 dark:hidden"
+            width={32}
+            height={32}
+          />
+          <img
+            src="/logo-icon.png"
+            alt=""
+            className="h-8 w-8 hidden dark:block"
+            width={32}
+            height={32}
+          />
+          <span
+            className="gradient-text"
+            style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
+          >
+            SOZ_DEV
+          </span>
         </a>
 
         <div className="hidden md:flex items-center gap-6">
