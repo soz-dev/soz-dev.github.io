@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion'
-import { MessageCircle, FileText, Palette, Code2, Rocket } from 'lucide-react'
+import { Mail, MessageCircle, FileText, Palette, Code2, Rocket, ArrowRight } from 'lucide-react'
 
 const steps = [
+  {
+    icon: Mail,
+    color: '#06b6d4',
+    number: '00',
+    title: 'Formulaire de devis',
+    description: "Commencez par remplir le formulaire en ligne : obtenez une estimation instantanée et soumettez votre projet directement par email.",
+    cta: { label: 'Remplir le formulaire', href: '#devis' },
+    featured: true,
+  },
   {
     icon: MessageCircle,
     color: '#a855f7',
@@ -25,10 +34,10 @@ const steps = [
   },
   {
     icon: Code2,
-    color: '#06b6d4',
+    color: '#8b5cf6',
     number: '04',
     title: 'Développement',
-    description: 'Code propre, performant et responsive. Points d\'avancement réguliers pour rester alignés.',
+    description: "Code propre, performant et responsive. Points d'avancement réguliers pour rester alignés.",
   },
   {
     icon: Rocket,
@@ -67,8 +76,12 @@ export default function Process() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="glass rounded-2xl p-6 border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-colors duration-300 flex items-start gap-5"
+              transition={{ duration: 0.55, delay: i * 0.07 }}
+              className={`rounded-2xl p-6 border transition-colors duration-300 flex items-start gap-5 ${
+                step.featured
+                  ? 'bg-white dark:bg-white/[0.04] border-cyan-200 dark:border-cyan-500/20 shadow-sm dark:shadow-none'
+                  : 'glass border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
+              }`}
             >
               {/* Number + icon */}
               <div className="shrink-0 flex flex-col items-center gap-2">
@@ -81,9 +94,21 @@ export default function Process() {
                 <span className="text-xs font-mono font-bold" style={{ color: step.color }}>{step.number}</span>
               </div>
 
-              <div className="pt-1">
+              <div className="pt-1 flex-1">
                 <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">{step.title}</h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{step.description}</p>
+                {step.cta && (
+                  <a
+                    href={step.cta.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold mt-3 transition"
+                    style={{ color: step.color }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
+                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                  >
+                    {step.cta.label}
+                    <ArrowRight size={12} />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
