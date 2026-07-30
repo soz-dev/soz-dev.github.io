@@ -4,8 +4,8 @@ import { Check, ArrowRight } from 'lucide-react'
 const plans = [
   {
     name: 'Liberté Créative',
-    originalPrice: '790',
-    price: '500',
+    originalPrice: '990',
+    price: '690',
     description: 'Vous définissez les fonctionnalités, le développeur a carte blanche sur le design. Résultat unique garanti.',
     features: [
       'Design 100% libre au développeur',
@@ -21,8 +21,8 @@ const plans = [
   },
   {
     name: 'Vitrine',
-    originalPrice: '1 190',
-    price: '890',
+    originalPrice: '1 990',
+    price: '1 390',
     description: 'Parfait pour présenter votre activité et capter vos premiers clients en ligne.',
     features: [
       'Landing page ~5 sections',
@@ -38,8 +38,8 @@ const plans = [
   },
   {
     name: 'Site Pro',
-    originalPrice: '2 490',
-    price: '1 890',
+    originalPrice: '3 990',
+    price: '2 790',
     description: 'Pour les entreprises qui veulent un site complet, rapide et bien référencé.',
     features: [
       'Jusqu\'à 8 pages',
@@ -55,8 +55,8 @@ const plans = [
   },
   {
     name: 'E-Commerce',
-    originalPrice: '3 990',
-    price: '2 990',
+    originalPrice: '5 690',
+    price: '3 990',
     description: 'Une boutique en ligne clé en main, prête à vendre dès le premier jour.',
     features: [
       'Catalogue produits illimité',
@@ -72,8 +72,8 @@ const plans = [
   },
   {
     name: 'Application Web',
-    originalPrice: '6 490',
-    price: '4 990',
+    originalPrice: '8 490',
+    price: '5 990',
     suffix: '+',
     description: 'SaaS, espace membre ou outil métier — avec authentification et base de données.',
     features: [
@@ -90,8 +90,8 @@ const plans = [
   },
   {
     name: 'App iOS',
-    originalPrice: '4 590',
-    price: '3 490',
+    originalPrice: '7 090',
+    price: '4 990',
     suffix: '+',
     description: 'Application native Swift / SwiftUI, de l\'idée à la publication sur l\'App Store.',
     features: [
