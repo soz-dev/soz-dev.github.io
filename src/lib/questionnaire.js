@@ -23,7 +23,7 @@ export const SECTIONS = [
       { id: 'cible', label: 'Cible / audience', type: 'text', placeholder: 'Ex: artisans locaux, jeunes entrepreneurs...' },
       {
         id: 'delai', label: 'Délai souhaité', type: 'select',
-        options: ['urgent|Urgent (< 1 mois)', '2-3-mois|2-3 mois', '3-6-mois|3-6 mois', 'flexible|Flexible'],
+        options: ['urgent|Urgent (< 1 mois) · +40%', '2-3-mois|2-3 mois · +15%', '3-6-mois|3-6 mois', 'flexible|Flexible'],  
       },
       {
         id: 'budget', label: 'Budget indicatif', type: 'select',
