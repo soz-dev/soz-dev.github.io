@@ -42,6 +42,7 @@ export const SECTIONS = [
       },
       { id: 'couleurs', label: 'Couleurs souhaitées', type: 'text', placeholder: 'Ex: bleu marine, blanc cassé, touches dorées...' },
       { id: 'exemples_design', label: 'Sites ou apps appréciés', type: 'textarea', placeholder: 'URLs ou noms de sites inspirants...' },
+      { id: 'maquettes', label: 'Maquettes Figma interactives', type: 'radio', options: ['Oui (+290€)', 'Non – intégration directe'] },
       { id: 'logo', label: 'Logo', type: 'radio', options: ['Oui, j\'ai un logo', 'Non – à créer (+420€)', 'Partiel – à refaire'] },
       { id: 'charte', label: 'Charte graphique', type: 'radio', options: ['Oui, complète', 'Partielle', 'Non'] },
     ],

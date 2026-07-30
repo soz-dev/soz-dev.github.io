@@ -62,6 +62,7 @@ export function calculateDevis(q) {
   const add = (label, montant) => lignes.push({ label, montant })
 
   if (q.logo === 'Non \u2013 \u00e0 cr\u00e9er (+420\u20ac)') add('Cr\u00e9ation de logo', 420)
+  if (q.maquettes === 'Oui (+290\u20ac)') add('Maquettes Figma interactives', 290)
   if (q.blog === 'Oui (+280\u20ac)') add('Blog / actualit\u00e9s', 280)
   if ((q.langues || []).includes('Anglais (+420\u20ac)')) add('Version anglaise', 420)
 
