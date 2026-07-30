@@ -28,7 +28,7 @@ export default function About() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7 }}
           >
-            <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+            <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
               À propos
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">

@@ -39,7 +39,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
           <img src="/logo-mark.png" alt="SOZ_DEV" className="h-8 w-8 object-contain" width={32} height={32} />
           <div>
             <span className="font-display text-lg font-bold">
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
+              <span className="bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent">SOZ_DEV</span>
             </span>
             <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
           </div>
@@ -62,7 +62,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
             onClick={() => navigate(id)}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition ${
               view === id || (view === 'project' && id === 'clients') || (view === 'project-new' && id === 'clients')
-                ? 'bg-purple-100 dark:bg-purple-600/20 text-purple-700 dark:text-purple-300 font-medium'
+                ? 'bg-purple-100 dark:bg-brand-600/20 text-brand-700 dark:text-brand-300 font-medium'
                 : 'text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
@@ -76,7 +76,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
         <button
           type="button"
           onClick={() => navigate('clients')}
-          className="w-full flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2 px-3 rounded-lg transition"
+          className="w-full flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium py-2 px-3 rounded-lg transition"
         >
           <Plus size={14} />
           Nouveau client
@@ -123,7 +123,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
       <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#07070f]">
         <div className="flex items-center gap-2">
           <img src="/logo-mark.png" alt="SOZ_DEV" className="h-7 w-7 object-contain" width={28} height={28} />
-          <span className="font-display font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
+          <span className="font-display font-bold bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent tracking-wide">
             SOZ_DEV
           </span>
         </div>

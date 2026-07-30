@@ -33,7 +33,7 @@ export default function StickyCta() {
         >
           <a
             href="#devis"
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-purple-500/30"
+            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm shadow-lg shadow-brand-500/30"
           >
             <FileText className="w-4 h-4" />
             Devis en 2 min

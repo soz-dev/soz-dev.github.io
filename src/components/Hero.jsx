@@ -4,9 +4,9 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-purple-700/15 blur-[120px] animate-blob" />
-        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-500/10 blur-[100px] animate-blob delay-2" />
-        <div className="absolute bottom-1/4 left-1/3 w-[350px] h-[350px] rounded-full bg-purple-900/15 blur-[90px] animate-blob delay-4" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-brand-700/15 blur-[120px] animate-blob" />
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-500/10 blur-[100px] animate-blob delay-2" />
+        <div className="absolute bottom-1/4 left-1/3 w-[350px] h-[350px] rounded-full bg-brand-900/15 blur-[90px] animate-blob delay-4" />
       </div>
 
       <div
@@ -50,7 +50,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.5 }}
-          className="font-mono text-sm text-purple-500 dark:text-purple-400 mb-10"
+          className="font-mono text-sm text-brand-500 dark:text-brand-400 mb-10"
         >
           À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">390€</span>
           <span className="text-slate-400 line-through ml-2">1 500€</span>
@@ -66,13 +66,13 @@ export default function Hero() {
         >
           <a
             href="#devis"
-            className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
+            className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
           >
             Estimer votre projet
           </a>
           <a
             href="#projets"
-            className="px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-purple-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
+            className="px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-brand-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
           >
             Voir les projets
           </a>

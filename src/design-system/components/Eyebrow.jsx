@@ -6,7 +6,7 @@ export default function Eyebrow({ color = 'brand', className = '', children, as:
   const colors = {
     brand: 'text-brand-500 dark:text-brand-400',
     accent: 'text-accent-500 dark:text-accent-400',
-    cyan: 'text-cyan-400',
+    cyan: 'text-accent-400',
     amber: 'text-amber-500 dark:text-amber-400',
   }
 

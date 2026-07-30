@@ -39,7 +39,7 @@ export default function Garanties() {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-3 block">
             Engagements
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">

@@ -26,3 +26,11 @@ export {
   typeScale,
   brand,
 } from './tokens'
+
+export {
+  PALETTES,
+  DEFAULT_PALETTE,
+  applyPalette,
+  initPalette,
+  getPalette,
+} from './themes'

@@ -60,7 +60,7 @@ export default function Process() {
           className="mb-16"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Comment ça marche
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Mon processus</h2>
@@ -79,7 +79,7 @@ export default function Process() {
               transition={{ duration: 0.55, delay: i * 0.07 }}
               className={`rounded-2xl p-6 border transition-colors duration-300 flex items-start gap-5 ${
                 step.featured
-                  ? 'bg-white dark:bg-white/[0.04] border-cyan-200 dark:border-cyan-500/20 shadow-sm dark:shadow-none'
+                  ? 'bg-white dark:bg-white/[0.04] border-cyan-200 dark:border-accent-500/20 shadow-sm dark:shadow-none'
                   : 'glass border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
               }`}
             >

@@ -117,7 +117,7 @@ export default function Pricing() {
           className="mb-16"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Investissement
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
@@ -139,7 +139,7 @@ export default function Pricing() {
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className={`relative glass rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
                 plan.popular
-                  ? 'border-purple-300 dark:border-purple-500/30 shadow-lg shadow-purple-100 dark:shadow-purple-900/10'
+                  ? 'border-purple-300 dark:border-brand-500/30 shadow-lg shadow-brand-100 dark:shadow-brand-900/10'
                   : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
               }`}
             >
@@ -219,7 +219,7 @@ export default function Pricing() {
         >
           1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de 200 €/mois
           <br />
-          <a href="#pack" className="text-cyan-600 dark:text-cyan-400 hover:underline mt-2 inline-block">
+          <a href="#pack" className="text-cyan-600 dark:text-accent-400 hover:underline mt-2 inline-block">
             Pack clé en main (site + hébergement + domaine) → 890 €
           </a>
         </motion.p>

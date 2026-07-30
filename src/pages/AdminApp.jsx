@@ -63,7 +63,7 @@ export default function AdminApp() {
   if (bootstrapping) {
     return (
       <div className="min-h-screen bg-white dark:bg-[#0a0a12] flex items-center justify-center">
-        <div className="w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-5 h-5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }

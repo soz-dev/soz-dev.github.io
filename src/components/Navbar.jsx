@@ -59,7 +59,7 @@ export default function Navbar({ isDark, toggleDark }) {
           </button>
           <a
             href="#devis"
-            className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-xs font-semibold hover:opacity-90 transition-opacity"
+            className="px-5 py-2 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-xs font-semibold hover:opacity-90 transition-opacity"
           >
             Devis
           </a>
@@ -75,7 +75,7 @@ export default function Navbar({ isDark, toggleDark }) {
           </button>
           <a
             href="#devis"
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white text-xs font-semibold"
+            className="px-4 py-2 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-xs font-semibold"
           >
             Devis
           </a>

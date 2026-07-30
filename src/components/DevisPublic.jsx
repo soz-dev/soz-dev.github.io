@@ -13,7 +13,7 @@ function QuestionField({ q, value, onChange }) {
       <select
         value={value || ''}
         onChange={e => onChange(e.target.value)}
-        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-purple-500 transition text-sm"
+        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-brand-500 transition text-sm"
       >
         <option value="">— Sélectionner —</option>
         {opts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
@@ -29,8 +29,8 @@ function QuestionField({ q, value, onChange }) {
             key={o.value}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition ${
               value === o.value
-                ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/10'
-                : 'border-gray-200 dark:border-white/10 bg-transparent hover:border-purple-300 dark:hover:border-purple-500/30'
+                ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10'
+                : 'border-gray-200 dark:border-white/10 bg-transparent hover:border-purple-300 dark:hover:border-brand-500/30'
             }`}
           >
             <input
@@ -41,7 +41,7 @@ function QuestionField({ q, value, onChange }) {
               onChange={() => onChange(o.value)}
               className="sr-only"
             />
-            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 pointer-events-none ${value === o.value ? 'border-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
+            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 pointer-events-none ${value === o.value ? 'border-brand-500' : 'border-gray-300 dark:border-white/30'}`}>
               {value === o.value && <div className="w-2 h-2 rounded-full bg-purple-500" />}
             </div>
             <span className="text-sm text-gray-800 dark:text-slate-200 pointer-events-none">{o.label}</span>
@@ -62,8 +62,8 @@ function QuestionField({ q, value, onChange }) {
               key={o.value}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl border cursor-pointer transition text-sm select-none ${
                 checked
-                  ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300'
-                  : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-500/30'
+                  ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10 text-brand-700 dark:text-brand-300'
+                  : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-brand-500/30'
               }`}
             >
               <input
@@ -72,7 +72,7 @@ function QuestionField({ q, value, onChange }) {
                 onChange={() => onChange(o.value)}
                 className="sr-only"
               />
-              <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition ${checked ? 'border-purple-500 bg-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
+              <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition ${checked ? 'border-brand-500 bg-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
                 {checked && <Check size={10} className="text-white" />}
               </div>
               {o.label}
@@ -90,7 +90,7 @@ function QuestionField({ q, value, onChange }) {
         onChange={e => onChange(e.target.value)}
         placeholder={q.placeholder || ''}
         rows={3}
-        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm resize-none"
+        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm resize-none"
       />
     )
   }
@@ -101,7 +101,7 @@ function QuestionField({ q, value, onChange }) {
       value={value || ''}
       onChange={e => onChange(e.target.value)}
       placeholder={q.placeholder || ''}
-      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
     />
   )
 }
@@ -176,7 +176,7 @@ export default function DevisPublic() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
@@ -245,7 +245,7 @@ export default function DevisPublic() {
                             value={contact[f.id]}
                             onChange={e => setContact(c => ({ ...c, [f.id]: e.target.value }))}
                             placeholder={f.placeholder}
-                            className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                            className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
                           />
                         </div>
                       ))}
@@ -258,7 +258,7 @@ export default function DevisPublic() {
                           value={contact.projet_nom}
                           onChange={e => setContact(c => ({ ...c, projet_nom: e.target.value }))}
                           placeholder="Mon site vitrine, ma boutique Stripe, mon app iOS..."
-                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
                         />
                       </div>
                     </div>
@@ -279,7 +279,7 @@ export default function DevisPublic() {
                         <div key={q.id}>
                           <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
                             {q.label}
-                            {q.required && <span className="text-purple-400 ml-1">*</span>}
+                            {q.required && <span className="text-brand-400 ml-1">*</span>}
                           </label>
                           <QuestionField
                             q={q}
@@ -379,7 +379,7 @@ export default function DevisPublic() {
                           </button>
                           <button
                             onClick={handleCopy}
-                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 transition text-sm font-medium"
+                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-brand-500 hover:text-purple-600 dark:hover:text-brand-400 transition text-sm font-medium"
                           >
                             {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
                             {copied ? 'Copié' : 'Copier le texte'}
@@ -404,7 +404,7 @@ export default function DevisPublic() {
               <button
                 onClick={() => setStep(s => Math.max(0, s - 1))}
                 disabled={step === 0}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-purple-400 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-400 transition text-sm font-medium disabled:opacity-30 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-purple-400 hover:text-purple-500 dark:hover:border-brand-500 dark:hover:text-brand-400 transition text-sm font-medium disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ArrowLeft size={14} />
                 Précédent
@@ -414,7 +414,7 @@ export default function DevisPublic() {
                 <button
                   onClick={() => setStep(s => s + 1)}
                   disabled={!canProceed}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-medium text-sm transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {step === totalSteps - 2 ? 'Récapitulatif' : 'Suivant'}
                   <ArrowRight size={14} />
@@ -426,11 +426,11 @@ export default function DevisPublic() {
           {/* Sticky pricing sidebar */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-2xl p-6 border" style={{ background: '#030712', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <p className="text-xs font-mono text-purple-400 tracking-wider uppercase mb-5">Estimation</p>
+              <p className="text-xs font-mono text-brand-400 tracking-wider uppercase mb-5">Estimation</p>
 
               {devis && devis.sousTotal > 0 ? (
                 <>
-                  <div className="text-3xl font-bold text-cyan-400 mb-0.5">{fmt(devis.sousTotal)}</div>
+                  <div className="text-3xl font-bold text-accent-400 mb-0.5">{fmt(devis.sousTotal)}</div>
                   <div className="text-xs text-slate-500 mb-5">Hors taxes · hors maintenance</div>
 
                   <div className="space-y-2 mb-4">
@@ -445,7 +445,7 @@ export default function DevisPublic() {
                   <div className="border-t pt-3 mb-4" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
                     <div className="flex justify-between text-xs mb-1.5">
                       <span className="text-slate-500">Acompte 30 %</span>
-                      <span className="text-purple-400 font-semibold">{fmt(devis.acompte)}</span>
+                      <span className="text-brand-400 font-semibold">{fmt(devis.acompte)}</span>
                     </div>
                     <div className="flex justify-between text-xs">
                       <span className="text-slate-500">Solde livraison</span>
@@ -454,7 +454,7 @@ export default function DevisPublic() {
                     {devis.maintenance > 0 && (
                       <div className="flex justify-between text-xs mt-1.5">
                         <span className="text-slate-500">Maintenance /mois</span>
-                        <span className="text-purple-400 font-semibold">{fmt(devis.maintenance)}</span>
+                        <span className="text-brand-400 font-semibold">{fmt(devis.maintenance)}</span>
                       </div>
                     )}
                   </div>

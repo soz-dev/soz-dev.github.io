@@ -29,7 +29,7 @@ export default function DashboardPage({ go }) {
   if (loading) {
     return (
       <div className="p-8 flex items-center gap-2 text-gray-500 dark:text-slate-500 text-sm">
-        <div className="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-4 h-4 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
         Chargement...
       </div>
     )
@@ -46,8 +46,8 @@ export default function DashboardPage({ go }) {
 
       <div className="grid grid-cols-3 gap-4 mb-10">
         {[
-          { label: 'Clients', value: stats.clients, icon: Users, color: 'text-purple-400', bg: 'bg-purple-400/10' },
-          { label: 'Projets', value: stats.projets, icon: FolderOpen, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
+          { label: 'Clients', value: stats.clients, icon: Users, color: 'text-brand-400', bg: 'bg-purple-400/10' },
+          { label: 'Projets', value: stats.projets, icon: FolderOpen, color: 'text-accent-400', bg: 'bg-cyan-400/10' },
           { label: 'CA estimé', value: `${stats.ca.toLocaleString('fr-FR')} €`, icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
         ].map(s => (
           <div key={s.label} className="bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/8 rounded-xl p-5">
@@ -65,7 +65,7 @@ export default function DashboardPage({ go }) {
           <h2 className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
             <Clock size={12} /> Activité récente
           </h2>
-          <button onClick={() => go('clients')} className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 transition">
+          <button onClick={() => go('clients')} className="text-xs text-brand-400 hover:text-purple-300 flex items-center gap-1 transition">
             Voir tous les clients <ArrowRight size={11} />
           </button>
         </div>
@@ -83,7 +83,7 @@ export default function DashboardPage({ go }) {
                 <div
                   key={p.id}
                   onClick={() => go('project', { client: p.clients, project: p })}
-                  className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/8 rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:border-purple-500/30 transition group"
+                  className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/8 rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:border-brand-500/30 transition group"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-medium text-gray-900 dark:text-white truncate">{p.nom}</div>

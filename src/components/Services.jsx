@@ -82,7 +82,7 @@ export default function Services() {
           className="mb-16"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
@@ -91,7 +91,7 @@ export default function Services() {
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg leading-relaxed" style={{ maxWidth: '520px', margin: '0 auto', textAlign: 'center' }}>
             Web + iOS, livrés de A à Z : sites, boutiques Stripe, outils métier et apps natives.
           </p>
-          <a href="#devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-purple-400 transition-colors">
+          <a href="#devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-brand-400 transition-colors">
             Estimer votre projet →
           </a>
         </motion.div>

@@ -38,7 +38,7 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             Contact
           </span>
           <h2 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
@@ -66,10 +66,10 @@ export default function Contact() {
               {/* Card Devis */}
               <button
                 onClick={handleDevis}
-                className="group text-left glass rounded-2xl p-7 border border-gray-100 dark:border-white/8 hover:border-purple-400 dark:hover:border-purple-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/10"
+                className="group text-left glass rounded-2xl p-7 border border-gray-100 dark:border-white/8 hover:border-purple-400 dark:hover:border-brand-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/10"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'rgba(168,85,247,0.12)', border: '1px solid rgba(168,85,247,0.25)' }}>
-                  <FileText className="w-5 h-5 text-purple-400" />
+                  <FileText className="w-5 h-5 text-brand-400" />
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-2">Demande de devis</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">
@@ -86,7 +86,7 @@ export default function Contact() {
                 className="group text-left glass rounded-2xl p-7 border border-gray-100 dark:border-white/8 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)' }}>
-                  <MessageSquare className="w-5 h-5 text-cyan-400" />
+                  <MessageSquare className="w-5 h-5 text-accent-400" />
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-2">Question / information</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">
@@ -172,7 +172,7 @@ export default function Contact() {
                           value={form.nom}
                           onChange={e => setForm(f => ({ ...f, nom: e.target.value }))}
                           placeholder="Jean Dupont"
-                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
                         />
                       </div>
                       <div>
@@ -182,7 +182,7 @@ export default function Contact() {
                           value={form.email}
                           onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                           placeholder="jean@exemple.com"
-                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
                         />
                       </div>
                     </div>
@@ -193,7 +193,7 @@ export default function Contact() {
                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                         placeholder="Bonjour, je souhaitais vous demander..."
                         rows={5}
-                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm resize-none"
+                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm resize-none"
                       />
                     </div>
 

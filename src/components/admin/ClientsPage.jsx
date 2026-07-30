@@ -9,7 +9,7 @@ function Field({ label, ...props }) {
       <label className="text-xs text-gray-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">{label}</label>
       <input
         {...props}
-        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition placeholder-gray-400 dark:placeholder-slate-600"
+        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition placeholder-gray-400 dark:placeholder-slate-600"
       />
     </div>
   )
@@ -118,14 +118,14 @@ export default function ClientsPage({ go, openClient }) {
           <button
             type="button"
             onClick={() => setShowForm(v => !v)}
-            className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition shrink-0"
+            className="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition shrink-0"
           >
             <Plus size={14} /> Nouveau client
           </button>
         </div>
 
         {showForm && (
-          <form onSubmit={createClient} className="mt-5 bg-gray-50 dark:bg-white/[0.04] border border-purple-500/30 rounded-2xl p-5 space-y-4 max-w-3xl">
+          <form onSubmit={createClient} className="mt-5 bg-gray-50 dark:bg-white/[0.04] border border-brand-500/30 rounded-2xl p-5 space-y-4 max-w-3xl">
             <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Nouveau client</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Nom *" value={form.nom} onChange={f('nom')} required placeholder="Jean Dupont" />
@@ -138,12 +138,12 @@ export default function ClientsPage({ go, openClient }) {
               <textarea
                 value={form.notes} onChange={f('notes')} rows={2}
                 placeholder="Source, contexte..."
-                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
+                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
               />
             </div>
             <div className="flex gap-3">
               <button type="submit" disabled={saving}
-                className="bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2 px-5 rounded-lg transition disabled:opacity-50">
+                className="bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium py-2 px-5 rounded-lg transition disabled:opacity-50">
                 {saving ? 'Création…' : 'Créer le client'}
               </button>
               <button type="button" onClick={() => setShowForm(false)}
@@ -168,7 +168,7 @@ export default function ClientsPage({ go, openClient }) {
             <button
               type="button"
               onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition"
+              className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition"
             >
               <Plus size={14} /> Nouveau client
             </button>
@@ -192,11 +192,11 @@ export default function ClientsPage({ go, openClient }) {
                     onClick={() => setSelected(c)}
                     className={`w-full text-left px-3 py-2.5 rounded-xl transition flex items-center gap-3 ${
                       active
-                        ? 'bg-purple-100 dark:bg-purple-600/20 border border-purple-300 dark:border-purple-500/30'
+                        ? 'bg-purple-100 dark:bg-brand-600/20 border border-purple-300 dark:border-brand-500/30'
                         : 'hover:bg-white dark:hover:bg-white/5 border border-transparent'
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-brand-600/20 flex items-center justify-center flex-shrink-0">
                       <span className="text-purple-300 font-semibold text-sm">{c.nom?.[0]?.toUpperCase()}</span>
                     </div>
                     <div className="flex-1 min-w-0">
@@ -207,7 +207,7 @@ export default function ClientsPage({ go, openClient }) {
                         {count} projet{count !== 1 ? 's' : ''}
                       </div>
                     </div>
-                    <ChevronRight size={13} className={`flex-shrink-0 ${active ? 'text-purple-400' : 'text-gray-400 dark:text-slate-700'}`} />
+                    <ChevronRight size={13} className={`flex-shrink-0 ${active ? 'text-brand-400' : 'text-gray-400 dark:text-slate-700'}`} />
                   </button>
                 )
               })}
@@ -223,11 +223,11 @@ export default function ClientsPage({ go, openClient }) {
                 <div className="bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 rounded-2xl p-5 mb-6">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-4 min-w-0">
-                      <div className="w-12 h-12 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-brand-600/20 flex items-center justify-center flex-shrink-0">
                         <span className="text-purple-300 font-bold text-xl">{selected.nom?.[0]?.toUpperCase()}</span>
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11px] uppercase tracking-wider text-purple-500 dark:text-purple-400 font-semibold mb-0.5">
+                        <p className="text-[11px] uppercase tracking-wider text-brand-500 dark:text-brand-400 font-semibold mb-0.5">
                           Fiche client
                         </p>
                         <h2 className="text-xl font-bold text-gray-900 dark:text-white truncate">{selected.nom}</h2>
@@ -247,7 +247,7 @@ export default function ClientsPage({ go, openClient }) {
                   </div>
                   <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-500 dark:text-slate-400">
                     {selected.email && (
-                      <a href={`mailto:${selected.email}`} className="flex items-center gap-1.5 hover:text-purple-400 transition">
+                      <a href={`mailto:${selected.email}`} className="flex items-center gap-1.5 hover:text-brand-400 transition">
                         <Mail size={13} />{selected.email}
                       </a>
                     )}
@@ -265,7 +265,7 @@ export default function ClientsPage({ go, openClient }) {
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                      <FolderOpen size={15} className="text-purple-400" />
+                      <FolderOpen size={15} className="text-brand-400" />
                       Projets liés à {selected.nom.split(' ')[0]}
                     </h3>
                     <p className="text-xs text-gray-500 dark:text-slate-500 mt-0.5">
@@ -280,12 +280,12 @@ export default function ClientsPage({ go, openClient }) {
                     onChange={e => setNewProjectName(e.target.value)}
                     onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addProject() } }}
                     placeholder="Nom du nouveau projet (ex. Site vitrine)"
-                    className="flex-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition placeholder-gray-400 dark:placeholder-slate-600"
+                    className="flex-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition placeholder-gray-400 dark:placeholder-slate-600"
                   />
                   <button
                     type="button"
                     onClick={addProject}
-                    className="flex items-center justify-center gap-1.5 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition whitespace-nowrap"
+                    className="flex items-center justify-center gap-1.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition whitespace-nowrap"
                   >
                     <FolderPlus size={14} /> Lier un projet
                   </button>
@@ -311,7 +311,7 @@ export default function ClientsPage({ go, openClient }) {
                           key={p.id}
                           type="button"
                           onClick={() => go('project', { client: selected, project: p })}
-                          className="w-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/8 rounded-xl p-4 flex items-center gap-4 text-left cursor-pointer hover:border-purple-500/40 transition group"
+                          className="w-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/8 rounded-xl p-4 flex items-center gap-4 text-left cursor-pointer hover:border-brand-500/40 transition group"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-medium text-gray-900 dark:text-white">{p.nom}</div>
@@ -325,7 +325,7 @@ export default function ClientsPage({ go, openClient }) {
                               {p.montant_total.toLocaleString('fr-FR')} €
                             </span>
                           )}
-                          <ChevronRight size={13} className="text-gray-400 dark:text-slate-700 group-hover:text-purple-400 transition flex-shrink-0" />
+                          <ChevronRight size={13} className="text-gray-400 dark:text-slate-700 group-hover:text-brand-400 transition flex-shrink-0" />
                         </button>
                       )
                     })}

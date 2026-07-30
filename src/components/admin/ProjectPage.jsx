@@ -84,7 +84,7 @@ export default function ProjectPage({ client, project, go }) {
       <input
         value={val || ''} onChange={e => setAnswer(q.id, e.target.value)}
         placeholder={q.placeholder || ''}
-        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition placeholder-gray-400 dark:placeholder-slate-600"
+        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition placeholder-gray-400 dark:placeholder-slate-600"
       />
     )
 
@@ -92,14 +92,14 @@ export default function ProjectPage({ client, project, go }) {
       <textarea
         value={val || ''} onChange={e => setAnswer(q.id, e.target.value)}
         placeholder={q.placeholder || ''} rows={3}
-        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
+        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
       />
     )
 
     if (q.type === 'select') return (
       <select
         value={val || ''} onChange={e => setAnswer(q.id, e.target.value)}
-        className="w-full bg-white dark:bg-[#0d0d1a] border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition"
+        className="w-full bg-white dark:bg-[#0d0d1a] border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition"
       >
         <option value="">— Sélectionner —</option>
         {(q.options || []).map(opt => {
@@ -114,7 +114,7 @@ export default function ProjectPage({ client, project, go }) {
         {(q.options || []).map(opt => (
           <button key={opt} type="button" onClick={() => setAnswer(q.id, opt)}
             className={`text-xs px-3 py-1.5 rounded-full border transition ${
-              val === opt ? 'bg-purple-600/30 border-purple-500 text-purple-300' : 'border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-white/20 hover:text-white'
+              val === opt ? 'bg-brand-600/30 border-brand-500 text-purple-300' : 'border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-white/20 hover:text-white'
             }`}
           >
             {opt}
@@ -131,7 +131,7 @@ export default function ProjectPage({ client, project, go }) {
             <label
               key={opt}
               className={`text-xs px-3 py-1.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                active ? 'bg-purple-600/30 border-purple-500 text-purple-300' : 'border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-white/20 hover:text-white'
+                active ? 'bg-brand-600/30 border-brand-500 text-purple-300' : 'border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-white/20 hover:text-white'
               }`}
             >
               <input
@@ -160,7 +160,7 @@ export default function ProjectPage({ client, project, go }) {
         <ArrowLeft size={14} /> Retour · projets de {client?.nom}
       </button>
 
-      <p className="text-xs text-purple-500 dark:text-purple-400 font-medium mb-2">
+      <p className="text-xs text-brand-500 dark:text-brand-400 font-medium mb-2">
         Projet lié au client <span className="text-gray-900 dark:text-white">{client?.nom}</span>
         {client?.email ? ` · ${client.email}` : ''}
       </p>
@@ -170,11 +170,11 @@ export default function ProjectPage({ client, project, go }) {
         <input
           value={nom} onChange={e => { setNom(e.target.value); setSaved(false) }}
           placeholder="Nom du projet"
-          className="flex-1 bg-transparent border-b border-white/15 pb-2 text-2xl font-bold text-gray-900 dark:text-white focus:outline-none focus:border-purple-500 transition placeholder-slate-700"
+          className="flex-1 bg-transparent border-b border-white/15 pb-2 text-2xl font-bold text-gray-900 dark:text-white focus:outline-none focus:border-brand-500 transition placeholder-slate-700"
         />
         <select
           value={statut} onChange={e => { setStatut(e.target.value); setSaved(false) }}
-          className="bg-white dark:bg-[#0d0d1a] border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-purple-500 transition flex-shrink-0"
+          className="bg-white dark:bg-[#0d0d1a] border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-brand-500 transition flex-shrink-0"
         >
           {ALL_STATUTS.map(s => <option key={s} value={s}>{s}</option>)}
         </select>
@@ -205,7 +205,7 @@ export default function ProjectPage({ client, project, go }) {
                     {section.questions.map(q => (
                       <div key={q.id} className="pt-4">
                         <label className="text-xs text-gray-500 dark:text-slate-400 block mb-2">
-                          {q.label}{q.required && <span className="text-purple-400 ml-1">*</span>}
+                          {q.label}{q.required && <span className="text-brand-400 ml-1">*</span>}
                         </label>
                         {renderField(q)}
                       </div>
@@ -224,7 +224,7 @@ export default function ProjectPage({ client, project, go }) {
             <textarea
               value={notesAdmin} onChange={e => { setNotesAdmin(e.target.value); setSaved(false) }}
               rows={4} placeholder="Observations, points à aborder, contraintes, contexte..."
-              className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
+              className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
             />
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function ProjectPage({ client, project, go }) {
                       <span>{devis.solde.toLocaleString('fr-FR')} €</span>
                     </div>
                     {devis.maintenance > 0 && (
-                      <div className="flex justify-between text-xs text-purple-400 border-t border-gray-200 dark:border-white/5 pt-2">
+                      <div className="flex justify-between text-xs text-brand-400 border-t border-gray-200 dark:border-white/5 pt-2">
                         <span>Maintenance / mois</span>
                         <span>+{devis.maintenance} €</span>
                       </div>
@@ -298,7 +298,7 @@ export default function ProjectPage({ client, project, go }) {
                 {paiements.acompte && (
                   <input type="date" value={paiements.acompteDate}
                     onChange={e => { setPaiements(p => ({ ...p, acompteDate: e.target.value })); setSaved(false) }}
-                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-gray-900 dark:text-white text-xs focus:outline-none focus:border-purple-500 transition"
+                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-gray-900 dark:text-white text-xs focus:outline-none focus:border-brand-500 transition"
                   />
                 )}
               </div>
@@ -316,7 +316,7 @@ export default function ProjectPage({ client, project, go }) {
                 {paiements.solde && (
                   <input type="date" value={paiements.soldeDate}
                     onChange={e => { setPaiements(p => ({ ...p, soldeDate: e.target.value })); setSaved(false) }}
-                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-gray-900 dark:text-white text-xs focus:outline-none focus:border-purple-500 transition"
+                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-1.5 text-gray-900 dark:text-white text-xs focus:outline-none focus:border-brand-500 transition"
                   />
                 )}
               </div>
@@ -324,7 +324,7 @@ export default function ProjectPage({ client, project, go }) {
 
             {/* Action buttons */}
             <button onClick={save} disabled={saving}
-              className="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-gray-900 dark:text-white text-sm font-medium py-2.5 px-4 rounded-lg transition disabled:opacity-50">
+              className="w-full flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-gray-900 dark:text-white text-sm font-medium py-2.5 px-4 rounded-lg transition disabled:opacity-50">
               {saved ? <><Check size={14} /> Sauvegardé</> : saving ? 'Sauvegarde…' : <><Save size={14} /> Sauvegarder</>}
             </button>
 

@@ -13,8 +13,13 @@ import {
   radius,
   space,
   motion,
+  PALETTES,
+  applyPalette,
+  DEFAULT_PALETTE,
 } from '../design-system'
-
+import { PALETTE_STORAGE_KEY } from '../design-system/themes'
+import ThemePicker from '../components/ThemePicker'
+import { Check } from 'lucide-react'
 function Swatch({ name, hex, className = '' }) {
   return (
     <div className="min-w-0">
@@ -41,6 +46,7 @@ function Block({ title, children }) {
 
 const NAV = [
   'Identité',
+  'Palettes',
   'Couleurs',
   'Typographie',
   'Espacements',
@@ -56,12 +62,23 @@ const NAV = [
 
 export default function DesignSystemPage() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark')
+  const [paletteId, setPaletteId] = useState(() => {
+    try {
+      return localStorage.getItem(PALETTE_STORAGE_KEY) || DEFAULT_PALETTE
+    } catch {
+      return DEFAULT_PALETTE
+    }
+  })
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark)
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark])
 
+  const selectPalette = (id) => {
+    applyPalette(id)
+    setPaletteId(id)
+  }
   return (
     <div className="min-h-screen bg-[var(--ds-page-bg)] text-[var(--ds-page-fg)]">
       {/* Top bar */}
@@ -121,7 +138,7 @@ export default function DesignSystemPage() {
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge tone="brand">Sora + Manrope</Badge>
-              <Badge tone="accent">Purple → Cyan</Badge>
+              <Badge tone="accent">6 palettes live</Badge>
               <Badge tone="mono">Tailwind 4 @theme</Badge>
               <Badge tone="success">Dark mode</Badge>
             </div>
@@ -151,6 +168,47 @@ export default function DesignSystemPage() {
             </Surface>
           </Block>
 
+          <Block title="Palettes">
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-5 max-w-xl">
+              Le visiteur peut changer le gradient du site en un clic (bouton « Couleurs » en bas à gauche).
+              Idéal pour montrer qu’un site se personnalise à sa marque.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+              {PALETTES.map(p => {
+                const selected = paletteId === p.id
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => selectPalette(p.id)}
+                    className={`text-left rounded-2xl p-3 border transition-all ${
+                      selected
+                        ? 'border-brand-500 ring-2 ring-brand-500/30'
+                        : 'border-gray-100 dark:border-white/10 hover:border-gray-200 dark:hover:border-white/20'
+                    }`}
+                  >
+                    <div
+                      className="h-12 rounded-xl mb-3"
+                      style={{ background: `linear-gradient(135deg, ${p.brand[500]}, ${p.accent[500]})` }}
+                    />
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">{p.name}</p>
+                        <p className="text-[11px] text-slate-400">{p.blurb}</p>
+                      </div>
+                      {selected && <Check size={16} className="text-brand-500" />}
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+            <div className="flex flex-wrap gap-3 items-center">
+              <Button size="sm">CTA primaire</Button>
+              <span className="gradient-text font-display font-bold text-lg">Texte gradient</span>
+              <span className="text-xs font-mono text-slate-400">actif · {paletteId}</span>
+            </div>
+          </Block>
+
           <Block title="Couleurs">
             <p className="text-sm text-slate-500 mb-4">Brand</p>
             <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-8">
@@ -178,7 +236,7 @@ export default function DesignSystemPage() {
               className="h-14 rounded-2xl mb-2"
               style={{ background: 'var(--ds-gradient-brand)' }}
             />
-            <p className="text-[10px] font-mono text-slate-400">--ds-gradient-brand · purple → cyan</p>
+            <p className="text-[10px] font-mono text-slate-400">--ds-gradient-brand · change avec la palette</p>
           </Block>
 
           <Block title="Typographie">
@@ -360,6 +418,7 @@ export default function DesignSystemPage() {
           </footer>
         </main>
       </div>
+      <ThemePicker compact />
     </div>
   )
 }

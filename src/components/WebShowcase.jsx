@@ -857,7 +857,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5 font-display">{label}</p>
         <div className="flex flex-wrap gap-1.5">
           {tags.map(t => (
-            <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 font-mono">{t}</span>
+            <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 dark:bg-brand-500/10 text-brand-600 dark:text-brand-300 font-mono">{t}</span>
           ))}
         </div>
         <p className="text-[10px] text-slate-400 mt-1.5 font-mono">Défilez pour voir toute la page ↓</p>
@@ -891,7 +891,7 @@ export default function WebShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">Exemples</span>
+          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">Exemples</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Huit sites,{' '}<span className="gradient-text">huit univers</span>
           </h2>
@@ -916,7 +916,7 @@ export default function WebShowcase() {
         >
           <a
             href="#devis"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
           >
             Un site comme celui-ci pour vous → devis
           </a>

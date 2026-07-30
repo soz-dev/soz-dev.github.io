@@ -43,7 +43,7 @@ export default function EstimateurRapide() {
     <section id="estimateur" className="py-28 relative overflow-hidden bg-gray-50/70 dark:bg-white/[0.02]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
       <div className="absolute inset-0 pointer-events-none flex justify-center">
-        <div className="w-[700px] h-[400px] rounded-full blur-[120px] bg-purple-500/5 dark:bg-purple-600/10" />
+        <div className="w-[700px] h-[400px] rounded-full blur-[120px] bg-purple-500/5 dark:bg-brand-600/10" />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-8 lg:px-12">
@@ -73,7 +73,7 @@ export default function EstimateurRapide() {
                   i < step
                     ? 'bg-cyan-500 text-white'
                     : i === step
-                      ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
+                      ? 'bg-brand-600 text-white shadow-lg shadow-purple-600/30'
                       : 'bg-gray-200 dark:bg-white/10 text-slate-400'
                 }`}
               >
@@ -110,7 +110,7 @@ export default function EstimateurRapide() {
                       onClick={() => { setTypeId(t.id); setStep(1) }}
                       className={`text-left p-5 rounded-2xl border transition-all duration-200 hover:scale-[1.02] ${
                         typeId === t.id
-                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/15 shadow-md shadow-purple-500/10'
+                          ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/15 shadow-md shadow-purple-500/10'
                           : 'border-gray-200 dark:border-white/10 bg-gray-50/80 dark:bg-white/[0.03] hover:border-purple-400/60'
                       }`}
                     >
@@ -118,7 +118,7 @@ export default function EstimateurRapide() {
                         {t.label}
                       </span>
                       <span className="block text-sm text-slate-500 mt-1">{t.hint}</span>
-                      <span className="block text-sm font-semibold text-purple-600 dark:text-purple-400 mt-4">
+                      <span className="block text-sm font-semibold text-purple-600 dark:text-brand-400 mt-4">
                         dès {fmt(t.price)}&nbsp;€{t.suffix || ''}
                       </span>
                     </button>
@@ -145,7 +145,7 @@ export default function EstimateurRapide() {
                       key={s.id}
                       type="button"
                       onClick={() => { setScopeId(s.id); setStep(2) }}
-                      className="text-left px-6 py-5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-cyan-400 dark:hover:border-cyan-500/50 bg-gray-50/60 dark:bg-white/[0.03] hover:bg-cyan-50/50 dark:hover:bg-cyan-500/5 transition-all flex items-center justify-between gap-4"
+                      className="text-left px-6 py-5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-cyan-400 dark:hover:border-cyan-500/50 bg-gray-50/60 dark:bg-white/[0.03] hover:bg-cyan-50/50 dark:hover:bg-accent-500/5 transition-all flex items-center justify-between gap-4"
                     >
                       <div>
                         <span className="block font-display text-base font-bold text-gray-900 dark:text-white">
@@ -191,7 +191,7 @@ export default function EstimateurRapide() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
                     href="#devis"
-                    className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity"
                   >
                     Affiner le devis
                     <ArrowRight className="w-5 h-5" />

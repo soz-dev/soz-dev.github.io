@@ -45,7 +45,7 @@ function FAQItem({ item, isOpen, onToggle, id }) {
   const panelId = `faq-panel-${id}`
   const buttonId = `faq-button-${id}`
   return (
-    <div className={`glass rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-purple-200 dark:border-purple-500/30' : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'}`}>
+    <div className={`glass rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-purple-200 dark:border-brand-500/30' : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'}`}>
       <button
         id={buttonId}
         type="button"
@@ -104,7 +104,7 @@ export default function FAQ() {
           className="mb-14"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Questions fréquentes
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>

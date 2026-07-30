@@ -23,7 +23,7 @@ export default function Comparatif() {
           transition={{ duration: 0.65 }}
           className="text-center mb-12 md:mb-14"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Comparatif
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -40,7 +40,7 @@ export default function Comparatif() {
           <div className="text-center text-xs font-mono uppercase tracking-wider text-slate-400 py-2">
             Agence classique
           </div>
-          <div className="text-center text-xs font-mono uppercase tracking-wider text-purple-500 dark:text-purple-400 py-2 rounded-t-xl bg-purple-50/80 dark:bg-purple-500/10">
+          <div className="text-center text-xs font-mono uppercase tracking-wider text-brand-500 dark:text-brand-400 py-2 rounded-t-xl bg-purple-50/80 dark:bg-purple-500/10">
             SOZ-DEV
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Comparatif() {
         >
           <a
             href="#pack"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-purple-400 hover:opacity-80 transition-opacity"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-brand-400 hover:opacity-80 transition-opacity"
           >
             Voir le pack clé en main →
           </a>

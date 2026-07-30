@@ -4,7 +4,7 @@ const tones = {
   success: 'bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
   warning: 'bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300',
   neutral: 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-slate-300',
-  mono: 'bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 font-mono',
+  mono: 'bg-brand-100 dark:bg-brand-500/10 text-brand-600 dark:text-brand-300 font-mono',
 }
 
 /**

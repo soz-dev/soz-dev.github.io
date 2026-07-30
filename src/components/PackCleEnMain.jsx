@@ -16,7 +16,7 @@ export default function PackCleEnMain() {
   return (
     <section id="pack" className="py-20 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[120px] bg-cyan-500/[0.07] dark:bg-cyan-500/[0.1]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[120px] bg-accent-500/[0.07] dark:bg-accent-500/[0.1]" />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-8 lg:px-12">
@@ -25,12 +25,12 @@ export default function PackCleEnMain() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.65 }}
-          className="rounded-3xl border border-cyan-200/60 dark:border-cyan-500/20 bg-gradient-to-br from-white via-white to-cyan-50/40 dark:from-[#0a0f1a] dark:via-[#0a0f1a] dark:to-cyan-950/30 overflow-hidden"
+          className="rounded-3xl border border-accent-200/60 dark:border-accent-500/20 bg-gradient-to-br from-white via-white to-accent-50/40 dark:from-[#0a0f1a] dark:via-[#0a0f1a] dark:to-brand-900/30 overflow-hidden"
         >
           <div className="grid md:grid-cols-[1.05fr_0.95fr]">
             {/* Copie */}
             <div className="p-8 md:p-10 lg:p-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[11px] font-mono font-semibold tracking-wider uppercase mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-400 text-[11px] font-mono font-semibold tracking-wider uppercase mb-5">
                 <Sparkles className="w-3.5 h-3.5" />
                 Pack recommandé
               </div>
@@ -52,7 +52,7 @@ export default function PackCleEnMain() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="#devis"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-accent-600 to-brand-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
                   Je veux ce pack
                   <ArrowRight className="w-4 h-4" />
@@ -70,8 +70,8 @@ export default function PackCleEnMain() {
             </div>
 
             {/* Inclus */}
-            <div className="p-8 md:p-10 lg:p-12 bg-gray-900 dark:bg-black/40 text-white md:border-l border-cyan-500/20">
-              <p className="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-6">Tout inclus</p>
+            <div className="p-8 md:p-10 lg:p-12 bg-gray-900 dark:bg-black/40 text-white md:border-l border-accent-500/20">
+              <p className="text-xs font-mono text-accent-400 tracking-[0.2em] uppercase mb-6">Tout inclus</p>
               <ul className="space-y-3.5">
                 {INCLUS.map((item, i) => (
                   <motion.li
@@ -82,8 +82,8 @@ export default function PackCleEnMain() {
                     transition={{ delay: 0.05 * i }}
                     className="flex items-start gap-3 text-sm text-slate-200"
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-500/20">
-                      <Check className="w-3 h-3 text-cyan-400" />
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-500/20">
+                      <Check className="w-3 h-3 text-accent-400" />
                     </span>
                     {item}
                   </motion.li>
