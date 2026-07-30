@@ -345,7 +345,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <div className="flex-1 mx-1.5 bg-white/60 dark:bg-white/8 rounded-full px-3 py-0.5 text-[10px] text-gray-400 dark:text-slate-500 font-mono truncate">{url}</div>
         <Monitor size={10} className="text-gray-400 dark:text-slate-600 flex-shrink-0" />
       </div>
-      <div style={{ height:258, overflow:'hidden' }}>{children}</div>
+      <div style={{ height:258, overflow:'hidden', position:'relative' }}>{children}</div>
       <div className="px-3.5 py-2.5 bg-gray-50 dark:bg-[#07070f] border-t border-gray-200 dark:border-white/8">
         <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5">{label}</p>
         <div className="flex flex-wrap gap-1.5">
