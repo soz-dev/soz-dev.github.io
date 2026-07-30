@@ -35,6 +35,7 @@ function QuestionField({ q, value, onChange }) {
         {opts.map(o => (
           <label
             key={o.value}
+            onClick={() => onChange(o.value)}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition ${
               value === o.value
                 ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/10'
