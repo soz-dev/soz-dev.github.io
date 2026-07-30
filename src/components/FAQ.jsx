@@ -5,39 +5,39 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'Pourquoi ces prix sont-ils si bas ?',
-    a: 'Je travaille avec un workflow Cursor / IA : plus de vélocité, moins de frais de structure. Vous payez le résultat — pas une agence. Les prix barrés reflètent l’ordre de grandeur marché (agence / freelance classique).',
+    a: 'Je travaille seul, sans structure lourde : vous payez le résultat, pas une agence. Les prix barrés reflètent l’ordre de grandeur du marché (agence / freelance classique).',
   },
   {
     q: 'Comment se passe le paiement ?',
-    a: '30 % d’acompte au démarrage, solde à la livraison. Virement ou PayPal. Facture à chaque étape. Maintenance optionnelle à partir de 200 €/mois — tarif compétitif pour un freelance solo (mises à jour, sauvegardes, corrections).',
+    a: '30 % d’acompte au démarrage, solde à la livraison. Virement ou PayPal. Facture à chaque étape. Maintenance optionnelle à partir de 200 €/mois (mises à jour, sauvegardes, corrections).',
   },
   {
-    q: 'Quel délai pour un site ou une app iOS ?',
-    a: 'Landing : 3–7 jours. Vitrine : 1–2 semaines. Site Pro / Boutique Stripe : 2–4 semaines. App web ou iOS : selon le scope (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
+    q: 'Quel délai pour un site ou une app iPhone ?',
+    a: 'Page d’accueil : 3–7 jours. Vitrine : 1–2 semaines. Site Pro / boutique : 2–4 semaines. Outil web ou app iPhone : selon le projet (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
   },
   {
-    q: 'Proposez-vous aussi des apps iOS ?',
-    a: 'Oui — c’est mon cœur de métier natif (Swift / SwiftUI). Motastic et Dev Mastery sont sur l’App Store. Publication App Store incluse ; compte Apple Developer (99 €/an) à votre charge.',
+    q: 'Proposez-vous aussi des apps iPhone ?',
+    a: 'Oui, c’est mon cœur de métier. Motastic et Dev Mastery sont sur l’App Store. Publication incluse ; le compte Apple Developer (99 €/an) reste à votre charge.',
   },
   {
-    q: 'C’est quoi une Boutique Stripe ?',
-    a: 'Une boutique légère : catalogue, panier, paiement Stripe Checkout, admin commandes. Pas de WooCommerce lourd — stack React moderne, idéale pour démarrer la vente en ligne.',
+    q: 'C’est quoi une boutique en ligne chez vous ?',
+    a: 'Une boutique légère : catalogue, panier, paiement sécurisé et suivi des commandes. Idéale pour démarrer la vente en ligne sans usine à gaz.',
   },
   {
     q: 'Le chat client, c’est inclus ?',
     a: 'Un widget chat (Crisp / Tawk) est disponible en option (~90 €). Pas de messagerie custom coûteuse sauf besoin métier.',
   },
   {
-    q: 'Je n’ai ni maquette ni brief — c’est possible ?',
-    a: 'Oui. La plupart des clients arrivent avec une idée. L’échange + le devis en ligne structurent le projet. Design inclus ; textes : aide basique ou orientation copywriter.',
+    q: 'Je n’ai ni maquette ni brief, c’est possible ?',
+    a: 'Oui. La plupart des clients arrivent avec une idée. L’échange + le devis en ligne structurent le projet. Design inclus ; pour les textes : aide basique ou orientation vers un copywriter.',
   },
   {
     q: 'WordPress / Wix ?',
-    a: 'Non. React, Vite, Supabase, Stripe, Swift. Performances, code maintenable, évolutif — sans plugin spaghetti.',
+    a: 'Non. Sites et apps modernes, rapides et évolutifs, sans plugins qui ralentissent ou bloquent votre site.',
   },
   {
     q: 'Et après la livraison ?',
-    a: '1 mois de support inclus (bugs, petits ajustements). Au-delà : maintenance à partir de 200 €/mois (mises à jour, sauvegardes, corrections) — positionnement compétitif sur le marché FR.',
+    a: '1 mois de support inclus (bugs, petits ajustements). Ensuite, vous pouvez gérer seul, ou prendre une maintenance optionnelle à partir de 200 €/mois (mises à jour, sauvegardes, corrections). Ce n’est jamais obligatoire.',
   },
 ]
 
@@ -109,7 +109,7 @@ export default function FAQ() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
-            Prix, délais, iOS, paiement — réponses claires.
+            Prix, délais, iOS, paiement : réponses claires.
           </p>
         </motion.div>
 

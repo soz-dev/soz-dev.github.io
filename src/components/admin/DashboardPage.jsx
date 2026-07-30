@@ -30,7 +30,7 @@ export default function DashboardPage({ go }) {
     return (
       <div className="p-8 flex items-center gap-2 text-gray-500 dark:text-slate-500 text-sm">
         <div className="w-4 h-4 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
-        Chargement...
+        Chargement.
       </div>
     )
   }
@@ -72,7 +72,7 @@ export default function DashboardPage({ go }) {
 
         {recents.length === 0 ? (
           <div className="text-gray-400 dark:text-slate-600 text-sm py-12 text-center border border-gray-200 dark:border-white/5 rounded-xl">
-            Aucun projet pour l'instant — créez votre premier client !
+            Aucun projet pour l'instant. Créez votre premier client !
           </div>
         ) : (
           <div className="space-y-2">

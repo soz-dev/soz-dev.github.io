@@ -1,4 +1,4 @@
-/** Tokens JS — pour styles inline / Framer / charts */
+/** Tokens JS. pour styles inline / Framer / charts */
 
 export const colors = {
   brand: {
@@ -92,6 +92,6 @@ export const typeScale = [
 
 export const brand = {
   name: 'SOZ-DEV',
-  tagline: 'Sites & apps iOS qui convertissent — sans prix agence.',
+  tagline: 'Sites & apps iOS qui convertissent, sans prix agence.',
   url: 'https://soz-dev.com',
 }

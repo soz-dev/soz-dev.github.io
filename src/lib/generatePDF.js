@@ -3,19 +3,19 @@ import autoTable from 'jspdf-autotable'
 import { fmt } from './formatUtils'
 
 // Palette identique au site
-const DKK = [3,   7,  18]   // #030712 — fond dark site
-const DK2 = [15, 23,  42]   // #0f172a — slate-900
-const P   = [168, 85, 247]  // #a855f7 — purple-500
-const CY  = [6, 182, 212]   // #06b6d4 — cyan-500
+const DKK = [3,   7,  18]   // #030712 fond dark site
+const DK2 = [15, 23,  42]   // #0f172a. slate-900
+const P   = [168, 85, 247]  // #a855f7. purple-500
+const CY  = [6, 182, 212]   // #06b6d4. cyan-500
 const WH  = [255, 255, 255]
-const T1  = [17,  24,  39]  // #111827 — gray-900
-const T2  = [107, 114, 128] // #6b7280 — gray-500
-const T3  = [148, 163, 184] // #94a3b8 — slate-400
-const T4  = [156, 163, 175] // #9ca3af — gray-400
-const BG1 = [249, 250, 251] // #f9fafb — gray-50
-const BD  = [229, 231, 235] // #e5e7eb — gray-200
+const T1  = [17,  24,  39]  // #111827. gray-900
+const T2  = [107, 114, 128] // #6b7280. gray-500
+const T3  = [148, 163, 184] // #94a3b8. slate-400
+const T4  = [156, 163, 175] // #9ca3af. gray-400
+const BG1 = [249, 250, 251] // #f9fafb. gray-50
+const BD  = [229, 231, 235] // #e5e7eb. gray-200
 
-// fmt from formatUtils — PDF accepts Unicode euro
+// fmt from formatUtils. PDF accepts Unicode euro
 
 export function exportDevisPDF({ client, projet, devis }) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4' })
@@ -44,7 +44,7 @@ export function exportDevisPDF({ client, projet, devis }) {
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(8)
   doc.setTextColor(...T3)
-  doc.text('Developpeur independant  .  soz-dev.com  .  sofyan.devpro@gmail.com', 17, 31)
+  doc.text('Developpeur independant .  soz-dev.com .  sofyan.devpro@gmail.com', 17, 31)
 
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(22)
@@ -197,7 +197,7 @@ export function exportDevisPDF({ client, projet, devis }) {
     doc.setFontSize(7.5)
     doc.setTextColor(167, 243, 208)
     rows.forEach((row, i) => {
-      doc.text('+  ' + row.join('  .  '), 22, nextY + 5.5 + (i + 1) * 6.5)
+      doc.text('+  ' + row.join(' .  '), 22, nextY + 5.5 + (i + 1) * 6.5)
     })
     nextY += inclH + 5
   }
@@ -256,7 +256,7 @@ export function exportDevisPDF({ client, projet, devis }) {
   doc.setFontSize(7.5)
   doc.setTextColor(...T3)
   doc.text(
-    'Sofyan Zarouri  .  Developpeur independant  .  soz-dev.com  .  sofyan.devpro@gmail.com',
+    'Sofyan Zarouri .  Developpeur independant .  soz-dev.com .  sofyan.devpro@gmail.com',
     W / 2, 292, { align: 'center' }
   )
 

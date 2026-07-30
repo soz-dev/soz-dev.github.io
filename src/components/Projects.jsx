@@ -4,12 +4,12 @@ import { ExternalLink, Smartphone } from 'lucide-react'
 const projects = [
   {
     id: 4,
-    category: 'iOS App',
+    category: 'App iPhone',
     year: '2023',
     title: 'LocaZen 12',
     description:
-      'Application iOS de gestion locative saisonnière à Sète — consultez vos réservations, suivez vos revenus et gérez vos biens directement depuis votre iPhone.',
-    tech: ['Swift', 'SwiftUI', 'iOS'],
+      'Application iPhone de gestion locative saisonnière à Sète. Consultez vos réservations, suivez vos revenus et gérez vos biens directement depuis votre téléphone.',
+    tech: ['App iPhone', 'Gestion locative'],
     accentColor: '#0891b2',
     link: 'https://apps.apple.com/fr/app/locazen-12/id6446256021',
     linkLabel: 'App Store',
@@ -18,12 +18,12 @@ const projects = [
   },
   {
     id: 1,
-    category: 'Web App',
+    category: 'Site web',
     year: '2026',
     title: 'LocaZen 7',
     description:
-      'Plateforme de gestion locative saisonnière à Sète — réservations, tarification dynamique, simulateur de revenus et interface propriétaires complète.',
-    tech: ['React', 'Vite', 'Tailwind', 'Supabase', 'Cloudflare'],
+      'Plateforme de gestion locative saisonnière à Sète : réservations, tarification dynamique, simulateur de revenus et interface propriétaires complète.',
+    tech: ['Site web', 'Espace propriétaires'],
     accentColor: '#a855f7',
     link: 'https://locazen7.fr',
     linkLabel: 'Voir le site',
@@ -32,12 +32,12 @@ const projects = [
   },
   {
     id: 2,
-    category: 'iOS App',
+    category: 'App iPhone',
     year: '2026',
     title: 'Dev Mastery',
     description:
-      'Apprends SwiftUI & Swift avec des cours structurés, défis pratiques, quiz et aide-mémoire. De débutant à expert, progresse à ton rythme.',
-    tech: ['Swift', 'SwiftUI', 'iOS 17+'],
+      'Apprenez le développement iOS avec des cours structurés, défis pratiques, quiz et aide-mémoire. De débutant à expert, à votre rythme.',
+    tech: ['App iPhone', 'Cours & quiz'],
     accentColor: '#06b6d4',
     link: 'https://apps.apple.com/fr/app/dev-mastery/id6759505533',
     linkLabel: 'App Store',
@@ -46,12 +46,12 @@ const projects = [
   },
   {
     id: 3,
-    category: 'iOS Game',
+    category: 'Jeu iPhone',
     year: '2026',
     title: 'Motastic',
     description:
       "Défis quotidiens, classements en temps réel et 14 mini-jeux variés : Le Petit Bac, L'intrus, Devine le drapeau, Mémoire célébrités et bien d'autres.",
-    tech: ['Swift', 'SwiftUI', 'GameKit', 'iOS'],
+    tech: ['App iPhone', 'Mini-jeux'],
     accentColor: '#a855f7',
     link: 'https://apps.apple.com/fr/app/motastic/id6760564637',
     linkLabel: 'App Store',

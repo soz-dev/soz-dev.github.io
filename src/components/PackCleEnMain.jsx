@@ -4,12 +4,12 @@ import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
 
 const INCLUS = [
-  'Site vitrine 2–5 pages (design + code)',
-  'Mise en ligne & configuration technique',
+  'Site vitrine 2–5 pages (design inclus)',
+  'Mise en ligne & configuration',
   'Hébergement 12 mois inclus',
   'Nom de domaine .fr / .com (1 an)*',
   'Certificat SSL + sauvegardes',
-  'Formulaire de contact + SEO de base',
+  'Formulaire de contact + référencement de base',
   '1 mois de support après livraison',
   'Acompte 30 % seulement pour démarrer',
 ]
@@ -96,6 +96,9 @@ export default function PackCleEnMain() {
               </ul>
               <p className="mt-8 text-xs text-slate-500 font-mono">
                 Délai typique · 1 à 2 semaines
+              </p>
+              <p className="mt-3 text-xs text-slate-500 leading-relaxed">
+                Maintenance après le mois inclus : optionnelle. Vous pouvez gérer seul.
               </p>
             </div>
           </div>

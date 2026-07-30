@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
-import { MapPin, Code2, Zap, Heart } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { MapPin, Code2, Zap, Heart, ArrowRight } from 'lucide-react'
 
 const traits = [
   { icon: MapPin,  text: 'Basé en France',         color: '#a855f7' },
-  { icon: Code2,   text: 'Full-stack Web & iOS',    color: '#06b6d4' },
+  { icon: Code2,   text: 'Sites web & apps iPhone', color: '#06b6d4' },
   { icon: Zap,     text: 'Livraison rapide',        color: '#a855f7' },
   { icon: Heart,   text: 'Passionné de produit',    color: '#06b6d4' },
 ]
@@ -12,7 +13,7 @@ const miniStats = [
   { value: '3',   label: 'Apps App Store' },
   { value: '5+',  label: 'Projets web'    },
   { value: '2+',  label: 'Ans d\'exp.'    },
-  { value: '∞',   label: 'Motivation'     },
+  { value: '24h', label: 'Réponse max.'   },
 ]
 
 export default function About() {
@@ -32,24 +33,39 @@ export default function About() {
               À propos
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Derrière le code
+              Qui suis-je
             </h2>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base md:text-lg">
               Je suis <span className="font-semibold text-gray-900 dark:text-white">Sofyan</span>, développeur
-              web &amp; iOS. Sites qui convertissent, boutiques Stripe, et apps natives
-              (Motastic, Dev Mastery…) — livrés avec soin pour aller plus vite.
+              web &amp; iOS. Sites qui convertissent, boutiques en ligne, et apps iPhone
+              (Motastic, Dev Mastery…), livrés avec soin, sans prix agence.
             </p>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm md:text-base">
-              Ce qui m&apos;anime : transformer une idée brute en produit fini. Du premier commit
-              à la mise en ligne ou à l&apos;App Store.
+              Ce qui m&apos;anime : transformer une idée brute en produit fini
+              jusqu&apos;à la mise en ligne ou l&apos;App Store.
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 mb-8">
               {traits.map((t) => (
                 <div key={t.text} className="flex items-center gap-2.5">
                   <t.icon className="w-4 h-4 shrink-0" style={{ color: t.color }} />
                   <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">{t.text}</span>
                 </div>
               ))}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold hover:opacity-90"
+              >
+                Me contacter
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/devis"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-gray-200 dark:border-white/15 text-sm font-semibold text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5"
+              >
+                Demander un devis
+              </Link>
             </div>
           </motion.div>
 

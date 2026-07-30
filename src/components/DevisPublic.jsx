@@ -15,7 +15,7 @@ function QuestionField({ q, value, onChange }) {
         onChange={e => onChange(e.target.value)}
         className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-brand-500 transition text-sm"
       >
-        <option value="">— Sélectionner —</option>
+        <option value="">Sélectionner</option>
         {opts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
     )
@@ -120,7 +120,7 @@ export default function DevisPublic() {
 
   const devis = useMemo(() => calculateDevis(questionnaire), [questionnaire])
 
-  // step 0 = contact, 1..N = sections, N+1 = recap
+  // step 0 = contact, 1.N = sections, N+1 = recap
   const totalSteps = 1 + visibleSections.length + 1
   const isContactStep = step === 0
   const isRecapStep = step === totalSteps - 1
@@ -130,7 +130,7 @@ export default function DevisPublic() {
   const setAnswer = (id, val) => setQuestionnaire(prev => ({ ...prev, [id]: val }))
   const toggleMulti = (id, opt) => setQuestionnaire(prev => {
     const cur = prev[id] || []
-    return { ...prev, [id]: cur.includes(opt) ? cur.filter(x => x !== opt) : [...cur, opt] }
+    return { ...prev, [id]: cur.includes(opt) ? cur.filter(x => x !== opt) : [ ...cur, opt] }
   })
 
   const emailBody = useMemo(() => generateEmailBody(
@@ -181,10 +181,10 @@ export default function DevisPublic() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre devis en{' '}
-            <span className="gradient-text">2 minutes</span>
+            <span className="gradient-text">ligne</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '460px', margin: '0 auto' }}>
-            Estimation instantanée, acompte 30 %, envoi par email. Sans engagement.
+            Estimation au fil des réponses, acompte 30 %, envoi par email. Sans engagement. Comptez quelques minutes pour un devis précis.
           </p>
         </motion.div>
 
@@ -219,7 +219,7 @@ export default function DevisPublic() {
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.25 }}
               >
-                {/* STEP 0 — Contact info */}
+                {/* STEP 0. Contact info */}
                 {isContactStep && (
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                     <div className="flex items-center gap-3 mb-7">
@@ -257,7 +257,7 @@ export default function DevisPublic() {
                           type="text"
                           value={contact.projet_nom}
                           onChange={e => setContact(c => ({ ...c, projet_nom: e.target.value }))}
-                          placeholder="Mon site vitrine, ma boutique Stripe, mon app iOS..."
+                          placeholder="Mon site vitrine, ma boutique en ligne, mon app iPhone."
                           className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
                         />
                       </div>
@@ -308,7 +308,7 @@ export default function DevisPublic() {
                         </h3>
                         <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
                           <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                            Votre client mail s&apos;est ouvert — envoyez l&apos;email prérempli pour finaliser.
+                            Votre client mail s&apos;est ouvert. Envoyez l&apos;email prérempli pour finaliser.
                             Merci, nous vous recontactons rapidement.
                           </p>
                           <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">

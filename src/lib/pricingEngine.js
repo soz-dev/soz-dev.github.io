@@ -12,12 +12,12 @@ export const PRIX_PACK_CLE_EN_MAIN = 890
 export const PRIX_MAINTENANCE_MOIS = 200
 
 export const LABEL_TYPE = {
-  'site-vitrine':       'Landing / vitrine 1 page',
-  'site-vitrine-multi': 'Site vitrine multi-pages',
+  'site-vitrine':       'Page d’accueil (1 page)',
+  'site-vitrine-multi': 'Site vitrine (plusieurs pages)',
   'site-pro':           'Site professionnel',
-  'ecommerce':          'Boutique Stripe',
-  'app-web':            'Application web / outil',
-  'app-ios':            'Application iOS native',
+  'ecommerce':          'Boutique en ligne',
+  'app-web':            'Outil web / espace client',
+  'app-ios':            'Application iPhone',
 }
 
 const INTEGRATIONS_PRIX = {
@@ -80,7 +80,7 @@ function getInclus(q) {
   if (q.seo === 'Basique (inclus)') list.push('Référencement SEO basique')
   if ((q.integrations || []).some(i => i.startsWith('Google Analytics'))) list.push('Google Analytics')
   if ((q.integrations || []).some(i => i.startsWith('Calendly'))) list.push('Intégration Calendly')
-  if (q.type_projet === 'ecommerce') list.push('Paiement Stripe inclus')
+  if (q.type_projet === 'ecommerce') list.push('Paiement en ligne inclus')
   return list
 }
 
@@ -89,7 +89,7 @@ const FONCS_PRIX = {
   'Système de réservation (+290€)':     { label: 'Système de réservation', montant: 290 },
   'Tableau de bord admin (+390€)':      { label: 'Tableau de bord admin', montant: 390 },
   'Espace client / membres (+390€)':    { label: 'Espace client / membres', montant: 390 },
-  'Paiement en ligne (+290€)':          { label: 'Paiement en ligne (Stripe)', montant: 290 },
+  'Paiement en ligne (+290€)':          { label: 'Paiement en ligne', montant: 290 },
   'Carte interactive / Maps (+150€)':  { label: 'Carte interactive', montant: 150 },
   'Chat widget (+90€)':                 { label: 'Chat (Crisp / Tawk)', montant: 90 },
   'Newsletter (+90€)':                  { label: 'Newsletter', montant: 90 },

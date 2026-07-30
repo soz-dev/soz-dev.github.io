@@ -15,12 +15,12 @@ export const SECTIONS = [
       {
         id: 'type_projet', label: 'Type de projet', type: 'select', required: true,
         options: [
-          'site-vitrine|Landing / vitrine (1 page)',
-          'site-vitrine-multi|Site vitrine multi-pages',
+          'site-vitrine|Page d’accueil (1 page)',
+          'site-vitrine-multi|Site vitrine (plusieurs pages)',
           'site-pro|Site professionnel',
-          'ecommerce|Boutique Stripe',
-          'app-web|Application web / outil métier',
-          'app-ios|Application iOS native',
+          'ecommerce|Boutique en ligne',
+          'app-web|Outil web / espace client',
+          'app-ios|Application iPhone',
         ],
       },
       { id: 'objectif', label: 'Objectif principal', type: 'textarea', placeholder: 'Présenter mon activité, vendre en ligne, gérer des réservations...' },
@@ -46,7 +46,7 @@ export const SECTIONS = [
       },
       { id: 'couleurs', label: 'Couleurs souhaitées', type: 'text', placeholder: 'Ex: bleu marine, blanc cassé, touches dorées...' },
       { id: 'exemples_design', label: 'Sites ou apps appréciés', type: 'textarea', placeholder: 'URLs ou noms de sites inspirants...' },
-      { id: 'maquettes', label: 'Maquettes Figma interactives', type: 'radio', options: ['Oui (+150€)', 'Non – intégration directe'] },
+      { id: 'maquettes', label: 'Maquettes avant développement', type: 'radio', options: ['Oui (+150€)', 'Non'] },
       { id: 'logo', label: 'Logo', type: 'radio', options: ['Oui, j\'ai un logo', 'Non – à créer (+190€)', 'Partiel – à refaire (+120€)'] },
       { id: 'charte', label: 'Charte graphique', type: 'radio', options: ['Oui, complète', 'Partielle', 'Non'] },
     ],
@@ -110,7 +110,7 @@ export const SECTIONS = [
   },
   {
     id: 'ecommerce',
-    title: 'Boutique Stripe',
+    title: 'Boutique en ligne',
     emoji: '🛒',
     conditional: (q) => ['ecommerce', 'app-web'].includes(q.type_projet),
     questions: [
@@ -138,14 +138,14 @@ export const SECTIONS = [
   },
   {
     id: 'technique',
-    title: 'Technique',
+    title: 'Hébergement & suite',
     emoji: '🔧',
     questions: [
       { id: 'hebergement', label: 'Hébergement existant', type: 'radio', options: ['Oui', 'Non'] },
-      { id: 'hebergement_details', label: 'Précisions hébergement', type: 'text', placeholder: 'Ex: OVH, Vercel, Hostinger...' },
+      { id: 'hebergement_details', label: 'Précisions hébergement', type: 'text', placeholder: 'Ex: OVH, Hostinger…' },
       { id: 'domaine', label: 'Nom de domaine', type: 'radio', options: ['Oui, existant', 'Non, à acheter (~12€/an)'] },
       {
-        id: 'integrations', label: 'Intégrations souhaitées', type: 'multiselect',
+        id: 'integrations', label: 'Outils à connecter', type: 'multiselect',
         options: [
           'Google Analytics (inclus)',
           'Mailchimp / Brevo (+120€)',
@@ -155,8 +155,8 @@ export const SECTIONS = [
           'Autre (+90€)',
         ],
       },
-      { id: 'maintenance', label: 'Maintenance mensuelle (à partir de 200€/mois)', type: 'radio', options: ['Oui', 'Non'] },
-      { id: 'seo', label: 'SEO / référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+150€)', 'Non nécessaire'] },
+      { id: 'maintenance', label: 'Maintenance mensuelle optionnelle (à partir de 200€/mois)', type: 'radio', options: ['Oui', 'Non, je gère seul après le mois inclus'] },
+      { id: 'seo', label: 'Référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+150€)', 'Non nécessaire'] },
     ],
   },
   {

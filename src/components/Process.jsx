@@ -31,21 +31,21 @@ const steps = [
     color: '#7c3aed',
     number: '03',
     title: 'Design & Maquettes',
-    description: 'Maquettes interactives soumises à votre validation avant de toucher une ligne de code.',
+    description: 'Maquettes soumises à votre validation avant de lancer le développement.',
   },
   {
     icon: Code2,
     color: '#8b5cf6',
     number: '04',
     title: 'Développement',
-    description: "Code propre, performant et responsive. Points d'avancement réguliers pour rester alignés.",
+    description: "Un site ou une app soigné, rapide sur mobile comme sur desktop. Points d'avancement réguliers pour rester alignés.",
   },
   {
     icon: Rocket,
     color: '#0891b2',
     number: '05',
     title: 'Mise en ligne',
-    description: 'Tests complets, déploiement et passation de tous les accès. Vous êtes 100% autonomes.',
+    description: 'Tests complets, mise en ligne et passation de tous les accès. Vous êtes 100 % autonomes.',
   },
 ]
 
@@ -66,7 +66,7 @@ export default function Process() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Mon processus</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
-            De l'idée à la mise en ligne — un processus clair, sans jargon, sans surprise.
+            De l'idée à la mise en ligne : un processus clair, sans jargon, sans surprise.
           </p>
         </motion.div>
 

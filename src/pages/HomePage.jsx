@@ -3,22 +3,27 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Hero from '../components/Hero'
 import PreuveLive from '../components/PreuveLive'
+import GuideOffre from '../components/GuideOffre'
+import PackCleEnMain from '../components/PackCleEnMain'
+import Garanties from '../components/Garanties'
+import CasMetier from '../components/CasMetier'
+import Temoignages from '../components/Temoignages'
 
 const TEASERS = [
   {
     to: '/services',
-    title: 'Services & styles',
-    desc: 'Landing, vitrine, boutique, apps — et des aperçus d’univers.',
+    title: 'Mes services',
+    desc: 'Site vitrine, boutique en ligne ou app iPhone : le format adapté à votre activité.',
   },
   {
     to: '/projets',
-    title: 'Projets livrés',
-    desc: 'Apps iOS et sites réels : Motastic, Dev Mastery, LocaZen…',
+    title: 'Réalisations',
+    desc: 'Des projets déjà en ligne pour freelances, commerces et apps natives.',
   },
   {
     to: '/tarifs',
-    title: 'Tarifs & estimateur',
-    desc: 'Prix clairs, pack clé en main, fourchette en 3 clics.',
+    title: 'Tous les tarifs',
+    desc: 'Grille complète, estimateur et comparatif pour affiner votre budget.',
   },
 ]
 
@@ -27,6 +32,11 @@ export default function HomePage() {
     <>
       <Hero />
       <PreuveLive />
+      <GuideOffre />
+      <PackCleEnMain />
+      <Garanties />
+      <CasMetier />
+      <Temoignages />
 
       <section className="py-20 md:py-24">
         <div className="max-w-5xl mx-auto px-8 lg:px-12">
@@ -37,13 +47,13 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
-              Parcourir
+              Aller plus loin
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-              Tout le site,{' '}<span className="gradient-text">sans le scroll infini</span>
+              Explorer{' '}<span className="gradient-text">le détail</span>
             </h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-              Choisissez une page — devis, tarifs ou projets — et avancez à votre rythme.
+              Services, exemples ou grille complète : à votre rythme.
             </p>
           </motion.div>
 
@@ -77,7 +87,7 @@ export default function HomePage() {
               to="/devis"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
             >
-              Estimer mon projet
+              Demander un devis
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

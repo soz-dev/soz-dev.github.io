@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send, CheckCircle2, RotateCcw } from 'lucide-react'
 
 export default function Contact() {
+  const navigate = useNavigate()
   const [mode, setMode] = useState(null) // null | 'info'
   const [form, setForm] = useState({ nom: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
   const handleDevis = () => {
-    document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })
+    navigate('/devis')
   }
 
   const handleSend = () => {
@@ -135,7 +137,7 @@ export default function Contact() {
                     </h4>
                     <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
                       <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                        Votre client mail s&apos;est ouvert — envoyez l&apos;email prérempli pour finaliser.
+                        Votre client mail s&apos;est ouvert. Envoyez l&apos;email prérempli pour finaliser.
                         Merci, nous vous recontactons rapidement.
                       </p>
                       <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">
@@ -191,7 +193,7 @@ export default function Contact() {
                       <textarea
                         value={form.message}
                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                        placeholder="Bonjour, je souhaitais vous demander..."
+                        placeholder="Bonjour, je souhaitais vous demander."
                         rows={5}
                         className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm resize-none"
                       />

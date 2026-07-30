@@ -36,7 +36,7 @@ export default function Footer() {
               Développement &amp; Solutions
             </span>
             <span className="text-xs font-mono text-slate-400">
-              Sites &amp; apps iOS — dès {PRIX_BASE['site-vitrine']}€.
+              Sites &amp; apps iOS dès {PRIX_BASE['site-vitrine']}€.
             </span>
           </div>
 
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         <p className="text-sm text-slate-500 dark:text-slate-400 text-center">
-          © {year} Sofyan Zarouri · soz-dev.com · Fait avec React &amp; Vite
+          © {year} Sofyan Zarouri · soz-dev.com
         </p>
       </div>
     </footer>

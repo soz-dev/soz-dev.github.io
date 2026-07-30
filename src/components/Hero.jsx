@@ -18,12 +18,12 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 px-8 lg:px-12" style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
+      <div className="relative z-10 w-full max-w-[44rem] mx-auto px-6 sm:px-10 lg:px-12 text-center">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5 }}
-          className="font-display gradient-text select-none mb-8"
+          className="font-display gradient-text select-none mb-8 pb-0.5"
           style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 3vw, 1.4rem)', letterSpacing: '0.04em' }}
         >
           SOZ_DEV
@@ -33,17 +33,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(2.4rem,7vw,4.75rem)] font-bold leading-[1.05] tracking-tight mb-6 text-gray-900 dark:text-white"
+          className="text-[clamp(2.1rem,5.8vw,4.25rem)] font-bold leading-[1.15] tracking-tight mb-12 sm:mb-14 text-gray-900 dark:text-white px-1"
         >
-          Sites & apps iOS
-          <span className="block gradient-text">qui convertissent — sans prix agence.</span>
+          <span className="block">Sites &amp; apps iOS</span>
+          <span className="block gradient-text pb-[0.12em]">qui convertissent</span>
+          <span className="block gradient-text pb-[0.12em]">sans prix agence.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.55, duration: 0.6 }}
-          className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed mb-4 max-w-xl mx-auto"
+          className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed mb-5 max-w-lg mx-auto"
         >
           Pour freelances, artisans et petits business qui veulent un site ou une app native, livré vite et propre.
         </motion.p>
@@ -52,7 +53,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.5 }}
-          className="font-mono text-sm text-brand-500 dark:text-brand-400 mb-10"
+          className="font-mono text-sm text-brand-500 dark:text-brand-400 mb-12 sm:mb-14"
         >
           À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">{PRIX_BASE['site-vitrine'].toLocaleString('fr-FR')}€</span>
           <span className="text-slate-400 line-through ml-2">1 500€</span>

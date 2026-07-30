@@ -266,7 +266,7 @@ export default function DesignSystemPage() {
                   />
                   <div>
                     <p className="text-sm font-semibold">{name}</p>
-                    <p className="text-[11px] font-mono text-slate-400">{val} — {desc}</p>
+                    <p className="text-[11px] font-mono text-slate-400">{val}. {desc}</p>
                   </div>
                 </div>
               ))}
@@ -322,7 +322,7 @@ export default function DesignSystemPage() {
               <Button disabled>Disabled</Button>
             </div>
             <pre className="mt-6 p-4 rounded-xl bg-gray-900 text-slate-300 text-[11px] overflow-x-auto font-mono">
-{`import { Button } from './design-system'
+{`import { Button } from '../design-system'
 <Button href="/devis" as="a" variant="primary" size="lg">
   Estimer votre projet
 </Button>`}
@@ -383,7 +383,7 @@ export default function DesignSystemPage() {
                 eyebrowColor="cyan"
                 title="Titre de section"
                 highlight="accentué"
-                description="Description courte — une idée par section, comme sur le site."
+                description="Description courte : une idée par section, comme sur le site."
               />
               <div className="flex justify-center gap-3 -mt-8">
                 <Button size="sm">CTA principal</Button>

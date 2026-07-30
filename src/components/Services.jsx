@@ -9,25 +9,25 @@ const services = [
     badge: 'Sites web',
     title: 'Vitrines & sites pro',
     description:
-      'Landing pages, sites multi-pages et sites pro. React + Vite : rapides, SEO-friendly, mis en ligne pour vous.',
+      'Une page d’accueil ou un site complet pour présenter votre activité, gagner en crédibilité et générer des contacts.',
     features: [
-      { icon: LayoutTemplate, text: 'Landing & vitrines' },
-      { icon: Layers, text: 'Sites multi-pages / blog' },
-      { icon: Search, text: 'SEO on-page & Analytics' },
-      { icon: FormInput, text: 'Formulaires & devis' },
+      { icon: LayoutTemplate, text: 'Page d’accueil ou site multi-pages' },
+      { icon: Layers, text: 'Blog ou contenus à faire évoluer' },
+      { icon: Search, text: 'Référencement de base & suivi' },
+      { icon: FormInput, text: 'Formulaires & demande de devis' },
     ],
   },
   {
     icon: ShoppingBag,
     accentColor: '#06b6d4',
     badge: 'Vente en ligne',
-    title: 'Boutiques Stripe',
+    title: 'Boutique en ligne',
     description:
-      'Catalogue, panier et paiement Stripe Checkout. Admin pour suivre les commandes — sans usine WordPress.',
+      'Catalogue, panier et paiement sécurisé. Vous suivez vos commandes simplement, sans usine à gaz.',
     features: [
       { icon: ShoppingBag, text: 'Catalogue + panier' },
-      { icon: Zap, text: 'Paiement Stripe sécurisé' },
-      { icon: Database, text: 'Admin commandes' },
+      { icon: Zap, text: 'Paiement en ligne sécurisé' },
+      { icon: Database, text: 'Suivi des commandes' },
       { icon: FormInput, text: 'Emails de confirmation' },
     ],
   },
@@ -35,14 +35,14 @@ const services = [
     icon: Database,
     accentColor: '#8b5cf6',
     badge: 'Outils métier',
-    title: 'Apps web & dashboards',
+    title: 'Espaces & outils sur mesure',
     description:
-      'Espace membre, CRM léger, back-office : auth Supabase, données en base, interface sur mesure.',
+      'Espace client, tableau de bord ou outil interne : connexion sécurisée, données à vous, interface adaptée à votre métier.',
     features: [
-      { icon: Database, text: 'Auth + base de données' },
-      { icon: Layers, text: 'Dashboards & CRUD' },
-      { icon: Zap, text: 'Logique métier ciblée' },
-      { icon: Globe, text: 'Déploiement cloud' },
+      { icon: Database, text: 'Compte client sécurisé' },
+      { icon: Layers, text: 'Tableaux de bord & gestion' },
+      { icon: Zap, text: 'Fonctionnalités sur mesure' },
+      { icon: Globe, text: 'Mise en ligne incluse' },
     ],
   },
   {
@@ -51,12 +51,12 @@ const services = [
     badge: 'App Store',
     title: 'Applications iOS',
     description:
-      'Apps natives Swift / SwiftUI — comme Motastic et Dev Mastery. De l’idée à la publication App Store.',
+      'Une app pour iPhone, comme Motastic ou Dev Mastery, de l’idée jusqu’à la publication sur l’App Store.',
     features: [
-      { icon: Smartphone, text: 'Apps Swift / SwiftUI' },
-      { icon: Palette, text: 'UI/UX design inclus' },
+      { icon: Smartphone, text: 'App iPhone native' },
+      { icon: Palette, text: 'Design inclus' },
       { icon: Store, text: 'Publication App Store' },
-      { icon: Zap, text: 'iOS 17+ ready' },
+      { icon: Zap, text: 'Compatible iPhones récents' },
     ],
   },
 ]
@@ -90,7 +90,7 @@ export default function Services() {
             Mes services
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg leading-relaxed" style={{ maxWidth: '520px', margin: '0 auto', textAlign: 'center' }}>
-            Web + iOS, livrés de A à Z : sites, boutiques Stripe, outils métier et apps natives.
+            Sites, boutiques en ligne, outils métier et apps iPhone, livrés de A à Z.
           </p>
           <Link to="/devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-brand-400 transition-colors">
             Estimer votre projet →

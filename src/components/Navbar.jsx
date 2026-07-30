@@ -9,6 +9,7 @@ const links = [
   { label: 'Tarifs', to: '/tarifs' },
   { label: 'Projets', to: '/projets' },
   { label: 'À propos', to: '/a-propos' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 const navClass = ({ isActive }) =>
@@ -32,7 +33,7 @@ export default function Navbar({ isDark, toggleDark }) {
         <Link
           to="/"
           className="flex items-center gap-2.5 select-none min-w-0"
-          aria-label="SOZ_DEV — accueil"
+          aria-label="SOZ_DEV, accueil"
         >
           <img
             src="/logo-mark.png"
@@ -120,13 +121,6 @@ export default function Navbar({ isDark, toggleDark }) {
               {link.label}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="text-sm text-slate-600 dark:text-slate-400 font-medium py-1"
-          >
-            Contact
-          </Link>
         </motion.div>
       )}
     </motion.nav>

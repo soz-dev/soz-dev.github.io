@@ -4,7 +4,7 @@ import { SECTIONS, generateEmailBody } from '../../lib/questionnaire'
 import { calculateDevis } from '../../lib/pricingEngine'
 import { exportDevisPDF } from '../../lib/generatePDF'
 import { parseOpt } from '../../lib/formatUtils'
-import { ArrowLeft, Save, Mail, FileDown, ChevronDown, ChevronUp, Check } from 'lucide-react'
+import { ArrowLeft, Save, Mail, FileDown, ChevronDown, ChevronUp, Check, Trash2 } from 'lucide-react'
 
 const ALL_STATUTS = [
   'questionnaire', 'questionnaire-envoyé', 'réponse-reçue',
@@ -19,6 +19,7 @@ export default function ProjectPage({ client, project, go }) {
   const [paiements, setPaiements] = useState(project?.paiements || { acompte: false, acompteDate: '', solde: false, soldeDate: '' })
   const [openSections, setOpenSections] = useState({ projet: true })
   const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [saved, setSaved] = useState(false)
 
   const devis = useMemo(() => calculateDevis(questionnaire), [questionnaire])
@@ -31,7 +32,7 @@ export default function ProjectPage({ client, project, go }) {
   const toggleMulti = (id, opt) => {
     setQuestionnaire(prev => {
       const cur = prev[id] || []
-      return { ...prev, [id]: cur.includes(opt) ? cur.filter(x => x !== opt) : [...cur, opt] }
+      return { ...prev, [id]: cur.includes(opt) ? cur.filter(x => x !== opt) : [ ...cur, opt] }
     })
     setSaved(false)
   }
@@ -61,10 +62,27 @@ export default function ProjectPage({ client, project, go }) {
     }
   }
 
+  const remove = async () => {
+    if (!project?.id) {
+      go('clients', { openClient: client })
+      return
+    }
+    if (!confirm(`Supprimer le projet « ${nom || project.nom} » ?`)) return
+    setDeleting(true)
+    try {
+      await db.deleteProject(project.id)
+      go('clients', { openClient: client })
+    } catch (err) {
+      alert(err.message || 'Erreur lors de la suppression')
+    } finally {
+      setDeleting(false)
+    }
+  }
+
   const sendEmail = () => {
     if (!client?.email) return alert('Pas d\'email pour ce client.')
     const body = generateEmailBody(client, { nom: nom || 'Nouveau projet' }, questionnaire)
-    const subject = encodeURIComponent(`[SOZ-DEV] Questionnaire projet — ${nom || 'Nouveau projet'}`)
+    const subject = encodeURIComponent(`[SOZ-DEV] Questionnaire projet. ${nom || 'Nouveau projet'}`)
     // Truncate body if too long for mailto
     const maxLen = 1800
     const bodyEnc = encodeURIComponent(body.length > maxLen ? body.slice(0, maxLen) + '\n\n[... voir version complète en pièce jointe]' : body)
@@ -101,7 +119,7 @@ export default function ProjectPage({ client, project, go }) {
         value={val || ''} onChange={e => setAnswer(q.id, e.target.value)}
         className="w-full bg-white dark:bg-[#0d0d1a] border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition"
       >
-        <option value="">— Sélectionner —</option>
+        <option value="">Sélectionner</option>
         {(q.options || []).map(opt => {
           const { value, label } = parseOpt(opt)
           return <option key={value} value={value}>{label}</option>
@@ -178,6 +196,16 @@ export default function ProjectPage({ client, project, go }) {
         >
           {ALL_STATUTS.map(s => <option key={s} value={s}>{s}</option>)}
         </select>
+        <button
+          type="button"
+          onClick={remove}
+          disabled={deleting}
+          className="flex items-center gap-1.5 text-sm text-gray-400 dark:text-slate-500 hover:text-red-400 border border-transparent hover:border-red-400/30 hover:bg-red-400/10 px-3 py-2 rounded-lg transition flex-shrink-0 disabled:opacity-50"
+          title="Supprimer le projet"
+        >
+          <Trash2 size={14} />
+          {deleting ? '…' : 'Supprimer'}
+        </button>
       </div>
 
       {/* Main layout */}
@@ -223,7 +251,7 @@ export default function ProjectPage({ client, project, go }) {
             </label>
             <textarea
               value={notesAdmin} onChange={e => { setNotesAdmin(e.target.value); setSaved(false) }}
-              rows={4} placeholder="Observations, points à aborder, contraintes, contexte..."
+              rows={4} placeholder="Observations, points à aborder, contraintes, contexte."
               className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-brand-500 transition resize-none placeholder-gray-400 dark:placeholder-slate-600"
             />
           </div>
@@ -292,7 +320,7 @@ export default function ProjectPage({ client, project, go }) {
                     className="w-4 h-4 rounded accent-purple-500 cursor-pointer"
                   />
                   <span className={`text-sm font-medium transition ${paiements.acompte ? 'text-emerald-500 line-through opacity-70' : 'text-gray-900 dark:text-white'}`}>
-                    Acompte 30 %{devis ? ` — ${String(devis.acompte).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} €` : ''}
+                    Acompte 30 %{devis ? `. ${String(devis.acompte).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} €` : ''}
                   </span>
                 </label>
                 {paiements.acompte && (
@@ -310,7 +338,7 @@ export default function ProjectPage({ client, project, go }) {
                     className="w-4 h-4 rounded accent-purple-500 cursor-pointer"
                   />
                   <span className={`text-sm font-medium transition ${paiements.solde ? 'text-emerald-500 line-through opacity-70' : 'text-gray-900 dark:text-white'}`}>
-                    Solde{devis ? ` — ${String(devis.solde).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} €` : ''}
+                    Solde{devis ? `. ${String(devis.solde).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} €` : ''}
                   </span>
                 </label>
                 {paiements.solde && (

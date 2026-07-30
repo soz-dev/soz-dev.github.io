@@ -4,7 +4,7 @@ import { Palette, Check } from 'lucide-react'
 import { PALETTES, applyPalette, initPalette, DEFAULT_PALETTE } from '../design-system/themes'
 
 /**
- * Sélecteur de palette — dans la navbar (en haut).
+ * Sélecteur de palette dans la navbar (en haut).
  */
 export default function ThemePicker({ variant = 'nav' }) {
   const [open, setOpen] = useState(false)
@@ -73,7 +73,7 @@ export default function ThemePicker({ variant = 'nav' }) {
               Personnalisez
             </p>
             <p className="text-[11px] text-slate-500 mb-3 px-0.5">
-              Testez un gradient — comme pour votre futur site.
+              Testez un gradient, comme pour votre futur site.
             </p>
 
             <div className="grid grid-cols-2 gap-2">

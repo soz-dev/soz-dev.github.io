@@ -4,18 +4,42 @@ import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { PRIX_BASE } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
 
+const PRESETS = [
+  {
+    id: 'artisan',
+    label: 'Artisan / local',
+    desc: 'Vitrine + contact + présence Google',
+    typeId: 'site-vitrine-multi',
+    scopeId: 'complet',
+  },
+  {
+    id: 'freelance',
+    label: 'Freelance',
+    desc: 'Présenter votre offre en 2–5 pages',
+    typeId: 'site-vitrine-multi',
+    scopeId: 'essentiel',
+  },
+  {
+    id: 'boutique',
+    label: 'Boutique',
+    desc: 'Vendre en ligne dès maintenant',
+    typeId: 'ecommerce',
+    scopeId: 'essentiel',
+  },
+]
+
 const TYPES = [
-  { id: 'site-vitrine', label: 'Landing', hint: '1 page', price: PRIX_BASE['site-vitrine'] },
+  { id: 'site-vitrine', label: 'Page d’accueil', hint: '1 page', price: PRIX_BASE['site-vitrine'] },
   { id: 'site-vitrine-multi', label: 'Vitrine', hint: '2–5 pages', price: PRIX_BASE['site-vitrine-multi'] },
   { id: 'site-pro', label: 'Site Pro', hint: 'Complet', price: PRIX_BASE['site-pro'] },
-  { id: 'ecommerce', label: 'Boutique', hint: 'Stripe', price: PRIX_BASE.ecommerce },
-  { id: 'app-web', label: 'App web', hint: 'Dashboard', price: PRIX_BASE['app-web'], suffix: '+' },
-  { id: 'app-ios', label: 'App iOS', hint: 'SwiftUI', price: PRIX_BASE['app-ios'], suffix: '+' },
+  { id: 'ecommerce', label: 'Boutique', hint: 'Vente en ligne', price: PRIX_BASE.ecommerce },
+  { id: 'app-web', label: 'Outil web', hint: 'Espace client', price: PRIX_BASE['app-web'], suffix: '+' },
+  { id: 'app-ios', label: 'App iPhone', hint: 'App Store', price: PRIX_BASE['app-ios'], suffix: '+' },
 ]
 
 const SCOPES = [
   { id: 'essentiel', label: 'Essentiel', desc: 'Base solide pour démarrer', mult: 1 },
-  { id: 'complet', label: 'Complet', desc: 'SEO, formulaires, options utiles', mult: 1.15 },
+  { id: 'complet', label: 'Complet', desc: 'Référencement, formulaires, options utiles', mult: 1.15 },
   { id: 'premium', label: 'Premium', desc: 'Plus de pages et de fonctionnalités', mult: 1.35 },
 ]
 
@@ -40,6 +64,12 @@ export default function EstimateurRapide() {
     setScopeId(null)
   }
 
+  const applyPreset = (preset) => {
+    setTypeId(preset.typeId)
+    setScopeId(preset.scopeId)
+    setStep(2)
+  }
+
   return (
     <section id="estimateur" className="py-28 relative overflow-hidden bg-gray-50/70 dark:bg-white/[0.02]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
@@ -59,15 +89,37 @@ export default function EstimateurRapide() {
             Estimation
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-            En 3 clics, une fourchette claire
+            En quelques clics, une fourchette claire
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-            Indication alignée sur les tarifs affichés. Essentiel = prix de base · Complet / Premium = scope plus large (toujours plus cher). Le devis détaillé affine ensuite.
+            Choisissez un profil métier ou construisez votre estimation. Le devis détaillé affine ensuite.
           </p>
         </motion.div>
 
+        {step === 0 && (
+          <div className="mb-8">
+            <p className="text-center text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+              Accès rapide
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
+              {PRESETS.map(p => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => applyPreset(p)}
+                  className="text-left px-5 py-4 rounded-2xl border border-brand-500/25 bg-purple-50/50 dark:bg-brand-600/10 hover:border-brand-500/50 transition-colors"
+                >
+                  <span className="block font-display text-sm font-bold text-gray-900 dark:text-white">{p.label}</span>
+                  <span className="block text-xs text-slate-500 mt-1">{p.desc}</span>
+                </button>
+              ))}
+            </div>
+            <p className="text-center text-xs text-slate-400 mt-4">ou choisissez le type ci-dessous</p>
+          </div>
+        )}
+
         <div className="flex items-center justify-center gap-2 sm:gap-4 mb-10 max-w-lg mx-auto">
-          {['Type', 'Scope', 'Résultat'].map((label, i) => (
+          {['Type', 'Besoin', 'Résultat'].map((label, i) => (
             <div key={label} className="flex items-center gap-2 sm:gap-3 flex-1">
               <div
                 className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-display font-bold transition-colors flex-shrink-0 ${
@@ -137,7 +189,7 @@ export default function EstimateurRapide() {
                 transition={{ duration: 0.22 }}
               >
                 <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                  Quel niveau de scope ?
+                  Quel niveau pour votre projet ?
                 </p>
                 <p className="text-sm text-slate-500 mb-6">{type?.label}</p>
                 <div className="flex flex-col gap-3 max-w-2xl">
@@ -187,7 +239,7 @@ export default function EstimateurRapide() {
                   ~{fmt(estimate)}&nbsp;€{type.suffix || ''}
                 </p>
                 <p className="text-sm text-slate-400 mb-10">
-                  Acompte 30&nbsp;% · solde à la livraison · 1 mois de support
+                  Acompte 30&nbsp;% · solde à la livraison · 1 mois de support inclus
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link

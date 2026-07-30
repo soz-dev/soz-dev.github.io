@@ -11,19 +11,19 @@ const items = [
   {
     icon: RefreshCw,
     title: 'Révisions incluses',
-    desc: 'Nous itérons jusqu’à ce que le résultat vous convienne — sans surprise.',
+    desc: 'Nous itérons jusqu’à ce que le résultat vous convienne, sans surprise.',
     color: '#06b6d4',
   },
   {
     icon: Headphones,
     title: '1 mois de support',
-    desc: 'Bugs, petits ajustements et questions — couverts après livraison.',
+    desc: 'Bugs, petits ajustements et questions, couverts après livraison.',
     color: '#8b5cf6',
   },
   {
     icon: Layers,
-    title: 'Stack moderne',
-    desc: 'React, Vite, Supabase, Stripe, Swift — pas de WordPress bloqué.',
+    title: 'Techno fiable',
+    desc: 'Sites et apps modernes, rapides et évolutifs, pas de solution bloquée par des plugins.',
     color: '#0891b2',
   },
 ]

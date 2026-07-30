@@ -1,4 +1,4 @@
-# SOZ-DEV — soz-dev.com
+# SOZ-DEV. soz-dev.com
 
 Site portfolio & freelance (React + Vite) déployé sur GitHub Pages : [soz-dev.com](https://soz-dev.com).
 

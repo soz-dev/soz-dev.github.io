@@ -9,7 +9,7 @@ const ui = {
   display: "'Sora', system-ui, sans-serif",
 }
 
-/** Fixed-size image — never stretches empty space */
+/** Fixed-size image. Never stretches empty space */
 function Pic({ id, w, h, alt, style = {} }) {
   return (
     <img
@@ -25,7 +25,7 @@ function Pic({ id, w, h, alt, style = {} }) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 1. RESTAURANT — dark gold, menu + galerie + réservation
+// 1. RESTAURANT: dark gold, menu + galerie + réservation
 // ═══════════════════════════════════════════════════════════
 function MiniRestaurant() {
   const dishes = [
@@ -81,7 +81,7 @@ function MiniRestaurant() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 2. COACH — warm landing: bio, offres, avis, agenda
+// 2. COACH: warm landing: bio, offres, avis, agenda
 // ═══════════════════════════════════════════════════════════
 function MiniCoach() {
   return (
@@ -125,7 +125,7 @@ function MiniCoach() {
       </div>
       <div style={{ margin: '0 10px 10px', padding: '8px', background: '#1a2e28', color: '#f4f1eb', borderRadius: 6 }}>
         <p style={{ fontSize: 7, fontStyle: 'italic', margin: '0 0 3px', lineHeight: 1.35, color: '#e8e4dc' }}>&ldquo;En 3 mois j&apos;ai décroché le poste de mes rêves.&rdquo;</p>
-        <p style={{ fontSize: 6, color: '#c4a574', margin: 0 }}>— Sophie T., Manager</p>
+        <p style={{ fontSize: 6, color: '#c4a574', margin: 0 }}>Sophie T., Manager</p>
       </div>
       <div style={{ padding: '6px 10px 10px', borderTop: '1px solid #e5e0d6', fontSize: 6, color: '#6b7c74', display: 'flex', justifyContent: 'space-between' }}>
         <span>Prochaine dispo · Lun 14h</span>
@@ -136,7 +136,7 @@ function MiniCoach() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 3. E-COMMERCE — boutique dense catalogue + panier
+// 3. E-COMMERCE: boutique dense catalogue + panier
 // ═══════════════════════════════════════════════════════════
 function MiniEcommerce() {
   const products = [
@@ -196,7 +196,7 @@ function MiniEcommerce() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 4. SAAS — landing + mock dashboard
+// 4. SAAS: landing + mock dashboard
 // ═══════════════════════════════════════════════════════════
 function MiniSaaS() {
   return (
@@ -212,7 +212,7 @@ function MiniSaaS() {
       <div style={{ padding: '12px 10px 8px', textAlign: 'center' }}>
         <p style={{ fontSize: 6, color: '#818cf8', fontWeight: 700, letterSpacing: 1, margin: '0 0 4px' }}>ANALYTICS B2B</p>
         <h2 style={{ fontSize: 14, fontWeight: 800, margin: '0 0 4px', lineHeight: 1.2 }}>Vos KPIs en temps réel</h2>
-        <p style={{ fontSize: 7, color: '#94a3b8', margin: '0 0 8px', lineHeight: 1.35 }}>Tableaux de bord, alertes, exports — sans Excel.</p>
+        <p style={{ fontSize: 7, color: '#94a3b8', margin: '0 0 8px', lineHeight: 1.35 }}>Tableaux de bord, alertes, exports, sans Excel.</p>
         <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
           <button type="button" style={{ background: '#6366f1', color: '#fff', border: 'none', padding: '5px 12px', borderRadius: 5, fontSize: 7, fontWeight: 700, cursor: 'pointer' }}>Démarrer</button>
           <button type="button" style={{ background: 'transparent', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.15)', padding: '5px 10px', borderRadius: 5, fontSize: 7, fontWeight: 600, cursor: 'pointer' }}>Voir démo</button>
@@ -258,7 +258,7 @@ function MiniSaaS() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 5. ARTISAN — marketplace urgence (tech live + devis + FAQ)
+// 5. ARTISAN: marketplace urgence (tech live + devis + FAQ)
 // ═══════════════════════════════════════════════════════════
 function MiniArtisan() {
   return (
@@ -380,7 +380,7 @@ function MiniArtisan() {
             <span style={{ fontSize: 5.5, color: '#ea580c', fontWeight: 800 }}>★★★★★</span>
             <span style={{ fontSize: 5, color: '#94a3b8' }}>il y a 2h</span>
           </div>
-          <p style={{ fontSize: 6.5, margin: '0 0 3px', lineHeight: 1.35, color: '#334155' }}>&ldquo;Fuite cuisine un dimanche — arrivés en 28 min. Propres, efficaces.&rdquo;</p>
+          <p style={{ fontSize: 6.5, margin: '0 0 3px', lineHeight: 1.35, color: '#334155' }}>&ldquo;Fuite cuisine un dimanche, arrivés en 28 min. Propres, efficaces.&rdquo;</p>
           <p style={{ fontSize: 5.5, fontWeight: 700, margin: 0 }}>Sophie L. · Paris 15</p>
         </div>
       </div>
@@ -412,7 +412,7 @@ function MiniArtisan() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 6. BLOG — éditorial moderne (feature overlay + grille + ticker)
+// 6. BLOG: éditorial moderne (feature overlay + grille + ticker)
 // ═══════════════════════════════════════════════════════════
 function MiniBlog() {
   return (
@@ -475,7 +475,7 @@ function MiniBlog() {
       <div style={{ margin: '0 10px 8px', padding: '12px 10px', background: '#111', color: '#f7f5f0', position: 'relative' }}>
         <span style={{ position: 'absolute', top: 4, left: 8, fontSize: 28, fontFamily: ui.display, color: '#e11d48', opacity: 0.5, lineHeight: 1 }}>&ldquo;</span>
         <p style={{ fontSize: 9, fontStyle: 'italic', margin: '8px 0 4px', lineHeight: 1.3, fontFamily: ui.display, paddingLeft: 4 }}>Je livre 2× plus vite sans baisser la qualité.</p>
-        <p style={{ fontSize: 5.5, color: '#e11d48', fontWeight: 700, margin: 0 }}>— Extrait de l&apos;enquête</p>
+        <p style={{ fontSize: 5.5, color: '#e11d48', fontWeight: 700, margin: 0 }}>Extrait de l&apos;enquête</p>
       </div>
 
       {/* Magazine grid 2+1 */}
@@ -546,7 +546,7 @@ function MiniBlog() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 7. CABINET — luxe paper / or / RDV widget
+// 7. CABINET: luxe paper / or / RDV widget
 // ═══════════════════════════════════════════════════════════
 function MiniCabinet() {
   return (
@@ -646,7 +646,7 @@ function MiniCabinet() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 5, marginBottom: 8 }}>
           <div style={{ background: '#0c1a2e', color: '#efe9dc', padding: '9px' }}>
             <p style={{ fontSize: 7.5, fontStyle: 'italic', margin: '0 0 5px', lineHeight: 1.35, fontFamily: ui.display }}>&ldquo;Chaque dossier mérite une stratégie unique.&rdquo;</p>
-            <p style={{ fontSize: 5.5, color: '#c9a84c', fontWeight: 700, margin: 0 }}>— Me Dupont</p>
+            <p style={{ fontSize: 5.5, color: '#c9a84c', fontWeight: 700, margin: 0 }}>Me Dupont</p>
           </div>
           <div style={{ background: '#f7f2e7', border: '1px solid #e0d8c8', padding: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
             {['Barreau de Paris', 'ISO Confidentiel', 'Médiation'].map(s => (
@@ -703,7 +703,7 @@ function MiniCabinet() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 8. PORTFOLIO — expérimental (typo overlap + filmstrip + meta)
+// 8. PORTFOLIO: expérimental (typo overlap + filmstrip + meta)
 // ═══════════════════════════════════════════════════════════
 function MiniPortfolio() {
   return (
@@ -894,10 +894,10 @@ export default function WebShowcase() {
         >
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">Inspiration</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
-            Des univers,{' '}<span className="gradient-text">pas des templates</span>
+            Des univers{' '}<span className="gradient-text">sur mesure</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-            Quelques aperçus pour vous projeter — chaque projet est conçu sur mesure, pas choisi dans une liste fermée.
+            Quelques aperçus pour vous projeter : chaque projet est conçu pour votre activité, pas repris d’un modèle tout fait.
           </p>
         </motion.div>
 
@@ -919,7 +919,7 @@ export default function WebShowcase() {
             to="/devis"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
           >
-            Un site comme celui-ci pour vous → devis
+            Obtenir un devis pour mon projet
           </Link>
         </motion.div>
       </div>

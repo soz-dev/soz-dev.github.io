@@ -6,11 +6,11 @@ const ROWS = [
   { label: 'Prix site vitrine', agence: '2 500 – 5 000 €', soz: '690 €' },
   { label: 'Délai typique', agence: '6 – 12 semaines', soz: '1 – 2 semaines' },
   { label: 'Interlocuteur', agence: 'Commercial → PM → junior', soz: 'Vous + moi, direct' },
-  { label: 'Stack', agence: 'Souvent WordPress / template', soz: 'React, Vite, Supabase…' },
+  { label: 'Approche', agence: 'Souvent modèles génériques', soz: 'Sur mesure, performant' },
   { label: 'Acompte', agence: '50 – 100 %', soz: '30 % au démarrage' },
   { label: 'Révisions', agence: 'Forfait limité / facturé', soz: 'Incluses jusqu’au OK' },
   { label: 'Apps iOS natives', agence: 'Rare / hors de prix', soz: 'Dès 2 990 €+' },
-  { label: 'Maintenance', agence: 'Contrat opaque', soz: 'À partir de 200 €/mois' },
+  { label: 'Maintenance', agence: 'Contrat opaque', soz: 'Optionnelle · dès 200 €/mois' },
 ]
 
 export default function Comparatif() {
@@ -31,7 +31,7 @@ export default function Comparatif() {
             Agence vs <span className="gradient-text">SOZ-DEV</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base max-w-lg mx-auto">
-            Même résultat professionnel — sans la machine à facturer.
+            Même résultat professionnel, sans la machine à facturer.
           </p>
         </motion.div>
 

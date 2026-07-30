@@ -1,4 +1,4 @@
-/** Palettes de marque — le visiteur peut tester en live */
+/** Palettes de marque. le visiteur peut tester en live */
 
 export const PALETTES = [
   {

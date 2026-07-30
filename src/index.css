@@ -6,7 +6,7 @@
 @import "./design-system/motion.css";
 
 /* =============================================================
-   BASE — tokens sémantiques (--ds-*)
+   BASE. tokens sémantiques (--ds-*)
    ============================================================= */
 @layer base {
   :root {

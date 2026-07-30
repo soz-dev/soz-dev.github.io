@@ -11,16 +11,16 @@ const fmt = (n) => n.toLocaleString('fr-FR')
 
 const plans = [
   {
-    name: 'Landing',
+    name: 'Page d’accueil',
     originalPrice: '1 500',
     price: fmt(PRIX_BASE['site-vitrine']),
     description: 'Une page qui présente votre activité et convertit. Idéal pour démarrer vite.',
     features: [
       '1 page (~5 sections)',
-      'Design responsive',
+      'Design adapté mobile & desktop',
       'Formulaire de contact',
       'Mise en ligne incluse',
-      'SEO de base',
+      'Référencement de base',
     ],
     delay: '3–7 jours',
     accentColor: '#f59e0b',
@@ -34,58 +34,58 @@ const plans = [
     features: [
       '2 à 5 pages',
       'Design cohérent',
-      'Formulaire + SEO on-page',
+      'Formulaire + référencement',
       'Mise en ligne incluse',
       '1 mois de support',
     ],
     delay: '1–2 semaines',
     accentColor: '#a855f7',
-    popular: false,
+    popular: true,
   },
   {
     name: 'Site Pro',
     originalPrice: '5 500',
     price: fmt(PRIX_BASE['site-pro']),
-    description: 'Site complet, rapide, prêt à évoluer — blog ou CMS léger possible.',
+    description: 'Site complet, rapide, prêt à évoluer, blog ou contenus éditables possibles.',
     features: [
       'Jusqu’à 8 pages',
       'Blog / contenus éditables',
       'Animations soignées',
-      'SEO + Analytics',
+      'Référencement + statistiques',
       '1 mois de support',
     ],
     delay: '2–3 semaines',
     accentColor: '#8b5cf6',
-    popular: true,
+    popular: false,
   },
   {
-    name: 'Boutique Stripe',
+    name: 'Boutique en ligne',
     originalPrice: '8 000',
     price: fmt(PRIX_BASE.ecommerce),
-    description: 'Vendre en ligne sans usine à gaz : catalogue, panier, paiement Stripe.',
+    description: 'Vendre en ligne simplement : catalogue, panier, paiement sécurisé.',
     features: [
       'Catalogue produits',
-      'Panier + Stripe Checkout',
-      'Espace admin commandes',
+      'Panier + paiement en ligne',
+      'Suivi des commandes',
       'Emails de confirmation',
-      'Responsive + mise en ligne',
+      'Mobile & mise en ligne',
     ],
     delay: '2–4 semaines',
     accentColor: '#06b6d4',
     popular: false,
   },
   {
-    name: 'App web / outil',
+    name: 'Outil / espace client',
     originalPrice: '12 000',
     price: fmt(PRIX_BASE['app-web']),
     suffix: '+',
-    description: 'Espace membre, dashboard ou outil métier (auth + base de données).',
+    description: 'Espace membre, tableau de bord ou outil métier adapté à votre activité.',
     features: [
-      'Auth email (Supabase)',
-      'Dashboard / CRUD',
-      'Logique métier sur mesure',
-      'Déploiement cloud',
-      'Devis selon le scope',
+      'Comptes clients sécurisés',
+      'Tableaux de bord & gestion',
+      'Fonctionnalités sur mesure',
+      'Mise en ligne incluse',
+      'Devis selon le besoin',
     ],
     delay: 'Sur devis',
     accentColor: '#0891b2',
@@ -96,13 +96,13 @@ const plans = [
     originalPrice: '10 000',
     price: fmt(PRIX_BASE['app-ios']),
     suffix: '+',
-    description: 'App native Swift / SwiftUI — de l’idée à l’App Store (Motastic, Dev Mastery…).',
+    description: 'App iPhone, de l’idée à l’App Store (Motastic, Dev Mastery…).',
     features: [
-      'App native Swift / SwiftUI',
-      'UI/UX inclus',
-      'Tests & débogage',
+      'App iPhone native',
+      'Design inclus',
+      'Tests avant publication',
       'Publication App Store',
-      'Compatible iOS 17+',
+      'Compatible iPhones récents',
     ],
     delay: '4–8 semaines',
     accentColor: '#a855f7',
@@ -127,10 +127,10 @@ export default function Pricing() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
           <p className="text-sm text-amber-600 dark:text-amber-400 font-medium mb-4">
-            Prix cassés vs le marché — web moderne + apps iOS natives
+            Prix clairement sous le marché : sites web & apps iPhone
           </p>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '520px', margin: '0 auto' }}>
-            Les barrés = ordre de grandeur agence / freelance classique. Stack : React, Vite, Supabase, Swift.
+            Les prix barrés correspondent à l’ordre de grandeur d’une agence ou d’un freelance classique.
           </p>
         </motion.div>
 
@@ -222,8 +222,11 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de {PRIX_MAINTENANCE_MOIS} €/mois
+          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle (pas obligatoire) dès {PRIX_MAINTENANCE_MOIS} €/mois
           <br />
+          <span className="text-slate-500 dark:text-slate-600 normal-case font-sans text-xs mt-1 inline-block">
+            Après le mois inclus, vous pouvez tout gérer seul si vous préférez.
+          </span>
           <Link to="/tarifs#pack" className="text-accent-600 dark:text-accent-400 hover:underline mt-2 inline-block">
             Pack clé en main (site + hébergement + domaine) → {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
           </Link>

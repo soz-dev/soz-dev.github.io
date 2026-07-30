@@ -1,5 +1,5 @@
 -- =============================================
--- SOZ-DEV Admin — Schéma Supabase
+-- SOZ-DEV Admin : Schéma Supabase
 -- À exécuter dans : Supabase > SQL Editor
 -- =============================================
 
@@ -23,7 +23,7 @@ create table if not exists projets (
   questionnaire jsonb       default '{}',
   notes_admin   text,
   devis         jsonb,
-  paiements     jsonb       default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}'::jsonb,
+  paiements     jsonb       default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}':jsonb,
   montant_total integer     default 0,
   created_at    timestamptz default now(),
   updated_at    timestamptz default now()
@@ -31,7 +31,7 @@ create table if not exists projets (
 
 -- Migration si la table existait déjà sans paiements
 alter table projets add column if not exists paiements jsonb
-  default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}'::jsonb;
+  default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}':jsonb;
 
 -- Index pour les performances
 create index if not exists projets_client_id_idx on projets(client_id);
