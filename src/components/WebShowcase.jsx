@@ -4,8 +4,8 @@ import { Monitor } from 'lucide-react'
 const IMG = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format&q=75`
 
 const ui = {
-  sans: 'system-ui, -apple-system, sans-serif',
-  serif: 'Georgia, "Times New Roman", serif',
+  sans: "'Manrope', system-ui, sans-serif",
+  display: "'Syne', system-ui, sans-serif",
 }
 
 /** Fixed-size image — never stretches empty space */
@@ -37,7 +37,7 @@ function MiniRestaurant() {
     ['Tiramisu maison', '12€'],
   ]
   return (
-    <div style={{ fontFamily: ui.serif, background: '#0c0a09', color: '#faf6ef', width: '100%' }}>
+    <div style={{ fontFamily: ui.display, background: '#0c0a09', color: '#faf6ef', width: '100%' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px', borderBottom: '1px solid rgba(212,168,67,0.35)', fontFamily: ui.sans }}>
         <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2, color: '#d4a843' }}>BELLA CUCINA</span>
         <div style={{ display: 'flex', gap: 8, fontSize: 6, color: 'rgba(250,246,239,0.55)' }}>
@@ -321,7 +321,7 @@ function MiniBlog() {
     ['Tech', 'Supabase vs Firebase pour un SaaS', '10 min'],
   ]
   return (
-    <div style={{ fontFamily: ui.serif, background: '#f7f4ef', color: '#1a1a1a', width: '100%' }}>
+    <div style={{ fontFamily: ui.display, background: '#f7f4ef', color: '#1a1a1a', width: '100%' }}>
       <div style={{ padding: '8px 10px 6px', borderBottom: '2px solid #1a1a1a', textAlign: 'center' }}>
         <p style={{ fontSize: 5.5, letterSpacing: 3, margin: '0 0 2px', fontFamily: ui.sans, color: '#666' }}>VENDREDI · ÉDITION DIGITALE</p>
         <h1 style={{ fontSize: 18, fontWeight: 900, margin: 0, letterSpacing: '-0.02em' }}>The Pulse</h1>
@@ -364,7 +364,7 @@ function MiniBlog() {
 // ═══════════════════════════════════════════════════════════
 function MiniCabinet() {
   return (
-    <div style={{ fontFamily: ui.serif, background: '#f5f2eb', color: '#0f1f3d', width: '100%' }}>
+    <div style={{ fontFamily: ui.display, background: '#f5f2eb', color: '#0f1f3d', width: '100%' }}>
       <div style={{ padding: '10px 10px 8px', textAlign: 'center', borderBottom: '1px solid #c9a84c' }}>
         <p style={{ fontSize: 5.5, letterSpacing: 3, color: '#c9a84c', margin: '0 0 3px', fontFamily: ui.sans }}>CABINET D&apos;AVOCATS · PARIS</p>
         <h1 style={{ fontSize: 14, fontWeight: 700, margin: 0, letterSpacing: 1 }}>Dupont & Associés</h1>
