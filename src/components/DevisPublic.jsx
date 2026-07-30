@@ -35,17 +35,24 @@ function QuestionField({ q, value, onChange }) {
         {opts.map(o => (
           <label
             key={o.value}
-            onClick={() => onChange(o.value)}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition ${
               value === o.value
                 ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/10'
                 : 'border-gray-200 dark:border-white/10 bg-transparent hover:border-purple-300 dark:hover:border-purple-500/30'
             }`}
           >
-            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${value === o.value ? 'border-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
+            <input
+              type="radio"
+              name={q.id}
+              value={o.value}
+              checked={value === o.value}
+              onChange={() => onChange(o.value)}
+              className="sr-only"
+            />
+            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 pointer-events-none ${value === o.value ? 'border-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
               {value === o.value && <div className="w-2 h-2 rounded-full bg-purple-500" />}
             </div>
-            <span className="text-sm text-gray-800 dark:text-slate-200">{o.label}</span>
+            <span className="text-sm text-gray-800 dark:text-slate-200 pointer-events-none">{o.label}</span>
           </label>
         ))}
       </div>
