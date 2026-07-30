@@ -125,9 +125,9 @@ export default function Pricing() {
             Investissement
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-4" style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}>
-            🔥 Offre de lancement — Prix réduits sur toutes les formules
-          </div>
+          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium mb-4">
+            Offre de lancement — tarifs réduits sur toutes les formules
+          </p>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
             Des prix transparents, sans surprises. Chaque projet inclut un suivi personnalisé.
           </p>
@@ -143,30 +143,17 @@ export default function Pricing() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className={`relative glass rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
-                plan.bestSeller
-                  ? 'border-amber-300 dark:border-amber-500/30 shadow-lg shadow-amber-100 dark:shadow-amber-900/10'
-                  : plan.popular
+                plan.popular
                   ? 'border-purple-300 dark:border-purple-500/30 shadow-lg shadow-purple-100 dark:shadow-purple-900/10'
                   : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
               }`}
             >
-              {/* Best seller badge */}
-              {plan.bestSeller && (
-                <div
-                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold text-white whitespace-nowrap"
-                  style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}
-                >
-                  ⭐ Best Seller
-                </div>
-              )}
-
-              {/* Popular badge */}
               {plan.popular && (
                 <div
                   className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold text-white"
                   style={{ background: 'linear-gradient(135deg, #a855f7, #06b6d4)' }}
                 >
-                  ✦ Populaire
+                  Populaire
                 </div>
               )}
 
@@ -186,7 +173,6 @@ export default function Pricing() {
                     )}
                   </div>
                 </div>
-                <span className="mb-1 px-2 py-0.5 rounded-md text-xs font-bold text-white" style={{ background: plan.bestSeller ? '#f59e0b' : '#ef4444' }}>PROMO</span>
               </div>
 
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{plan.description}</p>
@@ -206,7 +192,7 @@ export default function Pricing() {
                 className="text-xs font-mono px-3 py-1.5 rounded-lg mb-5 text-center"
                 style={{ background: `${plan.accentColor}10`, color: plan.accentColor }}
               >
-                ⏱ {plan.delay}
+                Délai : {plan.delay}
               </div>
 
               {/* CTA */}
@@ -242,7 +228,7 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          Tous les projets incluent 1 mois de support après livraison · Acompte 30% au démarrage
+          Tous les projets incluent 1 mois de support après livraison · Acompte 30 % au démarrage
         </motion.p>
       </div>
     </section>

@@ -3,15 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, Send, Check, Copy } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
-
-function parseOpt(opt) {
-  const p = opt.split('|')
-  return p.length === 2 ? { value: p[0], label: p[1] } : { value: opt, label: opt }
-}
-
-function fmt(n) {
-  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + '\u00a0\u20ac'
-}
+import { parseOpt, fmt } from '../lib/formatUtils'
 
 function QuestionField({ q, value, onChange }) {
   const opts = (q.options || []).map(parseOpt)
@@ -31,7 +23,7 @@ function QuestionField({ q, value, onChange }) {
 
   if (q.type === 'radio') {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2" role="radiogroup" aria-label={q.label}>
         {opts.map(o => (
           <label
             key={o.value}
@@ -68,13 +60,18 @@ function QuestionField({ q, value, onChange }) {
           return (
             <label
               key={o.value}
-              onClick={() => onChange(o.value)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl border cursor-pointer transition text-sm select-none ${
                 checked
                   ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300'
                   : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-500/30'
               }`}
             >
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={() => onChange(o.value)}
+                className="sr-only"
+              />
               <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition ${checked ? 'border-purple-500 bg-purple-500' : 'border-gray-300 dark:border-white/30'}`}>
                 {checked && <Check size={10} className="text-white" />}
               </div>

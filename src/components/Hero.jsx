@@ -12,6 +12,7 @@ export default function Hero() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => setIndex((i) => (i + 1) % words.length), 2800)
     return () => clearInterval(id)
   }, [])
@@ -108,12 +109,17 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#projets"
+            href="#devis"
             className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
+          >
+            Demander un devis
+          </a>
+          <a
+            href="#projets"
+            className="px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-purple-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
           >
             Voir mes projets
           </a>
-
         </motion.div>
       </div>
 

@@ -1,5 +1,6 @@
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
+import { fmt } from './formatUtils'
 
 // Palette identique au site
 const DKK = [3,   7,  18]   // #030712 — fond dark site
@@ -14,9 +15,7 @@ const T4  = [156, 163, 175] // #9ca3af — gray-400
 const BG1 = [249, 250, 251] // #f9fafb — gray-50
 const BD  = [229, 231, 235] // #e5e7eb — gray-200
 
-function fmt(n) {
-  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' \u20ac'
-}
+// fmt from formatUtils — PDF accepts Unicode euro
 
 export function exportDevisPDF({ client, projet, devis }) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4' })

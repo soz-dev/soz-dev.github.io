@@ -101,6 +101,6 @@ export function calculateDevis(q) {
     sousTotal,
     acompte,
     solde: sousTotal - acompte,
-    maintenance: q.maintenance === 'Oui' ? 130 : 0,
+    maintenance: q.maintenance === 'Oui' ? 200 : 0,
   }
 }

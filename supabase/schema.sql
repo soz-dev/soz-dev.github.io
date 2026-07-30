@@ -23,10 +23,15 @@ create table if not exists projets (
   questionnaire jsonb       default '{}',
   notes_admin   text,
   devis         jsonb,
+  paiements     jsonb       default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}'::jsonb,
   montant_total integer     default 0,
   created_at    timestamptz default now(),
   updated_at    timestamptz default now()
 );
+
+-- Migration si la table existait déjà sans paiements
+alter table projets add column if not exists paiements jsonb
+  default '{"acompte":false,"acompteDate":"","solde":false,"soldeDate":""}'::jsonb;
 
 -- Index pour les performances
 create index if not exists projets_client_id_idx on projets(client_id);
@@ -35,6 +40,9 @@ create index if not exists projets_updated_at_idx on projets(updated_at desc);
 -- Row Level Security (seul l'utilisateur authentifié peut accéder)
 alter table clients enable row level security;
 alter table projets enable row level security;
+
+drop policy if exists "Admin clients" on clients;
+drop policy if exists "Admin projets" on projets;
 
 create policy "Admin clients" on clients
   for all to authenticated using (true) with check (true);

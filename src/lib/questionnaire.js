@@ -2,6 +2,10 @@
 // options select : 'value|Label' ou juste 'Label' (value = label)
 // options radio/multiselect : chaînes simples
 
+import { parseOpt } from './formatUtils'
+
+export { parseOpt }
+
 export const SECTIONS = [
   {
     id: 'projet',
@@ -127,7 +131,7 @@ export const SECTIONS = [
         id: 'integrations', label: 'Intégrations souhaitées', type: 'multiselect',
         options: ['Google Analytics (inclus)', 'Mailchimp / Brevo (+210€)', 'Calendly (inclus)', 'CRM existant (+420€)', 'Zapier (+280€)', 'Autre'],
       },
-      { id: 'maintenance', label: 'Maintenance mensuelle (+130€/mois)', type: 'radio', options: ['Oui', 'Non'] },
+      { id: 'maintenance', label: 'Maintenance mensuelle (+200€/mois)', type: 'radio', options: ['Oui', 'Non'] },
       { id: 'seo', label: 'SEO / référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+280€)', 'Non nécessaire'] },
     ],
   },
@@ -143,11 +147,6 @@ export const SECTIONS = [
     ],
   },
 ]
-
-function parseOpt(opt) {
-  const p = opt.split('|')
-  return p.length === 2 ? { value: p[0], label: p[1] } : { value: opt, label: opt }
-}
 
 function formatAnswer(q, val) {
   if (!val || (Array.isArray(val) && val.length === 0)) return '___________'

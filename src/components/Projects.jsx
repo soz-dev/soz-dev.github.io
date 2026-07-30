@@ -114,14 +114,14 @@ export default function Projects() {
               {/* Image */}
               {p.image && !p.appStore && (
                 <div className="mb-5 rounded-xl overflow-hidden border border-gray-100 dark:border-white/8" style={{ height: 140 }}>
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover object-top" onError={e => e.target.parentElement.style.display='none'} />
+                  <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover object-top" onError={e => e.target.parentElement.style.display='none'} />
                 </div>
               )}
 
               {/* Meta + icon pour iOS */}
               <div className="flex items-center gap-3 mb-4">
                 {p.image && p.appStore && (
-                  <img src={p.image} alt={p.title} className="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md" onError={e => e.target.style.display='none'} />
+                  <img src={p.image} alt={p.title} loading="lazy" className="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md" onError={e => e.target.style.display='none'} />
                 )}
                 <div>
                   <p className="text-xs font-mono mb-0.5" style={{ color: p.accentColor }}>{p.category} · {p.year}</p>

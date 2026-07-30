@@ -1,38 +1,29 @@
 import { useState, useEffect } from 'react'
 import { db } from '../../lib/adminDb'
+import { STATUS_BADGE, STATUS_LABEL } from '../../lib/statusLabels'
 import { Users, FolderOpen, TrendingUp, ArrowRight, Clock } from 'lucide-react'
-
-const STATUS_BADGE = {
-  'questionnaire':         'text-blue-400 bg-blue-400/10',
-  'questionnaire-envoyé':  'text-yellow-400 bg-yellow-400/10',
-  'réponse-reçue':         'text-orange-400 bg-orange-400/10',
-  'appel-planifié':        'text-purple-400 bg-purple-400/10',
-  'devis-envoyé':          'text-cyan-400 bg-cyan-400/10',
-  'en-cours':              'text-green-400 bg-green-400/10',
-  'livré':                 'text-emerald-400 bg-emerald-400/10',
-  'archivé':               'text-gray-500 dark:text-slate-500 bg-slate-500/10',
-}
-
-const STATUS_LABEL = {
-  'questionnaire':         'Questionnaire',
-  'questionnaire-envoyé':  'Envoyé',
-  'réponse-reçue':         'Réponse reçue',
-  'appel-planifié':        'Appel planifié',
-  'devis-envoyé':          'Devis envoyé',
-  'en-cours':              'En cours',
-  'livré':                 'Livré ✓',
-  'archivé':               'Archivé',
-}
 
 export default function DashboardPage({ go }) {
   const [stats, setStats] = useState({ clients: 0, projets: 0, ca: 0 })
   const [recents, setRecents] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    setStats(db.stats())
-    setRecents(db.getRecentProjects(6))
-    setLoading(false)
+    let cancelled = false
+    ;(async () => {
+      try {
+        const [s, r] = await Promise.all([db.stats(), db.getRecentProjects(6)])
+        if (cancelled) return
+        setStats(s)
+        setRecents(r)
+      } catch (err) {
+        if (!cancelled) setError(err.message || 'Erreur de chargement')
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    })()
+    return () => { cancelled = true }
   }, [])
 
   if (loading) {
@@ -44,12 +35,15 @@ export default function DashboardPage({ go }) {
     )
   }
 
+  if (error) {
+    return <div className="p-8 text-red-400 text-sm">{error}</div>
+  }
+
   return (
     <div className="p-8 max-w-4xl">
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Tableau de bord</h1>
       <p className="text-gray-500 dark:text-slate-500 text-sm mb-8">Vue d'ensemble de votre activité</p>
 
-      {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-10">
         {[
           { label: 'Clients', value: stats.clients, icon: Users, color: 'text-purple-400', bg: 'bg-purple-400/10' },
@@ -66,7 +60,6 @@ export default function DashboardPage({ go }) {
         ))}
       </div>
 
-      {/* Recent projects */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">

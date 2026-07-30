@@ -1,18 +1,24 @@
 import { useState } from 'react'
-import { checkPassword } from '../../lib/adminDb'
+import { signIn } from '../../lib/supabaseAdmin'
 
 export default function AdminLogin({ onLogin }) {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (checkPassword(password)) {
-      sessionStorage.setItem('admin_auth', '1')
+    setError('')
+    setLoading(true)
+    try {
+      await signIn(email.trim(), password)
       onLogin()
-    } else {
-      setError('Mot de passe incorrect.')
+    } catch (err) {
+      setError(err.message || 'Identifiants incorrects.')
       setPassword('')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -26,21 +32,30 @@ export default function AdminLogin({ onLogin }) {
           <p className="text-gray-500 dark:text-slate-500 text-sm mt-1">Espace admin</p>
         </div>
         <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl border border-gray-200 dark:border-white/10 p-7 space-y-4">
-          <h1 className="text-white font-semibold text-lg mb-1">Connexion</h1>
+          <h1 className="text-gray-900 dark:text-white font-semibold text-lg mb-1">Connexion</h1>
+          <div>
+            <label className="text-xs text-gray-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">Email</label>
+            <input
+              type="email" value={email} onChange={e => setEmail(e.target.value)}
+              required autoFocus autoComplete="username"
+              className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition"
+            />
+          </div>
           <div>
             <label className="text-xs text-gray-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">Mot de passe</label>
             <input
               type="password" value={password} onChange={e => setPassword(e.target.value)}
-              required autoFocus
+              required autoComplete="current-password"
               className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition"
             />
           </div>
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-500 text-gray-900 dark:text-white font-semibold py-2.5 rounded-lg transition text-sm"
+            disabled={loading}
+            className="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold py-2.5 rounded-lg transition text-sm disabled:opacity-50"
           >
-            Entrer
+            {loading ? 'Connexion…' : 'Entrer'}
           </button>
         </form>
       </div>

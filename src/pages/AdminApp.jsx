@@ -4,15 +4,31 @@ import AdminLayout from '../components/admin/AdminLayout'
 import DashboardPage from '../components/admin/DashboardPage'
 import ClientsPage from '../components/admin/ClientsPage'
 import ProjectPage from '../components/admin/ProjectPage'
+import { getSession, onAuthChange, signOut } from '../lib/supabaseAdmin'
 
 export default function AdminApp() {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem('admin_auth') === '1')
+  const [authed, setAuthed] = useState(false)
+  const [bootstrapping, setBootstrapping] = useState(true)
   const [nav, setNav] = useState({ view: 'dashboard' })
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') !== 'light')
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark)
   }, [isDark])
+
+  useEffect(() => {
+    let unsub = () => {}
+    ;(async () => {
+      try {
+        const session = await getSession()
+        setAuthed(!!session)
+      } finally {
+        setBootstrapping(false)
+      }
+      unsub = onAuthChange((session) => setAuthed(!!session))
+    })()
+    return () => unsub()
+  }, [])
 
   const go = (view, data = {}) => setNav({ view, ...data })
 
@@ -22,9 +38,20 @@ export default function AdminApp() {
     localStorage.setItem('theme', next ? 'dark' : 'light')
   }
 
-  const logout = () => {
-    sessionStorage.removeItem('admin_auth')
-    setAuthed(false)
+  const logout = async () => {
+    try {
+      await signOut()
+    } finally {
+      setAuthed(false)
+    }
+  }
+
+  if (bootstrapping) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-[#0a0a12] flex items-center justify-center">
+        <div className="w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
   }
 
   if (!authed) return <AdminLogin onLogin={() => setAuthed(true)} />
