@@ -108,6 +108,7 @@ export default function Services() {
             <motion.div
               key={s.title}
               variants={cardVariants}
+              whileHover={{ y: -8, transition: { duration: 0.28 } }}
               className="group gradient-border glass rounded-2xl p-8 relative overflow-hidden cursor-default"
             >
               <div

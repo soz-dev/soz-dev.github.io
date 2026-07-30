@@ -31,13 +31,19 @@ export default function StickyCta() {
           transition={{ type: 'spring', stiffness: 380, damping: 32 }}
           className="fixed bottom-4 left-4 right-4 z-50 md:hidden"
         >
-          <Link
-            to="/devis"
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm shadow-lg shadow-brand-500/30"
+          <motion.div
+            animate={{ boxShadow: ['0 10px 30px rgba(168,85,247,0.25)', '0 10px 40px rgba(6,182,212,0.35)', '0 10px 30px rgba(168,85,247,0.25)'] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="rounded-2xl"
           >
-            <FileText className="w-4 h-4" />
-            Devis
-          </Link>
+            <Link
+              to="/devis"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm"
+            >
+              <FileText className="w-4 h-4" />
+              Devis
+            </Link>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

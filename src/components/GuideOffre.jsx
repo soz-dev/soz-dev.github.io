@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
+import LottieIcon from './motion/LottieIcon'
 
 const RESULTS = {
   boutique: {
@@ -211,11 +212,15 @@ export default function GuideOffre() {
             {step === 3 && result && (
               <motion.div
                 key="res"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0 }}
+                transition={{ type: 'spring', stiffness: 280, damping: 24 }}
                 className="text-center py-2"
               >
+                <div className="mx-auto w-24 h-24 mb-2">
+                  <LottieIcon src="/lottie/success.json" loop={false} />
+                </div>
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold mb-4 ${
                   result.highlight
                     ? 'bg-accent-500/15 text-accent-600 dark:text-accent-400'

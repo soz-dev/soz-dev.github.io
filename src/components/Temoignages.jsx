@@ -48,6 +48,7 @@ export default function Temoignages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               className="rounded-2xl border border-gray-100 dark:border-white/8 bg-gray-50/80 dark:bg-white/[0.02] p-6 flex flex-col"
             >
               <div className="flex gap-0.5 mb-4 text-amber-400" aria-hidden>
