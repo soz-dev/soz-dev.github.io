@@ -157,8 +157,13 @@ export default function ProjectPage({ client, project, go }) {
       {/* Back */}
       <button onClick={() => go('clients', { openClient: client })}
         className="flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-white text-sm mb-5 transition">
-        <ArrowLeft size={14} /> {client?.nom}
+        <ArrowLeft size={14} /> Retour · projets de {client?.nom}
       </button>
+
+      <p className="text-xs text-purple-500 dark:text-purple-400 font-medium mb-2">
+        Projet lié au client <span className="text-gray-900 dark:text-white">{client?.nom}</span>
+        {client?.email ? ` · ${client.email}` : ''}
+      </p>
 
       {/* Project name + status */}
       <div className="flex items-center gap-4 mb-8">

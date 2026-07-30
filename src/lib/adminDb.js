@@ -8,10 +8,14 @@ export const db = {
   async getClients() {
     const { data, error } = await supabase
       .from('clients')
-      .select('*')
+      .select('*, projets(count)')
       .order('created_at', { ascending: false })
     throwIf(error)
-    return data || []
+    return (data || []).map(c => {
+      const count = Array.isArray(c.projets) ? (c.projets[0]?.count ?? 0) : 0
+      const { projets: _p, ...rest } = c
+      return { ...rest, project_count: count }
+    })
   },
 
   async createClient(payload) {
