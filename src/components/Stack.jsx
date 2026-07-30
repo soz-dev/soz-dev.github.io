@@ -1,20 +1,17 @@
 import { motion } from 'framer-motion'
 
 const techs = [
-  { name: 'React',         color: '#61DAFB' },
-  { name: 'Vite',          color: '#646CFF' },
-  { name: 'Tailwind CSS',  color: '#06B6D4' },
-  { name: 'TypeScript',    color: '#3178C6' },
-  { name: 'Node.js',       color: '#68A063' },
-  { name: 'Swift',         color: '#F05138' },
-  { name: 'SwiftUI',       color: '#007AFF' },
-  { name: 'React Native',  color: '#61DAFB' },
-  { name: 'Supabase',      color: '#3ECF8E' },
-  { name: 'PostgreSQL',    color: '#4479A1' },
-  { name: 'Figma',         color: '#A259FF' },
-  { name: 'GitHub',        color: '#374151' },
-  { name: 'Framer',        color: '#0055FF' },
-  { name: 'Vercel',        color: '#374151' },
+  { name: 'React',       color: '#61DAFB' },
+  { name: 'Vite',        color: '#646CFF' },
+  { name: 'Tailwind CSS',color: '#06B6D4' },
+  { name: 'Supabase',    color: '#3ECF8E' },
+  { name: 'Cloudflare',  color: '#F38020' },
+  { name: 'Swift',       color: '#F05138' },
+  { name: 'SwiftUI',     color: '#007AFF' },
+  { name: 'GameKit',     color: '#30D158' },
+  { name: 'iOS',         color: '#A2AAAD' },
+  { name: 'Figma',       color: '#A259FF' },
+  { name: 'GitHub',      color: '#6E40C9' },
 ]
 
 const doubled = [...techs, ...techs]

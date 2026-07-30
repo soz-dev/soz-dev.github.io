@@ -14,6 +14,7 @@ const projects = [
     link: 'https://apps.apple.com/fr/app/locazen-12/id6446256021',
     linkLabel: 'App Store',
     appStore: true,
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/fe/62/25/fe622560-f739-bfcb-5711-46fa7268dbee/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg',
   },
   {
     id: 1,
@@ -27,6 +28,7 @@ const projects = [
     link: 'https://locazen7.fr',
     linkLabel: 'Voir le site',
     appStore: false,
+    image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Flocazen7.fr%2F?w=600&h=380',
   },
   {
     id: 2,
@@ -40,6 +42,7 @@ const projects = [
     link: 'https://apps.apple.com/fr/app/dev-mastery/id6759505533',
     linkLabel: 'App Store',
     appStore: true,
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/38/a2/93/38a29332-7c08-0a11-251c-6585c877e338/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg',
   },
   {
     id: 3,
@@ -53,6 +56,7 @@ const projects = [
     link: 'https://apps.apple.com/fr/app/motastic/id6760564637',
     linkLabel: 'App Store',
     appStore: true,
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/df/76/ab/df76ab93-54de-db7d-1f3f-57de5f610e87/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg',
   },
 ]
 
@@ -107,12 +111,23 @@ export default function Projects() {
                 style={{ background: p.accentColor }}
               />
 
-              {/* Meta */}
-              <p className="text-xs font-mono mb-4" style={{ color: p.accentColor }}>
-                {p.category} · {p.year}
-              </p>
+              {/* Image */}
+              {p.image && !p.appStore && (
+                <div className="mb-5 rounded-xl overflow-hidden border border-gray-100 dark:border-white/8" style={{ height: 140 }}>
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover object-top" onError={e => e.target.parentElement.style.display='none'} />
+                </div>
+              )}
 
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{p.title}</h3>
+              {/* Meta + icon pour iOS */}
+              <div className="flex items-center gap-3 mb-4">
+                {p.image && p.appStore && (
+                  <img src={p.image} alt={p.title} className="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md" onError={e => e.target.style.display='none'} />
+                )}
+                <div>
+                  <p className="text-xs font-mono mb-0.5" style={{ color: p.accentColor }}>{p.category} · {p.year}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{p.title}</h3>
+                </div>
+              </div>
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5 flex-1">
                 {p.description}
               </p>
