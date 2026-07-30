@@ -15,7 +15,7 @@ const BG1 = [249, 250, 251] // #f9fafb — gray-50
 const BD  = [229, 231, 235] // #e5e7eb — gray-200
 
 function fmt(n) {
-  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + '\u00a0\u20ac'
+  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' \u20ac'
 }
 
 export function exportDevisPDF({ client, projet, devis }) {
