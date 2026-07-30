@@ -174,11 +174,11 @@ export default function DevisPublic() {
             Devis en ligne
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
-            Votre devis en{' '}
-            <span className="gradient-text">5 minutes</span>
+            Ton devis en{' '}
+            <span className="gradient-text">2 minutes</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '460px', margin: '0 auto' }}>
-            Répondez aux questions, obtenez une estimation instantanée et envoyez-moi votre demande directement.
+            Estimation instantanée, acompte 30 %, envoi direct par email. Sans engagement.
           </p>
         </motion.div>
 

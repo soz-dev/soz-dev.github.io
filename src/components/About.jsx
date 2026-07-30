@@ -1,18 +1,11 @@
 import { motion } from 'framer-motion'
-import { MapPin, Code2, Zap, Heart } from 'lucide-react'
+import { MapPin, Code2, Zap, Sparkles } from 'lucide-react'
 
 const traits = [
-  { icon: MapPin,  text: 'Basé en France',         color: '#a855f7' },
-  { icon: Code2,   text: 'Full-stack Web & iOS',    color: '#06b6d4' },
-  { icon: Zap,     text: 'Livraison rapide',        color: '#a855f7' },
-  { icon: Heart,   text: 'Passionné de produit',    color: '#06b6d4' },
-]
-
-const miniStats = [
-  { value: '3',   label: 'Apps App Store' },
-  { value: '5+',  label: 'Projets web'    },
-  { value: '2+',  label: 'Ans d\'exp.'    },
-  { value: '∞',   label: 'Motivation'     },
+  { icon: MapPin, text: 'Basé en France', color: '#a855f7' },
+  { icon: Code2, text: 'Web + iOS natif', color: '#06b6d4' },
+  { icon: Zap, text: 'Livraison rapide', color: '#a855f7' },
+  { icon: Sparkles, text: 'Workflow Cursor / IA', color: '#06b6d4' },
 ]
 
 export default function About() {
@@ -20,8 +13,6 @@ export default function About() {
     <section id="a-propos" className="py-28">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <div className="grid md:grid-cols-2 gap-14 items-center">
-
-          {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -32,16 +23,20 @@ export default function About() {
               À propos
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Derrière le code
+              Un solo, un stack, zéro bullshit
             </h2>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base md:text-lg">
-              Je suis <span className="font-semibold text-gray-900">Sofyan</span>, développeur
-              web &amp; iOS. Sites qui convertissent, boutiques Stripe, et apps natives
-              (Motastic, Dev Mastery…) — livrés en duo avec Cursor pour aller plus vite.
+              Je suis <span className="font-semibold text-gray-900 dark:text-white">Sofyan</span> —
+              développeur web &amp; iOS. Sites qui convertissent, apps natives sur l’App Store
+              (Motastic, Dev Mastery, LocaZen).
+            </p>
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-5 text-sm md:text-base">
+              Honnêtement : je shippe avec <span className="text-gray-800 dark:text-slate-200 font-medium">Cursor et un workflow IA</span>.
+              Ça va plus vite, ça coûte moins cher pour toi — sans sacrifier la qualité du code ni le design.
+              Tu paies le produit, pas une armée de meetings.
             </p>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm md:text-base">
-              Ce qui m&apos;anime : transformer une idée brute en produit fini. Du premier commit
-              à la mise en ligne ou à l&apos;App Store.
+              Du premier commit à la mise en ligne (ou à l’App Store), un seul interlocuteur.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {traits.map((t) => (
@@ -53,7 +48,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right: Avatar + mini stats */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -61,7 +55,6 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="flex flex-col items-center gap-7"
           >
-            {/* Avatar initials */}
             <div className="w-44 h-44 rounded-3xl gradient-border glass flex items-center justify-center select-none">
               <span
                 className="text-7xl font-extrabold gradient-text"
@@ -71,20 +64,19 @@ export default function About() {
               </span>
             </div>
 
-            {/* Mini stats */}
-            <div className="grid grid-cols-2 gap-3 w-full">
-              {miniStats.map((s) => (
-                <div
-                  key={s.label}
-                  className="glass rounded-2xl p-5 border border-gray-100 dark:border-white/5 text-center hover:border-gray-200 dark:hover:border-white/10 transition-colors"
-                >
-                  <div className="text-2xl font-bold gradient-text mb-1">{s.value}</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{s.label}</div>
-                </div>
-              ))}
+            <div className="w-full rounded-2xl border border-purple-200/60 dark:border-purple-500/20 bg-purple-50/50 dark:bg-purple-500/5 p-5 text-center">
+              <p className="text-xs font-mono text-purple-500 mb-2 uppercase tracking-widest">Le deal</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Prix sous le marché · stack moderne · iOS + web · devis en 2 min
+              </p>
+              <a
+                href="#devis"
+                className="inline-block mt-4 text-sm font-semibold text-purple-500 hover:text-purple-400 transition-colors"
+              >
+                Lancer mon devis →
+              </a>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@ export default function Footer() {
             SOZ_DEV
           </span>
           <span className="text-xs font-mono text-slate-400">
-            Rapides, modernes, inoubliables.
+            Sites & apps iOS — dès 390€.
           </span>
         </div>
 

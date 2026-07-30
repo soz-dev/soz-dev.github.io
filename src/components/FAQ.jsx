@@ -4,36 +4,40 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'Quel est le délai moyen de réalisation ?',
-    a: 'Landing / vitrine : quelques jours à 2 semaines. Site pro ou boutique Stripe : 2 à 4 semaines. App web ou iOS : selon le scope (souvent 4 à 8 semaines). Le planning précis est toujours dans le devis.',
+    q: 'Pourquoi ces prix sont-ils si bas ?',
+    a: 'Je travaille en duo avec un workflow Cursor / IA : plus de vélocité, moins de frais structure. Tu paies le résultat — pas une agence. Les prix barrés reflètent l’ordre de grandeur marché (agence / freelance classique).',
   },
   {
     q: 'Comment se passe le paiement ?',
-    a: '30 % d\'acompte au démarrage du projet, solde à la livraison finale. Virement bancaire ou PayPal. Une facture est émise à chaque étape.',
+    a: '30 % d’acompte au démarrage, solde à la livraison. Virement ou PayPal. Facture à chaque étape. Maintenance optionnelle : 200 €/mois.',
   },
   {
-    q: 'Je n\'ai pas de maquette ni de brief, est-ce un problème ?',
-    a: 'Pas du tout. La plupart des clients arrivent avec juste une idée. L\'échange initial sert à structurer le projet. On avance en duo (développement assisté par Cursor) pour aller vite sans sacrifier la qualité.',
+    q: 'Quel délai pour un site ou une app iOS ?',
+    a: 'Landing : 3–7 jours. Vitrine : 1–2 semaines. Site Pro / Boutique Stripe : 2–4 semaines. App web ou iOS : selon le scope (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
   },
   {
-    q: 'Puis-je modifier mon site moi-même après la livraison ?',
-    a: 'Oui, si un CMS est intégré (blogs ou fiches produits). Sinon, sessions de formation ou maintenance mensuelle pour les évolutions.',
+    q: 'Tu fais aussi des apps iOS ?',
+    a: 'Oui — c’est mon cœur de métier natif (Swift / SwiftUI). Motastic et Dev Mastery sont sur l’App Store. Publication App Store incluse ; compte Apple Developer (99 €/an) à ta charge.',
   },
   {
-    q: 'Proposez-vous un suivi ou de la maintenance après livraison ?',
-    a: '1 mois de support gratuit est inclus. Au-delà, maintenance mensuelle à 200 €/mois (mises à jour, sauvegardes, corrections).',
+    q: 'C’est quoi une Boutique Stripe ?',
+    a: 'Une boutique légère : catalogue, panier, paiement Stripe Checkout, admin commandes. Pas de WooCommerce lourd — stack React moderne, idéale pour démarrer la vente en ligne.',
   },
   {
-    q: 'Est-ce que vous publiez l\'app sur l\'App Store à ma place ?',
-    a: 'Oui. La publication App Store est incluse dans les formules iOS. Il vous faut un compte Apple Developer (99 €/an) — je vous aide à le créer si besoin.',
+    q: 'Le chat client, c’est inclus ?',
+    a: 'Un widget chat (Crisp / Tawk) est disponible en option (~90 €). Pas de messagerie custom coûteuse sauf besoin métier.',
   },
   {
-    q: 'Utilisez-vous WordPress ou des CMS comme Wix ?',
-    a: 'Non. Stack moderne : React, Vite, Supabase pour le web ; Swift / SwiftUI pour iOS. Plus rapide, plus maintenable, plus sûr que les CMS génériques.',
+    q: 'Je n’ai ni maquette ni brief — c’est OK ?',
+    a: 'Oui. La plupart des clients arrivent avec une idée. L’échange + le devis en ligne structurent le projet. Design inclus ; textes : aide basique ou orientation copywriter.',
   },
   {
-    q: 'Vous occupez-vous aussi du design et des textes ?',
-    a: 'Du design oui — identité visuelle et maquettes. Pour les textes, rédaction basique possible, ou orientation vers un copywriter si le contenu est stratégique.',
+    q: 'WordPress / Wix ?',
+    a: 'Non. React, Vite, Supabase, Stripe, Swift. Performances, code maintenable, évolutif — sans plugin spaghetti.',
+  },
+  {
+    q: 'Et après la livraison ?',
+    a: '1 mois de support inclus (bugs, petits ajustements). Au-delà : maintenance 200 €/mois (màj, sauvegardes, corrections).',
   },
 ]
 
@@ -105,7 +109,7 @@ export default function FAQ() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
-            Tout ce que vous voulez savoir avant de démarrer.
+            Prix, délais, iOS, paiement — sans langue de bois.
           </p>
         </motion.div>
 

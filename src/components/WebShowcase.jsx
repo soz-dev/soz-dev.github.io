@@ -362,7 +362,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
 const DEMOS = [
   { url:'bella-cucina.fr',       label:'Restaurant gastronomique', tags:['Dark design','Réservation','Menu interactif'],   component:<MiniRestaurant /> },
   { url:'marie-coaching.fr',     label:'Coach & Thérapeute',       tags:['Landing page','Calendrier','Témoignages'],         component:<MiniCoach /> },
-  { url:'luxeshop.fr',           label:'Boutique e-commerce',      tags:['Catalogue','Panier','Stripe','Promo'],             component:<MiniEcommerce /> },
+  { url:'luxeshop.fr',           label:'Boutique Stripe',           tags:['Catalogue','Panier','Stripe','Promo'],             component:<MiniEcommerce /> },
   { url:'app.saas-demo.io',      label:'Application SaaS',         tags:['Dashboard','Auth','API REST','Temps réel'],        component:<MiniSaaS /> },
   { url:'proplomberie-paris.fr', label:'Artisan / Site vitrine',   tags:['Urgence 24/7','Devis gratuit','SEO local'],        component:<MiniArtisan /> },
   { url:'thepulse.fr',           label:'Blog / Site dynamique',    tags:['CMS','Articles','Catégories','Newsletter'],        component:<MiniBlog /> },
@@ -403,16 +403,23 @@ export default function WebShowcase() {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity:0 }}
-          whileInView={{ opacity:1 }}
+        <motion.div
+          initial={{ opacity:0, y:12 }}
+          whileInView={{ opacity:1, y:0 }}
           viewport={{ once:true }}
-          transition={{ duration:0.6, delay:0.3 }}
-          className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
+          transition={{ duration:0.55, delay:0.2 }}
+          className="mt-12 text-center"
         >
-          Toutes ces démos sont du vrai code React — pas des captures d'écran.{' '}
-          <a href="#devis" className="text-purple-400 hover:text-purple-300 transition underline underline-offset-4">Discutons de votre projet →</a>
-        </motion.p>
+          <a
+            href="#devis"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
+          >
+            Un site comme ça pour toi → devis
+          </a>
+          <p className="text-center text-xs text-slate-400 dark:text-slate-500 font-mono mt-4">
+            Vrai code React — pas des captures d&apos;écran.
+          </p>
+        </motion.div>
       </div>
     </section>
   )

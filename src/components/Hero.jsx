@@ -1,32 +1,14 @@
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-
-const words = [
-  { heading: 'sites web',    subtitle: 'Rapides, modernes, inoubliables.'   },
-  { heading: 'apps iOS',     subtitle: "De l'idée à l'App Store."            },
-  { heading: 'expériences',  subtitle: 'Chaque pixel a son intention.'       },
-  { heading: 'produits',     subtitle: 'Du concept à la mise en ligne.'      },
-]
+import { motion } from 'framer-motion'
 
 export default function Hero() {
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = setInterval(() => setIndex((i) => (i + 1) % words.length), 2800)
-    return () => clearInterval(id)
-  }, [])
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
-      {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-purple-700/15 blur-[120px] animate-blob" />
         <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-500/10 blur-[100px] animate-blob delay-2" />
         <div className="absolute bottom-1/4 left-1/3 w-[350px] h-[350px] rounded-full bg-purple-900/15 blur-[90px] animate-blob delay-4" />
       </div>
 
-      {/* Scan line overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -34,95 +16,68 @@ export default function Hero() {
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 px-8 lg:px-12" style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
-        {/* Status badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/25 text-xs font-mono text-slate-500 dark:text-slate-400 mb-10"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot" />
-          Disponible pour de nouveaux projets
-        </motion.div>
-
-        {/* Main heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
+      <div className="relative z-10 px-8 lg:px-12" style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+          className="gradient-text select-none mb-8"
+          style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(1.1rem, 3vw, 1.35rem)', letterSpacing: '0.14em' }}
         >
-          <h1 className="text-[clamp(3rem,10vw,7rem)] font-bold leading-[0.95] tracking-tight mb-8">
-            <span className="text-gray-900 dark:text-white block">Je conçois des</span>
+          SOZ_DEV
+        </motion.p>
 
-            {/* Mot central dynamique */}
-            <span className="block" style={{ height: 'clamp(3.15rem,10.5vw,7.35rem)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={index}
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -40, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="gradient-text inline-block"
-                  style={{ textShadow: 'none' }}
-                >
-                  {words[index].heading}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+        <motion.h1
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[clamp(2.4rem,7vw,4.75rem)] font-bold leading-[1.05] tracking-tight mb-6 text-gray-900 dark:text-white"
+        >
+          Sites & apps iOS
+          <span className="block gradient-text">qui convertissent — sans prix agence.</span>
+        </motion.h1>
 
-            <span className="text-gray-900 dark:text-white block">qui marquent.</span>
-          </h1>
-        </motion.div>
-
-        {/* Rotating subtitle */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-          className="flex items-center justify-center gap-3 mb-12 h-8"
+          transition={{ delay: 0.55, duration: 0.6 }}
+          className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed mb-4 max-w-xl mx-auto"
         >
-          <span className="font-mono text-purple-500 text-lg select-none">//</span>
-          <div className="overflow-hidden h-7 flex items-center">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={index}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.35 }}
-                className="text-slate-600 dark:text-slate-300 text-lg font-medium block"
-              >
-                {words[index].subtitle}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-        </motion.div>
+          Pour freelances, artisans et petits business qui veulent un site ou une app native, livré vite et propre.
+        </motion.p>
 
-        {/* CTA buttons */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="font-mono text-sm text-purple-500 dark:text-purple-400 mb-10"
+        >
+          À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">390€</span>
+          <span className="text-slate-400 line-through ml-2">1 500€</span>
+          <span className="text-slate-400 mx-2">·</span>
+          apps iOS dès <span className="font-bold text-gray-900 dark:text-white">2 990€+</span>
+        </motion.p>
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
+          transition={{ delay: 0.85, duration: 0.55 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
             href="#devis"
             className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
           >
-            Demander un devis
+            Estimer mon projet
           </a>
           <a
             href="#projets"
             className="px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-purple-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
           >
-            Voir mes projets
+            Voir les projets
           </a>
         </motion.div>
       </div>
-
     </section>
   )
 }

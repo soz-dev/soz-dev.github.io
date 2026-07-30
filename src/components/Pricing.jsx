@@ -69,7 +69,7 @@ const plans = [
     accentColor: '#06b6d4',
     popular: false,
   },
-    {
+  {
     name: 'App web / outil',
     originalPrice: '12 000',
     price: '2 990',
@@ -88,7 +88,7 @@ const plans = [
   },
   {
     name: 'App iOS',
-    originalPrice: '8 000',
+    originalPrice: '10 000',
     price: '2 990',
     suffix: '+',
     description: 'App native Swift / SwiftUI — de l’idée à l’App Store (Motastic, Dev Mastery…).',

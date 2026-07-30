@@ -2,20 +2,22 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 
 const AdminApp = lazy(() => import('./pages/AdminApp'))
 
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Stats from "./components/Stats"
-import Services from "./components/Services"
-import Stack from "./components/Stack"
-import Process from "./components/Process"
-import DevisPublic from "./components/DevisPublic"
-import About from "./components/About"
-import Projects from "./components/Projects"
-import WebShowcase from "./components/WebShowcase"
-import Pricing from "./components/Pricing"
-import FAQ from "./components/FAQ"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import EstimateurRapide from './components/EstimateurRapide'
+import CaseStudies from './components/CaseStudies'
+import Services from './components/Services'
+import Process from './components/Process'
+import WebShowcase from './components/WebShowcase'
+import Pricing from './components/Pricing'
+import Garanties from './components/Garanties'
+import DevisPublic from './components/DevisPublic'
+import Projects from './components/Projects'
+import About from './components/About'
+import FAQ from './components/FAQ'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import StickyCta from './components/StickyCta'
 
 function PublicApp() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark')
@@ -30,21 +32,23 @@ function PublicApp() {
   }, [isDark])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#030712]">
+    <div className="min-h-screen bg-white dark:bg-[#030712] pb-20 md:pb-0">
       <Navbar isDark={isDark} toggleDark={() => setIsDark(d => !d)} />
       <Hero />
-      <Stats />
+      <EstimateurRapide />
+      <CaseStudies />
       <Services />
-      <Stack />
-      <Process />
-      <DevisPublic />
-      <About />
-      <Projects />
       <WebShowcase />
       <Pricing />
+      <Garanties />
+      <DevisPublic />
+      <Projects />
+      <Process />
+      <About />
       <FAQ />
       <Contact />
       <Footer />
+      <StickyCta />
     </div>
   )
 }
