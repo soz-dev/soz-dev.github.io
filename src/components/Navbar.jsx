@@ -21,22 +21,16 @@ export default function Navbar({ isDark, toggleDark }) {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="flex items-center gap-2.5 select-none"
+          className="flex items-center gap-2.5 select-none min-w-0"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="SOZ_DEV — accueil"
         >
           <img
-            src="/logo-icon-light.png"
-            alt=""
-            className="h-8 w-8 dark:hidden"
-            width={32}
-            height={32}
-          />
-          <img
-            src="/logo-icon.png"
-            alt=""
-            className="h-8 w-8 hidden dark:block"
-            width={32}
-            height={32}
+            src="/logo-mark.png"
+            alt="SOZ_DEV"
+            className="h-9 w-9 object-contain flex-shrink-0"
+            width={36}
+            height={36}
           />
           <span
             className="gradient-text"

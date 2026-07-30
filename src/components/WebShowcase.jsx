@@ -12,7 +12,7 @@ function MiniRestaurant() {
     ['Fondant chocolat', '14 €', 'Dessert'],
   ]
   return (
-    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#0c0a09', color: '#faf6ef', width: '100%', height: '100%', overflow: 'hidden', display: 'flex' }}>
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#0c0a09', color: '#faf6ef', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex' }}>
       {/* Left: full-bleed dish */}
       <div style={{ width: '42%', position: 'relative', flexShrink: 0 }}>
         <img loading="lazy" src={IMG('1414235077428-338989a2e8c0', 220, 280)} alt="Plat signature Bella Cucina" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
@@ -53,7 +53,7 @@ function MiniRestaurant() {
 // ── 2. Coach — asymmetric portrait + credentials (warm sage) ────────────────
 function MiniCoach() {
   return (
-    <div style={{ fontFamily: 'system-ui', background: '#f4f1eb', color: '#1a2e28', width: '100%', height: '100%', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 0.95fr' }}>
+    <div style={{ fontFamily: 'system-ui', background: '#f4f1eb', color: '#1a2e28', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'grid', gridTemplateColumns: '1fr 0.95fr' }}>
       <div style={{ padding: '10px 10px 8px', display: 'flex', flexDirection: 'column' }}>
         <p style={{ fontSize: 6, letterSpacing: 2.5, color: '#5c7a6e', margin: '0 0 4px', fontWeight: 700 }}>COACH ICF · PARIS</p>
         <h2 style={{ fontSize: 15, fontWeight: 800, margin: '0 0 4px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>Marie<br />Laurent</h2>
@@ -94,7 +94,7 @@ function MiniEcommerce() {
     [IMG('1434389677669-e08b4cac3105', 100, 100), 'Lunettes', '89 €', null, false],
   ]
   return (
-    <div style={{ fontFamily: 'system-ui', background: '#faf8f6', color: '#1a1a1a', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'system-ui', background: '#faf8f6', color: '#1a1a1a', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 9px', background: '#1a1a1a', color: '#fff' }}>
         <span style={{ fontWeight: 900, fontSize: 10, letterSpacing: 1 }}>LUXE<span style={{ color: '#e8a0bf' }}>SHOP</span></span>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 6.5 }}>
@@ -149,7 +149,7 @@ function MiniEcommerce() {
 // ── 4. SaaS — product landing + mini dashboard strip (indigo/slate) ─────────
 function MiniSaaS() {
   return (
-    <div style={{ fontFamily: 'system-ui', background: '#0b1220', color: '#e2e8f0', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'system-ui', background: '#0b1220', color: '#e2e8f0', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       {/* Marketing top bar */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 10px', borderBottom: '1px solid rgba(99,102,241,0.2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
@@ -207,7 +207,7 @@ function MiniArtisan() {
     [IMG('1621905251189-08b45d6a269e', 120, 80), 'Rénovation'],
   ]
   return (
-    <div style={{ fontFamily: 'system-ui', background: '#fff', color: '#0f1c2e', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'system-ui', background: '#fff', color: '#0f1c2e', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       {/* Sticky urgency bar */}
       <div style={{ background: '#f97316', color: '#fff', padding: '4px 9px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 7, fontWeight: 700 }}>
         <span>Intervention sous 45 min · Paris &amp; IDF</span>
@@ -249,7 +249,7 @@ function MiniArtisan() {
 // ── 6. Blog / Magazine — editorial masthead + columns (ink / cream) ─────────
 function MiniBlog() {
   return (
-    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f7f4ef', color: '#1a1a1a', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f7f4ef', color: '#1a1a1a', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       {/* Masthead */}
       <div style={{ textAlign: 'center', padding: '6px 8px 4px', borderBottom: '2px solid #1a1a1a' }}>
         <p style={{ fontSize: 5.5, letterSpacing: 3, margin: '0 0 2px', fontFamily: 'system-ui', color: '#666' }}>VENDREDI · ÉDITION DIGITALE</p>
@@ -291,7 +291,7 @@ function MiniBlog() {
 function MiniCabinet() {
   const domaines = ['Affaires', 'Immobilier', 'Travail', 'Fiscal', 'Pénal']
   return (
-    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f5f2eb', color: '#0f1f3d', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f5f2eb', color: '#0f1f3d', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       <div style={{ background: '#0f1f3d', padding: '8px 10px', textAlign: 'center' }}>
         <p style={{ fontSize: 5.5, letterSpacing: 3, color: '#c9a84c', margin: '0 0 2px', fontFamily: 'system-ui' }}>CABINET D&apos;AVOCATS · PARIS</p>
         <p style={{ fontSize: 12, fontWeight: 700, color: '#fff', margin: 0, letterSpacing: 1 }}>DUPONT <span style={{ color: '#c9a84c', fontWeight: 400 }}>&amp;</span> ASSOCIÉS</p>
@@ -333,7 +333,7 @@ function MiniCabinet() {
 // ── 8. Portfolio — creative masonry + oversized type (noir / lime) ───────────
 function MiniPortfolio() {
   return (
-    <div style={{ fontFamily: 'system-ui', background: '#0a0a0a', color: '#fff', width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+    <div style={{ fontFamily: 'system-ui', background: '#0a0a0a', color: '#fff', width: '100%', minHeight: 580, height: 'auto', overflow: 'visible', position: 'relative' }}>
       {/* Oversized brand watermark */}
       <p style={{ position: 'absolute', top: -4, left: 6, fontSize: 42, fontWeight: 900, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.04)', margin: 0, lineHeight: 1, zIndex: 0, pointerEvents: 'none' }}>LÉNA</p>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -385,9 +385,9 @@ function BrowserFrame({ url, label, tags, children, delay }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay }}
-      className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/8 shadow-lg hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+      className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/8 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
     >
-      <div className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-[#0f0f1a] border-b border-gray-200 dark:border-white/8">
+      <div className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-[#0f0f1a] border-b border-gray-200 dark:border-white/8 flex-shrink-0">
         <div className="flex gap-1.5 flex-shrink-0">
           <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
@@ -396,14 +396,21 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <div className="flex-1 mx-1.5 bg-white/60 dark:bg-white/8 rounded-full px-3 py-0.5 text-[10px] text-gray-400 dark:text-slate-500 font-mono truncate">{url}</div>
         <Monitor size={10} className="text-gray-400 dark:text-slate-600 flex-shrink-0" />
       </div>
-      <div style={{ height: 258, overflow: 'hidden', position: 'relative' }}>{children}</div>
-      <div className="px-3.5 py-2.5 bg-gray-50 dark:bg-[#07070f] border-t border-gray-200 dark:border-white/8">
-        <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5">{label}</p>
+      {/* Scrollable preview — user can see the full mock */}
+      <div
+        className="relative bg-white dark:bg-[#050508] showcase-scroll"
+        style={{ height: 320, overflowY: 'auto', overflowX: 'hidden', WebkitOverflowScrolling: 'touch' }}
+      >
+        <div style={{ height: 580 }}>{children}</div>
+      </div>
+      <div className="px-3.5 py-2.5 bg-gray-50 dark:bg-[#07070f] border-t border-gray-200 dark:border-white/8 flex-shrink-0">
+        <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{label}</p>
         <div className="flex flex-wrap gap-1.5">
           {tags.map(t => (
             <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 font-mono">{t}</span>
           ))}
         </div>
+        <p className="text-[10px] text-slate-400 mt-1.5 font-mono">Faites défiler pour voir tout l&apos;exemple ↓</p>
       </div>
     </motion.div>
   )
@@ -441,8 +448,8 @@ export default function WebShowcase() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre secteur,{' '}<span className="gradient-text">votre site</span>
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
-            8 exemples de ce qu&apos;on peut construire. Chaque site est unique, conçu sur-mesure pour votre activité et vos clients.
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '520px', margin: '0 auto' }}>
+            Huit directions différentes — boutique, vitrine, SaaS, portfolio… Faites défiler chaque aperçu pour voir l&apos;exemple complet.
           </p>
         </motion.div>
 

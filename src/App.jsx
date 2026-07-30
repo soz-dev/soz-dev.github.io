@@ -5,7 +5,6 @@ const AdminApp = lazy(() => import('./pages/AdminApp'))
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import EstimateurRapide from './components/EstimateurRapide'
-import CaseStudies from './components/CaseStudies'
 import Services from './components/Services'
 import Process from './components/Process'
 import WebShowcase from './components/WebShowcase'
@@ -36,7 +35,6 @@ function PublicApp() {
       <Navbar isDark={isDark} toggleDark={() => setIsDark(d => !d)} />
       <Hero />
       <EstimateurRapide />
-      <CaseStudies />
       <Services />
       <WebShowcase />
       <Pricing />
