@@ -80,6 +80,18 @@ export function calculateDevis(q) {
     if (INTEGRATIONS_PRIX[i]) lignes.push({ ...INTEGRATIONS_PRIX[i] })
   }
 
+  // Supplément délai : plus c'est court, plus c'est cher
+  const DELAI_SURCHARGE = { 'urgent': 0.40, '2-3-mois': 0.15 }
+  const delaiRate = DELAI_SURCHARGE[q.delai]
+  if (delaiRate) {
+    const baseAvantDelai = lignes.reduce((s, l) => s + l.montant, 0)
+    const surcharge = Math.round(baseAvantDelai * delaiRate)
+    const label = q.delai === 'urgent'
+      ? 'Supplément urgence (< 1 mois · +40%)'
+      : 'Supplément délai serré (2-3 mois · +15%)'
+    lignes.push({ label, montant: surcharge, urgence: true })
+  }
+
   const sousTotal = lignes.reduce((s, l) => s + l.montant, 0)
   const acompte = Math.round(sousTotal * 0.3)
 
