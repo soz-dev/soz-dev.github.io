@@ -4,13 +4,14 @@ import AdminLayout from '../components/admin/AdminLayout'
 import DashboardPage from '../components/admin/DashboardPage'
 import ClientsPage from '../components/admin/ClientsPage'
 import ProjectPage from '../components/admin/ProjectPage'
-import { getSession, onAuthChange, signOut } from '../lib/supabaseAdmin'
+import { onAuthChange, signOut, requireAdminSession, isAllowedAdminSession } from '../lib/supabaseAdmin'
 
 export default function AdminApp() {
   const [authed, setAuthed] = useState(false)
   const [bootstrapping, setBootstrapping] = useState(true)
   const [nav, setNav] = useState({ view: 'dashboard' })
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') !== 'light')
+  const [denied, setDenied] = useState('')
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark)
@@ -20,12 +21,25 @@ export default function AdminApp() {
     let unsub = () => {}
     ;(async () => {
       try {
-        const session = await getSession()
+        const session = await requireAdminSession()
         setAuthed(!!session)
       } finally {
         setBootstrapping(false)
       }
-      unsub = onAuthChange((session) => setAuthed(!!session))
+      unsub = onAuthChange(async (session) => {
+        if (!session) {
+          setAuthed(false)
+          return
+        }
+        if (!isAllowedAdminSession(session)) {
+          await signOut()
+          setAuthed(false)
+          setDenied('Ce compte n’est pas autorisé à accéder à l’admin.')
+          return
+        }
+        setDenied('')
+        setAuthed(true)
+      })
     })()
     return () => unsub()
   }, [])
@@ -54,8 +68,14 @@ export default function AdminApp() {
     )
   }
 
-  if (!authed) return <AdminLogin onLogin={() => setAuthed(true)} />
-
+  if (!authed) {
+    return (
+      <AdminLogin
+        onLogin={() => { setDenied(''); setAuthed(true) }}
+        initialError={denied}
+      />
+    )
+  }
   return (
     <AdminLayout view={nav.view} go={go} onLogout={logout} isDark={isDark} toggleDark={toggleDark}>
       {nav.view === 'dashboard' && <DashboardPage go={go} />}

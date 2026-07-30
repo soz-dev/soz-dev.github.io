@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Lock, ArrowLeft } from 'lucide-react'
 import { signIn } from '../../lib/supabaseAdmin'
 import { Button, Input, Badge } from '../../design-system'
 
-export default function AdminLogin({ onLogin }) {
+export default function AdminLogin({ onLogin, initialError = '' }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useState(initialError)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (initialError) setError(initialError)
+  }, [initialError])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,6 +24,10 @@ export default function AdminLogin({ onLogin }) {
       const msg = err?.message || 'Identifiants incorrects.'
       if (/missing|invalid api|failed to fetch|fetch/i.test(msg) || !import.meta.env.VITE_ADMIN_SUPABASE_URL) {
         setError('Connexion impossible : vérifiez la config Supabase (variables d’environnement).')
+      } else if (/autorisé|authorized/i.test(msg)) {
+        setError('Accès refusé : seul le compte admin autorisé peut se connecter.')
+      } else if (/invalid login|invalid credentials|email|password/i.test(msg)) {
+        setError('Email ou mot de passe incorrect.')
       } else {
         setError(msg)
       }
@@ -96,19 +104,9 @@ export default function AdminLogin({ onLogin }) {
           </Button>
 
           <p className="text-[11px] text-center text-slate-400 pt-1">
-            Compte Supabase Auth uniquement · pas d&apos;inscription publique
+            Accès réservé · compte autorisé uniquement
           </p>
         </form>
-
-        <div className="mt-6 flex flex-wrap justify-center gap-3 text-xs">
-          <a href="/?mode=ds" className="text-slate-500 hover:text-brand-500 transition-colors font-medium">
-            Design system →
-          </a>
-          <span className="text-slate-300 dark:text-slate-600">·</span>
-          <a href="/#devis" className="text-slate-500 hover:text-brand-500 transition-colors font-medium">
-            Formulaire devis →
-          </a>
-        </div>
       </div>
     </div>
   )

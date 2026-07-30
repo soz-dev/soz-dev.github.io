@@ -37,15 +37,33 @@ alter table projets add column if not exists paiements jsonb
 create index if not exists projets_client_id_idx on projets(client_id);
 create index if not exists projets_updated_at_idx on projets(updated_at desc);
 
--- Row Level Security (seul l'utilisateur authentifié peut accéder)
+-- =============================================
+-- SÉCURITÉ : seul VOTRE email Auth a accès
+-- Désactiver aussi : Authentication > Providers >
+-- Email > "Enable sign ups" = OFF
+-- =============================================
+
 alter table clients enable row level security;
 alter table projets enable row level security;
 
+-- Révoquer tout accès anonyme
+revoke all on table clients from anon;
+revoke all on table projets from anon;
+grant select, insert, update, delete on table clients to authenticated;
+grant select, insert, update, delete on table projets to authenticated;
+
 drop policy if exists "Admin clients" on clients;
 drop policy if exists "Admin projets" on projets;
+drop policy if exists "Admin only clients" on clients;
+drop policy if exists "Admin only projets" on projets;
 
-create policy "Admin clients" on clients
-  for all to authenticated using (true) with check (true);
+-- ⚠️ Remplacez l’email si besoin (doit matcher le user Auth Supabase)
+create policy "Admin only clients" on clients
+  for all to authenticated
+  using ((auth.jwt() ->> 'email') = 'sofyan.devpro@gmail.com')
+  with check ((auth.jwt() ->> 'email') = 'sofyan.devpro@gmail.com');
 
-create policy "Admin projets" on projets
-  for all to authenticated using (true) with check (true);
+create policy "Admin only projets" on projets
+  for all to authenticated
+  using ((auth.jwt() ->> 'email') = 'sofyan.devpro@gmail.com')
+  with check ((auth.jwt() ->> 'email') = 'sofyan.devpro@gmail.com');

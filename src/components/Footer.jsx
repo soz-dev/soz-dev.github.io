@@ -55,13 +55,6 @@ export default function Footer() {
           >
             Email
           </a>
-          <a
-            href="/?mode=admin"
-            className="hover:text-gray-900 dark:hover:text-white transition-colors font-mono text-xs tracking-wide"
-            title="Espace admin"
-          >
-            Admin
-          </a>
         </div>
       </div>
     </footer>

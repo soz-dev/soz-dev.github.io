@@ -38,6 +38,7 @@ jobs:
         env:
           VITE_ADMIN_SUPABASE_URL: ${{ secrets.VITE_ADMIN_SUPABASE_URL }}
           VITE_ADMIN_SUPABASE_ANON_KEY: ${{ secrets.VITE_ADMIN_SUPABASE_ANON_KEY }}
+          VITE_ADMIN_ALLOWED_EMAIL: ${{ secrets.VITE_ADMIN_ALLOWED_EMAIL }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
