@@ -32,7 +32,7 @@ const TYPES = [
   { id: 'site-vitrine', label: 'Page d’accueil', hint: '1 page', price: PRIX_BASE['site-vitrine'] },
   { id: 'site-vitrine-multi', label: 'Vitrine', hint: '2–5 pages', price: PRIX_BASE['site-vitrine-multi'] },
   { id: 'site-pro', label: 'Site Pro', hint: 'Complet', price: PRIX_BASE['site-pro'] },
-  { id: 'ecommerce', label: 'Boutique', hint: 'Vente en ligne', price: PRIX_BASE.ecommerce },
+  { id: 'ecommerce', label: 'Boutique', hint: 'Vente en ligne', price: PRIX_BASE.ecommerce, suffix: '+' },
   { id: 'app-web', label: 'Outil web', hint: 'Espace client', price: PRIX_BASE['app-web'], suffix: '+' },
   { id: 'app-ios', label: 'App iPhone', hint: 'App Store', price: PRIX_BASE['app-ios'], suffix: '+' },
 ]

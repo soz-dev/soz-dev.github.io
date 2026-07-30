@@ -8,7 +8,8 @@ const RESULTS = {
   boutique: {
     title: 'Boutique en ligne',
     price: PRIX_BASE.ecommerce,
-    blurb: 'Catalogue, panier et paiement sécurisé pour vendre sans usine à gaz.',
+    suffix: '+',
+    blurb: 'Catalogue, panier et paiement sécurisé. Tarif de départ : le devis affine selon votre catalogue.',
     to: '/tarifs',
     cta: 'Voir le tarif boutique',
   },
@@ -227,7 +228,7 @@ export default function GuideOffre() {
                   {result.title}
                 </h3>
                 <p className="font-display text-4xl font-bold gradient-text mb-3">
-                  {result.price.toLocaleString('fr-FR')}€
+                  {result.price.toLocaleString('fr-FR')}€{result.suffix || ''}
                 </p>
                 <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto mb-8 leading-relaxed">
                   {result.blurb}

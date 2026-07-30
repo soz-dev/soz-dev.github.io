@@ -23,7 +23,7 @@ const services = [
     badge: 'Vente en ligne',
     title: 'Boutique en ligne',
     description:
-      'Catalogue, panier et paiement sécurisé. Vous suivez vos commandes simplement, sans usine à gaz.',
+      'Catalogue, panier et paiement sécurisé. Suivi des commandes inclus. Projet plus engagé qu’une vitrine : on cadre le besoin avant de chiffrer.',
     features: [
       { icon: ShoppingBag, text: 'Catalogue + panier' },
       { icon: Zap, text: 'Paiement en ligne sécurisé' },

@@ -2,7 +2,7 @@ export const PRIX_BASE = {
   'site-vitrine':       390,
   'site-vitrine-multi': 690,
   'site-pro':           1290,
-  'ecommerce':          1990,
+  'ecommerce':          3990,
   'app-web':            2990,
   'app-ios':            2990,
 }
@@ -41,9 +41,9 @@ const PAIEMENT_EXTRA = {
 
 /** Volume catalogue boutique (au-delà du socle inclus) */
 const PRODUITS_PRIX = {
-  '21-100':  { label: 'Catalogue 21–100 produits', montant: 150 },
-  '100-500': { label: 'Catalogue 100–500 produits', montant: 350 },
-  '500+':    { label: 'Catalogue 500+ produits', montant: 590 },
+  '21-100':  { label: 'Catalogue 21–100 produits', montant: 290 },
+  '100-500': { label: 'Catalogue 100–500 produits', montant: 690 },
+  '500+':    { label: 'Catalogue 500+ produits', montant: 1290 },
 }
 
 /**

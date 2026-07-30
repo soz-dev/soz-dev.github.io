@@ -60,17 +60,19 @@ const plans = [
   },
   {
     name: 'Boutique en ligne',
-    originalPrice: '8 000',
     price: fmt(PRIX_BASE.ecommerce),
-    description: 'Vendre en ligne simplement : catalogue, panier, paiement sécurisé.',
+    suffix: '+',
+    noPromo: true,
+    description: 'Catalogue, panier, paiement sécurisé et suivi des commandes. Projet plus technique : tarif de départ, affiné selon le catalogue et vos besoins.',
     features: [
-      'Catalogue produits',
+      'Catalogue produits (socle inclus)',
       'Panier + paiement en ligne',
       'Suivi des commandes',
       'Emails de confirmation',
       'Mobile & mise en ligne',
+      'Devis selon le volume & options',
     ],
-    delay: '2–4 semaines',
+    delay: '4–8 semaines',
     accentColor: '#06b6d4',
     popular: false,
   },
@@ -163,13 +165,18 @@ export default function Pricing() {
 
               <div className="flex items-end gap-2 mb-3">
                 <div className="flex flex-col">
-                  <span className="text-sm text-slate-400 line-through font-medium">{plan.originalPrice}€</span>
+                  {plan.originalPrice && !plan.noPromo && (
+                    <span className="text-sm text-slate-400 line-through font-medium">{plan.originalPrice}€</span>
+                  )}
                   <div className="flex items-end gap-1">
                     <span className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{plan.price}€</span>
                     {plan.suffix && (
                       <span className="text-slate-400 font-medium text-lg mb-0.5">{plan.suffix}</span>
                     )}
                   </div>
+                  {plan.noPromo && (
+                    <span className="text-[11px] text-slate-400 mt-1 font-medium">À partir de · sur devis</span>
+                  )}
                 </div>
               </div>
 

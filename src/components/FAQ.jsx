@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: 'Quel délai pour un site ou une app iPhone ?',
-    a: 'Page d’accueil : 3–7 jours. Vitrine : 1–2 semaines. Site Pro / boutique : 2–4 semaines. Outil web ou app iPhone : selon le projet (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
+    a: 'Page d’accueil : 3–7 jours. Vitrine : 1–2 semaines. Site Pro : 2–3 semaines. Boutique en ligne : souvent 4–8 semaines. Outil web ou app iPhone : selon le projet (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
   },
   {
     q: 'Proposez-vous aussi des apps iPhone ?',
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'C’est quoi une boutique en ligne chez vous ?',
-    a: 'Une boutique légère : catalogue, panier, paiement sécurisé et suivi des commandes. Idéale pour démarrer la vente en ligne sans usine à gaz.',
+    a: 'Un vrai projet e-commerce : catalogue, panier, paiement sécurisé et suivi des commandes. Ce n’est pas un template à 2 000 € : le tarif démarre plus haut et s’affine selon le volume de produits et vos besoins.',
   },
   {
     q: 'Le chat client, c’est inclus ?',
