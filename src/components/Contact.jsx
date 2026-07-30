@@ -37,7 +37,7 @@ export default function Contact() {
           className="text-center mb-12"
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase block mb-4">
-            // parlons-en
+            Parlons-en
           </span>
           <h2 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Vous avez un projet{' '}

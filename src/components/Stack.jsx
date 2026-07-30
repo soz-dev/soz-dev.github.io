@@ -27,7 +27,7 @@ export default function Stack() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // mon arsenal
+            Mon arsenal
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Technologies</h2>
         </motion.div>

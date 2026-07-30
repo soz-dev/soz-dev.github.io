@@ -83,7 +83,7 @@ export default function Projects() {
           style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // réalisations
+            Réalisations
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Projets</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">

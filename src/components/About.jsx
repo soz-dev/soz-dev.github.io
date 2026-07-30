@@ -29,7 +29,7 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-              // à propos
+              À propos
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Derrière le code

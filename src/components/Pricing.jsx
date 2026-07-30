@@ -122,7 +122,7 @@ export default function Pricing() {
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // investissement
+            Investissement
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-4" style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}>
@@ -242,7 +242,7 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          // Tous les projets incluent 1 mois de support après livraison · Acompte 30% au démarrage
+          Tous les projets incluent 1 mois de support après livraison · Acompte 30% au démarrage
         </motion.p>
       </div>
     </section>
