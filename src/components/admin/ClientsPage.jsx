@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { supabase } from '../../lib/supabaseAdmin'
+import { db } from '../../lib/adminDb'
 import { Plus, ArrowLeft, FolderPlus, ChevronRight, Trash2, Mail, Phone } from 'lucide-react'
 
 const STATUS_BADGE = {
@@ -39,36 +39,32 @@ export default function ClientsPage({ go, openClient }) {
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const loadClients = useCallback(async () => {
-    const { data } = await supabase.from('clients').select('*').order('created_at', { ascending: false })
-    setClients(data || [])
+  const loadClients = useCallback(() => {
+    setClients(db.getClients())
     setLoading(false)
   }, [])
 
-  const loadProjects = useCallback(async (clientId) => {
-    const { data } = await supabase.from('projets').select('*').eq('client_id', clientId).order('updated_at', { ascending: false })
-    setProjects(data || [])
+  const loadProjects = useCallback((clientId) => {
+    setProjects(db.getProjectsByClient(clientId))
   }, [])
 
   useEffect(() => { loadClients() }, [loadClients])
   useEffect(() => { if (selected) loadProjects(selected.id) }, [selected, loadProjects])
 
-  const createClient = async (e) => {
+  const createClient = (e) => {
     e.preventDefault()
     setSaving(true)
-    const { data, error } = await supabase.from('clients').insert([form]).select().single()
-    if (!error) {
-      setClients(c => [data, ...c])
-      setForm({ nom: '', email: '', telephone: '', entreprise: '', notes: '' })
-      setShowForm(false)
-      setSelected(data)
-    }
+    const newClient = db.createClient(form)
+    setClients(c => [newClient, ...c])
+    setForm({ nom: '', email: '', telephone: '', entreprise: '', notes: '' })
+    setShowForm(false)
+    setSelected(newClient)
     setSaving(false)
   }
 
-  const deleteClient = async (id) => {
+  const deleteClient = (id) => {
     if (!confirm('Supprimer ce client et tous ses projets ?')) return
-    await supabase.from('clients').delete().eq('id', id)
+    db.deleteClient(id)
     if (selected?.id === id) setSelected(null)
     setClients(c => c.filter(x => x.id !== id))
   }

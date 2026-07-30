@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../../lib/supabaseAdmin'
+import { db } from '../../lib/adminDb'
 import { Users, FolderOpen, TrendingUp, ArrowRight, Clock } from 'lucide-react'
 
 const STATUS_BADGE = {
@@ -30,25 +30,9 @@ export default function DashboardPage({ go }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    async function load() {
-      const [
-        { count: nbClients },
-        { count: nbProjets },
-        { data: recentProjets },
-      ] = await Promise.all([
-        supabase.from('clients').select('*', { count: 'exact', head: true }),
-        supabase.from('projets').select('*', { count: 'exact', head: true }),
-        supabase.from('projets')
-          .select('*, clients(nom, email)')
-          .order('updated_at', { ascending: false })
-          .limit(6),
-      ])
-      const ca = (recentProjets || []).reduce((s, p) => s + (p.montant_total || 0), 0)
-      setStats({ clients: nbClients || 0, projets: nbProjets || 0, ca })
-      setRecents(recentProjets || [])
-      setLoading(false)
-    }
-    load()
+    setStats(db.stats())
+    setRecents(db.getRecentProjects(6))
+    setLoading(false)
   }, [])
 
   if (loading) {
