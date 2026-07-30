@@ -3,10 +3,15 @@ import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
 
 const links = [
-  { label: 'Services',  href: '#services'  },
-  { label: 'Projets',   href: '#projets'   },
-  { label: 'Tarifs',    href: '#tarifs'    },
-  { label: 'Contact',   href: '#contact'   },
+  { label: 'Services',      href: '#services'   },
+  { label: 'Technologies',  href: '#stack'      },
+  { label: 'Processus',    href: '#processus'  },
+  { label: 'Projets',      href: '#projets'    },
+  { label: 'Exemples',     href: '#exemples'   },
+  { label: 'Tarifs',       href: '#tarifs'     },
+  { label: 'Devis',        href: '#devis'      },
+  { label: 'FAQ',          href: '#faq'        },
+  { label: 'Contact',      href: '#contact'    },
 ]
 
 export default function Navbar({ isDark, toggleDark }) {
@@ -31,19 +36,19 @@ export default function Navbar({ isDark, toggleDark }) {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 tracking-wide font-medium"
+              className="text-xs text-slate-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 tracking-wide font-medium whitespace-nowrap"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           {/* Theme toggle */}
           <button
             onClick={toggleDark}
@@ -52,18 +57,10 @@ export default function Navbar({ isDark, toggleDark }) {
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 px-5 py-2 text-sm font-medium rounded-full border border-purple-400/60 dark:border-purple-500/40 text-purple-600 dark:text-purple-400 hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 transition-all duration-300"
-          >
-            Me contacter
-          </a>
         </div>
 
-        {/* Mobile right: toggle + hamburger */}
-        <div className="md:hidden flex items-center gap-2">
+        {/* Mobile/tablet right: toggle + hamburger */}
+        <div className="lg:hidden flex items-center gap-2">
           <button
             onClick={toggleDark}
             className="w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10 text-slate-500 dark:text-slate-400"
@@ -89,7 +86,7 @@ export default function Navbar({ isDark, toggleDark }) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white dark:bg-[#0a0a12] border-t border-gray-100 dark:border-white/5 px-6 py-4 flex flex-col gap-4"
+          className="lg:hidden bg-white dark:bg-[#0a0a12] border-t border-gray-100 dark:border-white/5 px-6 py-4 grid grid-cols-2 gap-x-8 gap-y-4"
         >
           {links.map((link) => (
             <a
@@ -101,13 +98,14 @@ export default function Navbar({ isDark, toggleDark }) {
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
-          >
-            Me contacter →
-          </a>
+          <div className="col-span-2 pt-2 border-t border-gray-100 dark:border-white/5">
+            <button
+              onClick={() => { toggleDark(); setMenuOpen(false) }}
+              className="text-sm text-slate-500 dark:text-slate-400 font-medium"
+            >
+              {isDark ? '☀️ Mode clair' : '🌙 Mode sombre'}
+            </button>
+          </div>
         </motion.div>
       )}
     </motion.nav>
