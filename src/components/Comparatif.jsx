@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Check, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const ROWS = [
   { label: 'Prix site vitrine', agence: '2 500 – 5 000 €', soz: '690 €' },
@@ -78,12 +79,12 @@ export default function Comparatif() {
           viewport={{ once: true }}
           className="mt-8 text-center"
         >
-          <a
-            href="#pack"
+          <Link
+            to="/tarifs#pack"
             className="inline-flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-brand-400 hover:opacity-80 transition-opacity"
           >
             Voir le pack clé en main →
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

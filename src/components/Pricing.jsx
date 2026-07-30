@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN, PRIX_MAINTENANCE_MOIS } from '../lib/pricingEngine'
+import { Link } from 'react-router-dom'
 
 /**
  * Prix sous le marché FR. Duo Sofyan + Cursor : web (React/Vite/Supabase/Stripe) + iOS (Swift/SwiftUI).
@@ -190,8 +191,8 @@ export default function Pricing() {
                 Délai : {plan.delay}
               </div>
 
-              <a
-                href="#devis"
+              <Link
+                to="/devis"
                 className="group inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02]"
                 style={{
                   background: `${plan.accentColor}15`,
@@ -209,7 +210,7 @@ export default function Pricing() {
               >
                 Estimer votre projet
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -223,9 +224,9 @@ export default function Pricing() {
         >
           1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de {PRIX_MAINTENANCE_MOIS} €/mois
           <br />
-          <a href="#pack" className="text-accent-600 dark:text-accent-400 hover:underline mt-2 inline-block">
+          <Link to="/tarifs#pack" className="text-accent-600 dark:text-accent-400 hover:underline mt-2 inline-block">
             Pack clé en main (site + hébergement + domaine) → {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
-          </a>
+          </Link>
         </motion.p>
       </div>
     </section>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { PRIX_BASE } from '../lib/pricingEngine'
+import { Link } from 'react-router-dom'
 
 const TYPES = [
   { id: 'site-vitrine', label: 'Landing', hint: '1 page', price: PRIX_BASE['site-vitrine'] },
@@ -189,13 +190,13 @@ export default function EstimateurRapide() {
                   Acompte 30&nbsp;% · solde à la livraison · 1 mois de support
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <a
-                    href="#devis"
+                  <Link
+                    to="/devis"
                     className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity"
                   >
                     Affiner le devis
                     <ArrowRight className="w-5 h-5" />
-                  </a>
+                  </Link>
                   <button
                     type="button"
                     onClick={reset}

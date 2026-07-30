@@ -1,13 +1,22 @@
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
 import ThemePicker from './ThemePicker'
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Tarifs', href: '#tarifs' },
-  { label: 'Projets', href: '#projets' },
+  { label: 'Services', to: '/services' },
+  { label: 'Tarifs', to: '/tarifs' },
+  { label: 'Projets', to: '/projets' },
+  { label: 'À propos', to: '/a-propos' },
 ]
+
+const navClass = ({ isActive }) =>
+  `text-xs tracking-wide font-medium whitespace-nowrap transition-colors duration-200 ${
+    isActive
+      ? 'text-brand-500 dark:text-brand-400'
+      : 'text-slate-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white'
+  }`
 
 export default function Navbar({ isDark, toggleDark }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -20,10 +29,9 @@ export default function Navbar({ isDark, toggleDark }) {
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#0a0a12]/90 backdrop-blur-md border-b border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none py-3.5"
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="flex items-center gap-2.5 select-none min-w-0"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="SOZ_DEV — accueil"
         >
           <img
@@ -39,17 +47,13 @@ export default function Navbar({ isDark, toggleDark }) {
           >
             SOZ_DEV
           </span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-4">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-xs text-slate-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 tracking-wide font-medium whitespace-nowrap"
-            >
+            <NavLink key={link.to} to={link.to} className={navClass}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
           <ThemePicker variant="nav" />
           <button
@@ -60,12 +64,12 @@ export default function Navbar({ isDark, toggleDark }) {
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <a
-            href="#devis"
+          <Link
+            to="/devis"
             className="px-5 py-2 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-xs font-semibold hover:opacity-90 transition-opacity"
           >
             Devis
-          </a>
+          </Link>
         </div>
 
         <div className="md:hidden flex items-center gap-2">
@@ -78,12 +82,12 @@ export default function Navbar({ isDark, toggleDark }) {
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <a
-            href="#devis"
+          <Link
+            to="/devis"
             className="px-4 py-2 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-xs font-semibold"
           >
             Devis
-          </a>
+          </Link>
           <button
             type="button"
             className="flex flex-col gap-1.5 p-2"
@@ -105,22 +109,24 @@ export default function Navbar({ isDark, toggleDark }) {
           className="md:hidden bg-white dark:bg-[#0a0a12] border-t border-gray-100 dark:border-white/5 px-6 py-4 flex flex-col gap-3"
         >
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <NavLink
+              key={link.to}
+              to={link.to}
               onClick={() => setMenuOpen(false)}
-              className="text-sm text-slate-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white font-medium py-1"
+              className={({ isActive }) =>
+                `text-sm font-medium py-1 ${isActive ? 'text-brand-500' : 'text-slate-600 dark:text-slate-400'}`
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
-          <a
-            href="#faq"
+          <Link
+            to="/contact"
             onClick={() => setMenuOpen(false)}
             className="text-sm text-slate-600 dark:text-slate-400 font-medium py-1"
           >
-            FAQ
-          </a>
+            Contact
+          </Link>
         </motion.div>
       )}
     </motion.nav>

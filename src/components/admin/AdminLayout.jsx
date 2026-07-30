@@ -19,8 +19,8 @@ const NAV = [
 ]
 
 const LINKS = [
-  { href: '/?mode=ds', label: 'Design system', icon: Palette },
-  { href: '/#devis', label: 'Devis public', icon: FileText },
+  { href: '/design-system', label: 'Design system', icon: Palette },
+  { href: '/devis', label: 'Devis public', icon: FileText },
   { href: '/', label: 'Voir le site', icon: ExternalLink },
 ]
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight, Sparkles } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
+import { Link } from 'react-router-dom'
 
 const INCLUS = [
   'Site vitrine 2–5 pages (design + code)',
@@ -55,19 +56,19 @@ export default function PackCleEnMain() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="#devis"
+                <Link
+                  to="/devis"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-accent-600 to-brand-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
                   Je veux ce pack
                   <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="#tarifs"
+                </Link>
+                <Link
+                  to="/tarifs"
                   className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-gray-200 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
                 >
                   Voir tous les tarifs
-                </a>
+                </Link>
               </div>
               <p className="text-[10px] text-slate-400 mt-5">
                 * Domaine standard inclus (extension courante). Extensions premium sur devis.

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Monitor } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const IMG = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format&q=75`
 
@@ -914,12 +915,12 @@ export default function WebShowcase() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <a
-            href="#devis"
+          <Link
+            to="/devis"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
           >
             Un site comme celui-ci pour vous → devis
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

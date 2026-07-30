@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { PRIX_BASE } from '../lib/pricingEngine'
 
 export default function Hero() {
@@ -65,18 +66,18 @@ export default function Hero() {
           transition={{ delay: 0.85, duration: 0.55 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#devis"
+          <Link
+            to="/devis"
             className="group px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-300 glow-purple"
           >
             Estimer votre projet
-          </a>
-          <a
-            href="#projets"
+          </Link>
+          <Link
+            to="/projets"
             className="px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-brand-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300"
           >
             Voir les projets
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Globe, Zap, ShoppingBag, LayoutTemplate, Layers, Database, FormInput, Search, Smartphone, Store, Palette } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const services = [
   {
@@ -91,9 +92,9 @@ export default function Services() {
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg leading-relaxed" style={{ maxWidth: '520px', margin: '0 auto', textAlign: 'center' }}>
             Web + iOS, livrés de A à Z : sites, boutiques Stripe, outils métier et apps natives.
           </p>
-          <a href="#devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-brand-400 transition-colors">
+          <Link to="/devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-brand-400 transition-colors">
             Estimer votre projet →
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div

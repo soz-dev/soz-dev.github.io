@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Mail, MessageCircle, FileText, Palette, Code2, Rocket, ArrowRight } from 'lucide-react'
 
 const steps = [
@@ -8,7 +9,7 @@ const steps = [
     number: '00',
     title: 'Formulaire de devis',
     description: "Commencez par remplir le formulaire en ligne : obtenez une estimation instantanée et soumettez votre projet directement par email.",
-    cta: { label: 'Remplir le formulaire', href: '#devis' },
+    cta: { label: 'Remplir le formulaire', to: '/devis' },
     featured: true,
   },
   {
@@ -98,8 +99,8 @@ export default function Process() {
                 <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">{step.title}</h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{step.description}</p>
                 {step.cta && (
-                  <a
-                    href={step.cta.href}
+                  <Link
+                    to={step.cta.to}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold mt-3 transition"
                     style={{ color: step.color }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
@@ -107,7 +108,7 @@ export default function Process() {
                   >
                     {step.cta.label}
                     <ArrowRight size={12} />
-                  </a>
+                  </Link>
                 )}
               </div>
             </motion.div>

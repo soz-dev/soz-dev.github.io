@@ -122,7 +122,7 @@ export default function DesignSystemPage() {
             </a>
           ))}
           <p className="pt-6 text-[10px] font-mono text-slate-400 leading-relaxed">
-            ?mode=ds
+            /design-system
             <br />
             tokens.css + composants
           </p>
@@ -323,7 +323,7 @@ export default function DesignSystemPage() {
             </div>
             <pre className="mt-6 p-4 rounded-xl bg-gray-900 text-slate-300 text-[11px] overflow-x-auto font-mono">
 {`import { Button } from './design-system'
-<Button href="#devis" as="a" variant="primary" size="lg">
+<Button href="/devis" as="a" variant="primary" size="lg">
   Estimer votre projet
 </Button>`}
             </pre>
