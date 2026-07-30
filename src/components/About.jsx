@@ -36,12 +36,12 @@ export default function About() {
             </h2>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base md:text-lg">
               Je suis <span className="font-semibold text-gray-900">Sofyan</span>, développeur
-              web &amp; iOS indépendant. Je crée des sites qui convertissent et des apps qui se
-              distinguent dès la première seconde sur l'App Store.
+              web &amp; iOS. Sites qui convertissent, boutiques Stripe, et apps natives
+              (Motastic, Dev Mastery…) — livrés en duo avec Cursor pour aller plus vite.
             </p>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm md:text-base">
-              Ce qui m'anime : transformer une idée brute en produit fini, utilisé par de vraies
-              personnes. Je travaille avec soin, du premier commit à la mise en ligne.
+              Ce qui m&apos;anime : transformer une idée brute en produit fini. Du premier commit
+              à la mise en ligne ou à l&apos;App Store.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {traits.map((t) => (

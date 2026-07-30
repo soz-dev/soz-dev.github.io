@@ -1,31 +1,31 @@
 export const PRIX_BASE = {
-  'site-vitrine':       690,
-  'site-vitrine-multi': 1390,
-  'site-pro':           2790,
-  'ecommerce':          3990,
-  'app-web':            5990,
-  'app-ios':            4990,
+  'site-vitrine':       390,
+  'site-vitrine-multi': 690,
+  'site-pro':           1290,
+  'ecommerce':          1990,
+  'app-web':            2990,
+  'app-ios':            2990,
 }
 
 export const LABEL_TYPE = {
-  'site-vitrine':       'Site vitrine \u2013 1 page',
+  'site-vitrine':       'Landing / vitrine 1 page',
   'site-vitrine-multi': 'Site vitrine multi-pages',
   'site-pro':           'Site professionnel',
-  'ecommerce':          'E-commerce',
-  'app-web':            'Application web',
-  'app-ios':            'Application iOS',
+  'ecommerce':          'Boutique Stripe',
+  'app-web':            'Application web / outil',
+  'app-ios':            'Application iOS native',
 }
 
 const INTEGRATIONS_PRIX = {
-  'Mailchimp / Brevo (+210\u20ac)': { label: 'Int\u00e9gration Mailchimp / Brevo', montant: 210 },
-  'CRM existant (+420\u20ac)':      { label: 'Int\u00e9gration CRM', montant: 420 },
-  'Zapier (+280\u20ac)':            { label: 'Int\u00e9gration Zapier', montant: 280 },
+  'Mailchimp / Brevo (+120€)': { label: 'Intégration Mailchimp / Brevo', montant: 120 },
+  'CRM existant (+220€)':      { label: 'Intégration CRM', montant: 220 },
+  'Zapier (+150€)':            { label: 'Intégration Zapier', montant: 150 },
 }
 
 const BASE_INCLUS = [
   'Responsive mobile & tablette',
   'HTTPS / SSL',
-  '1 mois de support apr\u00e8s livraison',
+  '1 mois de support après livraison',
 ]
 
 function getInclus(q) {
@@ -34,25 +34,25 @@ function getInclus(q) {
   if (foncs.some(f => f.startsWith('Formulaire de contact'))) list.push('Formulaire de contact')
   if (foncs.some(f => f.startsWith('Galerie photos'))) list.push('Galerie photos / portfolio')
   if ((q.auth || []).some(a => a.startsWith('Login email'))) list.push('Login email / mot de passe')
-  if (q.seo === 'Basique (inclus)') list.push('R\u00e9f\u00e9rencement SEO basique')
+  if (q.seo === 'Basique (inclus)') list.push('Référencement SEO basique')
   if ((q.integrations || []).some(i => i.startsWith('Google Analytics'))) list.push('Google Analytics')
-  if ((q.integrations || []).some(i => i.startsWith('Calendly'))) list.push('Int\u00e9gration Calendly')
+  if ((q.integrations || []).some(i => i.startsWith('Calendly'))) list.push('Intégration Calendly')
   return list
 }
 
 const FONCS_PRIX = {
-  'Calendrier / prise de RDV (+560\u20ac)':  { label: 'Calendrier / prise de RDV', montant: 560 },
-  'Syst\u00e8me de r\u00e9servation (+560\u20ac)': { label: 'Syst\u00e8me de r\u00e9servation', montant: 560 },
-  'Tableau de bord admin (+700\u20ac)':       { label: 'Tableau de bord admin', montant: 700 },
-  'Espace client / membres (+700\u20ac)':     { label: 'Espace client / membres', montant: 700 },
-  'Paiement en ligne (+560\u20ac)':           { label: 'Paiement en ligne (Stripe)', montant: 560 },
-  'Carte interactive / Maps (+280\u20ac)':    { label: 'Carte interactive', montant: 280 },
-  'Chat en direct (+420\u20ac)':              { label: 'Chat en direct', montant: 420 },
-  'Newsletter (+210\u20ac)':                  { label: 'Newsletter', montant: 210 },
-  'Notifications push (+280\u20ac)':          { label: 'Notifications push', montant: 280 },
-  'Recherche avanc\u00e9e (+420\u20ac)':      { label: 'Recherche avanc\u00e9e', montant: 420 },
-  'G\u00e9olocalisation (+280\u20ac)':        { label: 'G\u00e9olocalisation', montant: 280 },
-  'Export PDF / rapports (+420\u20ac)':       { label: 'Export PDF / rapports', montant: 420 },
+  'Calendrier / prise de RDV (+290€)':  { label: 'Calendrier / prise de RDV', montant: 290 },
+  'Système de réservation (+290€)':     { label: 'Système de réservation', montant: 290 },
+  'Tableau de bord admin (+390€)':      { label: 'Tableau de bord admin', montant: 390 },
+  'Espace client / membres (+390€)':    { label: 'Espace client / membres', montant: 390 },
+  'Paiement en ligne (+290€)':          { label: 'Paiement en ligne (Stripe)', montant: 290 },
+  'Carte interactive / Maps (+150€)':  { label: 'Carte interactive', montant: 150 },
+  'Chat widget (+90€)':                 { label: 'Chat (Crisp / Tawk)', montant: 90 },
+  'Newsletter (+90€)':                  { label: 'Newsletter', montant: 90 },
+  'Notifications push (+150€)':         { label: 'Notifications push', montant: 150 },
+  'Recherche avancée (+190€)':          { label: 'Recherche avancée', montant: 190 },
+  'Géolocalisation (+150€)':            { label: 'Géolocalisation', montant: 150 },
+  'Export PDF / rapports (+190€)':      { label: 'Export PDF / rapports', montant: 190 },
 }
 
 export function calculateDevis(q) {
@@ -61,26 +61,25 @@ export function calculateDevis(q) {
   const lignes = [{ label: LABEL_TYPE[q.type_projet] || q.type_projet, montant: PRIX_BASE[q.type_projet] || 0, base: true }]
   const add = (label, montant) => lignes.push({ label, montant })
 
-  if (q.logo === 'Non \u2013 \u00e0 cr\u00e9er (+420\u20ac)') add('Cr\u00e9ation de logo', 420)
-  if (q.maquettes === 'Oui (+290\u20ac)') add('Maquettes Figma interactives', 290)
-  if (q.blog === 'Oui (+280\u20ac)') add('Blog / actualit\u00e9s', 280)
-  if ((q.langues || []).includes('Anglais (+420\u20ac)')) add('Version anglaise', 420)
+  if (q.logo === 'Non – à créer (+190€)') add('Création de logo', 190)
+  if (q.maquettes === 'Oui (+150€)') add('Maquettes Figma interactives', 150)
+  if (q.blog === 'Oui (+120€)') add('Blog / actualités', 120)
+  if ((q.langues || []).includes('Anglais (+190€)')) add('Version anglaise', 190)
 
   for (const f of (q.fonc_principales || [])) {
     if (FONCS_PRIX[f]) lignes.push({ ...FONCS_PRIX[f] })
   }
 
-  if ((q.auth || []).includes('Google Sign-In (+210\u20ac)')) add('Authentification Google', 210)
-  if ((q.auth || []).includes('Apple Sign-In (+210\u20ac)')) add('Authentification Apple', 210)
-  if ((q.auth || []).includes('R\u00f4les utilisateurs (+420\u20ac)')) add('Gestion des r\u00f4les', 420)
-  if (q.livraison === 'Oui (+420\u20ac)') add('Gestion livraison / retours', 420)
-  if (q.seo === 'Avanc\u00e9 (+280\u20ac)') add('SEO avanc\u00e9', 280)
+  if ((q.auth || []).includes('Google Sign-In (+120€)')) add('Authentification Google', 120)
+  if ((q.auth || []).includes('Apple Sign-In (+120€)')) add('Authentification Apple', 120)
+  if ((q.auth || []).includes('Rôles utilisateurs (+220€)')) add('Gestion des rôles', 220)
+  if (q.livraison === 'Oui (+220€)') add('Gestion livraison / retours', 220)
+  if (q.seo === 'Avancé (+150€)') add('SEO avancé', 150)
 
   for (const i of (q.integrations || [])) {
     if (INTEGRATIONS_PRIX[i]) lignes.push({ ...INTEGRATIONS_PRIX[i] })
   }
 
-  // Supplément délai : plus c'est court, plus c'est cher
   const DELAI_SURCHARGE = { 'urgent': 0.40, '2-3-mois': 0.15 }
   const delaiRate = DELAI_SURCHARGE[q.delai]
   if (delaiRate) {

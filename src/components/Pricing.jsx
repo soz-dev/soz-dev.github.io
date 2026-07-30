@@ -1,110 +1,107 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
 
+/**
+ * Prix sous le marché FR. Duo Sofyan + Cursor : web (React/Vite/Supabase/Stripe) + iOS (Swift/SwiftUI).
+ */
 const plans = [
   {
-    name: 'Liberté Créative',
-    originalPrice: '990',
-    price: '690',
-    description: 'Vous définissez les fonctionnalités, le développeur a carte blanche sur le design. Résultat unique garanti.',
+    name: 'Landing',
+    originalPrice: '1 500',
+    price: '390',
+    description: 'Une page qui présente ton activité et convertit. Idéal pour démarrer vite.',
     features: [
-      'Design 100% libre au développeur',
-      'Vous spécifiez uniquement les fonctions',
-      'Site vitrine simple (1 page)',
-      'Responsive mobile & desktop',
-      'Livraison express garantie',
+      '1 page (~5 sections)',
+      'Design responsive',
+      'Formulaire de contact',
+      'Mise en ligne incluse',
+      'SEO de base',
     ],
-    delay: '1 semaine',
+    delay: '3–7 jours',
     accentColor: '#f59e0b',
     popular: false,
-    bestSeller: true,
   },
   {
     name: 'Vitrine',
-    originalPrice: '1 990',
-    price: '1 390',
-    description: 'Parfait pour présenter votre activité et capter vos premiers clients en ligne.',
+    originalPrice: '2 800',
+    price: '690',
+    description: 'Plusieurs pages pour expliquer ton offre et rassurer tes clients.',
     features: [
-      'Landing page ~5 sections',
-      'Design responsive mobile/desktop',
-      'Formulaire de contact',
-      'SEO on-page de base',
+      '2 à 5 pages',
+      'Design cohérent',
+      'Formulaire + SEO on-page',
       'Mise en ligne incluse',
+      '1 mois de support',
     ],
-    delay: '1-2 semaines',
+    delay: '1–2 semaines',
     accentColor: '#a855f7',
     popular: false,
-    bestSeller: false,
   },
   {
     name: 'Site Pro',
-    originalPrice: '3 990',
-    price: '2 790',
-    description: 'Pour les entreprises qui veulent un site complet, rapide et bien référencé.',
+    originalPrice: '5 500',
+    price: '1 290',
+    description: 'Site complet, rapide, prêt à évoluer — blog ou CMS léger possible.',
     features: [
-      'Jusqu\'à 8 pages',
-      'Blog / CMS intégré',
-      'Animations & micro-interactions',
-      'SEO avancé + sitemap XML',
-      'Google Analytics intégré',
+      'Jusqu’à 8 pages',
+      'Blog / contenus éditables',
+      'Animations soignées',
+      'SEO + Analytics',
+      '1 mois de support',
     ],
-    delay: '2-3 semaines',
+    delay: '2–3 semaines',
     accentColor: '#8b5cf6',
     popular: true,
-    bestSeller: false,
   },
   {
-    name: 'E-Commerce',
-    originalPrice: '5 690',
-    price: '3 990',
-    description: 'Une boutique en ligne clé en main, prête à vendre dès le premier jour.',
+    name: 'Boutique Stripe',
+    originalPrice: '8 000',
+    price: '1 990',
+    description: 'Vendre en ligne sans usine à gaz : catalogue, panier, paiement Stripe.',
     features: [
-      'Catalogue produits illimité',
-      'Paiement Stripe / PayPal',
-      'Gestion stock & commandes',
-      'Tableau de bord admin',
-      'Emails transactionnels',
+      'Catalogue produits',
+      'Panier + Stripe Checkout',
+      'Espace admin commandes',
+      'Emails de confirmation',
+      'Responsive + mise en ligne',
     ],
-    delay: '3-5 semaines',
+    delay: '2–4 semaines',
     accentColor: '#06b6d4',
     popular: false,
-    bestSeller: false,
   },
-  {
-    name: 'Application Web',
-    originalPrice: '8 490',
-    price: '5 990',
+    {
+    name: 'App web / outil',
+    originalPrice: '12 000',
+    price: '2 990',
     suffix: '+',
-    description: 'SaaS, espace membre ou outil métier — avec authentification et base de données.',
+    description: 'Espace membre, dashboard ou outil métier (auth + base de données).',
     features: [
-      'Authentification utilisateurs',
-      'Dashboard & espace membre',
-      'API REST & base de données',
-      'Logique métier avancée',
-      'Déploiement cloud inclus',
+      'Auth email (Supabase)',
+      'Dashboard / CRUD',
+      'Logique métier sur mesure',
+      'Déploiement cloud',
+      'Devis selon le scope',
     ],
     delay: 'Sur devis',
     accentColor: '#0891b2',
     popular: false,
-    bestSeller: false,
   },
   {
     name: 'App iOS',
-    originalPrice: '7 090',
-    price: '4 990',
+    originalPrice: '8 000',
+    price: '2 990',
     suffix: '+',
-    description: 'Application native Swift / SwiftUI, de l\'idée à la publication sur l\'App Store.',
+    description: 'App native Swift / SwiftUI — de l’idée à l’App Store (Motastic, Dev Mastery…).',
     features: [
       'App native Swift / SwiftUI',
-      'Design UI/UX inclus',
-      'Tests & débogage complets',
-      'Publication App Store incluse',
+      'UI/UX inclus',
+      'Tests & débogage',
+      'Publication App Store',
       'Compatible iOS 17+',
     ],
-    delay: '4-8 semaines',
+    delay: '4–8 semaines',
     accentColor: '#a855f7',
     popular: false,
-    bestSeller: false,
   },
 ]
 
@@ -112,7 +109,6 @@ export default function Pricing() {
   return (
     <section id="tarifs" className="py-28 bg-gray-50/60 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,14 +122,13 @@ export default function Pricing() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
           <p className="text-sm text-amber-600 dark:text-amber-400 font-medium mb-4">
-            Offre de lancement — tarifs réduits sur toutes les formules
+            Prix cassés vs le marché — web moderne + apps iOS natives
           </p>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
-            Des prix transparents, sans surprises. Chaque projet inclut un suivi personnalisé.
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '520px', margin: '0 auto' }}>
+            Les barrés = ordre de grandeur agence / freelance classique. Stack : React, Vite, Supabase, Swift.
           </p>
         </motion.div>
 
-        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {plans.map((plan, i) => (
             <motion.div
@@ -157,12 +152,10 @@ export default function Pricing() {
                 </div>
               )}
 
-              {/* Plan name */}
               <p className="text-xs font-mono mb-3 font-bold tracking-widest uppercase" style={{ color: plan.accentColor }}>
                 {plan.name}
               </p>
 
-              {/* Price */}
               <div className="flex items-end gap-2 mb-3">
                 <div className="flex flex-col">
                   <span className="text-sm text-slate-400 line-through font-medium">{plan.originalPrice}€</span>
@@ -177,7 +170,6 @@ export default function Pricing() {
 
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{plan.description}</p>
 
-              {/* Features */}
               <ul className="space-y-2.5 mb-7 flex-1">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
@@ -187,7 +179,6 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {/* Delay badge */}
               <div
                 className="text-xs font-mono px-3 py-1.5 rounded-lg mb-5 text-center"
                 style={{ background: `${plan.accentColor}10`, color: plan.accentColor }}
@@ -195,9 +186,8 @@ export default function Pricing() {
                 Délai : {plan.delay}
               </div>
 
-              {/* CTA */}
               <a
-                href="#contact"
+                href="#devis"
                 className="group inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02]"
                 style={{
                   background: `${plan.accentColor}15`,
@@ -213,14 +203,13 @@ export default function Pricing() {
                   e.currentTarget.style.borderColor = `${plan.accentColor}40`
                 }}
               >
-                Démarrer ce projet
+                Estimer mon projet
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom note */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -228,7 +217,7 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          Tous les projets incluent 1 mois de support après livraison · Acompte 30 % au démarrage
+          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle 200 €/mois
         </motion.p>
       </div>
     </section>

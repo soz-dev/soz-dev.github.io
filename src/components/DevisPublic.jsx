@@ -251,7 +251,7 @@ export default function DevisPublic() {
                           type="text"
                           value={contact.projet_nom}
                           onChange={e => setContact(c => ({ ...c, projet_nom: e.target.value }))}
-                          placeholder="Mon site e-commerce, mon app iOS..."
+                          placeholder="Mon site vitrine, ma boutique Stripe, mon app iOS..."
                           className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-purple-500 transition text-sm"
                         />
                       </div>

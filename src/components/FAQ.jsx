@@ -5,7 +5,7 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'Quel est le délai moyen de réalisation ?',
-    a: 'Un site vitrine prend 1 à 2 semaines, un site pro ou e-commerce 2 à 5 semaines. Pour une app iOS, comptez 4 à 8 semaines selon la complexité. Le planning précis est toujours inclus dans le devis.',
+    a: 'Landing / vitrine : quelques jours à 2 semaines. Site pro ou boutique Stripe : 2 à 4 semaines. App web ou iOS : selon le scope (souvent 4 à 8 semaines). Le planning précis est toujours dans le devis.',
   },
   {
     q: 'Comment se passe le paiement ?',
@@ -13,27 +13,27 @@ const faqs = [
   },
   {
     q: 'Je n\'ai pas de maquette ni de brief, est-ce un problème ?',
-    a: 'Pas du tout. La plupart des clients arrivent avec juste une idée. L\'échange initial sert précisément à structurer le projet ensemble. Je vous guide sur les choix visuels et fonctionnels.',
+    a: 'Pas du tout. La plupart des clients arrivent avec juste une idée. L\'échange initial sert à structurer le projet. On avance en duo (développement assisté par Cursor) pour aller vite sans sacrifier la qualité.',
   },
   {
     q: 'Puis-je modifier mon site moi-même après la livraison ?',
-    a: 'Oui, si un CMS est intégré (pour les blogs ou fiches produits). Sinon, je propose des sessions de formation ou des contrats de maintenance mensuelle pour toute modification.',
+    a: 'Oui, si un CMS est intégré (blogs ou fiches produits). Sinon, sessions de formation ou maintenance mensuelle pour les évolutions.',
   },
   {
     q: 'Proposez-vous un suivi ou de la maintenance après livraison ?',
-    a: '1 mois de support gratuit est inclus dans tous les projets. Au-delà, des contrats de maintenance mensuelle sont disponibles à 200 €/mois (mises à jour, sauvegardes, corrections).',
+    a: '1 mois de support gratuit est inclus. Au-delà, maintenance mensuelle à 200 €/mois (mises à jour, sauvegardes, corrections).',
   },
   {
     q: 'Est-ce que vous publiez l\'app sur l\'App Store à ma place ?',
-    a: 'Oui. La publication sur l\'App Store est incluse dans toutes les formules iOS. Vous avez besoin d\'un compte Apple Developer (99€/an), que je vous aide à créer si nécessaire.',
+    a: 'Oui. La publication App Store est incluse dans les formules iOS. Il vous faut un compte Apple Developer (99 €/an) — je vous aide à le créer si besoin.',
   },
   {
     q: 'Utilisez-vous WordPress ou des CMS comme Wix ?',
-    a: 'Non. Je travaille exclusivement avec des technologies modernes : React, Vite, Swift, Supabase. Cela garantit des performances optimales, un code maintenable et une sécurité bien supérieure aux CMS génériques.',
+    a: 'Non. Stack moderne : React, Vite, Supabase pour le web ; Swift / SwiftUI pour iOS. Plus rapide, plus maintenable, plus sûr que les CMS génériques.',
   },
   {
     q: 'Vous occupez-vous aussi du design et des textes ?',
-    a: 'Du design oui — création de l\'identité visuelle et des maquettes incluse. Pour les textes, je peux vous proposer une rédaction basique ou vous orienter vers un copywriter si le contenu est stratégique.',
+    a: 'Du design oui — identité visuelle et maquettes. Pour les textes, rédaction basique possible, ou orientation vers un copywriter si le contenu est stratégique.',
   },
 ]
 
