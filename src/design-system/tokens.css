@@ -1,0 +1,207 @@
+/**
+ * SOZ-DEV Design System — tokens
+ * Source de vérité pour couleurs, typo, espace, rayons, ombres, motion.
+ * Consommé via CSS vars + utilitaires Tailwind (@theme).
+ */
+
+@theme {
+  /* ── Fonts ─────────────────────────────────────────────── */
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ── Brand ─────────────────────────────────────────────── */
+  --color-brand-50: #faf5ff;
+  --color-brand-100: #f3e8ff;
+  --color-brand-200: #e9d5ff;
+  --color-brand-300: #d8b4fe;
+  --color-brand-400: #c084fc;
+  --color-brand-500: #a855f7;
+  --color-brand-600: #9333ea;
+  --color-brand-700: #7c3aed;
+  --color-brand-800: #6b21a8;
+  --color-brand-900: #581c87;
+
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-200: #a5f3fc;
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+  --color-accent-700: #0e7490;
+  --color-accent-800: #155e75;
+  --color-accent-900: #164e63;
+
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  /* ── Surfaces (mapped to semantic names) ───────────────── */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-surface-elevated: #ffffff;
+  --color-ink: #111827;
+  --color-ink-muted: #64748b;
+  --color-ink-subtle: #94a3b8;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+
+  /* ── Radius ────────────────────────────────────────────── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ───────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / 0.08);
+  --shadow-glow-brand: 0 0 30px rgb(168 85 247 / 0.35), 0 0 80px rgb(168 85 247 / 0.1);
+  --shadow-glow-accent: 0 0 30px rgb(6 182 212 / 0.35), 0 0 80px rgb(6 182 212 / 0.1);
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 550ms;
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --container-max: 64rem; /* 1024px ~ max-w-5xl */
+  --container-wide: 72rem; /* 1152px ~ max-w-6xl */
+  --section-y: 7rem;
+  --section-y-sm: 4rem;
+}
+
+/* ── Semantic CSS vars (hors @theme, pour JS / inline) ───── */
+:root {
+  --ds-page-bg: #ffffff;
+  --ds-page-fg: #111827;
+  --ds-surface: #ffffff;
+  --ds-surface-muted: #f8fafc;
+  --ds-surface-glass: rgb(255 255 255 / 0.92);
+  --ds-border: rgb(0 0 0 / 0.07);
+  --ds-border-subtle: #e5e7eb;
+  --ds-ink: #111827;
+  --ds-ink-muted: #64748b;
+  --ds-ink-subtle: #94a3b8;
+  --ds-brand: #a855f7;
+  --ds-brand-strong: #9333ea;
+  --ds-accent: #06b6d4;
+  --ds-accent-strong: #0891b2;
+  --ds-success: #10b981;
+  --ds-warning: #f59e0b;
+  --ds-danger: #ef4444;
+  --ds-gradient-brand: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+  --ds-gradient-cta: linear-gradient(to right, #9333ea, #06b6d4);
+  --ds-grid-line: rgb(168 85 247 / 0.04);
+  --ds-selection: rgb(168 85 247 / 0.25);
+  --ds-scrollbar: #a855f7;
+  --ds-glow-brand: 0 0 30px rgb(168 85 247 / 0.35), 0 0 80px rgb(168 85 247 / 0.1);
+  --ds-glow-accent: 0 0 30px rgb(6 182 212 / 0.35), 0 0 80px rgb(6 182 212 / 0.1);
+  --ds-font-sans: 'Manrope', system-ui, sans-serif;
+  --ds-font-display: 'Syne', system-ui, sans-serif;
+  --ds-radius-pill: 9999px;
+  --ds-radius-card: 1rem;
+}
+
+html.dark {
+  --ds-page-bg: #030712;
+  --ds-page-fg: #e2e8f0;
+  --ds-surface: #0a0f1a;
+  --ds-surface-muted: rgb(255 255 255 / 0.02);
+  --ds-surface-glass: rgb(255 255 255 / 0.03);
+  --ds-border: rgb(255 255 255 / 0.07);
+  --ds-border-subtle: rgb(255 255 255 / 0.08);
+  --ds-ink: #ffffff;
+  --ds-ink-muted: #94a3b8;
+  --ds-ink-subtle: #64748b;
+  --ds-grid-line: rgb(168 85 247 / 0.06);
+  --ds-selection: rgb(168 85 247 / 0.35);
+  --color-surface: #030712;
+  --color-surface-muted: rgb(255 255 255 / 0.02);
+  --color-surface-elevated: #0a0f1a;
+  --color-ink: #e2e8f0;
+  --color-ink-muted: #94a3b8;
+  --color-ink-subtle: #64748b;
+  --color-border: rgb(255 255 255 / 0.08);
+  --color-border-strong: rgb(255 255 255 / 0.14);
+}
+
+/* ── Type scale helpers (classes sémantiques) ────────────── */
+.ds-display {
+  font-family: var(--ds-font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(2.4rem, 7vw, 4.75rem);
+}
+
+.ds-h1 {
+  font-family: var(--ds-font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.ds-h2 {
+  font-family: var(--ds-font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.ds-h3 {
+  font-family: var(--ds-font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+}
+
+.ds-body {
+  font-family: var(--ds-font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+.ds-body-lg {
+  font-family: var(--ds-font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 1.125rem;
+}
+
+.ds-caption {
+  font-family: var(--ds-font-sans);
+  font-weight: 500;
+  line-height: 1.4;
+  font-size: 0.75rem;
+}
+
+.ds-eyebrow {
+  font-family: var(--ds-font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.ds-mono {
+  font-family: var(--ds-font-mono);
+  font-size: 0.8125rem;
+}

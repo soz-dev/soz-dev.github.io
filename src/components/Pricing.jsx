@@ -218,6 +218,10 @@ export default function Pricing() {
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
           1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de 200 €/mois
+          <br />
+          <a href="#pack" className="text-cyan-600 dark:text-cyan-400 hover:underline mt-2 inline-block">
+            Pack clé en main (site + hébergement + domaine) → 890 €
+          </a>
         </motion.p>
       </div>
     </section>

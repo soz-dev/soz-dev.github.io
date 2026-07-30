@@ -1,113 +1,42 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
+@import "./design-system/tokens.css";
+@import "./design-system/utilities.css";
+@import "./design-system/motion.css";
+
 /* =============================================================
-   BASE — dans @layer base pour que les utilities Tailwind
-   puissent l'overrider (cascade layers: base < utilities)
+   BASE — tokens sémantiques (--ds-*)
    ============================================================= */
 @layer base {
-  :root { --page-bg: #ffffff; }
-  html.dark { --page-bg: #030712; }
+  :root {
+    --page-bg: var(--ds-page-bg);
+  }
 
   body {
-    background: #ffffff;
-    color: #111827;
-    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--ds-page-bg);
+    color: var(--ds-page-fg);
+    font-family: var(--ds-font-sans);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .dark body {
-    background: #030712;
-    color: #e2e8f0;
+
+  ::-webkit-scrollbar {
+    width: 3px;
   }
-
-  ::-webkit-scrollbar        { width: 3px; }
-  ::-webkit-scrollbar-track  { background: #f1f5f9; }
-  ::-webkit-scrollbar-thumb  { background: #a855f7; border-radius: 99px; }
-  .dark ::-webkit-scrollbar-track { background: #030712; }
-  ::selection                { background: rgba(168,85,247,.25); color: #111827; }
-  .dark ::selection          { color: #fff; }
-}
-
-/* =============================================================
-   CUSTOM UTILITIES — unlayered, noms uniques, pas de conflit
-   ============================================================= */
-.gradient-text {
-  background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.font-display {
-  font-family: 'Syne', system-ui, sans-serif;
-}
-
-.glass {
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0,0,0,.07);
-  box-shadow: 0 1px 20px rgba(0,0,0,.05);
-}
-.dark .glass {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  box-shadow: none;
-}
-
-.glow-purple { box-shadow: 0 0 30px rgba(168,85,247,.35), 0 0 80px rgba(168,85,247,.1); }
-.glow-cyan   { box-shadow: 0 0 30px rgba(6,182,212,.35),  0 0 80px rgba(6,182,212,.1);  }
-
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(168,85,247,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168,85,247,.04) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-.gradient-border              { position: relative; isolation: isolate; }
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(135deg, rgba(168,85,247,.6), rgba(6,182,212,.6));
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-.gradient-border:hover::before { opacity: 1; }
-
-/* =============================================================
-   ANIMATIONS
-   ============================================================= */
-@keyframes blob {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33%     { transform: translate(40px,-60px) scale(1.12); }
-  66%     { transform: translate(-25px,25px) scale(.9); }
-}
-.animate-blob { animation: blob 9s ease-in-out infinite; }
-.delay-2      { animation-delay: 2s; }
-.delay-4      { animation-delay: 4s; }
-
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee { display:flex; width:max-content; animation: marquee 28s linear infinite; }
-
-@keyframes pulse-dot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%     { opacity:.5; transform:scale(.8); }
-}
-.animate-pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-blob,
-  .animate-marquee,
-  .animate-pulse-dot {
-    animation: none !important;
+  ::-webkit-scrollbar-track {
+    background: var(--ds-surface-muted);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ds-scrollbar);
+    border-radius: 99px;
+  }
+  ::selection {
+    background: var(--ds-selection);
+    color: var(--ds-ink);
+  }
+  html.dark ::selection {
+    color: #fff;
   }
 }

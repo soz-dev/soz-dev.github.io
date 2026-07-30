@@ -1,0 +1,93 @@
+/** Utilitaires DS — s’appuient sur les tokens sémantiques */
+
+.gradient-text {
+  background: var(--ds-gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.font-display {
+  font-family: var(--ds-font-display);
+}
+
+.glass {
+  background: var(--ds-surface-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 1px 20px rgb(0 0 0 / 0.05);
+}
+
+html.dark .glass {
+  box-shadow: none;
+}
+
+.glow-purple {
+  box-shadow: var(--ds-glow-brand);
+}
+
+.glow-cyan {
+  box-shadow: var(--ds-glow-accent);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(var(--ds-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ds-grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.gradient-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: var(--ds-gradient-brand);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--duration-base, 300ms) ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 0.7;
+}
+
+.ds-container {
+  width: 100%;
+  max-width: var(--container-max, 64rem);
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .ds-container {
+    padding-inline: 3rem;
+  }
+}
+
+.ds-container-wide {
+  width: 100%;
+  max-width: var(--container-wide, 72rem);
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .ds-container-wide {
+    padding-inline: 3rem;
+  }
+}
+
+.ds-section {
+  padding-block: var(--section-y, 7rem);
+}
+
+.ds-section-sm {
+  padding-block: var(--section-y-sm, 4rem);
+}

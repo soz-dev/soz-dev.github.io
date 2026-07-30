@@ -28,9 +28,9 @@ export default function Navbar({ isDark, toggleDark }) {
           <img
             src="/logo-mark.png"
             alt="SOZ_DEV"
-            className="h-9 w-9 object-contain flex-shrink-0"
-            width={36}
-            height={36}
+            className="h-10 w-10 object-contain flex-shrink-0"
+            width={40}
+            height={40}
           />
           <span
             className="gradient-text"

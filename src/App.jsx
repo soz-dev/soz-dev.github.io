@@ -1,14 +1,18 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 
 const AdminApp = lazy(() => import('./pages/AdminApp'))
+const DesignSystemPage = lazy(() => import('./pages/DesignSystemPage'))
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import PreuveLive from './components/PreuveLive'
 import Services from './components/Services'
 import WebShowcase from './components/WebShowcase'
 import Projects from './components/Projects'
 import Process from './components/Process'
+import Comparatif from './components/Comparatif'
 import Pricing from './components/Pricing'
+import PackCleEnMain from './components/PackCleEnMain'
 import EstimateurRapide from './components/EstimateurRapide'
 import Garanties from './components/Garanties'
 import DevisPublic from './components/DevisPublic'
@@ -33,13 +37,15 @@ function PublicApp() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#030712] pb-20 md:pb-0">
       <Navbar isDark={isDark} toggleDark={() => setIsDark(d => !d)} />
-      {/* Parcours conversion : découvrir → preuve → prix → devis */}
       <Hero />
+      <PreuveLive />
       <Services />
       <WebShowcase />
       <Projects />
       <Process />
+      <Comparatif />
       <Pricing />
+      <PackCleEnMain />
       <EstimateurRapide />
       <Garanties />
       <DevisPublic />
@@ -53,12 +59,22 @@ function PublicApp() {
 }
 
 export default function App() {
-  const isAdmin = typeof window !== 'undefined' && window.location.search.includes('mode=admin')
+  const params = typeof window !== 'undefined' ? window.location.search : ''
+  const isAdmin = params.includes('mode=admin')
+  const isDs = params.includes('mode=ds') || params.includes('mode=design')
 
   if (isAdmin) {
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#0a0a12]" />}>
         <AdminApp />
+      </Suspense>
+    )
+  }
+
+  if (isDs) {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-white dark:bg-[#030712]" />}>
+        <DesignSystemPage />
       </Suspense>
     )
   }

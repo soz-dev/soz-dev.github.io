@@ -257,102 +257,233 @@ function MiniSaaS() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 5. ARTISAN — vitrine locale urgence + services + zones
+// 5. ARTISAN — urgence locale, process, avis, carte zones
 // ═══════════════════════════════════════════════════════════
 function MiniArtisan() {
   return (
-    <div style={{ fontFamily: ui.sans, background: '#fff', color: '#0f1c2e', width: '100%' }}>
-      <div style={{ background: '#ea580c', color: '#fff', padding: '4px 10px', fontSize: 6.5, fontWeight: 700, display: 'flex', justifyContent: 'space-between' }}>
-        <span>⚡ Urgence 24/7 — Paris &amp; banlieue</span>
-        <span>06 12 34 56 78</span>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px', background: '#0f1c2e', color: '#fff' }}>
-        <div>
-          <div style={{ fontSize: 10, fontWeight: 800 }}>Pro Plomberie</div>
-          <div style={{ fontSize: 5.5, opacity: 0.6 }}>Artisan RGE · Depuis 2009</div>
+    <div style={{ fontFamily: ui.sans, background: '#f8fafc', color: '#0f172a', width: '100%' }}>
+      {/* Bandeau urgence */}
+      <div style={{ background: 'linear-gradient(90deg,#c2410c,#ea580c)', color: '#fff', padding: '5px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#86efac', boxShadow: '0 0 0 3px rgba(134,239,172,0.35)', display: 'inline-block' }} />
+          <span style={{ fontSize: 6.5, fontWeight: 800 }}>Urgence 24/7 — dispo maintenant</span>
         </div>
-        <button type="button" style={{ background: '#ea580c', color: '#fff', border: 'none', padding: '5px 9px', borderRadius: 4, fontSize: 7, fontWeight: 700, cursor: 'pointer' }}>Devis gratuit</button>
+        <span style={{ fontSize: 7, fontWeight: 900, letterSpacing: 0.3 }}>06 12 34 56 78</span>
       </div>
-      <Pic id="1581094794329-c8112a89af12" w={400} h={90} alt="Intervention" />
-      <div style={{ padding: '8px 10px' }}>
-        <h2 style={{ fontSize: 13, fontWeight: 800, margin: '0 0 3px', lineHeight: 1.2 }}>Plombier de confiance à Paris</h2>
-        <p style={{ fontSize: 7, color: '#64748b', margin: '0 0 8px', lineHeight: 1.35 }}>Fuite, débouchage, chaudière, salle de bain — devis sous 2h.</p>
-        <div style={{ display: 'flex', gap: 4, marginBottom: 8, flexWrap: 'wrap' }}>
-          {['✓ Assuré', '✓ RGE', '✓ Devis gratuit', '✓ Facture'].map(b => (
-            <span key={b} style={{ fontSize: 6, background: '#fff7ed', color: '#c2410c', padding: '3px 6px', borderRadius: 3, fontWeight: 600 }}>{b}</span>
-          ))}
+
+      {/* Nav */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px', background: '#0f172a', color: '#fff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ width: 22, height: 22, borderRadius: 5, background: '#ea580c', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 900 }}>PP</div>
+          <div>
+            <div style={{ fontSize: 9, fontWeight: 800, fontFamily: ui.display }}>Pro Plomberie</div>
+            <div style={{ fontSize: 5, opacity: 0.5 }}>Artisan RGE · Paris</div>
+          </div>
         </div>
-        <p style={{ fontSize: 7, fontWeight: 800, margin: '0 0 5px' }}>NOS SERVICES</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5, marginBottom: 8 }}>
+        <button type="button" style={{ background: '#ea580c', color: '#fff', border: 'none', padding: '5px 9px', borderRadius: 5, fontSize: 6.5, fontWeight: 800, cursor: 'pointer' }}>Devis 2h</button>
+      </div>
+
+      {/* Hero split */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr' }}>
+        <div style={{ padding: '10px', background: '#fff' }}>
+          <p style={{ fontSize: 5.5, fontWeight: 800, color: '#ea580c', letterSpacing: 1.2, margin: '0 0 4px' }}>PLOMBIER PARIS &amp; IDF</p>
+          <h2 style={{ fontSize: 13, fontWeight: 800, margin: '0 0 4px', lineHeight: 1.15, fontFamily: ui.display }}>Fuite ? Chaudière ?<br />On intervient.</h2>
+          <p style={{ fontSize: 6.5, color: '#64748b', margin: '0 0 7px', lineHeight: 1.35 }}>Devis sous 2h · Déplacement inclus en zone · Facture &amp; garantie.</p>
+          <div style={{ display: 'flex', gap: 4 }}>
+            <button type="button" style={{ background: '#0f172a', color: '#fff', border: 'none', padding: '5px 9px', borderRadius: 4, fontSize: 6.5, fontWeight: 700, cursor: 'pointer' }}>Appeler</button>
+            <button type="button" style={{ background: '#fff', color: '#0f172a', border: '1.5px solid #0f172a', padding: '5px 9px', borderRadius: 4, fontSize: 6.5, fontWeight: 700, cursor: 'pointer' }}>WhatsApp</button>
+          </div>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <Pic id="1581094794329-c8112a89af12" w={180} h={118} alt="Intervention" style={{ height: '100%', minHeight: 118 }} />
+          <div style={{ position: 'absolute', bottom: 6, left: 6, right: 6, background: 'rgba(15,23,42,0.88)', color: '#fff', borderRadius: 4, padding: '4px 6px', fontSize: 5.5 }}>
+            <span style={{ color: '#86efac', fontWeight: 800 }}>★ 4,9</span> · 312 avis Google
+          </div>
+        </div>
+      </div>
+
+      {/* Badges confiance */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, background: '#e2e8f0' }}>
+        {[['✓', 'Assuré'], ['★', 'RGE'], ['€', 'Devis 0€'], ['⏱', '<45 min']].map(([i, l]) => (
+          <div key={l} style={{ background: '#fff', padding: '7px 4px', textAlign: 'center' }}>
+            <div style={{ fontSize: 9, marginBottom: 1 }}>{i}</div>
+            <div style={{ fontSize: 5.5, fontWeight: 700, color: '#475569' }}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Services riches */}
+      <div style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 6 }}>
+          <p style={{ fontSize: 7.5, fontWeight: 800, margin: 0, fontFamily: ui.display }}>Services</p>
+          <span style={{ fontSize: 5.5, color: '#ea580c', fontWeight: 700 }}>Tarifs transparents →</span>
+        </div>
+        {[
+          ['01', 'Fuite & débouchage', 'Recherche + réparation', 'dès 89 €', '#fff7ed'],
+          ['02', 'Chauffe-eau / chaudière', 'Dépannage & entretien', 'dès 149 €', '#eff6ff'],
+          ['03', 'Salle de bain clé en main', 'Conception → pose', 'sur devis', '#f0fdf4'],
+          ['04', 'Contrat entretien annuel', '2 visites / an incluses', '99 €/an', '#fef3c7'],
+        ].map(([n, t, d, p, bg]) => (
+          <div key={n} style={{ display: 'grid', gridTemplateColumns: '22px 1fr auto', gap: 7, alignItems: 'center', background: bg, borderRadius: 6, padding: '7px 8px', marginBottom: 4 }}>
+            <span style={{ fontSize: 8, fontWeight: 900, color: '#ea580c', fontFamily: ui.display }}>{n}</span>
+            <div>
+              <div style={{ fontSize: 7.5, fontWeight: 800 }}>{t}</div>
+              <div style={{ fontSize: 5.5, color: '#64748b' }}>{d}</div>
+            </div>
+            <span style={{ fontSize: 7, fontWeight: 800, color: '#c2410c', whiteSpace: 'nowrap' }}>{p}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Process timeline */}
+      <div style={{ margin: '0 10px 10px', padding: '9px', background: '#0f172a', borderRadius: 8, color: '#fff' }}>
+        <p style={{ fontSize: 7, fontWeight: 800, margin: '0 0 7px', fontFamily: ui.display }}>Comment ça marche</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6 }}>
           {[
-            ['Fuite & débouchage', 'Dès 89 €'],
-            ['Chauffe-eau', 'Dès 149 €'],
-            ['Salle de bain', 'Sur devis'],
-            ['Entretien chaudière', '99 €/an'],
-          ].map(([t, p]) => (
-            <div key={t} style={{ border: '1px solid #e2e8f0', borderRadius: 5, padding: '6px' }}>
-              <div style={{ fontSize: 7.5, fontWeight: 700 }}>{t}</div>
-              <div style={{ fontSize: 6.5, color: '#ea580c', fontWeight: 700, marginTop: 2 }}>{p}</div>
+            ['1', 'Vous appelez', 'Diagnostic gratuit'],
+            ['2', 'Devis 2h', 'Validé par SMS'],
+            ['3', 'On intervient', 'Sous 45 min*'],
+          ].map(([n, t, d]) => (
+            <div key={n} style={{ textAlign: 'center' }}>
+              <div style={{ width: 18, height: 18, borderRadius: '50%', background: '#ea580c', margin: '0 auto 4px', fontSize: 8, fontWeight: 900, lineHeight: '18px' }}>{n}</div>
+              <div style={{ fontSize: 6.5, fontWeight: 700 }}>{t}</div>
+              <div style={{ fontSize: 5, color: '#94a3b8', marginTop: 1 }}>{d}</div>
             </div>
           ))}
         </div>
-        <p style={{ fontSize: 7, fontWeight: 800, margin: '0 0 4px' }}>ZONES</p>
-        <p style={{ fontSize: 6.5, color: '#64748b', margin: '0 0 8px', lineHeight: 1.4 }}>Paris 1–20 · Vincennes · Boulogne · Neuilly · Saint-Denis</p>
-        <div style={{ background: '#0f1c2e', color: '#fff', borderRadius: 6, padding: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <div style={{ fontSize: 7, opacity: 0.6 }}>Disponible maintenant</div>
-            <div style={{ fontSize: 9, fontWeight: 800 }}>Intervention sous 45 min</div>
+      </div>
+
+      {/* Zones + avis */}
+      <div style={{ padding: '0 10px 10px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
+        <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 7, padding: '8px', overflow: 'hidden' }}>
+          <p style={{ fontSize: 6.5, fontWeight: 800, margin: '0 0 5px' }}>Zones d&apos;intervention</p>
+          <div style={{ height: 52, borderRadius: 5, background: 'linear-gradient(135deg,#dbeafe,#e2e8f0)', position: 'relative', marginBottom: 5 }}>
+            {[[18, 22], [48, 18], [32, 38], [62, 42], [78, 28]].map(([l, t], i) => (
+              <span key={i} style={{ position: 'absolute', left: `${l}%`, top: `${t}%`, width: 7, height: 7, borderRadius: '50%', background: '#ea580c', border: '1.5px solid #fff', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' }} />
+            ))}
           </div>
-          <button type="button" style={{ background: '#ea580c', color: '#fff', border: 'none', padding: '6px 10px', borderRadius: 4, fontSize: 7, fontWeight: 700, cursor: 'pointer' }}>Appeler</button>
+          <p style={{ fontSize: 5.5, color: '#64748b', margin: 0, lineHeight: 1.35 }}>Paris 1–20 · Vincennes · Boulogne · Neuilly · St-Denis</p>
         </div>
+        <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 7, padding: '8px' }}>
+          <p style={{ fontSize: 6.5, fontWeight: 800, margin: '0 0 5px' }}>Dernier avis</p>
+          <p style={{ fontSize: 6.5, fontStyle: 'italic', color: '#334155', margin: '0 0 4px', lineHeight: 1.35 }}>&ldquo;Arrivés en 30 min, fuite réglée. Top.&rdquo;</p>
+          <p style={{ fontSize: 5.5, color: '#ea580c', fontWeight: 700, margin: 0 }}>★★★★★ Karim · Paris 11</p>
+          <div style={{ marginTop: 6, paddingTop: 5, borderTop: '1px solid #f1f5f9', fontSize: 5.5, color: '#64748b' }}>
+            Avant / après salle de bain ↓
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, marginTop: 4 }}>
+            <Pic id="1584622650111-993a426fbf0a" w={80} h={36} alt="Avant" style={{ borderRadius: 3, height: 36 }} />
+            <Pic id="1552321554-5fefe8c9ef14" w={80} h={36} alt="Après" style={{ borderRadius: 3, height: 36 }} />
+          </div>
+        </div>
+      </div>
+
+      {/* CTA sticky */}
+      <div style={{ margin: '0 10px 10px', padding: '9px 10px', background: 'linear-gradient(135deg,#ea580c,#c2410c)', borderRadius: 8, color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <div style={{ fontSize: 5.5, opacity: 0.85 }}>Technicien libre · 14h22</div>
+          <div style={{ fontSize: 9, fontWeight: 900, fontFamily: ui.display }}>Intervention sous 45 min</div>
+        </div>
+        <button type="button" style={{ background: '#fff', color: '#c2410c', border: 'none', padding: '7px 11px', borderRadius: 5, fontSize: 7, fontWeight: 900, cursor: 'pointer' }}>Appeler</button>
       </div>
     </div>
   )
 }
 
 // ═══════════════════════════════════════════════════════════
-// 6. BLOG / MAGAZINE — éditorial dense
+// 6. BLOG — magazine éditorial dense (ink + coral)
 // ═══════════════════════════════════════════════════════════
 function MiniBlog() {
-  const articles = [
-    ['IA', 'Les 7 outils qui changent le code en 2026', '8 min'],
-    ['Design', 'Typographie : 5 erreurs qui tuent un site', '5 min'],
-    ['Business', 'Combien facturer un site vitrine ?', '6 min'],
-    ['Tech', 'Supabase vs Firebase pour un SaaS', '10 min'],
-  ]
   return (
-    <div style={{ fontFamily: ui.display, background: '#f7f4ef', color: '#1a1a1a', width: '100%' }}>
-      <div style={{ padding: '8px 10px 6px', borderBottom: '2px solid #1a1a1a', textAlign: 'center' }}>
-        <p style={{ fontSize: 5.5, letterSpacing: 3, margin: '0 0 2px', fontFamily: ui.sans, color: '#666' }}>VENDREDI · ÉDITION DIGITALE</p>
-        <h1 style={{ fontSize: 18, fontWeight: 900, margin: 0, letterSpacing: '-0.02em' }}>The Pulse</h1>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 4, fontSize: 6, fontFamily: ui.sans, color: '#555', borderTop: '1px solid #ccc', paddingTop: 4 }}>
-          {['Tech', 'Design', 'Business', 'Culture', 'Outils'].map(r => <span key={r}>{r}</span>)}
+    <div style={{ fontFamily: ui.sans, background: '#faf8f5', color: '#111', width: '100%' }}>
+      {/* Masthead */}
+      <div style={{ padding: '9px 10px 0', borderBottom: '3px double #111' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 5, letterSpacing: 1.5, color: '#666', marginBottom: 3, textTransform: 'uppercase' }}>
+          <span>Vol. 12 · N°48</span>
+          <span>Vendredi 31 juil. 2026</span>
+        </div>
+        <h1 style={{ fontSize: 22, fontWeight: 900, margin: 0, textAlign: 'center', fontFamily: ui.display, letterSpacing: '-0.03em', lineHeight: 1 }}>THE PULSE</h1>
+        <p style={{ fontSize: 5.5, textAlign: 'center', color: '#888', margin: '2px 0 6px', letterSpacing: 2 }}>TECH · DESIGN · BUSINESS</p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 0, borderTop: '1px solid #111', fontSize: 6, fontWeight: 700 }}>
+          {['Tech', 'Design', 'Business', 'Culture', 'Outils'].map((r, i) => (
+            <span key={r} style={{ padding: '5px 7px', borderRight: i < 4 ? '1px solid #ddd' : 'none', color: i === 0 ? '#e11d48' : '#333' }}>{r}</span>
+          ))}
         </div>
       </div>
+
+      {/* Featured story */}
       <div style={{ padding: '8px 10px' }}>
-        <Pic id="1486312338219-ce68d2c6f44d" w={400} h={88} alt="À la une" style={{ borderRadius: 2, marginBottom: 6 }} />
-        <span style={{ fontSize: 5.5, fontFamily: ui.sans, background: '#1a1a1a', color: '#f7f4ef', padding: '2px 5px', fontWeight: 700, letterSpacing: 1 }}>À LA UNE</span>
-        <h2 style={{ fontSize: 13, fontWeight: 800, margin: '5px 0 3px', lineHeight: 1.2 }}>Comment l&apos;IA accélère (vraiment) les freelances</h2>
-        <p style={{ fontSize: 7, color: '#555', margin: '0 0 4px', lineHeight: 1.35, fontFamily: ui.sans }}>Enquête auprès de 40 développeurs indépendants sur leur stack 2026.</p>
-        <p style={{ fontSize: 6, color: '#888', fontFamily: ui.sans, margin: '0 0 10px' }}>Alex M. · 8 min · 2,4k lectures</p>
-        <p style={{ fontSize: 7, fontWeight: 800, fontFamily: ui.sans, margin: '0 0 5px', letterSpacing: 0.5 }}>AUSSI À LIRE</p>
-        {articles.map(([cat, title, time]) => (
-          <div key={title} style={{ display: 'flex', gap: 8, marginBottom: 6, paddingBottom: 6, borderBottom: '1px solid #e5e0d6' }}>
-            <div style={{ width: 4, background: '#a855f7', borderRadius: 2, flexShrink: 0 }} />
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ fontSize: 5.5, fontFamily: ui.sans, color: '#a855f7', fontWeight: 700, margin: '0 0 1px', letterSpacing: 0.5 }}>{cat}</p>
-              <p style={{ fontSize: 8, fontWeight: 700, margin: '0 0 2px', lineHeight: 1.25 }}>{title}</p>
-              <p style={{ fontSize: 6, color: '#888', margin: 0, fontFamily: ui.sans }}>{time} de lecture</p>
+        <div style={{ position: 'relative', marginBottom: 7 }}>
+          <Pic id="1486312338219-ce68d2c6f44d" w={400} h={100} alt="À la une" style={{ borderRadius: 0 }} />
+          <span style={{ position: 'absolute', top: 6, left: 6, background: '#e11d48', color: '#fff', fontSize: 5, fontWeight: 800, padding: '2px 5px', letterSpacing: 1 }}>À LA UNE</span>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '28px 1fr', gap: 6 }}>
+          <div style={{ fontSize: 28, fontWeight: 900, fontFamily: ui.display, lineHeight: 0.85, color: '#e11d48' }}>C</div>
+          <div>
+            <h2 style={{ fontSize: 12, fontWeight: 800, margin: '0 0 3px', lineHeight: 1.2, fontFamily: ui.display }}>omment l&apos;IA accélère (vraiment) les freelances</h2>
+            <p style={{ fontSize: 6.5, color: '#555', margin: '0 0 4px', lineHeight: 1.4 }}>Enquête auprès de 40 développeurs indépendants sur leur stack, leurs tarifs et ce qui a changé en 2026.</p>
+            <p style={{ fontSize: 5.5, color: '#888', margin: 0 }}>Alex Moreau · 8 min · 2,4k lectures</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Pull quote */}
+      <div style={{ margin: '0 10px 8px', padding: '8px 10px', borderLeft: '3px solid #e11d48', background: '#fff' }}>
+        <p style={{ fontSize: 8, fontStyle: 'italic', margin: '0 0 3px', lineHeight: 1.35, fontFamily: ui.display }}>&ldquo;Je livre 2× plus vite sans baisser la qualité.&rdquo;</p>
+        <p style={{ fontSize: 5.5, color: '#e11d48', fontWeight: 700, margin: 0 }}>— Témoignage extrait</p>
+      </div>
+
+      {/* Deux colonnes + sidebar */}
+      <div style={{ padding: '0 10px 8px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 7 }}>
+        <div>
+          <Pic id="1516321318423-f06f685304cd" w={180} h={60} alt="Design" style={{ marginBottom: 4 }} />
+          <p style={{ fontSize: 5, color: '#e11d48', fontWeight: 800, letterSpacing: 1, margin: '0 0 2px' }}>DESIGN</p>
+          <p style={{ fontSize: 7.5, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.2, fontFamily: ui.display }}>5 erreurs typo qui tuent un site</p>
+          <p style={{ fontSize: 5.5, color: '#888', margin: 0 }}>5 min</p>
+        </div>
+        <div>
+          <Pic id="1460925492860-0d79478dd561" w={180} h={60} alt="Business" style={{ marginBottom: 4 }} />
+          <p style={{ fontSize: 5, color: '#0d9488', fontWeight: 800, letterSpacing: 1, margin: '0 0 2px' }}>BUSINESS</p>
+          <p style={{ fontSize: 7.5, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.2, fontFamily: ui.display }}>Combien facturer une vitrine ?</p>
+          <p style={{ fontSize: 5.5, color: '#888', margin: 0 }}>6 min</p>
+        </div>
+      </div>
+
+      {/* Liste dense */}
+      <div style={{ margin: '0 10px 8px', background: '#111', color: '#faf8f5', borderRadius: 0, padding: '8px 9px' }}>
+        <p style={{ fontSize: 6, fontWeight: 800, letterSpacing: 1.5, margin: '0 0 6px', color: '#e11d48' }}>AUSSI À LIRE</p>
+        {[
+          ['01', 'Les 7 outils qui changent le code', 'IA · 8 min'],
+          ['02', 'Supabase vs Firebase pour un SaaS', 'Tech · 10 min'],
+          ['03', 'Pricing psychologique : ce qui marche', 'Biz · 7 min'],
+          ['04', 'Dark mode : quand (ne pas) le faire', 'UI · 4 min'],
+        ].map(([n, t, m]) => (
+          <div key={n} style={{ display: 'flex', gap: 7, padding: '5px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <span style={{ fontSize: 9, fontWeight: 900, color: '#e11d48', fontFamily: ui.display, minWidth: 16 }}>{n}</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 7, fontWeight: 700 }}>{t}</div>
+              <div style={{ fontSize: 5.5, color: 'rgba(250,248,245,0.45)', marginTop: 1 }}>{m}</div>
             </div>
           </div>
         ))}
       </div>
-      <div style={{ margin: '0 10px 10px', padding: '8px', background: '#1a1a1a', color: '#f7f4ef', borderRadius: 4, fontFamily: ui.sans }}>
-        <p style={{ fontSize: 8, fontWeight: 700, margin: '0 0 3px' }}>Newsletter hebdo</p>
-        <p style={{ fontSize: 6.5, opacity: 0.6, margin: '0 0 5px' }}>1 email / semaine, zéro spam.</p>
-        <div style={{ display: 'flex', gap: 4 }}>
-          <div style={{ flex: 1, background: '#333', padding: '5px 6px', borderRadius: 3, fontSize: 6.5, opacity: 0.5 }}>votre@email.com</div>
-          <button type="button" style={{ background: '#a855f7', color: '#fff', border: 'none', padding: '5px 9px', fontSize: 7, fontWeight: 700, borderRadius: 3, cursor: 'pointer' }}>OK</button>
+
+      {/* Auteur + newsletter */}
+      <div style={{ padding: '0 10px 10px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 6 }}>
+        <div style={{ background: '#fff', border: '1px solid #e8e4de', padding: '7px', display: 'flex', gap: 6, alignItems: 'center' }}>
+          <img loading="lazy" src={IMG('1472099645785-5658abf4ff4e', 48, 48)} alt="Auteur" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} onError={e => { e.target.style.opacity = '0.3' }} />
+          <div>
+            <div style={{ fontSize: 6.5, fontWeight: 800 }}>Alex Moreau</div>
+            <div style={{ fontSize: 5, color: '#888' }}>Rédacteur en chef</div>
+          </div>
+        </div>
+        <div style={{ background: '#e11d48', color: '#fff', padding: '7px 8px' }}>
+          <p style={{ fontSize: 6.5, fontWeight: 800, margin: '0 0 2px' }}>Newsletter hebdo</p>
+          <p style={{ fontSize: 5, opacity: 0.8, margin: '0 0 4px' }}>1 mail · 0 spam</p>
+          <div style={{ display: 'flex', gap: 3 }}>
+            <div style={{ flex: 1, background: 'rgba(255,255,255,0.2)', padding: '4px 5px', fontSize: 5.5 }}>email@</div>
+            <button type="button" style={{ background: '#111', color: '#fff', border: 'none', padding: '4px 7px', fontSize: 6, fontWeight: 800, cursor: 'pointer' }}>OK</button>
+          </div>
         </div>
       </div>
     </div>
@@ -360,97 +491,255 @@ function MiniBlog() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// 7. CABINET — institutionnel multi-sections
+// 7. CABINET — institutionnel luxe navy / or
 // ═══════════════════════════════════════════════════════════
 function MiniCabinet() {
   return (
-    <div style={{ fontFamily: ui.display, background: '#f5f2eb', color: '#0f1f3d', width: '100%' }}>
-      <div style={{ padding: '10px 10px 8px', textAlign: 'center', borderBottom: '1px solid #c9a84c' }}>
-        <p style={{ fontSize: 5.5, letterSpacing: 3, color: '#c9a84c', margin: '0 0 3px', fontFamily: ui.sans }}>CABINET D&apos;AVOCATS · PARIS</p>
-        <h1 style={{ fontSize: 14, fontWeight: 700, margin: 0, letterSpacing: 1 }}>Dupont & Associés</h1>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 5, fontSize: 6, fontFamily: ui.sans, color: '#5a6478' }}>
-          {['Cabinet', 'Domaines', 'Équipe', 'Contact'].map(l => <span key={l}>{l}</span>)}
-        </div>
+    <div style={{ fontFamily: ui.sans, background: '#f3efe6', color: '#0c1a2e', width: '100%' }}>
+      {/* Top bar credentials */}
+      <div style={{ background: '#0c1a2e', color: 'rgba(243,239,230,0.65)', padding: '4px 10px', fontSize: 5, letterSpacing: 1.2, display: 'flex', justifyContent: 'space-between', textTransform: 'uppercase' }}>
+        <span>Paris · Lyon · Genève</span>
+        <span>Depuis 1994</span>
       </div>
-      <Pic id="1497366216548-37526070297c" w={400} h={78} alt="Bureau" />
-      <div style={{ padding: '10px' }}>
-        <h2 style={{ fontSize: 13, fontWeight: 700, margin: '0 0 4px', lineHeight: 1.25 }}>Conseil juridique d&apos;excellence</h2>
-        <p style={{ fontSize: 7, color: '#5a6478', margin: '0 0 8px', lineHeight: 1.4, fontFamily: ui.sans }}>30 ans au service des entreprises et des particuliers. Consultation sur rendez-vous.</p>
-        <p style={{ fontSize: 6, letterSpacing: 1.5, color: '#c9a84c', margin: '0 0 5px', fontFamily: ui.sans, fontWeight: 700 }}>DOMAINES D&apos;EXPERTISE</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, marginBottom: 10, fontFamily: ui.sans }}>
-          {['Droit des affaires', 'Droit immobilier', 'Droit du travail', 'Fiscalité', 'Famille', 'Pénal'].map(d => (
-            <div key={d} style={{ fontSize: 7, border: '1px solid #c9a84c', padding: '5px 6px', textAlign: 'center', fontWeight: 600 }}>{d}</div>
+
+      {/* Letterhead */}
+      <div style={{ padding: '12px 10px 10px', textAlign: 'center', background: 'linear-gradient(180deg,#f3efe6 0%,#ebe4d4 100%)', borderBottom: '1px solid #c9a84c' }}>
+        <div style={{ width: 28, height: 28, margin: '0 auto 6px', border: '1.5px solid #c9a84c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontSize: 9, fontWeight: 800, color: '#c9a84c', fontFamily: ui.display }}>D&amp;A</span>
+        </div>
+        <p style={{ fontSize: 5, letterSpacing: 3, color: '#c9a84c', margin: '0 0 3px', fontWeight: 700 }}>CABINET D&apos;AVOCATS</p>
+        <h1 style={{ fontSize: 15, fontWeight: 700, margin: 0, fontFamily: ui.display, letterSpacing: 0.5 }}>Dupont &amp; Associés</h1>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 0, marginTop: 8, fontSize: 6, borderTop: '1px solid rgba(201,168,76,0.4)', paddingTop: 6 }}>
+          {['Cabinet', 'Expertises', 'Équipe', 'Honoraires', 'Contact'].map((l, i) => (
+            <span key={l} style={{ padding: '0 6px', borderRight: i < 4 ? '1px solid rgba(201,168,76,0.35)' : 'none', color: '#5a6478', fontWeight: 600 }}>{l}</span>
           ))}
         </div>
-        <p style={{ fontSize: 6, letterSpacing: 1.5, color: '#c9a84c', margin: '0 0 5px', fontFamily: ui.sans, fontWeight: 700 }}>L&apos;ÉQUIPE</p>
-        <div style={{ display: 'flex', gap: 6, marginBottom: 10, fontFamily: ui.sans }}>
-          {[
-            [IMG('1560250097-0b93528c311a', 60, 60), 'Me Dupont', 'Associé'],
-            [IMG('1573496359142-b8d87734a5a2', 60, 60), 'Me Martin', 'Associée'],
-            [IMG('1472099645785-5658abf4ff4e', 60, 60), 'Me Leroy', 'Counsel'],
-          ].map(([src, name, role]) => (
-            <div key={name} style={{ flex: 1, textAlign: 'center' }}>
-              <img loading="lazy" src={src} alt={name} style={{ width: '100%', height: 48, objectFit: 'cover', borderRadius: 3, display: 'block', marginBottom: 3 }} onError={e => { e.target.style.opacity = '0.3' }} />
-              <div style={{ fontSize: 6.5, fontWeight: 700 }}>{name}</div>
-              <div style={{ fontSize: 5.5, color: '#5a6478' }}>{role}</div>
+      </div>
+
+      {/* Hero image + overlay caption */}
+      <div style={{ position: 'relative' }}>
+        <Pic id="1497366216548-37526070297c" w={400} h={88} alt="Bureau" />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(transparent 40%,rgba(12,26,46,0.85))' }} />
+        <p style={{ position: 'absolute', bottom: 8, left: 10, right: 10, color: '#f3efe6', fontSize: 10, fontWeight: 700, fontFamily: ui.display, margin: 0, lineHeight: 1.2 }}>
+          Le droit, avec exigence<br />et proximité.
+        </p>
+      </div>
+
+      {/* Intro + stats */}
+      <div style={{ padding: '10px', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 8 }}>
+        <div>
+          <p style={{ fontSize: 7, color: '#5a6478', margin: '0 0 6px', lineHeight: 1.4 }}>30 ans au service des entreprises et des particuliers. Consultation sur rendez-vous, confidentielle.</p>
+          <button type="button" style={{ background: '#c9a84c', color: '#0c1a2e', border: 'none', padding: '6px 10px', fontSize: 6.5, fontWeight: 800, cursor: 'pointer' }}>Prendre RDV →</button>
+        </div>
+        <div style={{ display: 'grid', gap: 4 }}>
+          {[['30+', 'années'], ['12', 'avocats'], ['4.8★', 'clients']].map(([v, l]) => (
+            <div key={l} style={{ background: '#0c1a2e', color: '#f3efe6', padding: '5px 7px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#c9a84c', fontFamily: ui.display }}>{v}</span>
+              <span style={{ fontSize: 5.5, opacity: 0.6 }}>{l}</span>
             </div>
           ))}
         </div>
-        <button type="button" style={{ width: '100%', background: '#c9a84c', color: '#0f1f3d', border: 'none', padding: '8px', fontSize: 8, fontWeight: 800, cursor: 'pointer', fontFamily: ui.sans }}>
-          Prendre rendez-vous →
-        </button>
       </div>
-      <div style={{ padding: '6px 10px', borderTop: '1px solid #ddd', fontSize: 5.5, color: '#5a6478', fontFamily: ui.sans, display: 'flex', justifyContent: 'space-between' }}>
-        <span>16 rue de la Paix, 75002</span>
-        <span>01 40 00 00 00</span>
+
+      {/* Expertises numérotées */}
+      <div style={{ padding: '0 10px 10px' }}>
+        <p style={{ fontSize: 5.5, letterSpacing: 2, color: '#c9a84c', margin: '0 0 6px', fontWeight: 800 }}>DOMAINES D&apos;EXPERTISE</p>
+        <div style={{ background: '#fff', border: '1px solid #e0d8c8' }}>
+          {[
+            ['01', 'Droit des affaires', 'M&A · Contrats · Contentieux'],
+            ['02', 'Immobilier', 'Transactions · Copropriété'],
+            ['03', 'Droit du travail', 'Licenciements · Accords'],
+            ['04', 'Fiscalité', 'Optimisation · Contrôle'],
+            ['05', 'Famille & patrimoine', 'Divorce · Successions'],
+            ['06', 'Pénal des affaires', 'Défense · Compliance'],
+          ].map(([n, t, d], i) => (
+            <div key={n} style={{ display: 'grid', gridTemplateColumns: '28px 1fr', gap: 6, padding: '7px 8px', borderBottom: i < 5 ? '1px solid #f0ebe0' : 'none', alignItems: 'center' }}>
+              <span style={{ fontSize: 9, fontWeight: 800, color: '#c9a84c', fontFamily: ui.display }}>{n}</span>
+              <div>
+                <div style={{ fontSize: 7.5, fontWeight: 700 }}>{t}</div>
+                <div style={{ fontSize: 5.5, color: '#8a8494' }}>{d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Approche + citation */}
+      <div style={{ margin: '0 10px 10px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
+        <div style={{ background: '#0c1a2e', color: '#f3efe6', padding: '9px' }}>
+          <p style={{ fontSize: 5.5, letterSpacing: 1.5, color: '#c9a84c', margin: '0 0 5px', fontWeight: 700 }}>NOTRE APPROCHE</p>
+          {['Écoute & diagnostic', 'Stratégie sur-mesure', 'Suivi transparent'].map((s, i) => (
+            <div key={s} style={{ display: 'flex', gap: 6, marginBottom: 5, alignItems: 'flex-start' }}>
+              <span style={{ fontSize: 7, color: '#c9a84c', fontWeight: 800 }}>{String(i + 1).padStart(2, '0')}</span>
+              <span style={{ fontSize: 6.5, lineHeight: 1.3 }}>{s}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ background: '#fff', border: '1px solid #c9a84c', padding: '9px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <p style={{ fontSize: 7.5, fontStyle: 'italic', margin: '0 0 5px', lineHeight: 1.35, fontFamily: ui.display }}>&ldquo;Chaque dossier mérite une stratégie unique.&rdquo;</p>
+          <p style={{ fontSize: 5.5, color: '#c9a84c', fontWeight: 700, margin: 0 }}>— Me Dupont, Associé fondateur</p>
+        </div>
+      </div>
+
+      {/* Équipe */}
+      <div style={{ padding: '0 10px 10px' }}>
+        <p style={{ fontSize: 5.5, letterSpacing: 2, color: '#c9a84c', margin: '0 0 6px', fontWeight: 800 }}>L&apos;ÉQUIPE</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 5 }}>
+          {[
+            [IMG('1560250097-0b93528c311a', 80, 100), 'Me Dupont', 'Associé', 'Affaires'],
+            [IMG('1573496359142-b8d87734a5a2', 80, 100), 'Me Martin', 'Associée', 'Travail'],
+            [IMG('1472099645785-5658abf4ff4e', 80, 100), 'Me Leroy', 'Counsel', 'Fiscal'],
+          ].map(([src, name, role, spe]) => (
+            <div key={name} style={{ position: 'relative', overflow: 'hidden' }}>
+              <img loading="lazy" src={src} alt={name} style={{ width: '100%', height: 72, objectFit: 'cover', display: 'block', filter: 'grayscale(0.3)' }} onError={e => { e.target.style.opacity = '0.3' }} />
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent,rgba(12,26,46,0.92))', padding: '14px 5px 5px', color: '#fff' }}>
+                <div style={{ fontSize: 6, fontWeight: 800 }}>{name}</div>
+                <div style={{ fontSize: 5, color: '#c9a84c' }}>{role} · {spe}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact strip */}
+      <div style={{ background: '#c9a84c', padding: '9px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <div style={{ fontSize: 5.5, color: '#0c1a2e', opacity: 0.7 }}>16 rue de la Paix · 75002</div>
+          <div style={{ fontSize: 8, fontWeight: 800, color: '#0c1a2e' }}>01 40 00 00 00</div>
+        </div>
+        <button type="button" style={{ background: '#0c1a2e', color: '#f3efe6', border: 'none', padding: '7px 11px', fontSize: 7, fontWeight: 800, cursor: 'pointer' }}>Consultation</button>
       </div>
     </div>
   )
 }
 
 // ═══════════════════════════════════════════════════════════
-// 8. PORTFOLIO — créatif dark masonry + séries
+// 8. PORTFOLIO — créatif asymétrique, case study, booking
 // ═══════════════════════════════════════════════════════════
 function MiniPortfolio() {
   return (
-    <div style={{ fontFamily: ui.sans, background: '#0a0a0a', color: '#fff', width: '100%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px' }}>
-        <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: 2 }}>LÉNA</span>
-        <div style={{ display: 'flex', gap: 8, fontSize: 6, color: 'rgba(255,255,255,0.45)' }}>
-          <span>Work</span><span>About</span><span style={{ color: '#c8f542' }}>Book</span>
+    <div style={{ fontFamily: ui.sans, background: '#090909', color: '#fff', width: '100%' }}>
+      {/* Nav minimal */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 10px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <span style={{ fontSize: 12, fontWeight: 900, letterSpacing: 3, fontFamily: ui.display }}>LÉNA</span>
+        <div style={{ display: 'flex', gap: 9, fontSize: 6, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>
+          <span>Work</span>
+          <span>About</span>
+          <span style={{ color: '#c8f542' }}>Book</span>
         </div>
       </div>
-      <div style={{ padding: '4px 10px 10px' }}>
-        <p style={{ fontSize: 6, color: '#c8f542', letterSpacing: 2, margin: '0 0 3px', fontWeight: 700 }}>PHOTOGRAPHE · PARIS</p>
-        <h2 style={{ fontSize: 15, fontWeight: 800, margin: '0 0 4px', lineHeight: 1.15 }}>Images qui<br />racontent.</h2>
-        <p style={{ fontSize: 7, color: 'rgba(255,255,255,0.45)', margin: '0 0 10px', lineHeight: 1.35 }}>Mode · Portrait · Architecture · Éditorial</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 4, marginBottom: 4 }}>
-          <Pic id="1501854140801-50d01698950b" w={200} h={100} alt="Nature" style={{ borderRadius: 3 }} />
-          <Pic id="1469334031218-e382a71b716b" w={160} h={100} alt="Mode" style={{ borderRadius: 3 }} />
+
+      {/* Hero typo + portrait strip */}
+      <div style={{ padding: '12px 10px 8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontSize: 5.5, color: '#c8f542', letterSpacing: 2.5, margin: '0 0 5px', fontWeight: 800 }}>PHOTOGRAPHE · PARIS / MILAN</p>
+            <h2 style={{ fontSize: 18, fontWeight: 900, margin: '0 0 5px', lineHeight: 0.95, fontFamily: ui.display, letterSpacing: '-0.03em' }}>
+              Images<br />qui<br /><span style={{ color: '#c8f542' }}>racontent.</span>
+            </h2>
+            <p style={{ fontSize: 6.5, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.35 }}>Mode · Portrait · Archi · Éditorial</p>
+          </div>
+          <div style={{ width: 72, position: 'relative' }}>
+            <Pic id="1492693428060-cfa7817adba9" w={72} h={96} alt="Léna" style={{ borderRadius: 2 }} />
+            <div style={{ position: 'absolute', bottom: -4, right: -4, background: '#c8f542', color: '#090909', fontSize: 5, fontWeight: 900, padding: '2px 5px' }}>AVAILABLE</div>
+          </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4, marginBottom: 10 }}>
-          <Pic id="1518173946687-a4c8892bbd9f" w={120} h={56} alt="Urban" style={{ borderRadius: 3 }} />
-          <Pic id="1492693428060-cfa7817adba9" w={120} h={56} alt="Portrait" style={{ borderRadius: 3 }} />
-          <Pic id="1441986300917-64674bd600d8" w={120} h={56} alt="Produit" style={{ borderRadius: 3 }} />
-        </div>
-        <p style={{ fontSize: 7, fontWeight: 800, margin: '0 0 5px', color: '#c8f542', letterSpacing: 1 }}>SÉRIES</p>
-        {[
-          ['01 — NATURE', '84 photos · Print available'],
-          ['02 — MODE SS26', '120 photos · Éditorial'],
-          ['03 — URBAN', '240 photos · 3 prix'],
-          ['04 — PORTRAITS', '56 sessions · Booking'],
-        ].map(([t, d]) => (
-          <div key={t} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-            <div>
-              <div style={{ fontSize: 8, fontWeight: 700 }}>{t}</div>
-              <div style={{ fontSize: 6, color: 'rgba(255,255,255,0.4)' }}>{d}</div>
-            </div>
-            <span style={{ fontSize: 7, color: '#c8f542', fontWeight: 700 }}>→</span>
+      </div>
+
+      {/* Stats strip */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 1, margin: '4px 10px 10px', background: 'rgba(255,255,255,0.08)' }}>
+        {[['480+', 'shootings'], ['12', 'prix'], ['8 ans', 'xp']].map(([v, l]) => (
+          <div key={l} style={{ background: '#111', padding: '8px 6px', textAlign: 'center' }}>
+            <div style={{ fontSize: 12, fontWeight: 900, color: '#c8f542', fontFamily: ui.display }}>{v}</div>
+            <div style={{ fontSize: 5, color: 'rgba(255,255,255,0.4)', letterSpacing: 1, textTransform: 'uppercase' }}>{l}</div>
           </div>
         ))}
-        <button type="button" style={{ marginTop: 10, width: '100%', background: 'transparent', color: '#c8f542', border: '1px solid #c8f542', padding: '8px', fontSize: 8, fontWeight: 700, cursor: 'pointer' }}>
-          Book a session
+      </div>
+
+      {/* Featured case study */}
+      <div style={{ margin: '0 10px 10px', position: 'relative' }}>
+        <Pic id="1469334031218-e382a71b716b" w={400} h={110} alt="Featured" style={{ borderRadius: 2 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(9,9,9,0.85) 0%,transparent 60%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 10 }}>
+          <span style={{ fontSize: 5, color: '#c8f542', fontWeight: 800, letterSpacing: 1.5, marginBottom: 3 }}>FEATURED · SS26</span>
+          <span style={{ fontSize: 11, fontWeight: 900, fontFamily: ui.display, lineHeight: 1.1 }}>Mode Éditorial<br />Vogue Italia</span>
+          <span style={{ fontSize: 5.5, color: 'rgba(255,255,255,0.5)', marginTop: 3 }}>120 frames · Milan</span>
+        </div>
+        <span style={{ position: 'absolute', top: 8, right: 8, fontSize: 20, fontWeight: 900, fontFamily: ui.display, color: 'rgba(200,245,66,0.35)', lineHeight: 1 }}>01</span>
+      </div>
+
+      {/* Masonry asymétrique avec overlays */}
+      <div style={{ padding: '0 10px 8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 6 }}>
+          <p style={{ fontSize: 7, fontWeight: 800, margin: 0, letterSpacing: 1, fontFamily: ui.display }}>SELECTED WORK</p>
+          <span style={{ fontSize: 5.5, color: '#c8f542' }}>View all →</span>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 4, marginBottom: 4 }}>
+          <div style={{ position: 'relative' }}>
+            <Pic id="1501854140801-50d01698950b" w={200} h={100} alt="Nature" style={{ borderRadius: 2 }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '16px 6px 5px', background: 'linear-gradient(transparent,rgba(0,0,0,0.8))' }}>
+              <div style={{ fontSize: 7, fontWeight: 800 }}>Nature Quiet</div>
+              <div style={{ fontSize: 5, color: '#c8f542' }}>84 photos</div>
+            </div>
+          </div>
+          <div style={{ display: 'grid', gap: 4 }}>
+            <div style={{ position: 'relative' }}>
+              <Pic id="1518173946687-a4c8892bbd9f" w={140} h={48} alt="Urban" style={{ borderRadius: 2, height: 48 }} />
+              <span style={{ position: 'absolute', bottom: 3, left: 4, fontSize: 5.5, fontWeight: 700, background: 'rgba(0,0,0,0.7)', padding: '1px 4px' }}>Urban</span>
+            </div>
+            <div style={{ position: 'relative' }}>
+              <Pic id="1441986300917-64674bd600d8" w={140} h={48} alt="Produit" style={{ borderRadius: 2, height: 48 }} />
+              <span style={{ position: 'absolute', bottom: 3, left: 4, fontSize: 5.5, fontWeight: 700, background: 'rgba(0,0,0,0.7)', padding: '1px 4px' }}>Still life</span>
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr 0.9fr', gap: 4 }}>
+          <Pic id="1496743417675-0a8e80c6f0b4" w={100} h={54} alt="Arch" style={{ borderRadius: 2, height: 54 }} />
+          <div style={{ position: 'relative' }}>
+            <Pic id="1529626455594-4fe221cba588" w={140} h={54} alt="Portrait" style={{ borderRadius: 2, height: 54 }} />
+            <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(200,245,66,0.15)', fontSize: 6, fontWeight: 800, color: '#c8f542' }}>Portraits →</span>
+          </div>
+          <div style={{ background: '#161616', borderRadius: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 54, border: '1px dashed rgba(200,245,66,0.35)' }}>
+            <span style={{ fontSize: 10, fontWeight: 900, color: '#c8f542' }}>+36</span>
+            <span style={{ fontSize: 5, color: 'rgba(255,255,255,0.4)' }}>projets</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Séries list redesign */}
+      <div style={{ padding: '6px 10px 10px' }}>
+        <p style={{ fontSize: 5.5, color: '#c8f542', letterSpacing: 2, margin: '0 0 6px', fontWeight: 800 }}>SÉRIES</p>
+        {[
+          ['01', 'NATURE QUIET', 'Print · 84'],
+          ['02', 'MODE SS26', 'Éditorial · 120'],
+          ['03', 'URBAN NIGHT', 'Prix · 240'],
+          ['04', 'FACES', 'Booking · 56'],
+        ].map(([n, t, d]) => (
+          <div key={n} style={{ display: 'grid', gridTemplateColumns: '22px 1fr auto auto', gap: 6, alignItems: 'center', padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <span style={{ fontSize: 8, fontWeight: 900, color: 'rgba(200,245,66,0.5)', fontFamily: ui.display }}>{n}</span>
+            <span style={{ fontSize: 8, fontWeight: 700 }}>{t}</span>
+            <span style={{ fontSize: 5.5, color: 'rgba(255,255,255,0.35)' }}>{d}</span>
+            <span style={{ fontSize: 8, color: '#c8f542', fontWeight: 700 }}>→</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Clients + CTA */}
+      <div style={{ margin: '0 10px 10px', padding: '9px', background: '#111', borderRadius: 2, border: '1px solid rgba(255,255,255,0.06)' }}>
+        <p style={{ fontSize: 5, color: 'rgba(255,255,255,0.35)', letterSpacing: 1.5, margin: '0 0 6px', textAlign: 'center' }}>COLLABORATIONS</p>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 8, fontSize: 6, fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: 1 }}>
+          <span>VOGUE</span><span>NIKE</span><span>HERMÈS</span><span>LE MONDE</span>
+        </div>
+        <button type="button" style={{ width: '100%', background: '#c8f542', color: '#090909', border: 'none', padding: '9px', fontSize: 8, fontWeight: 900, cursor: 'pointer', fontFamily: ui.display, letterSpacing: 0.5 }}>
+          Book a session →
         </button>
+      </div>
+
+      {/* About mini */}
+      <div style={{ padding: '0 10px 12px', display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div style={{ width: 3, height: 28, background: '#c8f542', flexShrink: 0 }} />
+        <p style={{ fontSize: 6.5, color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.4 }}>
+          Basée à Paris. Disponible Europe &amp; remote direction artistique.
+        </p>
       </div>
     </div>
   )
@@ -499,10 +788,10 @@ const DEMOS = [
   { url: 'marie-coaching.fr', label: 'Coach & thérapeute', tags: ['Offres', 'Avis', 'RDV'], component: <MiniCoach /> },
   { url: 'luxeshop.fr', label: 'Boutique e-commerce', tags: ['Catalogue', 'Panier', 'Stripe'], component: <MiniEcommerce /> },
   { url: 'app.flowmetric.io', label: 'SaaS / produit', tags: ['Landing', 'Dashboard', 'KPIs'], component: <MiniSaaS /> },
-  { url: 'proplomberie-paris.fr', label: 'Artisan / vitrine locale', tags: ['Urgence', 'Services', 'SEO local'], component: <MiniArtisan /> },
-  { url: 'thepulse.fr', label: 'Blog / magazine', tags: ['Éditorial', 'Articles', 'Newsletter'], component: <MiniBlog /> },
-  { url: 'dupont-avocats.fr', label: 'Cabinet professionnel', tags: ['Domaines', 'Équipe', 'RDV'], component: <MiniCabinet /> },
-  { url: 'lena-photo.fr', label: 'Portfolio créatif', tags: ['Galerie', 'Séries', 'Booking'], component: <MiniPortfolio /> },
+  { url: 'proplomberie-paris.fr', label: 'Artisan / vitrine locale', tags: ['Urgence', 'Process', 'Zones', 'Avis'], component: <MiniArtisan /> },
+  { url: 'thepulse.fr', label: 'Blog / magazine', tags: ['Masthead', 'Drop cap', 'Colonnes'], component: <MiniBlog /> },
+  { url: 'dupont-avocats.fr', label: 'Cabinet professionnel', tags: ['Letterhead', 'Expertises', 'Équipe'], component: <MiniCabinet /> },
+  { url: 'lena-photo.fr', label: 'Portfolio créatif', tags: ['Case study', 'Masonry', 'Booking'], component: <MiniPortfolio /> },
 ]
 
 export default function WebShowcase() {
