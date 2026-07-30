@@ -1,71 +1,116 @@
-// ─── Mot de passe admin (change-le ici si tu veux) ───────
-const ADMIN_PASS = 'soz2026'
+import { supabase } from './supabaseAdmin'
 
-export function checkPassword(input) {
-  return input === ADMIN_PASS
-}
-
-// ─── Stockage localStorage ────────────────────────────────
-function get(key) {
-  try { return JSON.parse(localStorage.getItem(`admin_${key}`) || '[]') } catch { return [] }
-}
-function set(key, data) {
-  localStorage.setItem(`admin_${key}`, JSON.stringify(data))
-}
-function uid() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 6)
+function throwIf(error) {
+  if (error) throw error
 }
 
 export const db = {
-  // ── Clients ──────────────────────────────────────────────
-  getClients() {
-    return [...get('clients')].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-  },
-  createClient(data) {
-    const client = { ...data, id: uid(), created_at: new Date().toISOString() }
-    set('clients', [...get('clients'), client])
-    return client
-  },
-  deleteClient(id) {
-    set('clients', get('clients').filter(c => c.id !== id))
-    set('projets', get('projets').filter(p => p.client_id !== id))
+  async getClients() {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('*')
+      .order('created_at', { ascending: false })
+    throwIf(error)
+    return data || []
   },
 
-  // ── Projets ───────────────────────────────────────────────
-  getProjectsByClient(clientId) {
-    return get('projets')
-      .filter(p => p.client_id === clientId)
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+  async createClient(payload) {
+    const { data, error } = await supabase
+      .from('clients')
+      .insert({
+        nom: payload.nom,
+        email: payload.email,
+        telephone: payload.telephone || null,
+        entreprise: payload.entreprise || null,
+        notes: payload.notes || null,
+      })
+      .select()
+      .single()
+    throwIf(error)
+    return data
   },
-  getRecentProjects(limit = 6) {
-    const clients = get('clients')
-    return get('projets')
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-      .slice(0, limit)
-      .map(p => ({ ...p, clients: clients.find(c => c.id === p.client_id) || null }))
+
+  async deleteClient(id) {
+    const { error } = await supabase.from('clients').delete().eq('id', id)
+    throwIf(error)
   },
-  saveProject(data) {
-    const projets = get('projets')
+
+  async getProjectsByClient(clientId) {
+    const { data, error } = await supabase
+      .from('projets')
+      .select('*')
+      .eq('client_id', clientId)
+      .order('updated_at', { ascending: false })
+    throwIf(error)
+    return data || []
+  },
+
+  async getRecentProjects(limit = 6) {
+    const { data, error } = await supabase
+      .from('projets')
+      .select('*, clients(*)')
+      .order('updated_at', { ascending: false })
+      .limit(limit)
+    throwIf(error)
+    return (data || []).map(p => ({
+      ...p,
+      clients: p.clients || null,
+    }))
+  },
+
+  async saveProject(payload) {
     const now = new Date().toISOString()
-    if (data.id) {
-      const updated = projets.map(p => p.id === data.id ? { ...p, ...data, updated_at: now } : p)
-      set('projets', updated)
-      return updated.find(p => p.id === data.id)
-    } else {
-      const projet = { ...data, id: uid(), created_at: now, updated_at: now }
-      set('projets', [...projets, projet])
-      return projet
+    const row = {
+      client_id: payload.client_id,
+      nom: payload.nom,
+      statut: payload.statut,
+      questionnaire: payload.questionnaire ?? {},
+      notes_admin: payload.notes_admin ?? null,
+      devis: payload.devis ?? null,
+      paiements: payload.paiements ?? {
+        acompte: false, acompteDate: '', solde: false, soldeDate: '',
+      },
+      montant_total: payload.montant_total ?? 0,
+      updated_at: now,
     }
+
+    if (payload.id) {
+      const { data, error } = await supabase
+        .from('projets')
+        .update(row)
+        .eq('id', payload.id)
+        .select()
+        .single()
+      throwIf(error)
+      return data
+    }
+
+    const { data, error } = await supabase
+      .from('projets')
+      .insert({ ...row, created_at: now })
+      .select()
+      .single()
+    throwIf(error)
+    return data
   },
-  deleteProject(id) {
-    set('projets', get('projets').filter(p => p.id !== id))
+
+  async deleteProject(id) {
+    const { error } = await supabase.from('projets').delete().eq('id', id)
+    throwIf(error)
   },
-  stats() {
-    const projets = get('projets')
+
+  async stats() {
+    const [{ data: clients, error: e1 }, { data: projets, error: e2 }] = await Promise.all([
+      supabase.from('clients').select('id'),
+      supabase.from('projets').select('montant_total'),
+    ])
+    throwIf(e1)
+    throwIf(e2)
+    const list = projets || []
     return {
-      clients: get('clients').length,
-      projets: projets.length,
-      ca: projets.reduce((s, p) => s + (p.montant_total || 0), 0),
+      clients: (clients || []).length,
+      projets: list.length,
+      ca: list.reduce((s, p) => s + (p.montant_total || 0), 0),
     }
   },
 }

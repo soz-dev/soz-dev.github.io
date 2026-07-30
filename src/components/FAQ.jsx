@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Comment se passe le paiement ?',
-    a: '30% d\'acompte au démarrage du projet, 30% à la validation des maquettes, 40% à la livraison finale. Virement bancaire ou PayPal. Une facture est émise à chaque étape.',
+    a: '30 % d\'acompte au démarrage du projet, solde à la livraison finale. Virement bancaire ou PayPal. Une facture est émise à chaque étape.',
   },
   {
     q: 'Je n\'ai pas de maquette ni de brief, est-ce un problème ?',
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Proposez-vous un suivi ou de la maintenance après livraison ?',
-    a: '1 mois de support gratuit est inclus dans tous les projets. Au-delà, des contrats de maintenance mensuelle sont disponibles à partir de 90€/mois (mises à jour, sauvegardes, corrections).',
+    a: '1 mois de support gratuit est inclus dans tous les projets. Au-delà, des contrats de maintenance mensuelle sont disponibles à 200 €/mois (mises à jour, sauvegardes, corrections).',
   },
   {
     q: 'Est-ce que vous publiez l\'app sur l\'App Store à ma place ?',
@@ -37,17 +37,24 @@ const faqs = [
   },
 ]
 
-function FAQItem({ item, isOpen, onToggle }) {
+function FAQItem({ item, isOpen, onToggle, id }) {
+  const panelId = `faq-panel-${id}`
+  const buttonId = `faq-button-${id}`
   return (
     <div className={`glass rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-purple-200 dark:border-purple-500/30' : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'}`}>
       <button
+        id={buttonId}
+        type="button"
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
       >
         <span className="text-sm md:text-base font-semibold text-gray-900 dark:text-white">{item.q}</span>
         <span
           className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200"
           style={{ background: isOpen ? 'rgba(168,85,247,0.12)' : 'rgba(0,0,0,0.04)' }}
+          aria-hidden="true"
         >
           {isOpen
             ? <Minus className="w-3.5 h-3.5 text-purple-500" />
@@ -59,6 +66,9 @@ function FAQItem({ item, isOpen, onToggle }) {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             key="answer"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -109,6 +119,7 @@ export default function FAQ() {
           {faqs.map((item, i) => (
             <FAQItem
               key={i}
+              id={i}
               item={item}
               isOpen={openIndex === i}
               onToggle={() => setOpenIndex(openIndex === i ? null : i)}

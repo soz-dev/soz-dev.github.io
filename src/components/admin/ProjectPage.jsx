@@ -3,17 +3,13 @@ import { db } from '../../lib/adminDb'
 import { SECTIONS, generateEmailBody } from '../../lib/questionnaire'
 import { calculateDevis } from '../../lib/pricingEngine'
 import { exportDevisPDF } from '../../lib/generatePDF'
+import { parseOpt } from '../../lib/formatUtils'
 import { ArrowLeft, Save, Mail, FileDown, ChevronDown, ChevronUp, Check } from 'lucide-react'
 
 const ALL_STATUTS = [
   'questionnaire', 'questionnaire-envoyé', 'réponse-reçue',
   'appel-planifié', 'devis-envoyé', 'en-cours', 'livré', 'archivé',
 ]
-
-function parseOpt(opt) {
-  const p = opt.split('|')
-  return p.length === 2 ? { value: p[0], label: p[1] } : { value: opt, label: opt }
-}
 
 export default function ProjectPage({ client, project, go }) {
   const [nom, setNom] = useState(project?.nom || '')
@@ -40,21 +36,29 @@ export default function ProjectPage({ client, project, go }) {
     setSaved(false)
   }
 
-  const save = () => {
+  const save = async () => {
     setSaving(true)
-    db.saveProject({
-      id: project?.id,
-      client_id: client.id,
-      nom: nom || 'Nouveau projet',
-      statut,
-      questionnaire,
-      notes_admin: notesAdmin,
-      paiements,
-      montant_total: devis?.sousTotal || 0,
-      devis,
-    })
-    setSaving(false)
-    setSaved(true)
+    try {
+      const savedProject = await db.saveProject({
+        id: project?.id,
+        client_id: client.id,
+        nom: nom || 'Nouveau projet',
+        statut,
+        questionnaire,
+        notes_admin: notesAdmin,
+        paiements,
+        montant_total: devis?.sousTotal || 0,
+        devis,
+      })
+      setSaved(true)
+      if (!project?.id && savedProject?.id) {
+        go('project', { client, project: savedProject })
+      }
+    } catch (err) {
+      alert(err.message || 'Erreur lors de la sauvegarde')
+    } finally {
+      setSaving(false)
+    }
   }
 
   const sendEmail = () => {
@@ -124,13 +128,20 @@ export default function ProjectPage({ client, project, go }) {
         {(q.options || []).map(opt => {
           const active = (val || []).includes(opt)
           return (
-            <button key={opt} type="button" onClick={() => toggleMulti(q.id, opt)}
-              className={`text-xs px-3 py-1.5 rounded-full border transition flex items-center gap-1 ${
+            <label
+              key={opt}
+              className={`text-xs px-3 py-1.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
                 active ? 'bg-purple-600/30 border-purple-500 text-purple-300' : 'border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-400 hover:border-white/20 hover:text-white'
               }`}
             >
+              <input
+                type="checkbox"
+                className="sr-only"
+                checked={active}
+                onChange={() => toggleMulti(q.id, opt)}
+              />
               {active && <Check size={10} />}{opt}
-            </button>
+            </label>
           )
         })}
       </div>
