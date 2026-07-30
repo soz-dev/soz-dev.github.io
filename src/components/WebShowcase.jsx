@@ -891,12 +891,12 @@ export default function WebShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">Exemples</span>
+          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">Inspiration</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
-            Huit sites,{' '}<span className="gradient-text">huit univers</span>
+            Des univers,{' '}<span className="gradient-text">pas des templates</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-            Mini-pages complètes et scrollables — restaurant, boutique, SaaS, portfolio… Pas des blocs vides.
+            Quelques aperçus pour vous projeter — chaque projet est conçu sur mesure, pas choisi dans une liste fermée.
           </p>
         </motion.div>
 

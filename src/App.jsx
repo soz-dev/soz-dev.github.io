@@ -21,7 +21,6 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import StickyCta from './components/StickyCta'
-import ThemePicker from './components/ThemePicker'
 
 function PublicApp() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark')
@@ -55,7 +54,6 @@ function PublicApp() {
       <Contact />
       <Footer />
       <StickyCta />
-      <ThemePicker />
     </div>
   )
 }

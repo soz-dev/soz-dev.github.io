@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight, Sparkles } from 'lucide-react'
+import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
 
 const INCLUS = [
   'Site vitrine 2–5 pages (design + code)',
@@ -11,6 +12,11 @@ const INCLUS = [
   '1 mois de support après livraison',
   'Acompte 30 % seulement pour démarrer',
 ]
+
+const VITRINE = PRIX_BASE['site-vitrine-multi']
+const PACK = PRIX_PACK_CLE_EN_MAIN
+const HEBERG_DOMAINE_SEPARE = 300
+const PACK_BARRE = VITRINE + HEBERG_DOMAINE_SEPARE
 
 export default function PackCleEnMain() {
   return (
@@ -28,7 +34,6 @@ export default function PackCleEnMain() {
           className="rounded-3xl border border-accent-200/60 dark:border-accent-500/20 bg-gradient-to-br from-white via-white to-accent-50/40 dark:from-[#0a0f1a] dark:via-[#0a0f1a] dark:to-brand-900/30 overflow-hidden"
         >
           <div className="grid md:grid-cols-[1.05fr_0.95fr]">
-            {/* Copie */}
             <div className="p-8 md:p-10 lg:p-12">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-400 text-[11px] font-mono font-semibold tracking-wider uppercase mb-5">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -42,11 +47,11 @@ export default function PackCleEnMain() {
               </p>
 
               <div className="flex items-end gap-3 mb-2">
-                <span className="text-sm text-slate-400 line-through">~1 200 €</span>
-                <span className="font-display text-5xl font-bold text-gray-900 dark:text-white">890€</span>
+                <span className="text-sm text-slate-400 line-through">~{PACK_BARRE.toLocaleString('fr-FR')} €</span>
+                <span className="font-display text-5xl font-bold text-gray-900 dark:text-white">{PACK.toLocaleString('fr-FR')}€</span>
               </div>
               <p className="text-xs text-slate-400 mb-8 font-mono">
-                Vitrine séparée 690 € + hébergement/domaine ≈ 300 € → pack à 890 €
+                Vitrine {VITRINE} € + hébergement/domaine ≈ {HEBERG_DOMAINE_SEPARE} € → pack à {PACK} €
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -69,7 +74,6 @@ export default function PackCleEnMain() {
               </p>
             </div>
 
-            {/* Inclus */}
             <div className="p-8 md:p-10 lg:p-12 bg-gray-900 dark:bg-black/40 text-white md:border-l border-accent-500/20">
               <p className="text-xs font-mono text-accent-400 tracking-[0.2em] uppercase mb-6">Tout inclus</p>
               <ul className="space-y-3.5">

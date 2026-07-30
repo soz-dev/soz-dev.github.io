@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
+import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN, PRIX_MAINTENANCE_MOIS } from '../lib/pricingEngine'
 
 /**
  * Prix sous le marché FR. Duo Sofyan + Cursor : web (React/Vite/Supabase/Stripe) + iOS (Swift/SwiftUI).
+ * Les montants viennent de PRIX_BASE (même source que devis / estimateur).
  */
+const fmt = (n) => n.toLocaleString('fr-FR')
+
 const plans = [
   {
     name: 'Landing',
     originalPrice: '1 500',
-    price: '390',
+    price: fmt(PRIX_BASE['site-vitrine']),
     description: 'Une page qui présente votre activité et convertit. Idéal pour démarrer vite.',
     features: [
       '1 page (~5 sections)',
@@ -24,7 +28,7 @@ const plans = [
   {
     name: 'Vitrine',
     originalPrice: '2 800',
-    price: '690',
+    price: fmt(PRIX_BASE['site-vitrine-multi']),
     description: 'Plusieurs pages pour expliquer votre offre et rassurer vos clients.',
     features: [
       '2 à 5 pages',
@@ -40,7 +44,7 @@ const plans = [
   {
     name: 'Site Pro',
     originalPrice: '5 500',
-    price: '1 290',
+    price: fmt(PRIX_BASE['site-pro']),
     description: 'Site complet, rapide, prêt à évoluer — blog ou CMS léger possible.',
     features: [
       'Jusqu’à 8 pages',
@@ -56,7 +60,7 @@ const plans = [
   {
     name: 'Boutique Stripe',
     originalPrice: '8 000',
-    price: '1 990',
+    price: fmt(PRIX_BASE.ecommerce),
     description: 'Vendre en ligne sans usine à gaz : catalogue, panier, paiement Stripe.',
     features: [
       'Catalogue produits',
@@ -72,7 +76,7 @@ const plans = [
   {
     name: 'App web / outil',
     originalPrice: '12 000',
-    price: '2 990',
+    price: fmt(PRIX_BASE['app-web']),
     suffix: '+',
     description: 'Espace membre, dashboard ou outil métier (auth + base de données).',
     features: [
@@ -89,7 +93,7 @@ const plans = [
   {
     name: 'App iOS',
     originalPrice: '10 000',
-    price: '2 990',
+    price: fmt(PRIX_BASE['app-ios']),
     suffix: '+',
     description: 'App native Swift / SwiftUI — de l’idée à l’App Store (Motastic, Dev Mastery…).',
     features: [
@@ -217,10 +221,10 @@ export default function Pricing() {
           transition={{ delay: 0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de 200 €/mois
+          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle à partir de {PRIX_MAINTENANCE_MOIS} €/mois
           <br />
-          <a href="#pack" className="text-cyan-600 dark:text-accent-400 hover:underline mt-2 inline-block">
-            Pack clé en main (site + hébergement + domaine) → 890 €
+          <a href="#pack" className="text-accent-600 dark:text-accent-400 hover:underline mt-2 inline-block">
+            Pack clé en main (site + hébergement + domaine) → {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
           </a>
         </motion.p>
       </div>

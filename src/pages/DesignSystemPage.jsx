@@ -91,6 +91,7 @@ export default function DesignSystemPage() {
             <span className="text-xs text-slate-400 truncate hidden sm:inline">Design System</span>
           </div>
           <div className="flex items-center gap-2 shrink-0">
+            <ThemePicker variant="nav" />
             <button
               type="button"
               onClick={() => setIsDark(d => !d)}
@@ -418,7 +419,6 @@ export default function DesignSystemPage() {
           </footer>
         </main>
       </div>
-      <ThemePicker compact />
     </div>
   )
 }

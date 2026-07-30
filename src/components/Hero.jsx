@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { PRIX_BASE } from '../lib/pricingEngine'
 
 export default function Hero() {
   return (
@@ -52,10 +53,10 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.5 }}
           className="font-mono text-sm text-brand-500 dark:text-brand-400 mb-10"
         >
-          À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">390€</span>
+          À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">{PRIX_BASE['site-vitrine'].toLocaleString('fr-FR')}€</span>
           <span className="text-slate-400 line-through ml-2">1 500€</span>
           <span className="text-slate-400 mx-2">·</span>
-          apps iOS dès <span className="font-bold text-gray-900 dark:text-white">2 990€+</span>
+          apps iOS dès <span className="font-bold text-gray-900 dark:text-white">{PRIX_BASE['app-ios'].toLocaleString('fr-FR')}€+</span>
         </motion.p>
 
         <motion.div

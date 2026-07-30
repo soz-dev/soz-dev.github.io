@@ -47,7 +47,7 @@ export const SECTIONS = [
       { id: 'couleurs', label: 'Couleurs souhaitées', type: 'text', placeholder: 'Ex: bleu marine, blanc cassé, touches dorées...' },
       { id: 'exemples_design', label: 'Sites ou apps appréciés', type: 'textarea', placeholder: 'URLs ou noms de sites inspirants...' },
       { id: 'maquettes', label: 'Maquettes Figma interactives', type: 'radio', options: ['Oui (+150€)', 'Non – intégration directe'] },
-      { id: 'logo', label: 'Logo', type: 'radio', options: ['Oui, j\'ai un logo', 'Non – à créer (+190€)', 'Partiel – à refaire'] },
+      { id: 'logo', label: 'Logo', type: 'radio', options: ['Oui, j\'ai un logo', 'Non – à créer (+190€)', 'Partiel – à refaire (+120€)'] },
       { id: 'charte', label: 'Charte graphique', type: 'radio', options: ['Oui, complète', 'Partielle', 'Non'] },
     ],
   },
@@ -60,10 +60,13 @@ export const SECTIONS = [
         id: 'nb_pages', label: 'Nombre de pages / écrans', type: 'select',
         options: ['1|1 page (landing)', '2-5|2 à 5 pages', '6-10|6 à 10 pages', '10+|Plus de 10 pages', 'nsp|Non défini'],
       },
-      { id: 'contenu_existant', label: 'Textes & images disponibles', type: 'radio', options: ['Oui, tout est prêt', 'Partiellement', 'Non, à créer'] },
+      {
+        id: 'contenu_existant', label: 'Textes & images disponibles', type: 'radio',
+        options: ['Oui, tout est prêt', 'Partiellement (+150€)', 'Non, à créer (+290€)'],
+      },
       {
         id: 'langues', label: 'Langues', type: 'multiselect',
-        options: ['Français', 'Anglais (+190€)', 'Espagnol', 'Autre'],
+        options: ['Français', 'Anglais (+190€)', 'Espagnol (+190€)', 'Autre (+190€)'],
       },
       { id: 'blog', label: 'Blog / actualités', type: 'radio', options: ['Oui (+120€)', 'Non'] },
     ],
@@ -113,9 +116,23 @@ export const SECTIONS = [
     questions: [
       {
         id: 'nb_produits', label: 'Nombre de produits', type: 'select',
-        options: ['1-20|1 à 20', '21-100|21 à 100', '100-500|100 à 500', '500+|500+'],
+        options: [
+          '1-20|1 à 20 (inclus)',
+          '21-100|21 à 100 · +150€',
+          '100-500|100 à 500 · +350€',
+          '500+|500+ · +590€',
+        ],
       },
-      { id: 'paiement', label: 'Solutions de paiement', type: 'multiselect', options: ['Stripe', 'PayPal', 'Apple Pay', 'Google Pay', 'Virement'] },
+      {
+        id: 'paiement', label: 'Solutions de paiement', type: 'multiselect',
+        options: [
+          'Stripe (inclus boutique)',
+          'PayPal (+90€)',
+          'Apple Pay (+60€)',
+          'Google Pay (+60€)',
+          'Virement',
+        ],
+      },
       { id: 'livraison', label: 'Gestion livraison / retours', type: 'radio', options: ['Oui (+220€)', 'Non'] },
     ],
   },
@@ -129,7 +146,14 @@ export const SECTIONS = [
       { id: 'domaine', label: 'Nom de domaine', type: 'radio', options: ['Oui, existant', 'Non, à acheter (~12€/an)'] },
       {
         id: 'integrations', label: 'Intégrations souhaitées', type: 'multiselect',
-        options: ['Google Analytics (inclus)', 'Mailchimp / Brevo (+120€)', 'Calendly (inclus)', 'CRM existant (+220€)', 'Zapier (+150€)', 'Autre'],
+        options: [
+          'Google Analytics (inclus)',
+          'Mailchimp / Brevo (+120€)',
+          'Calendly (inclus)',
+          'CRM existant (+220€)',
+          'Zapier (+150€)',
+          'Autre (+90€)',
+        ],
       },
       { id: 'maintenance', label: 'Maintenance mensuelle (à partir de 200€/mois)', type: 'radio', options: ['Oui', 'Non'] },
       { id: 'seo', label: 'SEO / référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+150€)', 'Non nécessaire'] },

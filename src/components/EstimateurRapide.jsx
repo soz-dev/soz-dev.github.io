@@ -61,7 +61,7 @@ export default function EstimateurRapide() {
             En 3 clics, une fourchette claire
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-            Indication sous le marché. Le devis détaillé affine ensuite le scope exact.
+            Indication alignée sur les tarifs affichés. Essentiel = prix de base · Complet / Premium = scope plus large (toujours plus cher). Le devis détaillé affine ensuite.
           </p>
         </motion.div>
 

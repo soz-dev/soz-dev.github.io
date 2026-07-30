@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
+import ThemePicker from './ThemePicker'
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -40,7 +41,7 @@ export default function Navbar({ isDark, toggleDark }) {
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4">
           {links.map((link) => (
             <a
               key={link.href}
@@ -50,7 +51,9 @@ export default function Navbar({ isDark, toggleDark }) {
               {link.label}
             </a>
           ))}
+          <ThemePicker variant="nav" />
           <button
+            type="button"
             onClick={toggleDark}
             className="w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10 text-slate-500 dark:text-slate-400 hover:border-gray-300 dark:hover:border-white/20 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
             aria-label="Changer le thème"
@@ -66,7 +69,9 @@ export default function Navbar({ isDark, toggleDark }) {
         </div>
 
         <div className="md:hidden flex items-center gap-2">
+          <ThemePicker variant="nav" />
           <button
+            type="button"
             onClick={toggleDark}
             className="w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10 text-slate-500 dark:text-slate-400"
             aria-label="Changer le thème"
@@ -80,6 +85,7 @@ export default function Navbar({ isDark, toggleDark }) {
             Devis
           </a>
           <button
+            type="button"
             className="flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
