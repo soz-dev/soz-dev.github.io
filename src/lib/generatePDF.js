@@ -1,20 +1,21 @@
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
-const P   = [168, 85, 247]   // purple
-const PD  = [126, 34, 206]   // purple dark
-const PL  = [245, 243, 255]  // purple light bg
-const PLB = [237, 233, 254]  // purple light border
-const CY  = [6, 182, 212]    // cyan
-const DK  = [17, 24, 39]     // dark text
-const GR  = [107, 114, 128]  // gray
+// Palette identique au site
+const DKK = [3,   7,  18]   // #030712 — fond dark site
+const DK2 = [15, 23,  42]   // #0f172a — slate-900
+const P   = [168, 85, 247]  // #a855f7 — purple-500
+const CY  = [6, 182, 212]   // #06b6d4 — cyan-500
 const WH  = [255, 255, 255]
-const BG  = [249, 250, 251]
-const BD  = [229, 231, 235]  // border
+const T1  = [17,  24,  39]  // #111827 — gray-900
+const T2  = [107, 114, 128] // #6b7280 — gray-500
+const T3  = [148, 163, 184] // #94a3b8 — slate-400
+const T4  = [156, 163, 175] // #9ca3af — gray-400
+const BG1 = [249, 250, 251] // #f9fafb — gray-50
+const BD  = [229, 231, 235] // #e5e7eb — gray-200
 
-// Fix thousand separator — jsPDF ne gère pas l'espace insécable
 function fmt(n) {
-  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + ' \u20ac'
+  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + '\u00a0\u20ac'
 }
 
 export function exportDevisPDF({ client, projet, devis }) {
@@ -23,115 +24,106 @@ export function exportDevisPDF({ client, projet, devis }) {
   const now = new Date()
   const rand = Math.random().toString(36).slice(2, 6).toUpperCase()
   const devisNum = `DEV-${now.getFullYear().toString().slice(-2)}${String(now.getMonth() + 1).padStart(2, '0')}-${rand}`
-  const dateStr = now.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })
-  const expiry = new Date(now)
+  const dateStr   = now.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const expiry    = new Date(now)
   expiry.setDate(expiry.getDate() + 30)
   const expiryStr = expiry.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })
 
-  // ── Header ────────────────────────────────────────────────
-  // Bande principale
+  // HEADER
+  doc.setFillColor(...DKK)
+  doc.rect(0, 0, W, 46, 'F')
   doc.setFillColor(...P)
-  doc.rect(0, 0, W, 44, 'F')
-  // Bande secondaire plus foncée en bas du header
-  doc.setFillColor(...PD)
-  doc.rect(0, 34, W, 10, 'F')
-  // Accent cyan (fine ligne décorative)
+  doc.rect(0, 0, 4, 45.3, 'F')
   doc.setFillColor(...CY)
-  doc.rect(0, 43.5, W, 0.8, 'F')
+  doc.rect(0, 45.3, W, 0.7, 'F')
 
-  // Logo
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(26)
-  doc.setTextColor(...WH)
-  doc.text('SOZ-DEV', 14, 21)
+  doc.setFontSize(27)
+  doc.setTextColor(...P)
+  doc.text('SOZ-DEV', 17, 22)
 
-  // Tagline
   doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8.5)
-  doc.setTextColor(220, 200, 255)
-  doc.text('Développeur indépendant  ·  soz-dev.com  ·  sofyan.devpro@gmail.com', 14, 30)
+  doc.setFontSize(8)
+  doc.setTextColor(...T3)
+  doc.text('Developpeur independant  .  soz-dev.com  .  sofyan.devpro@gmail.com', 17, 31)
 
-  // DEVIS label
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(20)
+  doc.setFontSize(22)
   doc.setTextColor(...WH)
   doc.text('DEVIS', W - 14, 19, { align: 'right' })
 
-  // Numéro & dates
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8.5)
-  doc.setTextColor(220, 200, 255)
-  doc.text(devisNum, W - 14, 26.5, { align: 'right' })
-  doc.text(`Émis le ${dateStr}`, W - 14, 32.5, { align: 'right' })
-  doc.text(`Valable jusqu'au ${expiryStr}`, W - 14, 38.5, { align: 'right' })
-
-  // ── Bloc client / projet ──────────────────────────────────
-  let y = 58
-
-  // Labels section
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(7)
-  doc.setTextColor(...GR)
+  doc.setFontSize(8.5)
+  doc.setTextColor(...P)
+  doc.text(devisNum, W - 14, 27.5, { align: 'right' })
+
+  doc.setFont('helvetica', 'normal')
+  doc.setFontSize(8)
+  doc.setTextColor(...T3)
+  doc.text('Emis le ' + dateStr, W - 14, 34.5, { align: 'right' })
+  doc.text("Valable jusqu'au " + expiryStr, W - 14, 41, { align: 'right' })
+
+  // CLIENT / PROJET
+  let y = 62
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(6.5)
+  doc.setTextColor(...T4)
   doc.text('CLIENT', 14, y)
   doc.text('PROJET', 115, y)
-  y += 6
-
-  // Noms
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(13)
-  doc.setTextColor(...DK)
-  doc.text(client.nom || '', 14, y)
-  doc.text(projet.nom || 'Nouveau projet', 115, y)
   y += 5.5
 
-  // Infos client
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(13)
+  doc.setTextColor(...T1)
+  doc.text(client.nom || '', 14, y)
+  doc.text(projet.nom || 'Nouveau projet', 115, y)
+  y += 5
+
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(9)
-  doc.setTextColor(...GR)
-  if (client.entreprise) {
-    doc.text(client.entreprise, 14, y)
-    y += 4.5
-  }
+  doc.setTextColor(...T2)
+  if (client.entreprise) { doc.text(client.entreprise, 14, y); y += 4.5 }
+
   const rowY = y
   if (client.email) doc.text(client.email, 14, rowY)
-  // Type projet côté droit
   if (devis.lignes[0]) {
-    doc.setTextColor(148, 103, 220)
+    doc.setTextColor(...P)
+    doc.setFontSize(8.5)
     doc.text(devis.lignes[0].label, 115, rowY)
-    doc.setTextColor(...GR)
+    doc.setTextColor(...T2)
+    doc.setFontSize(9)
   }
   y = rowY + 4.5
   if (client.telephone) doc.text(client.telephone, 14, y)
 
-  // Séparateur
-  const sepY = Math.max(y + 7, 86)
+  const sepY = Math.max(y + 8, 90)
   doc.setDrawColor(...BD)
   doc.setLineWidth(0.25)
   doc.line(14, sepY, W - 14, sepY)
 
-  // ── Tableau des prestations ───────────────────────────────
+  // TABLE
   autoTable(doc, {
     startY: sepY + 5,
     head: [['Description', 'Montant HT']],
     body: devis.lignes.map(l => [l.label, fmt(l.montant)]),
     theme: 'plain',
     headStyles: {
-      fillColor: P,
+      fillColor: DKK,
       textColor: WH,
-      fontSize: 9.5,
+      fontSize: 9,
       fontStyle: 'bold',
       cellPadding: { top: 6, bottom: 6, left: 8, right: 8 },
     },
     bodyStyles: {
       fontSize: 9,
-      textColor: DK,
+      textColor: T1,
       cellPadding: { top: 5.5, bottom: 5.5, left: 8, right: 8 },
-      lineColor: [240, 235, 255],
+      lineColor: BD,
       lineWidth: 0.2,
     },
-    alternateRowStyles: { fillColor: [251, 249, 255] },
+    alternateRowStyles: { fillColor: BG1 },
     columnStyles: {
-      1: { halign: 'right', cellWidth: 44, fontStyle: 'bold' },
+      1: { halign: 'right', cellWidth: 44, fontStyle: 'bold', textColor: P },
     },
     tableLineColor: BD,
     tableLineWidth: 0.2,
@@ -139,140 +131,133 @@ export function exportDevisPDF({ client, projet, devis }) {
 
   const tEnd = doc.lastAutoTable.finalY
 
-  // ── Bloc total ────────────────────────────────────────────
-  const bx = W - 14 - 88
-  const by = tEnd + 7
-  const bh = devis.maintenance ? 42 : 35
+  // BLOC TOTAL (fond sombre)
+  const bx = W - 14 - 90
+  const by = tEnd + 8
+  const bh = devis.maintenance ? 46 : 38
 
-  // Fond clair
-  doc.setFillColor(...PL)
-  doc.rect(bx, by, 88, bh, 'F')
-
-  // Accent gauche violet
+  doc.setFillColor(...DKK)
+  doc.rect(bx, by, 90, bh, 'F')
   doc.setFillColor(...P)
   doc.rect(bx, by, 3, bh, 'F')
 
-  // Ligne TOTAL HT
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(10.5)
-  doc.setTextColor(...DK)
-  doc.text('TOTAL HT', bx + 8, by + 9)
-  doc.setTextColor(...P)
-  doc.setFontSize(12)
-  doc.text(fmt(devis.sousTotal), bx + 88 - 6, by + 9, { align: 'right' })
+  doc.setFontSize(10)
+  doc.setTextColor(...WH)
+  doc.text('TOTAL HT', bx + 9, by + 9)
+  doc.setFontSize(13)
+  doc.setTextColor(...CY)
+  doc.text(fmt(devis.sousTotal), bx + 90 - 8, by + 9, { align: 'right' })
 
-  // Séparateur interne
-  doc.setDrawColor(...PLB)
+  doc.setDrawColor(40, 55, 80)
   doc.setLineWidth(0.3)
-  doc.line(bx + 6, by + 12.5, bx + 82, by + 12.5)
+  doc.line(bx + 7, by + 12.5, bx + 83, by + 12.5)
 
-  // Acompte
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(8.5)
-  doc.setTextColor(...GR)
-  doc.text('Acompte 30 % (à la signature)', bx + 8, by + 20)
+  doc.setTextColor(...T3)
+  doc.text('Acompte 30 % (a la signature)', bx + 9, by + 21)
   doc.setFont('helvetica', 'bold')
-  doc.setTextColor(...DK)
-  doc.text(fmt(devis.acompte), bx + 88 - 6, by + 20, { align: 'right' })
+  doc.setTextColor(...WH)
+  doc.text(fmt(devis.acompte), bx + 90 - 8, by + 21, { align: 'right' })
 
-  // Solde
   doc.setFont('helvetica', 'normal')
-  doc.setTextColor(...GR)
-  doc.text('Solde à la livraison', bx + 8, by + 27)
+  doc.setTextColor(...T3)
+  doc.text('Solde a la livraison', bx + 9, by + 29)
   doc.setFont('helvetica', 'bold')
-  doc.setTextColor(...DK)
-  doc.text(fmt(devis.solde), bx + 88 - 6, by + 27, { align: 'right' })
+  doc.setTextColor(...WH)
+  doc.text(fmt(devis.solde), bx + 90 - 8, by + 29, { align: 'right' })
 
-  // Option maintenance
   if (devis.maintenance) {
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(7.5)
-    doc.setTextColor(148, 103, 220)
-    doc.text(`+ Maintenance ${devis.maintenance} €/mois (option)`, bx + 8, by + 36)
+    doc.setTextColor(...P)
+    doc.text('+ Maintenance ' + devis.maintenance + ' EUR/mois (option)', bx + 9, by + 39)
   }
 
-  // ── Inclus dans le forfait ────────────────────────────────
+  // INCLUS
   const inclus = devis.inclus || []
-  const inclY = by + bh + 8
+  let nextY = by + bh + 6
+
   if (inclus.length > 0) {
-    doc.setFillColor(236, 253, 245)  // green-50
-    doc.setDrawColor(167, 243, 208)  // green-200
-    doc.setLineWidth(0.2)
-    doc.rect(14, inclY, W - 28, 12, 'FD')
-    doc.setFillColor(16, 185, 129)   // emerald-500
-    doc.rect(14, inclY, 3, 12, 'F')
+    const rows = []
+    for (let i = 0; i < inclus.length; i += 4) rows.push(inclus.slice(i, i + 4))
+    const inclH = rows.length * 6.5 + 10
+
+    doc.setFillColor(2, 18, 10)
+    doc.rect(14, nextY, W - 28, inclH, 'F')
+    doc.setFillColor(16, 185, 129)
+    doc.rect(14, nextY, 3, inclH, 'F')
+
     doc.setFont('helvetica', 'bold')
-    doc.setFontSize(7)
-    doc.setTextColor(6, 95, 70)
-    doc.text('INCLUS', 22, inclY + 5)
+    doc.setFontSize(6.5)
+    doc.setTextColor(52, 211, 153)
+    doc.text('INCLUS', 22, nextY + 5.5)
+
     doc.setFont('helvetica', 'normal')
-    doc.setFontSize(7)
-    const maxPerRow = 4
-    const itemsText = inclus.slice(0, 8).join('  ·  ')
-    doc.text(`✓  ${itemsText}`, 22, inclY + 9.5)
+    doc.setFontSize(7.5)
+    doc.setTextColor(167, 243, 208)
+    rows.forEach((row, i) => {
+      doc.text('+  ' + row.join('  .  '), 22, nextY + 5.5 + (i + 1) * 6.5)
+    })
+    nextY += inclH + 5
   }
 
-  // ── Conditions ────────────────────────────────────────────
-  const cy2 = inclus.length > 0 ? inclY + 20 : by + bh + 10
-  doc.setFillColor(...BG)
-  doc.setDrawColor(...BD)
-  doc.setLineWidth(0.2)
-  doc.rect(14, cy2, W - 28, 35, 'FD')
-
-  // Accent gauche violet
+  // CONDITIONS
+  doc.setFillColor(...DK2)
+  doc.rect(14, nextY, W - 28, 35, 'F')
   doc.setFillColor(...P)
-  doc.rect(14, cy2, 3, 35, 'F')
+  doc.rect(14, nextY, 3, 35, 'F')
 
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(7.5)
-  doc.setTextColor(...DK)
-  doc.text('CONDITIONS GÉNÉRALES', 22, cy2 + 7)
+  doc.setTextColor(...WH)
+  doc.text('CONDITIONS GENERALES', 22, nextY + 7)
 
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(7.5)
-  doc.setTextColor(...GR)
-
+  doc.setTextColor(...T3)
   const c1 = [
-    '• Acompte de 30% requis pour démarrer',
-    '• Délai de validité : 30 jours',
-    '• 1 mois de support inclus après livraison',
+    '- Acompte de 30% requis pour demarrer',
+    '- Delai de validite : 30 jours',
+    '- 1 mois de support inclus apres livraison',
   ]
   const c2 = [
-    '• Prix HT — non soumis à TVA (auto-entrepreneur)',
-    '• Paiement par virement bancaire',
-    '• Code source livré à réception du solde',
+    '- Prix HT - non soumis a TVA (auto-entrepreneur)',
+    '- Paiement par virement bancaire',
+    '- Code source livre a reception du solde',
   ]
-  c1.forEach((line, i) => doc.text(line, 22, cy2 + 14 + i * 6.5))
-  c2.forEach((line, i) => doc.text(line, W / 2 + 5, cy2 + 14 + i * 6.5))
+  c1.forEach((line, i) => doc.text(line, 22, nextY + 14 + i * 6.5))
+  c2.forEach((line, i) => doc.text(line, W / 2 + 5, nextY + 14 + i * 6.5))
+  nextY += 40
 
-  // ── Signature ─────────────────────────────────────────────
-  const sY = cy2 + 44
-  if (sY < 246) {
+  // SIGNATURE
+  if (nextY < 248) {
     doc.setFont('helvetica', 'bold')
     doc.setFontSize(8.5)
-    doc.setTextColor(...DK)
-    doc.text('Bon pour accord :', 14, sY)
+    doc.setTextColor(...T1)
+    doc.text('Bon pour accord :', 14, nextY)
     doc.setDrawColor(...BD)
     doc.setLineWidth(0.3)
-    doc.line(14, sY + 18, 105, sY + 18)
+    doc.line(14, nextY + 18, 105, nextY + 18)
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(7.5)
-    doc.setTextColor(...GR)
-    doc.text('Date et signature précédés de « Bon pour accord »', 14, sY + 24)
+    doc.setTextColor(...T2)
+    doc.text('Date et signature precedees de "Bon pour accord"', 14, nextY + 24)
   }
 
-  // ── Footer ────────────────────────────────────────────────
+  // FOOTER
   const pages = doc.internal.getNumberOfPages()
   doc.setPage(pages)
-  doc.setFillColor(...P)
+  doc.setFillColor(...DKK)
   doc.rect(0, 284, W, 13, 'F')
   doc.setFillColor(...CY)
   doc.rect(0, 284, W, 0.7, 'F')
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(7.5)
-  doc.setTextColor(...WH)
+  doc.setTextColor(...T3)
   doc.text(
-    'Sofyan Zarouri  ·  Développeur indépendant  ·  soz-dev.com  ·  sofyan.devpro@gmail.com',
+    'Sofyan Zarouri  .  Developpeur independant  .  soz-dev.com  .  sofyan.devpro@gmail.com',
     W / 2, 292, { align: 'center' }
   )
 
