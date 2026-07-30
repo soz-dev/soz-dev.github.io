@@ -114,25 +114,22 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="tarifs" className="py-28 bg-gray-50/60 dark:bg-white/[0.02]">
+    <section id="tarifs" className="py-16 md:py-20 bg-gray-50/60 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="mb-16"
+          className="mb-10 md:mb-12"
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
-            Investissement
+            Grille
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Tarifs</h2>
-          <p className="text-sm text-amber-600 dark:text-amber-400 font-medium mb-4">
-            Prix clairement sous le marché : sites web & apps iPhone
-          </p>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '520px', margin: '0 auto' }}>
-            Les prix barrés correspondent à l’ordre de grandeur d’une agence ou d’un freelance classique.
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
+            Prix affichés. Les barrés = ordre de grandeur agence / freelance classique.
           </p>
         </motion.div>
 
@@ -182,13 +179,16 @@ export default function Pricing() {
 
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">{plan.description}</p>
 
-              <ul className="space-y-2.5 mb-7 flex-1">
-                {plan.features.map((f) => (
+              <ul className="space-y-2 mb-5 flex-1">
+                {plan.features.slice(0, 3).map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
                     <Check className="w-4 h-4 shrink-0 mt-0.5" style={{ color: plan.accentColor }} />
                     {f}
                   </li>
                 ))}
+                {plan.features.length > 3 && (
+                  <li className="text-xs text-slate-400 pl-6">+ {plan.features.length - 3} inclus au devis</li>
+                )}
               </ul>
 
               <div

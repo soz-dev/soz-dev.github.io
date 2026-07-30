@@ -71,7 +71,7 @@ export default function EstimateurRapide() {
   }
 
   return (
-    <section id="estimateur" className="py-28 relative overflow-hidden bg-gray-50/70 dark:bg-white/[0.02]">
+    <section id="estimateur" className="py-16 md:py-20 relative overflow-hidden bg-gray-50/70 dark:bg-white/[0.02]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
       <div className="absolute inset-0 pointer-events-none flex justify-center">
         <div className="w-[700px] h-[400px] rounded-full blur-[120px] bg-purple-500/5 dark:bg-brand-600/10" />
