@@ -3,324 +3,375 @@ import { Monitor } from 'lucide-react'
 
 const IMG = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&auto=format&q=75`
 
-// ── 1. Restaurant ────────────────────────────────────────────────────────────
+// ── 1. Restaurant — split editorial + menu list (dark / gold) ───────────────
 function MiniRestaurant() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#09080a', color:'#f5f0e8', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'8px 12px', position:'absolute', top:0, left:0, right:0, zIndex:10, background:'linear-gradient(rgba(0,0,0,0.7),transparent)' }}>
-        <span style={{ fontWeight:900, fontSize:10, color:'#d4a843', letterSpacing:3 }}>BELLA CUCINA</span>
-        <div style={{ display:'flex', gap:8, fontSize:7, color:'rgba(255,255,255,0.7)' }}>
-          <span>Menu</span><span>Réserver</span><span>Contact</span>
-        </div>
-      </div>
-      <div style={{ position:'relative', height:110 }}>
-        <img loading="lazy" src={IMG('1414235077428-338989a2e8c0',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7))' }} />
-        <div style={{ position:'absolute', bottom:8, left:12, right:12, textAlign:'center' }}>
-          <p style={{ fontSize:7, color:'#d4a843', letterSpacing:3, margin:'0 0 2px' }}>DEPUIS 1987 · PARIS 8ÈME</p>
-          <h1 style={{ fontSize:15, fontWeight:900, margin:'0 0 6px', lineHeight:1.1, fontStyle:'italic' }}>Une expérience inoubliable</h1>
-          <button style={{ background:'#d4a843', color:'#09080a', border:'none', padding:'4px 14px', borderRadius:3, fontSize:7.5, fontWeight:800, cursor:'pointer', letterSpacing:1 }}>RÉSERVER →</button>
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:6, padding:'8px 10px' }}>
-        {[
-          [IMG('1567620905572-d743fce5d776',120,70),'Viandes rôties','28 €'],
-          [IMG('1473093295043-cdd812d0e601',120,70),'Pasta maison','22 €'],
-          [IMG('1567324216240-9c5e92beea68',120,70),'Desserts','12 €'],
-        ].map(([src,n,p],i) => (
-          <div key={i} style={{ borderRadius:5, overflow:'hidden', background:'rgba(255,255,255,0.05)' }}>
-            <img loading="lazy" src={src} alt="" style={{ width:'100%', height:42, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-            <div style={{ padding:'4px 6px' }}>
-              <p style={{ fontSize:7, fontWeight:600, margin:'0 0 1px' }}>{n}</p>
-              <p style={{ fontSize:7, color:'#d4a843', margin:0 }}>{p}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'4px 10px', fontSize:6.5, color:'#a0916d' }}>
-        <span>★★★★★ 247 avis</span>
-        <span>🕐 Ouvert 12h–23h</span>
-        <span>📞 01 42 xx xx xx</span>
-      </div>
-    </div>
-  )
-}
-
-// ── 2. Coach ─────────────────────────────────────────────────────────────────
-function MiniCoach() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#fff', color:'#111', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'8px 12px', background:'#fff', borderBottom:'1px solid #f0f0f0' }}>
-        <span style={{ fontWeight:900, fontSize:10, color:'#7c3aed' }}>Marie Laurent <span style={{ fontSize:7, color:'#a78bfa', fontWeight:400 }}>Coach ICF</span></span>
-        <button style={{ background:'linear-gradient(135deg,#7c3aed,#06b6d4)', color:'#fff', border:'none', padding:'3px 10px', borderRadius:20, fontSize:7, cursor:'pointer' }}>Prendre RDV</button>
-      </div>
-      <div style={{ display:'flex', gap:10, padding:'10px 12px', alignItems:'flex-start' }}>
-        <img loading="lazy" src={IMG('1573496359142-b8d87734a5a2',80,80)} alt="" style={{ width:54, height:54, borderRadius:'50%', objectFit:'cover', flexShrink:0, border:'2px solid #a78bfa' }} onError={e=>{e.target.style.display='none'}} />
-        <div>
-          <p style={{ fontSize:6.5, color:'#7c3aed', fontWeight:700, margin:'0 0 2px', letterSpacing:2 }}>COACH CERTIFIÉE</p>
-          <h2 style={{ fontSize:12, fontWeight:800, margin:'0 0 2px', lineHeight:1.2 }}>Libérez votre<br/>plein potentiel</h2>
-          <p style={{ fontSize:6.5, color:'#888', margin:0 }}>+200 clients · 6 ans d'expérience</p>
-          <div style={{ display:'flex', gap:3, marginTop:4 }}>
-            {['Pro','Bien-être','Life'].map((t,i) => (
-              <span key={i} style={{ fontSize:6, background:'rgba(124,58,237,0.08)', color:'#7c3aed', padding:'1px 5px', borderRadius:20 }}>{t}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div style={{ padding:'0 12px 8px' }}>
-        <div style={{ background:'linear-gradient(135deg,rgba(124,58,237,0.05),rgba(6,182,212,0.05))', border:'1px solid rgba(124,58,237,0.12)', borderRadius:7, padding:'7px 9px', marginBottom:7 }}>
-          <p style={{ fontSize:7, fontStyle:'italic', color:'#555', margin:'0 0 3px', lineHeight:1.4 }}>"En 3 mois j'ai décroché le poste de mes rêves. Merci Marie !"</p>
-          <p style={{ fontSize:6.5, color:'#a78bfa', margin:0 }}>— Sophie T., Manager</p>
-        </div>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', fontSize:7 }}>
-          <span style={{ color:'#888' }}>🗓 Prochaine dispo : <strong style={{ color:'#333' }}>Lundi 14h</strong></span>
-          <span style={{ color:'#7c3aed', fontWeight:700 }}>1h · 120 €</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── 3. E-commerce ─────────────────────────────────────────────────────────────
-function MiniEcommerce() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#fff', color:'#111', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'8px 12px', borderBottom:'1px solid #f0f0f0' }}>
-        <span style={{ fontWeight:900, fontSize:11 }}>LUXE<span style={{ color:'#06b6d4' }}>SHOP</span></span>
-        <div style={{ display:'flex', gap:1, alignItems:'center' }}>
-          <input style={{ border:'1px solid #f0f0f0', borderRadius:20, padding:'2px 8px', fontSize:7, width:80, outline:'none' }} placeholder="Rechercher..." />
-          <span style={{ background:'#111', color:'#fff', borderRadius:20, padding:'2px 7px', fontSize:7, marginLeft:6 }}>🛒 3</span>
-        </div>
-      </div>
-      <div style={{ background:'linear-gradient(135deg,#0f0c2b,#1a1540)', padding:'8px 12px 7px', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div>
-          <p style={{ fontSize:6.5, color:'#06b6d4', letterSpacing:3, margin:'0 0 1px' }}>PROMO -30%</p>
-          <p style={{ fontSize:12, fontWeight:800, color:'#fff', margin:0 }}>Collection Été</p>
-        </div>
-        <button style={{ background:'#06b6d4', color:'#fff', border:'none', padding:'5px 12px', borderRadius:4, fontSize:7.5, cursor:'pointer', fontWeight:700 }}>Découvrir →</button>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:5, padding:'7px 8px' }}>
-        {[
-          [IMG('1542291026-7eec264c27ff',120,80),'Sneakers Air','129 €','189 €'],
-          [IMG('1548036328-c9fa89d128fa',120,80),'Sac Cuir','189 €',null],
-          [IMG('1523275335684-37898b6baf30',120,80),'Montre Or','320 €','450 €'],
-        ].map(([src,n,p,old],i) => (
-          <div key={i} style={{ borderRadius:5, overflow:'hidden', border:'1px solid #f5f5f5' }}>
-            <div style={{ position:'relative' }}>
-              <img loading="lazy" src={src} alt="" style={{ width:'100%', height:46, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-              {old && <span style={{ position:'absolute', top:3, left:3, background:'#ef4444', color:'#fff', fontSize:5.5, padding:'1px 4px', borderRadius:3, fontWeight:700 }}>PROMO</span>}
-            </div>
-            <div style={{ padding:'4px 5px' }}>
-              <p style={{ fontSize:6.5, fontWeight:600, margin:'0 0 1px', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{n}</p>
-              <div style={{ display:'flex', alignItems:'center', gap:3, marginBottom:3 }}>
-                <p style={{ fontSize:7.5, color:'#0891b2', fontWeight:700, margin:0 }}>{p}</p>
-                {old && <p style={{ fontSize:6, color:'#aaa', textDecoration:'line-through', margin:0 }}>{old}</p>}
-              </div>
-              <button style={{ width:'100%', background:'#111', color:'#fff', border:'none', padding:'3px 0', borderRadius:3, fontSize:6, cursor:'pointer' }}>+ Panier</button>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ display:'flex', justifyContent:'space-around', padding:'3px 8px', fontSize:6.5, color:'#aaa', borderTop:'1px solid #f5f5f5' }}>
-        <span>🔒 Paiement sécurisé</span><span>🚚 Livraison 24h</span><span>↩ Retour 30j</span>
-      </div>
-    </div>
-  )
-}
-
-// ── 4. SaaS ──────────────────────────────────────────────────────────────────
-function MiniSaaS() {
-  const avatars = ['🧑‍💻','👩‍💼','🧑‍🎨','👨‍🔬','👩‍💻']
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#030712', color:'#e2e8f0', width:'100%', height:'100%', display:'flex', overflow:'hidden' }}>
-      <div style={{ width:42, background:'#07070f', borderRight:'1px solid rgba(255,255,255,0.05)', padding:'10px 0', display:'flex', flexDirection:'column', alignItems:'center', gap:9 }}>
-        <div style={{ width:20, height:20, borderRadius:4, background:'linear-gradient(135deg,#a855f7,#06b6d4)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:9 }}>⚡</div>
-        {['📊','👥','📦','💬','⚙️'].map((ic,i) => (
-          <div key={i} style={{ fontSize:10, opacity:i===0?1:0.3, position:'relative' }}>
-            {ic}
-            {i===3 && <span style={{ position:'absolute', top:-2, right:-2, width:5, height:5, background:'#ef4444', borderRadius:'50%', display:'block' }} />}
-          </div>
-        ))}
-      </div>
-      <div style={{ flex:1, padding:'9px 8px', overflow:'hidden' }}>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:8 }}>
-          <p style={{ fontSize:8, fontWeight:700, margin:0, color:'#a855f7' }}>// Dashboard</p>
-          <span style={{ fontSize:6, background:'rgba(16,185,129,0.15)', color:'#10b981', padding:'1px 5px', borderRadius:20 }}>● Live</span>
-        </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:4, marginBottom:7 }}>
-          {[['2 840','Users','+12%','#a855f7'],['47 K€','MRR','+8%','#06b6d4']].map(([v,l,d,c],i)=>(
-            <div key={i} style={{ background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:6, padding:'5px 7px' }}>
-              <p style={{ fontSize:12, fontWeight:700, margin:'0 0 1px', color:c }}>{v}</p>
-              <p style={{ fontSize:6, color:'#64748b', margin:'0 0 1px' }}>{l}</p>
-              <p style={{ fontSize:6, color:'#10b981', margin:0 }}>{d}</p>
-            </div>
-          ))}
-        </div>
-        <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:5, padding:'6px 7px', marginBottom:6 }}>
-          <p style={{ fontSize:6, color:'#64748b', margin:'0 0 5px' }}>Activité — 30 jours</p>
-          <div style={{ display:'flex', alignItems:'flex-end', gap:2, height:28 }}>
-            {[30,50,40,68,55,78,60,85,72,90,65,95].map((h,i)=>(
-              <div key={i} style={{ flex:1, height:`${h}%`, borderRadius:'2px 2px 0 0', background:i===11?'#a855f7':`rgba(168,85,247,${0.12+i*0.055})` }} />
-            ))}
-          </div>
-        </div>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-          <div style={{ display:'flex' }}>
-            {avatars.map((a,i)=>(
-              <span key={i} style={{ fontSize:10, marginLeft:i?-3:0, zIndex:avatars.length-i }}>{a}</span>
-            ))}
-          </div>
-          <span style={{ fontSize:6.5, color:'#64748b' }}>+58 actifs</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── 5. Artisan / Site vitrine ────────────────────────────────────────────────
-function MiniArtisan() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#fff', color:'#111', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ background:'#1e3a5f', padding:'7px 12px', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div>
-          <p style={{ fontSize:9, fontWeight:900, color:'#fff', margin:0 }}>🔧 ProPlomberie</p>
-          <p style={{ fontSize:6, color:'rgba(255,255,255,0.6)', margin:0 }}>Intervention rapide · Paris & IDF</p>
-        </div>
-        <div style={{ background:'#f97316', color:'#fff', borderRadius:5, padding:'4px 8px', textAlign:'center' }}>
-          <p style={{ fontSize:7.5, fontWeight:900, margin:0 }}>06 12 34 56 78</p>
-          <p style={{ fontSize:6, margin:0, opacity:0.9 }}>Urgence 24/7</p>
-        </div>
-      </div>
-      <div style={{ position:'relative', height:80 }}>
-        <img loading="lazy" src={IMG('1581094794329-c8112a89af12',400,100)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(30,58,95,0.85) 40%,transparent)' }} />
-        <div style={{ position:'absolute', top:'50%', left:10, transform:'translateY(-50%)' }}>
-          <h2 style={{ fontSize:11, fontWeight:900, color:'#fff', margin:'0 0 2px', lineHeight:1.2 }}>Plombier certifié<br/>disponible maintenant</h2>
-          <button style={{ background:'#f97316', color:'#fff', border:'none', padding:'3px 10px', borderRadius:3, fontSize:7, fontWeight:700, cursor:'pointer' }}>Devis gratuit →</button>
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:5, padding:'8px 10px' }}>
-        {[['🚿','Dépannage'],['🔩','Installation'],['🏠','Rénovation'],['🌊','Chauffage']].map(([e,l],i)=>(
-          <div key={i} style={{ background:'#f8fafc', border:'1px solid #e2e8f0', borderRadius:5, padding:'5px 4px', textAlign:'center' }}>
-            <p style={{ fontSize:12, margin:'0 0 2px' }}>{e}</p>
-            <p style={{ fontSize:6, fontWeight:600, color:'#1e3a5f', margin:0 }}>{l}</p>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding:'0 10px', display:'flex', gap:5, fontSize:6.5, color:'#555', alignItems:'center' }}>
-        <span>⭐ 4.9/5</span><span>·</span><span>✅ Artisan RGE</span><span>·</span><span>📍 Île-de-France</span>
-      </div>
-    </div>
-  )
-}
-
-// ── 6. Blog / Site dynamique ─────────────────────────────────────────────────
-function MiniBlog() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#fff', color:'#111', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'7px 12px', borderBottom:'1px solid #f0f0f0' }}>
-        <span style={{ fontWeight:900, fontSize:11, color:'#111' }}>THE<span style={{ color:'#a855f7' }}>PULSE</span></span>
-        <div style={{ display:'flex', gap:6, fontSize:7, color:'#666' }}>
-          {['Tech','Design','Business','Dev'].map(c=><span key={c}>{c}</span>)}
-        </div>
-      </div>
-      <div style={{ position:'relative', height:95 }}>
-        <img loading="lazy" src={IMG('1486312338219-ce68d2c6f44d',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-        <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.75))' }} />
-        <div style={{ position:'absolute', bottom:7, left:9, right:9 }}>
-          <span style={{ fontSize:6, background:'#a855f7', color:'#fff', padding:'1px 6px', borderRadius:20, fontWeight:600 }}>À LA UNE</span>
-          <h2 style={{ fontSize:11, fontWeight:800, color:'#fff', margin:'3px 0 2px', lineHeight:1.25 }}>L'IA va-t-elle remplacer<br/>les développeurs en 2027 ?</h2>
-          <div style={{ display:'flex', gap:6, fontSize:6, color:'rgba(255,255,255,0.7)', alignItems:'center' }}>
-            <span>👤 Alex M.</span><span>·</span><span>🕐 8 min de lecture</span><span>·</span><span>2.4K vues</span>
-          </div>
-        </div>
-      </div>
-      <div style={{ padding:'7px 9px' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:5 }}>
-          {[
-            [IMG('1550745165-9bc0b252726f',80,45),'React 19 : ce qui change'],
-            [IMG('1559526324-593bc073d938',80,45),'Figma vs Sketch en 2026'],
-          ].map(([src,title],i)=>(
-            <div key={i} style={{ display:'flex', gap:5, alignItems:'flex-start' }}>
-              <img loading="lazy" src={src} alt="" style={{ width:40, height:28, objectFit:'cover', borderRadius:3, flexShrink:0 }} onError={e=>e.target.style.display='none'} />
-              <p style={{ fontSize:7, fontWeight:600, margin:0, lineHeight:1.3, color:'#222' }}>{title}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── 7. Cabinet professionnel ──────────────────────────────────────────────────
-function MiniCabinet() {
-  return (
-    <div style={{ fontFamily:'system-ui', background:'#f8f9fc', color:'#111', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ background:'#0f1f3d', padding:'8px 12px', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div>
-          <p style={{ fontSize:9.5, fontWeight:900, color:'#fff', margin:0, letterSpacing:1 }}>DUPONT <span style={{ color:'#c9a84c', fontWeight:400 }}>&</span> ASSOCIÉS</p>
-          <p style={{ fontSize:6, color:'rgba(255,255,255,0.5)', margin:0, letterSpacing:1 }}>CABINET D'AVOCATS · PARIS</p>
-        </div>
-        <button style={{ background:'transparent', color:'#c9a84c', border:'1px solid #c9a84c', padding:'3px 9px', borderRadius:3, fontSize:7, cursor:'pointer' }}>Consultation</button>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', height:170, gap:0 }}>
-        <div style={{ position:'relative' }}>
-          <img loading="lazy" src={IMG('1453728013993-6d66e9c9123a',200,180)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-          <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(15,31,61,0.2),rgba(15,31,61,0.65))' }} />
-          <div style={{ position:'absolute', bottom:10, left:10 }}>
-            <h2 style={{ fontSize:11, fontWeight:800, color:'#fff', margin:'0 0 2px', lineHeight:1.2 }}>Votre défense,<br/>notre expertise</h2>
-            <p style={{ fontSize:6.5, color:'rgba(255,255,255,0.7)', margin:'0 0 5px' }}>30 ans d'expérience</p>
-            <button style={{ background:'#c9a84c', color:'#0f1f3d', border:'none', padding:'3px 10px', borderRadius:3, fontSize:7, fontWeight:700, cursor:'pointer' }}>Prendre RDV →</button>
-          </div>
-        </div>
-        <div style={{ background:'#0f1f3d', padding:'10px 10px' }}>
-          <p style={{ fontSize:7, color:'#c9a84c', fontWeight:700, margin:'0 0 7px', letterSpacing:2 }}>NOS DOMAINES</p>
-          {['⚖️ Droit des affaires','🏠 Droit immobilier','👥 Droit du travail','💼 Droit fiscal','🛡️ Pénal des affaires'].map((l,i)=>(
-            <div key={i} style={{ fontSize:7, color:i===0?'#c9a84c':'rgba(255,255,255,0.65)', padding:'3px 0', borderBottom:'1px solid rgba(255,255,255,0.06)' }}>{l}</div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── 8. Portfolio créatif ──────────────────────────────────────────────────────
-function MiniPortfolio() {
-  const photos = [
-    IMG('1506905925346-21bda4d32df4',120,100),
-    IMG('1543610892-0b1f7b6b7eb3',120,60),
-    IMG('1501854140801-50d01698950b',120,60),
-    IMG('1518173946687-a4c8892bbd9f',120,80),
-    IMG('1447752741948-7ba38a9ab966',120,70),
+  const dishes = [
+    ['Carpaccio de bœuf', '18 €', 'Entrée'],
+    ['Risotto aux truffes', '32 €', 'Plat'],
+    ['Pigeon rôti', '38 €', 'Plat'],
+    ['Fondant chocolat', '14 €', 'Dessert'],
   ]
   return (
-    <div style={{ fontFamily:'system-ui', background:'#0a0a0a', color:'#fff', width:'100%', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'8px 12px' }}>
-        <span style={{ fontSize:10, fontWeight:900, letterSpacing:3 }}>LÉNA<span style={{ color:'#a855f7' }}>.</span>PHOTO</span>
-        <div style={{ display:'flex', gap:8, fontSize:7, color:'rgba(255,255,255,0.5)' }}>
-          <span>Portfolio</span><span>À propos</span><span>Contact</span>
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#0c0a09', color: '#faf6ef', width: '100%', height: '100%', overflow: 'hidden', display: 'flex' }}>
+      {/* Left: full-bleed dish */}
+      <div style={{ width: '42%', position: 'relative', flexShrink: 0 }}>
+        <img loading="lazy" src={IMG('1414235077428-338989a2e8c0', 220, 280)} alt="Plat signature Bella Cucina" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 40%,rgba(12,10,9,0.92))' }} />
+        <div style={{ position: 'absolute', bottom: 10, left: 8, right: 8 }}>
+          <p style={{ fontSize: 6, letterSpacing: 2, color: '#d4a843', margin: '0 0 2px', fontFamily: 'system-ui' }}>SIGNATURE</p>
+          <p style={{ fontSize: 11, fontWeight: 700, margin: 0, lineHeight: 1.15, fontStyle: 'italic' }}>Osso buco<br />alla milanese</p>
         </div>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gridTemplateRows:'auto auto', gap:4, padding:'4px 8px 6px' }}>
-        <div style={{ gridRow:'1/3', borderRadius:5, overflow:'hidden', position:'relative' }}>
-          <img loading="lazy" src={photos[0]} alt="" style={{ width:'100%', height:160, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
-          <div style={{ position:'absolute', bottom:5, left:5, background:'rgba(168,85,247,0.85)', padding:'2px 7px', borderRadius:3 }}>
-            <p style={{ fontSize:6.5, fontWeight:700, margin:0 }}>PAYSAGE</p>
+      {/* Right: brand + menu */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+        <div style={{ padding: '8px 10px 6px', borderBottom: '1px solid rgba(212,168,67,0.25)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: '#d4a843' }}>BELLA CUCINA</span>
+            <span style={{ fontSize: 6, fontFamily: 'system-ui', color: 'rgba(250,246,239,0.45)' }}>★ Michelin</span>
+          </div>
+          <p style={{ fontSize: 6, margin: '2px 0 0', fontFamily: 'system-ui', color: 'rgba(250,246,239,0.5)', letterSpacing: 1 }}>PARIS 8 · DEPUIS 1987</p>
+        </div>
+        <div style={{ flex: 1, padding: '6px 10px', overflow: 'hidden' }}>
+          <p style={{ fontSize: 6.5, letterSpacing: 2, color: '#d4a843', margin: '0 0 5px', fontFamily: 'system-ui' }}>À LA CARTE</p>
+          {dishes.map(([name, price, cat], i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 5, fontFamily: 'system-ui' }}>
+              <span style={{ fontSize: 5.5, color: 'rgba(212,168,67,0.7)', width: 28, flexShrink: 0 }}>{cat}</span>
+              <span style={{ fontSize: 8, flex: 1, borderBottom: '1px dotted rgba(212,168,67,0.3)', paddingBottom: 2 }}>{name}</span>
+              <span style={{ fontSize: 8, color: '#d4a843', fontWeight: 700 }}>{price}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ padding: '6px 10px', background: 'rgba(212,168,67,0.12)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'system-ui' }}>
+          <span style={{ fontSize: 6.5, color: 'rgba(250,246,239,0.6)' }}>Ouvert · 12h–14h30 / 19h–23h</span>
+          <button type="button" style={{ background: '#d4a843', color: '#0c0a09', border: 'none', padding: '4px 10px', fontSize: 7, fontWeight: 800, letterSpacing: 0.5, cursor: 'pointer' }}>Réserver</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── 2. Coach — asymmetric portrait + credentials (warm sage) ────────────────
+function MiniCoach() {
+  return (
+    <div style={{ fontFamily: 'system-ui', background: '#f4f1eb', color: '#1a2e28', width: '100%', height: '100%', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 0.95fr' }}>
+      <div style={{ padding: '10px 10px 8px', display: 'flex', flexDirection: 'column' }}>
+        <p style={{ fontSize: 6, letterSpacing: 2.5, color: '#5c7a6e', margin: '0 0 4px', fontWeight: 700 }}>COACH ICF · PARIS</p>
+        <h2 style={{ fontSize: 15, fontWeight: 800, margin: '0 0 4px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>Marie<br />Laurent</h2>
+        <p style={{ fontSize: 7, color: '#5a6b64', margin: '0 0 8px', lineHeight: 1.35 }}>Accompagnement carrière &amp; leadership pour cadres ambitieux.</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 8 }}>
+          {[['200+', 'clients'], ['6 ans', 'expérience'], ['ICF', 'certifiée']].map(([v, l], i) => (
+            <div key={i} style={{ display: 'flex', gap: 6, alignItems: 'baseline', borderLeft: '2px solid #7d9b8c', paddingLeft: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#2d4a40' }}>{v}</span>
+              <span style={{ fontSize: 6.5, color: '#6b7c74' }}>{l}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 'auto', background: '#1a2e28', color: '#f4f1eb', borderRadius: 6, padding: '6px 8px' }}>
+          <p style={{ fontSize: 6, color: '#a8c4b8', margin: '0 0 2px' }}>Prochaine dispo</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 8, fontWeight: 700 }}>Lun 14h · 120 €</span>
+            <button type="button" style={{ background: '#c4a574', color: '#1a2e28', border: 'none', padding: '3px 8px', borderRadius: 4, fontSize: 6.5, fontWeight: 700, cursor: 'pointer' }}>Réserver</button>
           </div>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:4 }}>
-          {photos.slice(1,5).map((src,i)=>(
-            <div key={i} style={{ borderRadius:4, overflow:'hidden', height:36 }}>
-              <img loading="lazy" src={src} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+      </div>
+      <div style={{ position: 'relative' }}>
+        <img loading="lazy" src={IMG('1573496359142-b8d87734a5a2', 200, 280)} alt="Portrait de Marie Laurent, coach" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '8px', background: 'linear-gradient(transparent,rgba(26,46,40,0.92))' }}>
+          <p style={{ fontSize: 7, fontStyle: 'italic', color: '#e8e4dc', margin: '0 0 3px', lineHeight: 1.35 }}>&ldquo;En 3 mois j&apos;ai décroché le poste de mes rêves.&rdquo;</p>
+          <p style={{ fontSize: 6, color: '#c4a574', margin: 0 }}>— Sophie T., Manager</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── 3. E-commerce — marketplace: featured + dense catalog (blush/noir) ──────
+function MiniEcommerce() {
+  const products = [
+    [IMG('1542291026-7eec264c27ff', 100, 100), 'Air Runner', '129 €', '189 €', true],
+    [IMG('1548036328-c9fa89d128fa', 100, 100), 'Sac Cuir', '189 €', null, false],
+    [IMG('1523275335684-37898b6baf30', 100, 100), 'Montre Or', '320 €', '450 €', true],
+    [IMG('1434389677669-e08b4cac3105', 100, 100), 'Lunettes', '89 €', null, false],
+  ]
+  return (
+    <div style={{ fontFamily: 'system-ui', background: '#faf8f6', color: '#1a1a1a', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 9px', background: '#1a1a1a', color: '#fff' }}>
+        <span style={{ fontWeight: 900, fontSize: 10, letterSpacing: 1 }}>LUXE<span style={{ color: '#e8a0bf' }}>SHOP</span></span>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 6.5 }}>
+          <span style={{ color: 'rgba(255,255,255,0.5)' }}>Femme</span>
+          <span style={{ color: 'rgba(255,255,255,0.5)' }}>Homme</span>
+          <span style={{ background: '#e8a0bf', color: '#1a1a1a', borderRadius: 10, padding: '2px 6px', fontWeight: 700 }}>3</span>
+        </div>
+      </div>
+      <div style={{ background: 'linear-gradient(90deg,#1a1a1a,#3d2a35)', padding: '5px 9px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <span style={{ fontSize: 6, background: '#e8a0bf', color: '#1a1a1a', padding: '1px 5px', borderRadius: 2, fontWeight: 800, marginRight: 5 }}>-30%</span>
+          <span style={{ fontSize: 8, fontWeight: 700, color: '#fff' }}>Soldes d&apos;été — fin dimanche</span>
+        </div>
+        <span style={{ fontSize: 6.5, color: '#e8a0bf', fontWeight: 600 }}>Voir →</span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 0, flex: 1, minHeight: 0 }}>
+        <div style={{ position: 'relative', borderRight: '1px solid #eee' }}>
+          <img loading="lazy" src={IMG('1490481651871-ab68de25d43d', 200, 200)} alt="Lookbook collection été" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+          <div style={{ position: 'absolute', bottom: 6, left: 6, right: 6, background: 'rgba(255,255,255,0.95)', padding: '5px 7px', borderRadius: 4 }}>
+            <p style={{ fontSize: 6, color: '#e8a0bf', fontWeight: 700, margin: '0 0 1px', letterSpacing: 1 }}>LOOKBOOK</p>
+            <p style={{ fontSize: 9, fontWeight: 800, margin: '0 0 3px' }}>Collection Été</p>
+            <button type="button" style={{ background: '#1a1a1a', color: '#fff', border: 'none', padding: '3px 8px', fontSize: 6.5, fontWeight: 700, cursor: 'pointer', borderRadius: 3 }}>Explorer</button>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, padding: '5px', overflow: 'hidden' }}>
+          {products.map(([src, name, price, old, promo], i) => (
+            <div key={i} style={{ background: '#fff', border: '1px solid #f0ebe8', borderRadius: 4, overflow: 'hidden' }}>
+              <div style={{ position: 'relative', height: 42 }}>
+                <img loading="lazy" src={src} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+                {promo && <span style={{ position: 'absolute', top: 2, left: 2, background: '#c45c7a', color: '#fff', fontSize: 5, padding: '1px 3px', fontWeight: 700 }}>PROMO</span>}
+              </div>
+              <div style={{ padding: '3px 4px' }}>
+                <p style={{ fontSize: 6, fontWeight: 600, margin: '0 0 1px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</p>
+                <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+                  <span style={{ fontSize: 7, fontWeight: 800, color: '#c45c7a' }}>{price}</span>
+                  {old && <span style={{ fontSize: 5.5, color: '#aaa', textDecoration: 'line-through' }}>{old}</span>}
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'4px 10px', borderTop:'1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ display:'flex', gap:4, fontSize:6.5, color:'rgba(255,255,255,0.4)' }}>
-          <span>📷 240 photos</span><span>·</span><span>🏆 3 prix</span>
+      <div style={{ display: 'flex', justifyContent: 'space-around', padding: '4px 6px', fontSize: 5.5, color: '#888', borderTop: '1px solid #eee', background: '#fff' }}>
+        <span>Paiement sécurisé</span>
+        <span>Livraison 24h</span>
+        <span>Retour 30j</span>
+      </div>
+    </div>
+  )
+}
+
+// ── 4. SaaS — product landing + mini dashboard strip (indigo/slate) ─────────
+function MiniSaaS() {
+  return (
+    <div style={{ fontFamily: 'system-ui', background: '#0b1220', color: '#e2e8f0', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {/* Marketing top bar */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 10px', borderBottom: '1px solid rgba(99,102,241,0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <div style={{ width: 14, height: 14, borderRadius: 4, background: 'linear-gradient(135deg,#6366f1,#22d3ee)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, fontWeight: 900 }}>N</div>
+          <span style={{ fontSize: 9, fontWeight: 800 }}>Nexus<span style={{ color: '#818cf8' }}>.io</span></span>
         </div>
-        <button style={{ background:'rgba(168,85,247,0.2)', color:'#c084fc', border:'1px solid rgba(168,85,247,0.3)', padding:'3px 9px', borderRadius:20, fontSize:6.5, cursor:'pointer' }}>Me contacter</button>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          <span style={{ fontSize: 6, color: '#64748b' }}>Pricing</span>
+          <span style={{ fontSize: 6, color: '#64748b' }}>Docs</span>
+          <button type="button" style={{ background: '#6366f1', color: '#fff', border: 'none', padding: '3px 8px', borderRadius: 4, fontSize: 6.5, fontWeight: 700, cursor: 'pointer' }}>Essai gratuit</button>
+        </div>
+      </div>
+      {/* Hero copy */}
+      <div style={{ padding: '8px 10px 6px', textAlign: 'center' }}>
+        <p style={{ fontSize: 6, color: '#818cf8', letterSpacing: 2, margin: '0 0 3px', fontWeight: 700 }}>PRODUCTIVITY OS</p>
+        <h2 style={{ fontSize: 12, fontWeight: 800, margin: '0 0 3px', lineHeight: 1.2 }}>Pilotez votre équipe<br />en un seul endroit</h2>
+        <p style={{ fontSize: 6.5, color: '#94a3b8', margin: '0 0 6px' }}>CRM · projets · analytics — synchronisés.</p>
+      </div>
+      {/* App preview chrome */}
+      <div style={{ flex: 1, margin: '0 8px 8px', background: '#111827', borderRadius: 6, border: '1px solid rgba(99,102,241,0.25)', overflow: 'hidden', display: 'flex' }}>
+        <div style={{ width: 28, background: '#0f172a', borderRight: '1px solid rgba(255,255,255,0.05)', padding: '6px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
+          {['■', '▣', '◎', '◇'].map((ic, i) => (
+            <span key={i} style={{ fontSize: 7, color: i === 0 ? '#818cf8' : '#475569' }}>{ic}</span>
+          ))}
+        </div>
+        <div style={{ flex: 1, padding: '6px 7px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+            <span style={{ fontSize: 6.5, fontWeight: 700, color: '#c7d2fe' }}>Overview</span>
+            <span style={{ fontSize: 5.5, background: 'rgba(34,197,94,0.15)', color: '#4ade80', padding: '1px 5px', borderRadius: 8 }}>● Live</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4, marginBottom: 5 }}>
+            {[['2.8k', 'Users', '#818cf8'], ['47k€', 'MRR', '#22d3ee'], ['98%', 'Uptime', '#4ade80']].map(([v, l, c], i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 4, padding: '4px 5px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <p style={{ fontSize: 10, fontWeight: 800, margin: 0, color: c }}>{v}</p>
+                <p style={{ fontSize: 5.5, color: '#64748b', margin: 0 }}>{l}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 22 }}>
+            {[35, 48, 42, 62, 55, 70, 58, 80, 72, 88, 65, 92].map((h, i) => (
+              <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '2px 2px 0 0', background: i === 11 ? '#6366f1' : `rgba(99,102,241,${0.15 + i * 0.05})` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── 5. Artisan — urgency-first local business (navy / safety orange) ────────
+function MiniArtisan() {
+  const services = [
+    [IMG('1581094794329-c8112a89af12', 120, 80), 'Dépannage'],
+    [IMG('1504148455328-c376907d081c', 120, 80), 'Installation'],
+    [IMG('1621905251189-08b45d6a269e', 120, 80), 'Rénovation'],
+  ]
+  return (
+    <div style={{ fontFamily: 'system-ui', background: '#fff', color: '#0f1c2e', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {/* Sticky urgency bar */}
+      <div style={{ background: '#f97316', color: '#fff', padding: '4px 9px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 7, fontWeight: 700 }}>
+        <span>Intervention sous 45 min · Paris &amp; IDF</span>
+        <span>06 12 34 56 78</span>
+      </div>
+      <div style={{ background: '#0f1c2e', padding: '7px 9px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <p style={{ fontSize: 10, fontWeight: 900, color: '#fff', margin: 0 }}>ProPlomberie</p>
+          <p style={{ fontSize: 6, color: 'rgba(255,255,255,0.55)', margin: 0 }}>Artisan RGE · Assurance décennale</p>
+        </div>
+        <button type="button" style={{ background: '#f97316', color: '#fff', border: 'none', padding: '5px 9px', borderRadius: 4, fontSize: 7, fontWeight: 800, cursor: 'pointer' }}>Devis gratuit</button>
+      </div>
+      <div style={{ padding: '7px 9px 5px' }}>
+        <h2 style={{ fontSize: 11, fontWeight: 900, margin: '0 0 3px', lineHeight: 1.2 }}>Fuite, chaudière, rénovation — on intervient aujourd&apos;hui.</h2>
+        <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginBottom: 6 }}>
+          {['★ 4.9/5 (312 avis)', 'RGE Qualibat', 'Devis sous 2h'].map((b, i) => (
+            <span key={i} style={{ fontSize: 5.5, background: '#fff7ed', color: '#c2410c', border: '1px solid #fed7aa', padding: '2px 5px', borderRadius: 3, fontWeight: 600 }}>{b}</span>
+          ))}
+        </div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4, padding: '0 8px', flex: 1 }}>
+        {services.map(([src, label], i) => (
+          <div key={i} style={{ borderRadius: 5, overflow: 'hidden', border: '1px solid #e2e8f0', position: 'relative' }}>
+            <img loading="lazy" src={src} alt={label} style={{ width: '100%', height: 58, objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'rgba(15,28,46,0.85)', padding: '3px 4px' }}>
+              <p style={{ fontSize: 6.5, fontWeight: 700, color: '#fff', margin: 0, textAlign: 'center' }}>{label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: '5px 9px', display: 'flex', justifyContent: 'space-between', fontSize: 6, color: '#64748b', borderTop: '1px solid #f1f5f9', marginTop: 5 }}>
+        <span>Zones : 75 · 92 · 93 · 94</span>
+        <span style={{ color: '#16a34a', fontWeight: 700 }}>● Disponible maintenant</span>
+      </div>
+    </div>
+  )
+}
+
+// ── 6. Blog / Magazine — editorial masthead + columns (ink / cream) ─────────
+function MiniBlog() {
+  return (
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f7f4ef', color: '#1a1a1a', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {/* Masthead */}
+      <div style={{ textAlign: 'center', padding: '6px 8px 4px', borderBottom: '2px solid #1a1a1a' }}>
+        <p style={{ fontSize: 5.5, letterSpacing: 3, margin: '0 0 2px', fontFamily: 'system-ui', color: '#666' }}>VENDREDI · ÉDITION DIGITALE</p>
+        <h1 style={{ fontSize: 16, fontWeight: 900, margin: 0, letterSpacing: '-0.03em' }}>THE PULSE</h1>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 3, fontSize: 6, fontFamily: 'system-ui', color: '#555', borderTop: '1px solid #ccc', paddingTop: 3 }}>
+          {['Tech', 'Design', 'Business', 'Culture', 'Opinion'].map(c => <span key={c}>{c}</span>)}
+        </div>
+      </div>
+      {/* Magazine grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.35fr 1fr', gap: 0, flex: 1, minHeight: 0 }}>
+        <div style={{ borderRight: '1px solid #ddd', padding: '6px 7px', display: 'flex', flexDirection: 'column' }}>
+          <img loading="lazy" src={IMG('1486312338219-ce68d2c6f44d', 240, 120)} alt="Illustration article à la une" style={{ width: '100%', height: 72, objectFit: 'cover', marginBottom: 5 }} onError={e => { e.target.style.display = 'none' }} />
+          <span style={{ fontSize: 5.5, fontFamily: 'system-ui', background: '#1a1a1a', color: '#f7f4ef', padding: '1px 5px', alignSelf: 'flex-start', fontWeight: 700, letterSpacing: 1 }}>À LA UNE</span>
+          <h2 style={{ fontSize: 11, fontWeight: 800, margin: '4px 0 3px', lineHeight: 1.2 }}>L&apos;IA va-t-elle remplacer les développeurs en 2027&nbsp;?</h2>
+          <p style={{ fontSize: 6.5, color: '#555', margin: '0 0 4px', lineHeight: 1.35, fontFamily: 'system-ui' }}>Enquête auprès de 40 CTO européens sur l&apos;automatisation du code.</p>
+          <p style={{ fontSize: 6, color: '#888', marginTop: 'auto', fontFamily: 'system-ui' }}>Alex M. · 8 min · 2.4K lectures</p>
+        </div>
+        <div style={{ padding: '6px 7px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {[
+            [IMG('1550745165-9bc0b252726f', 80, 50), 'React 19', 'Ce qui change vraiment pour les apps prod'],
+            [IMG('1559526324-593bc073d938', 80, 50), 'Design', 'Figma vs Penpot : le match 2026'],
+            [IMG('1516321318423-f06f85e504b3', 80, 50), 'Business', 'Levées seed : le nouveau normal'],
+          ].map(([src, cat, title], i) => (
+            <div key={i} style={{ display: 'flex', gap: 5, alignItems: 'flex-start', borderBottom: i < 2 ? '1px solid #e5e0d8' : 'none', paddingBottom: i < 2 ? 5 : 0 }}>
+              <img loading="lazy" src={src} alt="" style={{ width: 36, height: 28, objectFit: 'cover', flexShrink: 0 }} onError={e => { e.target.style.display = 'none' }} />
+              <div style={{ minWidth: 0 }}>
+                <p style={{ fontSize: 5.5, fontFamily: 'system-ui', color: '#a855f7', fontWeight: 700, margin: '0 0 1px', letterSpacing: 0.5 }}>{cat}</p>
+                <p style={{ fontSize: 7, fontWeight: 700, margin: 0, lineHeight: 1.25 }}>{title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── 7. Cabinet — institutional split + team strip (navy / gold / cream) ─────
+function MiniCabinet() {
+  const domaines = ['Affaires', 'Immobilier', 'Travail', 'Fiscal', 'Pénal']
+  return (
+    <div style={{ fontFamily: 'Georgia, "Times New Roman", serif', background: '#f5f2eb', color: '#0f1f3d', width: '100%', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ background: '#0f1f3d', padding: '8px 10px', textAlign: 'center' }}>
+        <p style={{ fontSize: 5.5, letterSpacing: 3, color: '#c9a84c', margin: '0 0 2px', fontFamily: 'system-ui' }}>CABINET D&apos;AVOCATS · PARIS</p>
+        <p style={{ fontSize: 12, fontWeight: 700, color: '#fff', margin: 0, letterSpacing: 1 }}>DUPONT <span style={{ color: '#c9a84c', fontWeight: 400 }}>&amp;</span> ASSOCIÉS</p>
+        <div style={{ width: 40, height: 1, background: '#c9a84c', margin: '5px auto 0' }} />
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', flex: 1, minHeight: 0 }}>
+        <div style={{ padding: '8px 9px', borderRight: '1px solid #e0d9cc', display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: 10, fontWeight: 700, margin: '0 0 4px', lineHeight: 1.25, fontStyle: 'italic' }}>Votre défense,<br />notre expertise.</p>
+          <p style={{ fontSize: 6.5, color: '#5a6478', margin: '0 0 7px', lineHeight: 1.35, fontFamily: 'system-ui' }}>30 ans au service des entreprises et des particuliers. Consultation sur RDV.</p>
+          <p style={{ fontSize: 6, letterSpacing: 1.5, color: '#c9a84c', margin: '0 0 4px', fontFamily: 'system-ui', fontWeight: 700 }}>DOMAINES</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, marginBottom: 8 }}>
+            {domaines.map(d => (
+              <span key={d} style={{ fontSize: 6, fontFamily: 'system-ui', border: '1px solid #c9a84c', color: '#0f1f3d', padding: '2px 5px' }}>{d}</span>
+            ))}
+          </div>
+          <button type="button" style={{ marginTop: 'auto', background: '#c9a84c', color: '#0f1f3d', border: 'none', padding: '5px 10px', fontSize: 7, fontWeight: 800, cursor: 'pointer', fontFamily: 'system-ui', alignSelf: 'flex-start' }}>Prendre RDV →</button>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <img loading="lazy" src={IMG('1507679799987-440acc9e8e8c', 200, 220)} alt="Bureau du cabinet Dupont & Associés" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'rgba(15,31,61,0.88)', padding: '6px 7px' }}>
+            <p style={{ fontSize: 6, color: '#c9a84c', margin: '0 0 3px', fontFamily: 'system-ui', letterSpacing: 1 }}>L&apos;ÉQUIPE</p>
+            <div style={{ display: 'flex', gap: 4 }}>
+              {[
+                IMG('1560250097-0b93528c311a', 40, 40),
+                IMG('1573496359142-b8d87734a5a2', 40, 40),
+                IMG('1472099645785-5658abf4ff4e', 40, 40),
+              ].map((src, i) => (
+                <img key={i} loading="lazy" src={src} alt={`Associé ${i + 1}`} style={{ width: 22, height: 22, borderRadius: '50%', objectFit: 'cover', border: '1.5px solid #c9a84c' }} onError={e => { e.target.style.display = 'none' }} />
+              ))}
+              <span style={{ fontSize: 6, color: 'rgba(255,255,255,0.6)', alignSelf: 'center', fontFamily: 'system-ui', marginLeft: 2 }}>+4 avocats</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── 8. Portfolio — creative masonry + oversized type (noir / lime) ───────────
+function MiniPortfolio() {
+  return (
+    <div style={{ fontFamily: 'system-ui', background: '#0a0a0a', color: '#fff', width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+      {/* Oversized brand watermark */}
+      <p style={{ position: 'absolute', top: -4, left: 6, fontSize: 42, fontWeight: 900, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.04)', margin: 0, lineHeight: 1, zIndex: 0, pointerEvents: 'none' }}>LÉNA</p>
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '7px 9px' }}>
+          <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: 2 }}>LÉNA<span style={{ color: '#c8f542' }}>.</span>PHOTO</span>
+          <div style={{ display: 'flex', gap: 7, fontSize: 6, color: 'rgba(255,255,255,0.4)' }}>
+            <span style={{ color: '#c8f542' }}>Work</span>
+            <span>About</span>
+            <span>Book</span>
+          </div>
+        </div>
+        {/* Asymmetric masonry */}
+        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1.3fr 0.85fr 1fr', gridTemplateRows: '1fr 0.7fr', gap: 3, padding: '0 6px 6px', minHeight: 0 }}>
+          <div style={{ gridRow: '1 / 3', position: 'relative', overflow: 'hidden', borderRadius: 3 }}>
+            <img loading="lazy" src={IMG('1506905925346-21bda4d32df4', 200, 280)} alt="Série Paysage — montagne" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+            <div style={{ position: 'absolute', bottom: 5, left: 5 }}>
+              <p style={{ fontSize: 5.5, color: '#c8f542', margin: '0 0 1px', fontWeight: 700, letterSpacing: 1 }}>01 — PAYSAGE</p>
+              <p style={{ fontSize: 8, fontWeight: 800, margin: 0 }}>Alpes 2025</p>
+            </div>
+          </div>
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 3 }}>
+            <img loading="lazy" src={IMG('1543610892-0b1f7b6b7eb3', 120, 100)} alt="Portrait studio" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+            <span style={{ position: 'absolute', top: 3, left: 3, fontSize: 5, background: '#c8f542', color: '#0a0a0a', padding: '1px 4px', fontWeight: 800 }}>02</span>
+          </div>
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 3 }}>
+            <img loading="lazy" src={IMG('1501854140801-50d01698950b', 120, 100)} alt="Nature morte" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none' }} />
+            <span style={{ position: 'absolute', top: 3, left: 3, fontSize: 5, background: 'rgba(0,0,0,0.6)', color: '#c8f542', padding: '1px 4px', fontWeight: 800 }}>03</span>
+          </div>
+          <div style={{ gridColumn: '2 / 4', position: 'relative', overflow: 'hidden', borderRadius: 3, background: '#141414', display: 'flex', alignItems: 'center', padding: '0 8px', gap: 8 }}>
+            <img loading="lazy" src={IMG('1518173946687-a4c8892bbd9f', 100, 60)} alt="Série urbaine" style={{ width: 52, height: 36, objectFit: 'cover', borderRadius: 2, flexShrink: 0 }} onError={e => { e.target.style.display = 'none' }} />
+            <div style={{ minWidth: 0 }}>
+              <p style={{ fontSize: 5.5, color: '#c8f542', margin: '0 0 1px', letterSpacing: 1, fontWeight: 700 }}>04 — URBAN</p>
+              <p style={{ fontSize: 8, fontWeight: 700, margin: '0 0 2px' }}>Nuits de Tokyo</p>
+              <p style={{ fontSize: 6, color: 'rgba(255,255,255,0.4)', margin: 0 }}>240 photos · 3 prix</p>
+            </div>
+            <button type="button" style={{ marginLeft: 'auto', background: 'transparent', color: '#c8f542', border: '1px solid #c8f542', padding: '3px 7px', fontSize: 6, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>Book →</button>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -330,10 +381,10 @@ function MiniPortfolio() {
 function BrowserFrame({ url, label, tags, children, delay }) {
   return (
     <motion.div
-      initial={{ opacity:0, y:28 }}
-      whileInView={{ opacity:1, y:0 }}
-      viewport={{ once:true, margin:'-40px' }}
-      transition={{ duration:0.55, delay }}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, delay }}
       className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/8 shadow-lg hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
     >
       <div className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-[#0f0f1a] border-b border-gray-200 dark:border-white/8">
@@ -345,7 +396,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <div className="flex-1 mx-1.5 bg-white/60 dark:bg-white/8 rounded-full px-3 py-0.5 text-[10px] text-gray-400 dark:text-slate-500 font-mono truncate">{url}</div>
         <Monitor size={10} className="text-gray-400 dark:text-slate-600 flex-shrink-0" />
       </div>
-      <div style={{ height:258, overflow:'hidden', position:'relative' }}>{children}</div>
+      <div style={{ height: 258, overflow: 'hidden', position: 'relative' }}>{children}</div>
       <div className="px-3.5 py-2.5 bg-gray-50 dark:bg-[#07070f] border-t border-gray-200 dark:border-white/8">
         <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5">{label}</p>
         <div className="flex flex-wrap gap-1.5">
@@ -360,38 +411,38 @@ function BrowserFrame({ url, label, tags, children, delay }) {
 
 // ── Section ──────────────────────────────────────────────────────────────────
 const DEMOS = [
-  { url:'bella-cucina.fr',       label:'Restaurant gastronomique', tags:['Dark design','Réservation','Menu interactif'],   component:<MiniRestaurant /> },
-  { url:'marie-coaching.fr',     label:'Coach & Thérapeute',       tags:['Landing page','Calendrier','Témoignages'],         component:<MiniCoach /> },
-  { url:'luxeshop.fr',           label:'Boutique Stripe',           tags:['Catalogue','Panier','Stripe','Promo'],             component:<MiniEcommerce /> },
-  { url:'app.saas-demo.io',      label:'Application SaaS',         tags:['Dashboard','Auth','API REST','Temps réel'],        component:<MiniSaaS /> },
-  { url:'proplomberie-paris.fr', label:'Artisan / Site vitrine',   tags:['Urgence 24/7','Devis gratuit','SEO local'],        component:<MiniArtisan /> },
-  { url:'thepulse.fr',           label:'Blog / Site dynamique',    tags:['CMS','Articles','Catégories','Newsletter'],        component:<MiniBlog /> },
-  { url:'dupont-avocats.fr',     label:'Cabinet professionnel',    tags:['Institutionnel','Rendez-vous','Multi-pages'],      component:<MiniCabinet /> },
-  { url:'lena-photo.fr',         label:'Portfolio créatif',        tags:['Galerie','Dark','Fullscreen','Contact'],           component:<MiniPortfolio /> },
+  { url: 'bella-cucina.fr', label: 'Restaurant gastronomique', tags: ['Dark design', 'Réservation', 'Menu interactif'], component: <MiniRestaurant /> },
+  { url: 'marie-coaching.fr', label: 'Coach & Thérapeute', tags: ['Landing page', 'Calendrier', 'Témoignages'], component: <MiniCoach /> },
+  { url: 'luxeshop.fr', label: 'Boutique Stripe', tags: ['Catalogue', 'Panier', 'Stripe', 'Promo'], component: <MiniEcommerce /> },
+  { url: 'app.saas-demo.io', label: 'Application SaaS', tags: ['Dashboard', 'Auth', 'API REST', 'Temps réel'], component: <MiniSaaS /> },
+  { url: 'proplomberie-paris.fr', label: 'Artisan / Site vitrine', tags: ['Urgence 24/7', 'Devis gratuit', 'SEO local'], component: <MiniArtisan /> },
+  { url: 'thepulse.fr', label: 'Blog / Site dynamique', tags: ['CMS', 'Articles', 'Catégories', 'Newsletter'], component: <MiniBlog /> },
+  { url: 'dupont-avocats.fr', label: 'Cabinet professionnel', tags: ['Institutionnel', 'Rendez-vous', 'Multi-pages'], component: <MiniCabinet /> },
+  { url: 'lena-photo.fr', label: 'Portfolio créatif', tags: ['Galerie', 'Dark', 'Fullscreen', 'Contact'], component: <MiniPortfolio /> },
 ]
 
 export default function WebShowcase() {
   return (
     <section id="exemples" className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[1000px] h-[700px] rounded-full blur-[160px]" style={{ background:'rgba(6,182,212,0.04)' }} />
+        <div className="w-[1000px] h-[700px] rounded-full blur-[160px]" style={{ background: 'rgba(6,182,212,0.04)' }} />
       </div>
-      <div className="absolute inset-x-0 top-0 h-px" style={{ background:'linear-gradient(to right,transparent,rgba(6,182,212,0.25),transparent)' }} />
+      <div className="absolute inset-x-0 top-0 h-px" style={{ background: 'linear-gradient(to right,transparent,rgba(6,182,212,0.25),transparent)' }} />
 
       <div className="relative max-w-6xl mx-auto px-8 lg:px-12">
         <motion.div
-          initial={{ opacity:0, y:30 }}
-          whileInView={{ opacity:1, y:0 }}
-          viewport={{ once:true, margin:'-80px' }}
-          transition={{ duration:0.7 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">Ce qu'on peut créer</span>
+          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">Ce qu&apos;on peut créer</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre secteur,{' '}<span className="gradient-text">votre site</span>
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth:'480px', margin:'0 auto' }}>
-            8 exemples de ce qu'on peut construire. Chaque site est unique, conçu sur-mesure pour votre activité et vos clients.
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>
+            8 exemples de ce qu&apos;on peut construire. Chaque site est unique, conçu sur-mesure pour votre activité et vos clients.
           </p>
         </motion.div>
 
@@ -404,10 +455,10 @@ export default function WebShowcase() {
         </div>
 
         <motion.div
-          initial={{ opacity:0, y:12 }}
-          whileInView={{ opacity:1, y:0 }}
-          viewport={{ once:true }}
-          transition={{ duration:0.55, delay:0.2 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.2 }}
           className="mt-12 text-center"
         >
           <a
