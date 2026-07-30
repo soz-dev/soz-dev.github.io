@@ -12,6 +12,7 @@ import Process from "./components/Process"
 import DevisPublic from "./components/DevisPublic"
 import About from "./components/About"
 import Projects from "./components/Projects"
+import WebShowcase from "./components/WebShowcase"
 import Pricing from "./components/Pricing"
 import FAQ from "./components/FAQ"
 import Contact from "./components/Contact"
@@ -50,6 +51,7 @@ export default function App() {
       <DevisPublic />
       <About />
       <Projects />
+      <WebShowcase />
       <Pricing />
       <FAQ />
       <Contact />
