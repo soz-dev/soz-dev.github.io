@@ -1,7 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 
 const AdminApp = lazy(() => import('./pages/AdminApp'))
-const IS_ADMIN = typeof window !== 'undefined' && window.location.search.includes('mode=admin')
 
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
@@ -16,19 +15,9 @@ import WebShowcase from "./components/WebShowcase"
 import Pricing from "./components/Pricing"
 import FAQ from "./components/FAQ"
 import Contact from "./components/Contact"
-import PhrasesMarquee from "./components/PhrasesMarquee"
 import Footer from "./components/Footer"
 
-export default function App() {
-  // Admin mode: https://soz-dev.com/?mode=admin
-  if (IS_ADMIN) {
-    return (
-      <Suspense fallback={<div className="min-h-screen bg-[#0a0a12]" />}>
-        <AdminApp />
-      </Suspense>
-    )
-  }
-
+function PublicApp() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark')
 
   useEffect(() => {
@@ -55,8 +44,21 @@ export default function App() {
       <Pricing />
       <FAQ />
       <Contact />
-      <PhrasesMarquee />
       <Footer />
     </div>
   )
+}
+
+export default function App() {
+  const isAdmin = typeof window !== 'undefined' && window.location.search.includes('mode=admin')
+
+  if (isAdmin) {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#0a0a12]" />}>
+        <AdminApp />
+      </Suspense>
+    )
+  }
+
+  return <PublicApp />
 }

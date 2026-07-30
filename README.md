@@ -1,16 +1,49 @@
-# React + Vite
+# SOZ-DEV — soz-dev.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site portfolio & freelance (React + Vite) déployé sur GitHub Pages : [soz-dev.com](https://soz-dev.com).
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19, Vite 8, Tailwind CSS 4
+- Framer Motion, Lucide
+- Admin : Supabase Auth + tables `clients` / `projets`
+- PDF devis : jsPDF
 
-## React Compiler
+## Développement
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+cp .env.local.example .env.local   # renseigner les clés Supabase
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+- Site public : `http://localhost:5173/`
+- Admin : `http://localhost:5173/?mode=admin`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Variables d’environnement
+
+| Variable | Rôle |
+|----------|------|
+| `VITE_ADMIN_SUPABASE_URL` | URL du projet Supabase |
+| `VITE_ADMIN_SUPABASE_ANON_KEY` | Clé anon (publique) |
+
+En production, les mêmes secrets sont injectés dans `.github/workflows/deploy.yml`.
+
+## Admin Supabase (une fois)
+
+1. Créer un projet Supabase et exécuter [`supabase/schema.sql`](supabase/schema.sql) dans le SQL Editor.
+2. Auth → créer un utilisateur admin ; **désactiver les inscriptions publiques**.
+3. Remplir `.env.local` et les secrets GitHub Actions `VITE_ADMIN_SUPABASE_*`.
+
+## Scripts
+
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build production (`dist/`) |
+| `npm run preview` | Prévisualiser le build |
+| `npm run lint` | Oxlint |
+
+## Déploiement
+
+Push sur `main` → workflow **Deploy to GitHub Pages**. Domaine custom via `public/CNAME` (`soz-dev.com`).

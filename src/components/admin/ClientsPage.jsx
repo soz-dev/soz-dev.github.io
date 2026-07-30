@@ -1,22 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { db } from '../../lib/adminDb'
+import { STATUS_BADGE, STATUS_LABEL } from '../../lib/statusLabels'
 import { Plus, ArrowLeft, FolderPlus, ChevronRight, Trash2, Mail, Phone } from 'lucide-react'
-
-const STATUS_BADGE = {
-  'questionnaire':         'text-blue-400 bg-blue-400/10',
-  'questionnaire-envoyé':  'text-yellow-400 bg-yellow-400/10',
-  'réponse-reçue':         'text-orange-400 bg-orange-400/10',
-  'appel-planifié':        'text-purple-400 bg-purple-400/10',
-  'devis-envoyé':          'text-cyan-400 bg-cyan-400/10',
-  'en-cours':              'text-green-400 bg-green-400/10',
-  'livré':                 'text-emerald-400 bg-emerald-400/10',
-  'archivé':               'text-gray-500 dark:text-slate-500 bg-slate-500/10',
-}
-const STATUS_LABEL = {
-  'questionnaire': 'Questionnaire', 'questionnaire-envoyé': 'Envoyé', 'réponse-reçue': 'Réponse reçue',
-  'appel-planifié': 'Appel planifié', 'devis-envoyé': 'Devis envoyé', 'en-cours': 'En cours',
-  'livré': 'Livré ✓', 'archivé': 'Archivé',
-}
 
 function Field({ label, ...props }) {
   return (
@@ -39,34 +24,53 @@ export default function ClientsPage({ go, openClient }) {
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const loadClients = useCallback(() => {
-    setClients(db.getClients())
-    setLoading(false)
+  const loadClients = useCallback(async () => {
+    try {
+      const list = await db.getClients()
+      setClients(list)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
-  const loadProjects = useCallback((clientId) => {
-    setProjects(db.getProjectsByClient(clientId))
+  const loadProjects = useCallback(async (clientId) => {
+    try {
+      setProjects(await db.getProjectsByClient(clientId))
+    } catch (err) {
+      console.error(err)
+    }
   }, [])
 
   useEffect(() => { loadClients() }, [loadClients])
   useEffect(() => { if (selected) loadProjects(selected.id) }, [selected, loadProjects])
 
-  const createClient = (e) => {
+  const createClient = async (e) => {
     e.preventDefault()
     setSaving(true)
-    const newClient = db.createClient(form)
-    setClients(c => [newClient, ...c])
-    setForm({ nom: '', email: '', telephone: '', entreprise: '', notes: '' })
-    setShowForm(false)
-    setSelected(newClient)
-    setSaving(false)
+    try {
+      const newClient = await db.createClient(form)
+      setClients(c => [newClient, ...c])
+      setForm({ nom: '', email: '', telephone: '', entreprise: '', notes: '' })
+      setShowForm(false)
+      setSelected(newClient)
+    } catch (err) {
+      alert(err.message || 'Erreur lors de la création')
+    } finally {
+      setSaving(false)
+    }
   }
 
-  const deleteClient = (id) => {
+  const deleteClient = async (id) => {
     if (!confirm('Supprimer ce client et tous ses projets ?')) return
-    db.deleteClient(id)
-    if (selected?.id === id) setSelected(null)
-    setClients(c => c.filter(x => x.id !== id))
+    try {
+      await db.deleteClient(id)
+      if (selected?.id === id) setSelected(null)
+      setClients(c => c.filter(x => x.id !== id))
+    } catch (err) {
+      alert(err.message || 'Erreur lors de la suppression')
+    }
   }
 
   const f = k => e => setForm(p => ({ ...p, [k]: e.target.value }))

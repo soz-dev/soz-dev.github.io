@@ -14,7 +14,7 @@ function MiniRestaurant() {
         </div>
       </div>
       <div style={{ position:'relative', height:110 }}>
-        <img src={IMG('1414235077428-338989a2e8c0',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+        <img loading="lazy" src={IMG('1414235077428-338989a2e8c0',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7))' }} />
         <div style={{ position:'absolute', bottom:8, left:12, right:12, textAlign:'center' }}>
           <p style={{ fontSize:7, color:'#d4a843', letterSpacing:3, margin:'0 0 2px' }}>DEPUIS 1987 · PARIS 8ÈME</p>
@@ -29,7 +29,7 @@ function MiniRestaurant() {
           [IMG('1567324216240-9c5e92beea68',120,70),'Desserts','12 €'],
         ].map(([src,n,p],i) => (
           <div key={i} style={{ borderRadius:5, overflow:'hidden', background:'rgba(255,255,255,0.05)' }}>
-            <img src={src} alt="" style={{ width:'100%', height:42, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+            <img loading="lazy" src={src} alt="" style={{ width:'100%', height:42, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
             <div style={{ padding:'4px 6px' }}>
               <p style={{ fontSize:7, fontWeight:600, margin:'0 0 1px' }}>{n}</p>
               <p style={{ fontSize:7, color:'#d4a843', margin:0 }}>{p}</p>
@@ -55,7 +55,7 @@ function MiniCoach() {
         <button style={{ background:'linear-gradient(135deg,#7c3aed,#06b6d4)', color:'#fff', border:'none', padding:'3px 10px', borderRadius:20, fontSize:7, cursor:'pointer' }}>Prendre RDV</button>
       </div>
       <div style={{ display:'flex', gap:10, padding:'10px 12px', alignItems:'flex-start' }}>
-        <img src={IMG('1573496359142-b8d87734a5a2',80,80)} alt="" style={{ width:54, height:54, borderRadius:'50%', objectFit:'cover', flexShrink:0, border:'2px solid #a78bfa' }} onError={e=>{e.target.style.display='none'}} />
+        <img loading="lazy" src={IMG('1573496359142-b8d87734a5a2',80,80)} alt="" style={{ width:54, height:54, borderRadius:'50%', objectFit:'cover', flexShrink:0, border:'2px solid #a78bfa' }} onError={e=>{e.target.style.display='none'}} />
         <div>
           <p style={{ fontSize:6.5, color:'#7c3aed', fontWeight:700, margin:'0 0 2px', letterSpacing:2 }}>COACH CERTIFIÉE</p>
           <h2 style={{ fontSize:12, fontWeight:800, margin:'0 0 2px', lineHeight:1.2 }}>Libérez votre<br/>plein potentiel</h2>
@@ -107,7 +107,7 @@ function MiniEcommerce() {
         ].map(([src,n,p,old],i) => (
           <div key={i} style={{ borderRadius:5, overflow:'hidden', border:'1px solid #f5f5f5' }}>
             <div style={{ position:'relative' }}>
-              <img src={src} alt="" style={{ width:'100%', height:46, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+              <img loading="lazy" src={src} alt="" style={{ width:'100%', height:46, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
               {old && <span style={{ position:'absolute', top:3, left:3, background:'#ef4444', color:'#fff', fontSize:5.5, padding:'1px 4px', borderRadius:3, fontWeight:700 }}>PROMO</span>}
             </div>
             <div style={{ padding:'4px 5px' }}>
@@ -192,7 +192,7 @@ function MiniArtisan() {
         </div>
       </div>
       <div style={{ position:'relative', height:80 }}>
-        <img src={IMG('1581094794329-c8112a89af12',400,100)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+        <img loading="lazy" src={IMG('1581094794329-c8112a89af12',400,100)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(30,58,95,0.85) 40%,transparent)' }} />
         <div style={{ position:'absolute', top:'50%', left:10, transform:'translateY(-50%)' }}>
           <h2 style={{ fontSize:11, fontWeight:900, color:'#fff', margin:'0 0 2px', lineHeight:1.2 }}>Plombier certifié<br/>disponible maintenant</h2>
@@ -225,7 +225,7 @@ function MiniBlog() {
         </div>
       </div>
       <div style={{ position:'relative', height:95 }}>
-        <img src={IMG('1486312338219-ce68d2c6f44d',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+        <img loading="lazy" src={IMG('1486312338219-ce68d2c6f44d',400,120)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
         <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.75))' }} />
         <div style={{ position:'absolute', bottom:7, left:9, right:9 }}>
           <span style={{ fontSize:6, background:'#a855f7', color:'#fff', padding:'1px 6px', borderRadius:20, fontWeight:600 }}>À LA UNE</span>
@@ -242,7 +242,7 @@ function MiniBlog() {
             [IMG('1559526324-593bc073d938',80,45),'Figma vs Sketch en 2026'],
           ].map(([src,title],i)=>(
             <div key={i} style={{ display:'flex', gap:5, alignItems:'flex-start' }}>
-              <img src={src} alt="" style={{ width:40, height:28, objectFit:'cover', borderRadius:3, flexShrink:0 }} onError={e=>e.target.style.display='none'} />
+              <img loading="lazy" src={src} alt="" style={{ width:40, height:28, objectFit:'cover', borderRadius:3, flexShrink:0 }} onError={e=>e.target.style.display='none'} />
               <p style={{ fontSize:7, fontWeight:600, margin:0, lineHeight:1.3, color:'#222' }}>{title}</p>
             </div>
           ))}
@@ -265,7 +265,7 @@ function MiniCabinet() {
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', height:170, gap:0 }}>
         <div style={{ position:'relative' }}>
-          <img src={IMG('1453728013993-6d66e9c9123a',200,180)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+          <img loading="lazy" src={IMG('1453728013993-6d66e9c9123a',200,180)} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
           <div style={{ position:'absolute', inset:0, background:'linear-gradient(rgba(15,31,61,0.2),rgba(15,31,61,0.65))' }} />
           <div style={{ position:'absolute', bottom:10, left:10 }}>
             <h2 style={{ fontSize:11, fontWeight:800, color:'#fff', margin:'0 0 2px', lineHeight:1.2 }}>Votre défense,<br/>notre expertise</h2>
@@ -303,7 +303,7 @@ function MiniPortfolio() {
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gridTemplateRows:'auto auto', gap:4, padding:'4px 8px 6px' }}>
         <div style={{ gridRow:'1/3', borderRadius:5, overflow:'hidden', position:'relative' }}>
-          <img src={photos[0]} alt="" style={{ width:'100%', height:160, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+          <img loading="lazy" src={photos[0]} alt="" style={{ width:'100%', height:160, objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
           <div style={{ position:'absolute', bottom:5, left:5, background:'rgba(168,85,247,0.85)', padding:'2px 7px', borderRadius:3 }}>
             <p style={{ fontSize:6.5, fontWeight:700, margin:0 }}>PAYSAGE</p>
           </div>
@@ -311,7 +311,7 @@ function MiniPortfolio() {
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:4 }}>
           {photos.slice(1,5).map((src,i)=>(
             <div key={i} style={{ borderRadius:4, overflow:'hidden', height:36 }}>
-              <img src={src} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
+              <img loading="lazy" src={src} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.target.style.display='none'} />
             </div>
           ))}
         </div>

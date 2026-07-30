@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, ArrowRight, FileText, MessageSquare, ArrowLeft, Send } from 'lucide-react'
+import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send } from 'lucide-react'
 
 export default function Contact() {
   const [mode, setMode] = useState(null) // null | 'info'

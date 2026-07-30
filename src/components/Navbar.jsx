@@ -3,15 +3,12 @@ import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
 
 const links = [
-  { label: 'Services',      href: '#services'   },
-  { label: 'Technologies',  href: '#stack'      },
-  { label: 'Processus',    href: '#processus'  },
-  { label: 'Projets',      href: '#projets'    },
-  { label: 'Exemples',     href: '#exemples'   },
-  { label: 'Tarifs',       href: '#tarifs'     },
-  { label: 'Devis',        href: '#devis'      },
-  { label: 'FAQ',          href: '#faq'        },
-  { label: 'Contact',      href: '#contact'    },
+  { label: 'Services',  href: '#services'  },
+  { label: 'Projets',   href: '#projets'   },
+  { label: 'Tarifs',    href: '#tarifs'    },
+  { label: 'Devis',     href: '#devis'     },
+  { label: 'FAQ',       href: '#faq'       },
+  { label: 'Contact',   href: '#contact'   },
 ]
 
 export default function Navbar({ isDark, toggleDark }) {
@@ -73,6 +70,7 @@ export default function Navbar({ isDark, toggleDark }) {
             className="flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
+            aria-expanded={menuOpen}
           >
             <span className={`block w-5 h-px bg-gray-800 dark:bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`block w-5 h-px bg-gray-800 dark:bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
