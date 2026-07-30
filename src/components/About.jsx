@@ -63,10 +63,7 @@ export default function About() {
           >
             {/* Avatar initials */}
             <div className="w-44 h-44 rounded-3xl gradient-border glass flex items-center justify-center select-none">
-              <span
-                className="text-7xl font-extrabold gradient-text"
-                style={{ fontFamily: "'Syne', sans-serif" }}
-              >
+              <span className="font-display text-7xl font-extrabold gradient-text">
                 S
               </span>
             </div>

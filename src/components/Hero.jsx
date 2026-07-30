@@ -21,8 +21,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5 }}
-          className="gradient-text select-none mb-8"
-          style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(1.1rem, 3vw, 1.35rem)', letterSpacing: '0.14em' }}
+          className="font-display gradient-text select-none mb-8"
+          style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 3vw, 1.4rem)', letterSpacing: '0.04em' }}
         >
           SOZ_DEV
         </motion.p>

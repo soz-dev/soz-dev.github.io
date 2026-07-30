@@ -7,7 +7,7 @@
 @theme {
   /* ── Fonts ─────────────────────────────────────────────── */
   --font-sans: 'Manrope', system-ui, sans-serif;
-  --font-display: 'Syne', system-ui, sans-serif;
+  --font-display: 'Sora', system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* ── Brand ─────────────────────────────────────────────── */
@@ -112,7 +112,7 @@
   --ds-glow-brand: 0 0 30px rgb(168 85 247 / 0.35), 0 0 80px rgb(168 85 247 / 0.1);
   --ds-glow-accent: 0 0 30px rgb(6 182 212 / 0.35), 0 0 80px rgb(6 182 212 / 0.1);
   --ds-font-sans: 'Manrope', system-ui, sans-serif;
-  --ds-font-display: 'Syne', system-ui, sans-serif;
+  --ds-font-display: 'Sora', system-ui, sans-serif;
   --ds-radius-pill: 9999px;
   --ds-radius-card: 1rem;
 }

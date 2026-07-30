@@ -38,7 +38,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
         <div className="flex items-center gap-2.5">
           <img src="/logo-mark.png" alt="SOZ_DEV" className="h-8 w-8 object-contain" width={32} height={32} />
           <div>
-            <span className="text-lg font-bold" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <span className="font-display text-lg font-bold">
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
             </span>
             <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
@@ -123,7 +123,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
       <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#07070f]">
         <div className="flex items-center gap-2">
           <img src="/logo-mark.png" alt="SOZ_DEV" className="h-7 w-7 object-contain" width={28} height={28} />
-          <span className="font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <span className="font-display font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
             SOZ_DEV
           </span>
         </div>

@@ -68,7 +68,7 @@ export default function DesignSystemPage() {
       <header className="sticky top-0 z-40 glass border-b border-gray-100 dark:border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="font-display font-extrabold tracking-widest gradient-text text-sm shrink-0">
+            <span className="font-display font-extrabold tracking-wide gradient-text text-sm shrink-0">
               {brand.name}
             </span>
             <span className="text-xs text-slate-400 truncate hidden sm:inline">Design System</span>
@@ -126,7 +126,7 @@ export default function DesignSystemPage() {
               Construire plus vite sans reinventer les couleurs à chaque bloc.
             </p>
             <div className="flex flex-wrap gap-2">
-              <Badge tone="brand">Syne + Manrope</Badge>
+              <Badge tone="brand">Sora + Manrope</Badge>
               <Badge tone="accent">Purple → Cyan</Badge>
               <Badge tone="mono">Tailwind 4 @theme</Badge>
               <Badge tone="success">Dark mode</Badge>
@@ -135,7 +135,7 @@ export default function DesignSystemPage() {
 
           <Block title="Identité">
             <Surface className="p-8 md:p-10">
-              <p className="gradient-text font-display font-extrabold tracking-[0.14em] text-lg mb-4">
+              <p className="gradient-text font-display font-extrabold tracking-[0.04em] text-lg mb-4">
                 SOZ_DEV
               </p>
               <p className="ds-h2 text-gray-900 dark:text-white mb-3 max-w-lg">{brand.tagline}</p>
@@ -143,7 +143,7 @@ export default function DesignSystemPage() {
               <div className="mt-8 grid sm:grid-cols-3 gap-4 text-xs">
                 <div>
                   <p className="text-slate-400 mb-1">Display</p>
-                  <p className="font-display font-bold text-lg" style={{ fontFamily: fonts.display }}>Syne</p>
+                  <p className="font-display font-bold text-lg" style={{ fontFamily: fonts.display }}>Sora</p>
                 </div>
                 <div>
                   <p className="text-slate-400 mb-1">Body</p>

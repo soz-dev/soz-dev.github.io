@@ -46,7 +46,7 @@ export default function AdminLogin({ onLogin }) {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2.5 mb-3">
             <img src="/logo-mark.png" alt="SOZ_DEV" className="h-11 w-11 object-contain" width={44} height={44} />
-            <span className="gradient-text font-display font-extrabold tracking-[0.12em] text-xl">SOZ_DEV</span>
+            <span className="gradient-text font-display font-extrabold tracking-[0.04em] text-xl">SOZ_DEV</span>
           </div>
           <Badge tone="mono">Espace admin</Badge>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">

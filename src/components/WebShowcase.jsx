@@ -5,7 +5,7 @@ const IMG = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}
 
 const ui = {
   sans: "'Manrope', system-ui, sans-serif",
-  display: "'Syne', system-ui, sans-serif",
+  display: "'Sora', system-ui, sans-serif",
 }
 
 /** Fixed-size image — never stretches empty space */

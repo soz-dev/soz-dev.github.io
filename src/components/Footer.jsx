@@ -14,8 +14,8 @@ export default function Footer() {
               height={36}
             />
             <span
-              className="gradient-text select-none"
-              style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
+              className="font-display gradient-text select-none"
+              style={{ fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.04em' }}
             >
               SOZ_DEV
             </span>

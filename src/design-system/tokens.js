@@ -48,7 +48,7 @@ export const gradients = {
 
 export const fonts = {
   sans: "'Manrope', system-ui, sans-serif",
-  display: "'Syne', system-ui, sans-serif",
+  display: "'Sora', system-ui, sans-serif",
   mono: "ui-monospace, 'SF Mono', Menlo, Consolas, monospace",
 }
 
