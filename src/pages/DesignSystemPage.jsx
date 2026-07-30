@@ -82,6 +82,12 @@ export default function DesignSystemPage() {
               {isDark ? 'Light' : 'Dark'}
             </button>
             <a
+              href="/?mode=admin"
+              className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5"
+            >
+              Admin
+            </a>
+            <a
               href="/"
               className="text-xs font-semibold px-3 py-1.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900"
             >

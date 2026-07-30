@@ -1,9 +1,27 @@
 import { useState } from 'react'
-import { LayoutDashboard, Users, LogOut, Plus, Sun, Moon, Menu, X } from 'lucide-react'
+import {
+  LayoutDashboard,
+  Users,
+  LogOut,
+  Plus,
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Palette,
+  ExternalLink,
+  FileText,
+} from 'lucide-react'
 
 const NAV = [
   { id: 'dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
   { id: 'clients', label: 'Clients & Projets', icon: Users },
+]
+
+const LINKS = [
+  { href: '/?mode=ds', label: 'Design system', icon: Palette },
+  { href: '/#devis', label: 'Devis public', icon: FileText },
+  { href: '/', label: 'Voir le site', icon: ExternalLink },
 ]
 
 export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, children }) {
@@ -65,7 +83,21 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
         </button>
       </div>
 
-      <div className="p-3 space-y-0.5">
+      <div className="px-3 pb-1 pt-2">
+        <p className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">Ressources</p>
+        {LINKS.map(({ href, label, icon: Icon }) => (
+          <a
+            key={href}
+            href={href}
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white transition"
+          >
+            <Icon size={15} />
+            {label}
+          </a>
+        ))}
+      </div>
+
+      <div className="p-3 space-y-0.5 border-t border-gray-200 dark:border-white/5">
         <button
           type="button"
           onClick={toggleDark}

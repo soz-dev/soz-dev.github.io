@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Lock, ArrowLeft } from 'lucide-react'
 import { signIn } from '../../lib/supabaseAdmin'
+import { Button, Input, Badge } from '../../design-system'
 
 export default function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState('')
@@ -15,7 +17,12 @@ export default function AdminLogin({ onLogin }) {
       await signIn(email.trim(), password)
       onLogin()
     } catch (err) {
-      setError(err.message || 'Identifiants incorrects.')
+      const msg = err?.message || 'Identifiants incorrects.'
+      if (/missing|invalid api|failed to fetch|fetch/i.test(msg) || !import.meta.env.VITE_ADMIN_SUPABASE_URL) {
+        setError('Connexion impossible : vérifiez la config Supabase (variables d’environnement).')
+      } else {
+        setError(msg)
+      }
       setPassword('')
     } finally {
       setLoading(false)
@@ -23,44 +30,85 @@ export default function AdminLogin({ onLogin }) {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0a0a12] flex items-center justify-center p-4">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen bg-[var(--ds-page-bg)] grid-pattern flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-brand-500/10 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-accent-500/10 blur-[80px] pointer-events-none" />
+
+      <a
+        href="/"
+        className="absolute top-6 left-6 inline-flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+      >
+        <ArrowLeft size={14} />
+        Retour au site
+      </a>
+
+      <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2.5 mb-1">
-            <img src="/logo-mark.png" alt="SOZ_DEV" className="h-10 w-10 object-contain" width={40} height={40} />
-            <span className="text-2xl font-bold" style={{ fontFamily: 'Syne, sans-serif' }}>
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
-            </span>
+          <div className="flex items-center justify-center gap-2.5 mb-3">
+            <img src="/logo-mark.png" alt="SOZ_DEV" className="h-11 w-11 object-contain" width={44} height={44} />
+            <span className="gradient-text font-display font-extrabold tracking-[0.12em] text-xl">SOZ_DEV</span>
           </div>
-          <p className="text-gray-500 dark:text-slate-500 text-sm mt-1">Espace admin</p>
+          <Badge tone="mono">Espace admin</Badge>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">
+            Clients, projets, devis &amp; design system
+          </p>
         </div>
-        <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl border border-gray-200 dark:border-white/10 p-7 space-y-4">
-          <h1 className="text-gray-900 dark:text-white font-semibold text-lg mb-1">Connexion</h1>
-          <div>
-            <label className="text-xs text-gray-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">Email</label>
-            <input
-              type="email" value={email} onChange={e => setEmail(e.target.value)}
-              required autoFocus autoComplete="username"
-              className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition"
-            />
+
+        <form
+          onSubmit={handleSubmit}
+          className="glass rounded-2xl p-7 md:p-8 space-y-4 shadow-lg"
+        >
+          <div className="flex items-center gap-2 mb-1">
+            <div className="p-2 rounded-xl bg-brand-500/10">
+              <Lock size={16} className="text-brand-500" />
+            </div>
+            <h1 className="font-display text-lg font-bold text-gray-900 dark:text-white">Connexion</h1>
           </div>
-          <div>
-            <label className="text-xs text-gray-500 dark:text-slate-400 uppercase tracking-wider block mb-1.5">Mot de passe</label>
-            <input
-              type="password" value={password} onChange={e => setPassword(e.target.value)}
-              required autoComplete="current-password"
-              className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-3 py-2.5 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition"
-            />
-          </div>
-          {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold py-2.5 rounded-lg transition text-sm disabled:opacity-50"
-          >
-            {loading ? 'Connexion…' : 'Entrer'}
-          </button>
+
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            autoFocus
+            autoComplete="username"
+            placeholder="vous@email.com"
+          />
+          <Input
+            label="Mot de passe"
+            name="password"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            autoComplete="current-password"
+            placeholder="••••••••"
+          />
+
+          {error && (
+            <p className="text-sm text-danger-500 bg-danger-500/10 rounded-lg px-3 py-2">{error}</p>
+          )}
+
+          <Button type="submit" disabled={loading} className="w-full" size="lg">
+            {loading ? 'Connexion…' : 'Accéder au panel'}
+          </Button>
+
+          <p className="text-[11px] text-center text-slate-400 pt-1">
+            Compte Supabase Auth uniquement · pas d&apos;inscription publique
+          </p>
         </form>
+
+        <div className="mt-6 flex flex-wrap justify-center gap-3 text-xs">
+          <a href="/?mode=ds" className="text-slate-500 hover:text-brand-500 transition-colors font-medium">
+            Design system →
+          </a>
+          <span className="text-slate-300 dark:text-slate-600">·</span>
+          <a href="/#devis" className="text-slate-500 hover:text-brand-500 transition-colors font-medium">
+            Formulaire devis →
+          </a>
+        </div>
       </div>
     </div>
   )
