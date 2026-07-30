@@ -16,6 +16,30 @@ export const LABEL_TYPE = {
   'app-ios': 'Application iOS',
 }
 
+const INTEGRATIONS_PRIX = {
+  'Mailchimp / Brevo (+150€)':  { label: 'Intégration Mailchimp / Brevo', montant: 150 },
+  'CRM existant (+300€)':       { label: 'Intégration CRM', montant: 300 },
+  'Zapier (+200€)':             { label: 'Intégration Zapier', montant: 200 },
+}
+
+const BASE_INCLUS = [
+  'Responsive mobile & tablette',
+  'HTTPS / SSL',
+  '1 mois de support après livraison',
+]
+
+function getInclus(q) {
+  const list = [...BASE_INCLUS]
+  const foncs = q.fonc_principales || []
+  if (foncs.some(f => f.startsWith('Formulaire de contact'))) list.push('Formulaire de contact')
+  if (foncs.some(f => f.startsWith('Galerie photos'))) list.push('Galerie photos / portfolio')
+  if ((q.auth || []).some(a => a.startsWith('Login email'))) list.push('Login email / mot de passe')
+  if (q.seo === 'Basique (inclus)') list.push('Référencement SEO basique')
+  if ((q.integrations || []).some(i => i.startsWith('Google Analytics'))) list.push('Google Analytics')
+  if ((q.integrations || []).some(i => i.startsWith('Calendly'))) list.push('Intégration Calendly')
+  return list
+}
+
 const FONCS_PRIX = {
   'Calendrier / prise de RDV (+400€)':      { label: 'Calendrier / prise de RDV', montant: 400 },
   'Système de réservation (+400€)':          { label: 'Système de réservation', montant: 400 },
@@ -51,11 +75,16 @@ export function calculateDevis(q) {
   if (q.livraison === 'Oui (+300€)') add('Gestion livraison / retours', 300)
   if (q.seo === 'Avancé (+200€)') add('SEO avancé', 200)
 
+  for (const i of (q.integrations || [])) {
+    if (INTEGRATIONS_PRIX[i]) lignes.push({ ...INTEGRATIONS_PRIX[i] })
+  }
+
   const sousTotal = lignes.reduce((s, l) => s + l.montant, 0)
   const acompte = Math.round(sousTotal * 0.3)
 
   return {
     lignes,
+    inclus: getInclus(q),
     sousTotal,
     acompte,
     solde: sousTotal - acompte,

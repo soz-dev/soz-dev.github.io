@@ -248,6 +248,16 @@ export default function ProjectPage({ client, project, go }) {
                         <span>+{devis.maintenance} €</span>
                       </div>
                     )}
+                    {devis.inclus && devis.inclus.length > 0 && (
+                      <div className="border-t border-white/10 pt-3 mt-1">
+                        <p className="text-xs text-slate-500 mb-2 uppercase tracking-wider">Inclus</p>
+                        {devis.inclus.map((item, i) => (
+                          <div key={i} className="flex items-center gap-1.5 text-xs text-emerald-400 mb-1">
+                            <Check size={9} className="flex-shrink-0" /> {item}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </>
               )}
