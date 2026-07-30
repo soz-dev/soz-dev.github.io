@@ -191,8 +191,29 @@ export function exportDevisPDF({ client, projet, devis }) {
     doc.text(`+ Maintenance ${devis.maintenance} €/mois (option)`, bx + 8, by + 36)
   }
 
+  // ── Inclus dans le forfait ────────────────────────────────
+  const inclus = devis.inclus || []
+  const inclY = by + bh + 8
+  if (inclus.length > 0) {
+    doc.setFillColor(236, 253, 245)  // green-50
+    doc.setDrawColor(167, 243, 208)  // green-200
+    doc.setLineWidth(0.2)
+    doc.rect(14, inclY, W - 28, 12, 'FD')
+    doc.setFillColor(16, 185, 129)   // emerald-500
+    doc.rect(14, inclY, 3, 12, 'F')
+    doc.setFont('helvetica', 'bold')
+    doc.setFontSize(7)
+    doc.setTextColor(6, 95, 70)
+    doc.text('INCLUS', 22, inclY + 5)
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(7)
+    const maxPerRow = 4
+    const itemsText = inclus.slice(0, 8).join('  ·  ')
+    doc.text(`✓  ${itemsText}`, 22, inclY + 9.5)
+  }
+
   // ── Conditions ────────────────────────────────────────────
-  const cy2 = by + bh + 10
+  const cy2 = inclus.length > 0 ? inclY + 20 : by + bh + 10
   doc.setFillColor(...BG)
   doc.setDrawColor(...BD)
   doc.setLineWidth(0.2)

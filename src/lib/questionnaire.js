@@ -72,7 +72,7 @@ export const SECTIONS = [
         id: 'fonc_principales', label: 'Fonctionnalités souhaitées', type: 'multiselect',
         options: [
           'Formulaire de contact (inclus)',
-          'Galerie photos / portfolio',
+          'Galerie photos / portfolio (inclus)',
           'Calendrier / prise de RDV (+400€)',
           'Système de réservation (+400€)',
           'Tableau de bord admin (+500€)',
@@ -124,7 +124,7 @@ export const SECTIONS = [
       { id: 'domaine', label: 'Nom de domaine', type: 'radio', options: ['Oui, existant', 'Non, à acheter (~12€/an)'] },
       {
         id: 'integrations', label: 'Intégrations souhaitées', type: 'multiselect',
-        options: ['Google Analytics', 'Mailchimp / Brevo', 'Calendly', 'CRM existant', 'Zapier', 'Autre'],
+        options: ['Google Analytics (inclus)', 'Mailchimp / Brevo (+150€)', 'Calendly (inclus)', 'CRM existant (+300€)', 'Zapier (+200€)', 'Autre'],
       },
       { id: 'maintenance', label: 'Maintenance mensuelle (+90€/mois)', type: 'radio', options: ['Oui', 'Non'] },
       { id: 'seo', label: 'SEO / référencement', type: 'radio', options: ['Basique (inclus)', 'Avancé (+200€)', 'Non nécessaire'] },
