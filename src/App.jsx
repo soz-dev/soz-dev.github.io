@@ -4,16 +4,16 @@ const AdminApp = lazy(() => import('./pages/AdminApp'))
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import EstimateurRapide from './components/EstimateurRapide'
 import Services from './components/Services'
-import Process from './components/Process'
 import WebShowcase from './components/WebShowcase'
+import Projects from './components/Projects'
+import Process from './components/Process'
 import Pricing from './components/Pricing'
+import EstimateurRapide from './components/EstimateurRapide'
 import Garanties from './components/Garanties'
 import DevisPublic from './components/DevisPublic'
-import Projects from './components/Projects'
-import About from './components/About'
 import FAQ from './components/FAQ'
+import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import StickyCta from './components/StickyCta'
@@ -33,17 +33,18 @@ function PublicApp() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#030712] pb-20 md:pb-0">
       <Navbar isDark={isDark} toggleDark={() => setIsDark(d => !d)} />
+      {/* Parcours conversion : découvrir → preuve → prix → devis */}
       <Hero />
-      <EstimateurRapide />
       <Services />
       <WebShowcase />
-      <Pricing />
-      <Garanties />
-      <DevisPublic />
       <Projects />
       <Process />
-      <About />
+      <Pricing />
+      <EstimateurRapide />
+      <Garanties />
+      <DevisPublic />
       <FAQ />
+      <About />
       <Contact />
       <Footer />
       <StickyCta />

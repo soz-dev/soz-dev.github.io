@@ -65,7 +65,7 @@ export default function About() {
             <div className="w-44 h-44 rounded-3xl gradient-border glass flex items-center justify-center select-none">
               <span
                 className="text-7xl font-extrabold gradient-text"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
+                style={{ fontFamily: "'Syne', sans-serif" }}
               >
                 S
               </span>

@@ -34,7 +34,7 @@ export default function Navbar({ isDark, toggleDark }) {
           />
           <span
             className="gradient-text"
-            style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
+            style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.1em' }}
           >
             SOZ_DEV
           </span>

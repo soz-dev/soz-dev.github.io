@@ -40,85 +40,85 @@ export default function EstimateurRapide() {
   }
 
   return (
-    <section id="estimateur" className="py-20 md:py-24 relative overflow-hidden">
+    <section id="estimateur" className="py-28 relative overflow-hidden bg-gray-50/70 dark:bg-white/[0.02]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
-      <div className="max-w-2xl mx-auto px-6 lg:px-8">
+      <div className="absolute inset-0 pointer-events-none flex justify-center">
+        <div className="w-[700px] h-[400px] rounded-full blur-[120px] bg-purple-500/5 dark:bg-purple-600/10" />
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55 }}
-          className="mb-8"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <p
-            className="text-xs tracking-[0.28em] uppercase text-purple-500 mb-3 font-medium"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
+          <span className="text-xs font-display tracking-[0.28em] uppercase text-purple-500 mb-4 block font-semibold">
             Estimation
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
             En 3 clics, une fourchette claire
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            Indication sous le marché. Le devis détaillé affine ensuite le scope.
+          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
+            Indication sous le marché. Le devis détaillé affine ensuite le scope exact.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="flex items-center gap-3 mb-6" style={{ fontFamily: "'Outfit', sans-serif" }}>
+        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-10 max-w-lg mx-auto">
           {['Type', 'Scope', 'Résultat'].map((label, i) => (
-            <div key={label} className="flex items-center gap-2 flex-1">
+            <div key={label} className="flex items-center gap-2 sm:gap-3 flex-1">
               <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-display font-bold transition-colors flex-shrink-0 ${
                   i < step
                     ? 'bg-cyan-500 text-white'
                     : i === step
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 dark:bg-white/10 text-slate-400'
+                      ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
+                      : 'bg-gray-200 dark:bg-white/10 text-slate-400'
                 }`}
               >
                 {i + 1}
               </div>
-              <span className={`text-xs font-medium hidden sm:block ${i === step ? 'text-gray-900 dark:text-white' : 'text-slate-400'}`}>
+              <span className={`text-sm font-display font-semibold hidden sm:block ${i === step ? 'text-gray-900 dark:text-white' : 'text-slate-400'}`}>
                 {label}
               </span>
-              {i < 2 && <div className={`flex-1 h-px ${i < step ? 'bg-cyan-400/60' : 'bg-gray-200 dark:bg-white/10'}`} />}
+              {i < 2 && (
+                <div className={`flex-1 h-px min-w-[12px] ${i < step ? 'bg-cyan-400/70' : 'bg-gray-200 dark:bg-white/10'}`} />
+              )}
             </div>
           ))}
         </div>
 
-        <div
-          className="rounded-2xl border border-gray-200/80 dark:border-white/10 bg-white dark:bg-[#0a0a12] shadow-sm dark:shadow-none p-5 md:p-7 min-h-[300px]"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-        >
+        <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#0a0a12] shadow-xl shadow-gray-200/50 dark:shadow-none p-8 md:p-12 min-h-[380px]">
           <AnimatePresence mode="wait">
             {step === 0 && (
               <motion.div
                 key="type"
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.22 }}
               >
-                <p className="text-sm font-semibold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-6">
                   Quel type de projet ?
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                   {TYPES.map(t => (
                     <button
                       key={t.id}
                       type="button"
                       onClick={() => { setTypeId(t.id); setStep(1) }}
-                      className="group text-left p-3.5 rounded-xl border border-gray-150 dark:border-white/10 bg-gray-50/80 dark:bg-white/[0.03] hover:border-purple-400 dark:hover:border-purple-500/50 hover:bg-purple-50/50 dark:hover:bg-purple-500/5 transition-all"
+                      className={`text-left p-5 rounded-2xl border transition-all duration-200 hover:scale-[1.02] ${
+                        typeId === t.id
+                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-500/15 shadow-md shadow-purple-500/10'
+                          : 'border-gray-200 dark:border-white/10 bg-gray-50/80 dark:bg-white/[0.03] hover:border-purple-400/60'
+                      }`}
                     >
-                      <span className="block text-sm font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                      <span className="block font-display text-base font-bold text-gray-900 dark:text-white">
                         {t.label}
                       </span>
-                      <span className="block text-[11px] text-slate-500 mt-0.5">{t.hint}</span>
-                      <span className="block text-xs font-semibold text-purple-600 dark:text-purple-400 mt-2.5">
+                      <span className="block text-sm text-slate-500 mt-1">{t.hint}</span>
+                      <span className="block text-sm font-semibold text-purple-600 dark:text-purple-400 mt-4">
                         dès {fmt(t.price)}&nbsp;€{t.suffix || ''}
                       </span>
                     </button>
@@ -130,39 +130,39 @@ export default function EstimateurRapide() {
             {step === 1 && (
               <motion.div
                 key="scope"
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.22 }}
               >
-                <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-1">
                   Quel niveau de scope ?
                 </p>
-                <p className="text-xs text-slate-500 mb-4">{type?.label}</p>
-                <div className="flex flex-col gap-2.5">
+                <p className="text-sm text-slate-500 mb-6">{type?.label}</p>
+                <div className="flex flex-col gap-3 max-w-2xl">
                   {SCOPES.map(s => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => { setScopeId(s.id); setStep(2) }}
-                      className="text-left px-4 py-3.5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-cyan-400 dark:hover:border-cyan-500/50 bg-gray-50/50 dark:bg-white/[0.03] hover:bg-cyan-50/40 dark:hover:bg-cyan-500/5 transition-all flex items-center justify-between gap-3"
+                      className="text-left px-6 py-5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-cyan-400 dark:hover:border-cyan-500/50 bg-gray-50/60 dark:bg-white/[0.03] hover:bg-cyan-50/50 dark:hover:bg-cyan-500/5 transition-all flex items-center justify-between gap-4"
                     >
                       <div>
-                        <span className="block text-sm font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                        <span className="block font-display text-base font-bold text-gray-900 dark:text-white">
                           {s.label}
                         </span>
-                        <span className="block text-xs text-slate-500 mt-0.5">{s.desc}</span>
+                        <span className="block text-sm text-slate-500 mt-1">{s.desc}</span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-cyan-400 flex-shrink-0" />
+                      <ArrowRight className="w-5 h-5 text-slate-300 flex-shrink-0" />
                     </button>
                   ))}
                 </div>
                 <button
                   type="button"
                   onClick={() => setStep(0)}
-                  className="mt-5 inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-gray-900 dark:hover:text-white"
+                  className="mt-8 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-gray-900 dark:hover:text-white"
                 >
-                  <ArrowLeft className="w-3.5 h-3.5" /> Retour
+                  <ArrowLeft className="w-4 h-4" /> Retour
                 </button>
               </motion.div>
             )}
@@ -170,35 +170,31 @@ export default function EstimateurRapide() {
             {step === 2 && estimate != null && (
               <motion.div
                 key="result"
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="text-center py-2"
+                className="text-center py-6 md:py-10"
               >
-                <p className="text-xs tracking-wide uppercase text-slate-400 mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                <p className="font-display text-xs tracking-[0.2em] uppercase text-slate-400 mb-4 font-semibold">
                   Estimation indicative
                 </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                <p className="text-base text-slate-500 dark:text-slate-400 mb-4">
                   {type.label} · {scope.label}
                 </p>
-                <p
-                  className="text-5xl md:text-6xl font-bold gradient-text mb-3 tracking-tight"
-                  style={{ fontFamily: "'Outfit', sans-serif" }}
-                >
+                <p className="font-display text-6xl md:text-7xl font-extrabold gradient-text mb-4 tracking-tight">
                   ~{fmt(estimate)}&nbsp;€{type.suffix || ''}
                 </p>
-                <p className="text-xs text-slate-400 mb-8">
+                <p className="text-sm text-slate-400 mb-10">
                   Acompte 30&nbsp;% · solde à la livraison · 1 mois de support
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
                     href="#devis"
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                    className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity"
                   >
                     Affiner le devis
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-5 h-5" />
                   </a>
                   <button
                     type="button"

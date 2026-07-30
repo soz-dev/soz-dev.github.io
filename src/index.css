@@ -12,7 +12,7 @@
   body {
     background: #ffffff;
     color: #111827;
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -38,6 +38,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.font-display {
+  font-family: 'Syne', system-ui, sans-serif;
 }
 
 .glass {

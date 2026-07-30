@@ -404,7 +404,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <div style={{ height: 580 }}>{children}</div>
       </div>
       <div className="px-3.5 py-2.5 bg-gray-50 dark:bg-[#07070f] border-t border-gray-200 dark:border-white/8 flex-shrink-0">
-        <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{label}</p>
+        <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5" style={{ fontFamily: "'Syne', sans-serif" }}>{label}</p>
         <div className="flex flex-wrap gap-1.5">
           {tags.map(t => (
             <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 font-mono">{t}</span>

@@ -28,7 +28,7 @@ export default function AdminLogin({ onLogin }) {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2.5 mb-1">
             <img src="/logo-mark.png" alt="SOZ_DEV" className="h-10 w-10 object-contain" width={40} height={40} />
-            <span className="text-2xl font-bold" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <span className="text-2xl font-bold" style={{ fontFamily: 'Syne, sans-serif' }}>
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">SOZ_DEV</span>
             </span>
           </div>
