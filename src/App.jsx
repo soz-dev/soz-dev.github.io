@@ -9,6 +9,7 @@ import Stats from "./components/Stats"
 import Services from "./components/Services"
 import Stack from "./components/Stack"
 import Process from "./components/Process"
+import DevisPublic from "./components/DevisPublic"
 import About from "./components/About"
 import Projects from "./components/Projects"
 import Pricing from "./components/Pricing"
@@ -46,6 +47,7 @@ export default function App() {
       <Services />
       <Stack />
       <Process />
+      <DevisPublic />
       <About />
       <Projects />
       <Pricing />
