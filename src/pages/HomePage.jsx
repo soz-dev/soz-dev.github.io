@@ -53,7 +53,7 @@ export default function HomePage() {
               Explorer{' '}<span className="gradient-text">le détail</span>
             </h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-              Services, exemples ou grille complète : à votre rythme.
+              Services, exemples ou grille complète pour affiner votre projet.
             </p>
           </motion.div>
 
