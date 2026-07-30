@@ -113,12 +113,7 @@ export default function Hero() {
           >
             Voir mes projets
           </a>
-          <a
-            href="#contact"
-            className="px-8 py-3.5 rounded-full border border-gray-200 dark:border-white/10 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-gray-400 dark:hover:border-white/25 hover:text-gray-900 dark:hover:text-white transition-all duration-300"
-          >
-            Me contacter →
-          </a>
+
         </motion.div>
       </div>
 

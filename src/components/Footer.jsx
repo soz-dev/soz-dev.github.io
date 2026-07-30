@@ -12,7 +12,7 @@ export default function Footer() {
             SOZ_DEV
           </span>
           <span className="text-xs font-mono text-slate-400">
-            <span className="text-purple-500">// </span>Rapides, modernes, inoubliables.
+            Rapides, modernes, inoubliables.
           </span>
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/"
+            href="https://www.linkedin.com/in/sofyan-zarouri/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-900 dark:hover:text-white transition-colors"

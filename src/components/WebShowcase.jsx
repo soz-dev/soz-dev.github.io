@@ -386,7 +386,7 @@ export default function WebShowcase() {
           transition={{ duration:0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">// ce qu'on peut créer</span>
+          <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">Ce qu'on peut créer</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre secteur,{' '}<span className="gradient-text">votre site</span>
           </h2>
@@ -410,7 +410,7 @@ export default function WebShowcase() {
           transition={{ duration:0.6, delay:0.3 }}
           className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
         >
-          // Toutes ces démos sont du vrai code React — pas des captures d'écran.{' '}
+          Toutes ces démos sont du vrai code React — pas des captures d'écran.{' '}
           <a href="#devis" className="text-purple-400 hover:text-purple-300 transition underline underline-offset-4">Discutons de votre projet →</a>
         </motion.p>
       </div>

@@ -91,7 +91,7 @@ export default function FAQ() {
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // questions fréquentes
+            Questions fréquentes
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">

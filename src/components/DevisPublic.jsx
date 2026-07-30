@@ -174,7 +174,7 @@ export default function DevisPublic() {
           className="text-center mb-14"
         >
           <span className="text-xs font-mono text-cyan-400 tracking-[0.3em] uppercase block mb-4">
-            // devis en ligne
+            Devis en ligne
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre devis en{' '}
@@ -379,7 +379,7 @@ export default function DevisPublic() {
           {/* Sticky pricing sidebar */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-2xl p-6 border" style={{ background: '#030712', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <p className="text-xs font-mono text-purple-400 tracking-wider uppercase mb-5">// Estimation</p>
+              <p className="text-xs font-mono text-purple-400 tracking-wider uppercase mb-5">Estimation</p>
 
               {devis && devis.sousTotal > 0 ? (
                 <>

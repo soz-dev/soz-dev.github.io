@@ -61,7 +61,7 @@ export default function Process() {
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // comment ça marche
+            Comment ça marche
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Mon processus</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '480px', margin: '0 auto' }}>

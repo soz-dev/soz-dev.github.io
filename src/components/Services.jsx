@@ -56,7 +56,7 @@ export default function Services() {
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-purple-400 tracking-[0.3em] uppercase mb-4 block">
-            // ce que je crée
+            Ce que je crée
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Mes services
