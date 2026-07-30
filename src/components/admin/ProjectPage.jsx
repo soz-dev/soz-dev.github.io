@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { supabase } from '../../lib/supabaseAdmin'
+import { db } from '../../lib/adminDb'
 import { SECTIONS, generateEmailBody } from '../../lib/questionnaire'
 import { calculateDevis } from '../../lib/pricingEngine'
 import { exportDevisPDF } from '../../lib/generatePDF'
@@ -39,9 +39,10 @@ export default function ProjectPage({ client, project, go }) {
     setSaved(false)
   }
 
-  const save = async () => {
+  const save = () => {
     setSaving(true)
-    const payload = {
+    db.saveProject({
+      id: project?.id,
       client_id: client.id,
       nom: nom || 'Nouveau projet',
       statut,
@@ -49,13 +50,7 @@ export default function ProjectPage({ client, project, go }) {
       notes_admin: notesAdmin,
       montant_total: devis?.sousTotal || 0,
       devis,
-      updated_at: new Date().toISOString(),
-    }
-    if (project?.id) {
-      await supabase.from('projets').update(payload).eq('id', project.id)
-    } else {
-      await supabase.from('projets').insert([payload])
-    }
+    })
     setSaving(false)
     setSaved(true)
   }
