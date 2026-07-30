@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AdminLogin from '../components/admin/AdminLogin'
 import AdminLayout from '../components/admin/AdminLayout'
 import DashboardPage from '../components/admin/DashboardPage'
@@ -8,8 +8,19 @@ import ProjectPage from '../components/admin/ProjectPage'
 export default function AdminApp() {
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('admin_auth') === '1')
   const [nav, setNav] = useState({ view: 'dashboard' })
+  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') !== 'light')
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark)
+  }, [isDark])
 
   const go = (view, data = {}) => setNav({ view, ...data })
+
+  const toggleDark = () => {
+    const next = !isDark
+    setIsDark(next)
+    localStorage.setItem('theme', next ? 'dark' : 'light')
+  }
 
   const logout = () => {
     sessionStorage.removeItem('admin_auth')
@@ -19,7 +30,7 @@ export default function AdminApp() {
   if (!authed) return <AdminLogin onLogin={() => setAuthed(true)} />
 
   return (
-    <AdminLayout view={nav.view} go={go} onLogout={logout}>
+    <AdminLayout view={nav.view} go={go} onLogout={logout} isDark={isDark} toggleDark={toggleDark}>
       {nav.view === 'dashboard' && <DashboardPage go={go} />}
       {nav.view === 'clients' && (
         <ClientsPage go={go} openClient={nav.openClient || null} />

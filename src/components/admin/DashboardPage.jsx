@@ -10,7 +10,7 @@ const STATUS_BADGE = {
   'devis-envoyé':          'text-cyan-400 bg-cyan-400/10',
   'en-cours':              'text-green-400 bg-green-400/10',
   'livré':                 'text-emerald-400 bg-emerald-400/10',
-  'archivé':               'text-slate-500 bg-slate-500/10',
+  'archivé':               'text-gray-500 dark:text-slate-500 bg-slate-500/10',
 }
 
 const STATUS_LABEL = {
@@ -37,7 +37,7 @@ export default function DashboardPage({ go }) {
 
   if (loading) {
     return (
-      <div className="p-8 flex items-center gap-2 text-slate-500 text-sm">
+      <div className="p-8 flex items-center gap-2 text-gray-500 dark:text-slate-500 text-sm">
         <div className="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
         Chargement...
       </div>
@@ -46,8 +46,8 @@ export default function DashboardPage({ go }) {
 
   return (
     <div className="p-8 max-w-4xl">
-      <h1 className="text-2xl font-bold text-white mb-1">Tableau de bord</h1>
-      <p className="text-slate-500 text-sm mb-8">Vue d'ensemble de votre activité</p>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Tableau de bord</h1>
+      <p className="text-gray-500 dark:text-slate-500 text-sm mb-8">Vue d'ensemble de votre activité</p>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-10">
@@ -56,12 +56,12 @@ export default function DashboardPage({ go }) {
           { label: 'Projets', value: stats.projets, icon: FolderOpen, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
           { label: 'CA estimé', value: `${stats.ca.toLocaleString('fr-FR')} €`, icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
         ].map(s => (
-          <div key={s.label} className="bg-white/[0.04] border border-white/8 rounded-xl p-5">
+          <div key={s.label} className="bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/8 rounded-xl p-5">
             <div className={`w-9 h-9 rounded-lg ${s.bg} flex items-center justify-center mb-4`}>
               <s.icon size={18} className={s.color} />
             </div>
-            <div className="text-2xl font-bold text-white">{s.value}</div>
-            <div className="text-xs text-slate-500 mt-1">{s.label}</div>
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{s.value}</div>
+            <div className="text-xs text-gray-500 dark:text-slate-500 mt-1">{s.label}</div>
           </div>
         ))}
       </div>
@@ -69,7 +69,7 @@ export default function DashboardPage({ go }) {
       {/* Recent projects */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <h2 className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
             <Clock size={12} /> Activité récente
           </h2>
           <button onClick={() => go('clients')} className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 transition">
@@ -78,23 +78,23 @@ export default function DashboardPage({ go }) {
         </div>
 
         {recents.length === 0 ? (
-          <div className="text-slate-600 text-sm py-12 text-center border border-white/5 rounded-xl">
+          <div className="text-gray-400 dark:text-slate-600 text-sm py-12 text-center border border-gray-200 dark:border-white/5 rounded-xl">
             Aucun projet pour l'instant — créez votre premier client !
           </div>
         ) : (
           <div className="space-y-2">
             {recents.map(p => {
-              const badge = STATUS_BADGE[p.statut] || 'text-slate-400 bg-slate-400/10'
+              const badge = STATUS_BADGE[p.statut] || 'text-gray-500 dark:text-slate-400 bg-slate-400/10'
               const label = STATUS_LABEL[p.statut] || p.statut
               return (
                 <div
                   key={p.id}
                   onClick={() => go('project', { client: p.clients, project: p })}
-                  className="bg-white/[0.03] border border-white/8 rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:border-purple-500/30 transition group"
+                  className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/8 rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:border-purple-500/30 transition group"
                 >
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-white truncate">{p.nom}</div>
-                    <div className="text-xs text-slate-600 mt-0.5">{p.clients?.nom}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white truncate">{p.nom}</div>
+                    <div className="text-xs text-gray-400 dark:text-slate-600 mt-0.5">{p.clients?.nom}</div>
                   </div>
                   <span className={`text-xs px-2 py-1 rounded-full font-medium flex-shrink-0 ${badge}`}>{label}</span>
                   {p.montant_total > 0 && (
@@ -102,7 +102,7 @@ export default function DashboardPage({ go }) {
                       {p.montant_total.toLocaleString('fr-FR')} €
                     </span>
                   )}
-                  <ArrowRight size={13} className="text-slate-700 group-hover:text-slate-400 transition flex-shrink-0" />
+                  <ArrowRight size={13} className="text-gray-500 dark:text-slate-700 group-hover:text-gray-500 dark:text-slate-400 transition flex-shrink-0" />
                 </div>
               )
             })}
