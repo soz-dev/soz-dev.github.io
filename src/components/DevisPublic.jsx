@@ -1,9 +1,12 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Send, Check, Copy, CheckCircle2, RotateCcw } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
 import { parseOpt, fmt } from '../lib/formatUtils'
+import SectionLottie from './motion/SectionLottie'
+import LottieIcon from './motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 
 function QuestionField({ q, value, onChange }) {
   const opts = (q.options || []).map(parseOpt)
@@ -179,6 +182,7 @@ export default function DevisPublic() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
+          <SectionLottie src={LOTTIE.calc} />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre devis en{' '}
             <span className="gradient-text">ligne</span>
@@ -297,11 +301,8 @@ export default function DevisPublic() {
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                     {sent ? (
                       <div className="text-center py-4">
-                        <div
-                          className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                          style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.35)' }}
-                        >
-                          <CheckCircle2 className="w-7 h-7 text-emerald-500" />
+                        <div className="mx-auto w-24 h-24 mb-4">
+                          <LottieIcon src={LOTTIE.success} className="w-full h-full" loop={false} />
                         </div>
                         <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">
                           Demande prête à envoyer

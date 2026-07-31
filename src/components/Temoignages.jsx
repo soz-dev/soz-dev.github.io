@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const ITEMS = [
   {
@@ -32,6 +34,7 @@ export default function Temoignages() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             Avis
           </span>
+          <SectionLottie src={LOTTIE.review} size="sm" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Ce que retiennent{' '}<span className="gradient-text">les clients</span>
           </h2>

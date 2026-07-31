@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN, PRIX_MAINTENANCE_MOIS } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 /**
  * Prix sous le marché FR. Duo Sofyan + Cursor : web (React/Vite/Supabase/Stripe) + iOS (Swift/SwiftUI).
@@ -127,6 +129,7 @@ export default function Pricing() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Grille
           </span>
+          <SectionLottie src={LOTTIE.money} size="sm" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
             Prix affichés. Les barrés = ordre de grandeur agence / freelance classique.

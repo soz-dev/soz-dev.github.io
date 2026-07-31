@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { MapPin, Code2, Zap, Heart, ArrowRight } from 'lucide-react'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const traits = [
   { icon: MapPin,  text: 'Basé en France',         color: '#a855f7' },
@@ -32,6 +34,7 @@ export default function About() {
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
               À propos
             </span>
+            <SectionLottie src={LOTTIE.team} size="sm" className="mx-0 mb-3" />
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Qui suis-je
             </h2>

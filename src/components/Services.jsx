@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion'
 import { Globe, Zap, ShoppingBag, LayoutTemplate, Layers, Database, FormInput, Search, Smartphone, Store, Palette } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import SectionLottie from './motion/SectionLottie'
+import LottieIcon from './motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 
 const services = [
   {
     icon: Globe,
+    lottie: LOTTIE.web,
     accentColor: '#a855f7',
     badge: 'Sites web',
     title: 'Vitrines & sites pro',
@@ -19,6 +23,7 @@ const services = [
   },
   {
     icon: ShoppingBag,
+    lottie: LOTTIE.shop,
     accentColor: '#06b6d4',
     badge: 'Vente en ligne',
     title: 'Boutique en ligne',
@@ -33,6 +38,7 @@ const services = [
   },
   {
     icon: Database,
+    lottie: LOTTIE.tools,
     accentColor: '#8b5cf6',
     badge: 'Outils métier',
     title: 'Espaces & outils sur mesure',
@@ -47,6 +53,7 @@ const services = [
   },
   {
     icon: Smartphone,
+    lottie: LOTTIE.phone,
     accentColor: '#007AFF',
     badge: 'App Store',
     title: 'Applications iOS',
@@ -86,6 +93,7 @@ export default function Services() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
+          <SectionLottie src={LOTTIE.code} size="md" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Mes services
           </h2>
@@ -116,14 +124,8 @@ export default function Services() {
                 style={{ background: s.accentColor }}
               />
 
-              <div
-                className="inline-flex p-3 rounded-xl mb-7 border"
-                style={{
-                  background: `${s.accentColor}18`,
-                  borderColor: `${s.accentColor}30`,
-                }}
-              >
-                <s.icon style={{ color: s.accentColor }} className="w-6 h-6" />
+              <div className="w-16 h-16 mb-6">
+                <LottieIcon src={s.lottie} className="w-full h-full" />
               </div>
 
               <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>

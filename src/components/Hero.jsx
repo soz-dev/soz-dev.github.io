@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { PRIX_BASE } from '../lib/pricingEngine'
 import LottieIcon from './motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 import { easeOutExpo } from '../lib/motionPresets'
 
 const line = (delay) => ({
@@ -34,10 +35,10 @@ export default function Hero() {
 
         {/* Lottie décoratif */}
         <div className="absolute right-[-8%] top-[18%] w-[280px] h-[280px] md:w-[380px] md:h-[380px] opacity-[0.35] dark:opacity-[0.45] pointer-events-none hidden sm:block">
-          <LottieIcon src="/lottie/orbit.json" />
+          <LottieIcon src={LOTTIE.orbit} />
         </div>
         <div className="absolute left-[-10%] bottom-[12%] w-[220px] h-[220px] md:w-[300px] md:h-[300px] opacity-[0.25] dark:opacity-[0.35] pointer-events-none hidden md:block scale-x-[-1]">
-          <LottieIcon src="/lottie/orbit.json" />
+          <LottieIcon src={LOTTIE.growth} />
         </div>
       </div>
 
@@ -116,7 +117,7 @@ export default function Hero() {
         animate={{ opacity: reduce ? 0.5 : 0.7 }}
         transition={{ delay: 1.4, duration: 0.6 }}
       >
-        <LottieIcon src="/lottie/scroll.json" />
+        <LottieIcon src={LOTTIE.scroll} />
       </motion.div>
     </section>
   )

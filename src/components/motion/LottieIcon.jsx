@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 /**
  * Wrapper Lottie lazy (code-split) + prefers-reduced-motion.
+ * Ne crash jamais : placeholder silencieux si import / JSON KO.
  */
 export default function LottieIcon({
   src,
@@ -13,6 +14,7 @@ export default function LottieIcon({
   const [Lottie, setLottie] = useState(null)
   const [data, setData] = useState(null)
   const [reduce, setReduce] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -24,26 +26,33 @@ export default function LottieIcon({
 
   useEffect(() => {
     let cancelled = false
-    import('lottie-react').then((mod) => {
-      // Interop ESM/CJS : default peut être le namespace (object), pas le composant
-      const Comp = mod.default?.default ?? mod.LottiePlayer ?? mod.default
-      if (!cancelled && typeof Comp === 'function') setLottie(() => Comp)
-    })
+    import('lottie-react')
+      .then((mod) => {
+        const Comp = mod.default?.default ?? mod.LottiePlayer ?? mod.default
+        if (!cancelled && typeof Comp === 'function') setLottie(() => Comp)
+        else if (!cancelled) setFailed(true)
+      })
+      .catch(() => { if (!cancelled) setFailed(true) })
     return () => { cancelled = true }
   }, [])
 
   useEffect(() => {
     let cancelled = false
+    setFailed(false)
+    setData(null)
     fetch(src)
-      .then(r => r.json())
-      .then(json => {
+      .then((r) => {
+        if (!r.ok) throw new Error(`Lottie ${r.status}`)
+        return r.json()
+      })
+      .then((json) => {
         if (!cancelled) setData(json)
       })
-      .catch(() => {})
+      .catch(() => { if (!cancelled) setFailed(true) })
     return () => { cancelled = true }
   }, [src])
 
-  if (!Lottie || !data) {
+  if (failed || !Lottie || !data) {
     return <div className={className} style={style} aria-hidden />
   }
 

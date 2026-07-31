@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const faqs = [
   {
@@ -107,6 +109,7 @@ export default function FAQ() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Questions fréquentes
           </span>
+          <SectionLottie src={LOTTIE.chat} size="sm" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
             Prix, délais, iOS, paiement : réponses claires.

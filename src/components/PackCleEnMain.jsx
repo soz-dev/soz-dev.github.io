@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { Check, ArrowRight, Sparkles } from 'lucide-react'
+import LottieIcon from './motion/LottieIcon'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
-import LottieIcon from './motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 
 const INCLUS = [
   'Site vitrine 2–5 pages (design inclus)',
@@ -36,7 +37,7 @@ export default function PackCleEnMain() {
           className="rounded-3xl border border-accent-200/60 dark:border-accent-500/20 bg-gradient-to-br from-white via-white to-accent-50/40 dark:from-[#0a0f1a] dark:via-[#0a0f1a] dark:to-brand-900/30 overflow-hidden relative"
         >
           <div className="absolute -right-8 -top-8 w-40 h-40 opacity-30 pointer-events-none hidden md:block">
-            <LottieIcon src="/lottie/orbit.json" />
+            <LottieIcon src={LOTTIE.rocket} />
           </div>
           <div className="grid md:grid-cols-[1.05fr_0.95fr]">
             <div className="p-8 md:p-10 lg:p-12">

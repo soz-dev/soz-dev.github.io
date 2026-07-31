@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { PRIX_BASE } from '../lib/pricingEngine'
+import LottieIcon from './motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 
 const METRICS = [
   { label: 'Réponse sous', value: 24, suffix: 'h', prefix: '' },
@@ -47,6 +49,11 @@ export default function PreuveLive() {
   return (
     <section ref={ref} className="relative border-y border-gray-100 dark:border-white/5 bg-gray-50/80 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-8 md:py-10">
+        <div className="flex justify-center mb-4">
+          <div className="w-12 h-12 opacity-80">
+            <LottieIcon src={LOTTIE.star} className="w-full h-full" />
+          </div>
+        </div>
         <p className="text-center text-xs text-slate-500 dark:text-slate-400 mb-6">
           Réponse sous 24h · Prix affichés · 1 mois de support inclus
         </p>

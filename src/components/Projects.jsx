@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Smartphone } from 'lucide-react'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const projects = [
   {
@@ -85,6 +87,7 @@ export default function Projects() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Réalisations
           </span>
+          <SectionLottie src={LOTTIE.rocket} />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Projets</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
             Des produits réels, utilisés par de vraies personnes.

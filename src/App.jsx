@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import PublicLayout from './layouts/PublicLayout'
 import HomePage from './pages/HomePage'
@@ -9,6 +9,8 @@ import TarifsPage from './pages/TarifsPage'
 import DevisPage from './pages/DevisPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
+import NotFoundPage from './pages/NotFoundPage'
+import ErrorBoundary from './components/ErrorBoundary'
 
 const AdminApp = lazy(() => import('./pages/AdminApp'))
 const DesignSystemPage = lazy(() => import('./pages/DesignSystemPage'))
@@ -54,16 +56,17 @@ export default function App() {
         } />
 
         <Route element={<PublicLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="projets" element={<ProjetsPage />} />
-          <Route path="tarifs" element={<TarifsPage />} />
-          <Route path="devis" element={<DevisPage />} />
-          <Route path="a-propos" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
+          <Route index element={<ErrorBoundary variant="crash"><HomePage /></ErrorBoundary>} />
+          <Route path="services" element={<ErrorBoundary variant="crash"><ServicesPage /></ErrorBoundary>} />
+          <Route path="projets" element={<ErrorBoundary variant="crash"><ProjetsPage /></ErrorBoundary>} />
+          <Route path="tarifs" element={<ErrorBoundary variant="crash"><TarifsPage /></ErrorBoundary>} />
+          <Route path="devis" element={<ErrorBoundary variant="crash"><DevisPage /></ErrorBoundary>} />
+          <Route path="a-propos" element={<ErrorBoundary variant="crash"><AboutPage /></ErrorBoundary>} />
+          <Route path="contact" element={<ErrorBoundary variant="crash"><ContactPage /></ErrorBoundary>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   )

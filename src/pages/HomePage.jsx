@@ -8,22 +8,28 @@ import PackCleEnMain from '../components/PackCleEnMain'
 import Garanties from '../components/Garanties'
 import CasMetier from '../components/CasMetier'
 import Temoignages from '../components/Temoignages'
+import SectionLottie from '../components/motion/SectionLottie'
+import LottieIcon from '../components/motion/LottieIcon'
+import { LOTTIE } from '../lib/lottieMap'
 
 const TEASERS = [
   {
     to: '/services',
     title: 'Mes services',
     desc: 'Site vitrine, boutique en ligne ou app iPhone : le format adapté à votre activité.',
+    lottie: LOTTIE.web,
   },
   {
     to: '/projets',
     title: 'Réalisations',
     desc: 'Des projets déjà en ligne pour freelances, commerces et apps natives.',
+    lottie: LOTTIE.rocket,
   },
   {
     to: '/tarifs',
     title: 'Tous les tarifs',
     desc: 'Grille complète, estimateur et comparatif pour affiner votre budget.',
+    lottie: LOTTIE.money,
   },
 ]
 
@@ -49,6 +55,7 @@ export default function HomePage() {
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
               Aller plus loin
             </span>
+            <SectionLottie src={LOTTIE.star} size="sm" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
               Explorer{' '}<span className="gradient-text">le détail</span>
             </h2>
@@ -70,6 +77,9 @@ export default function HomePage() {
                   to={t.to}
                   className="block h-full rounded-2xl border border-gray-100 dark:border-white/8 bg-gray-50/80 dark:bg-white/[0.02] p-6 hover:border-brand-500/40 transition-colors group"
                 >
+                  <div className="w-14 h-14 mb-3">
+                    <LottieIcon src={t.lottie} className="w-full h-full" />
+                  </div>
                   <h3 className="font-display font-bold text-gray-900 dark:text-white mb-2 group-hover:gradient-text transition-all">
                     {t.title}
                   </h3>

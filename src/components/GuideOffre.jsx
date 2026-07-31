@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
 import LottieIcon from './motion/LottieIcon'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const RESULTS = {
   boutique: {
@@ -104,6 +106,7 @@ export default function GuideOffre() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             En 3 questions
           </span>
+          <SectionLottie src={LOTTIE.search} size="sm" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Quelle offre{' '}<span className="gradient-text">vous correspond ?</span>
           </h2>
@@ -219,7 +222,7 @@ export default function GuideOffre() {
                 className="text-center py-2"
               >
                 <div className="mx-auto w-24 h-24 mb-2">
-                  <LottieIcon src="/lottie/success.json" loop={false} />
+                  <LottieIcon src={LOTTIE.success} loop={false} />
                 </div>
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold mb-4 ${
                   result.highlight

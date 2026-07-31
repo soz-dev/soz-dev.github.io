@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const CASE = {
   name: 'LocaZen 7',
@@ -26,6 +28,7 @@ export default function CasMetier() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Cas client
           </span>
+          <SectionLottie src={LOTTIE.growth} size="sm" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Un projet réel,{' '}<span className="gradient-text">pas une démo</span>
           </h2>
