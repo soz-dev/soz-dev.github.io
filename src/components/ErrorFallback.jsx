@@ -30,7 +30,7 @@ export default function ErrorFallback({
   description,
 }) {
   const c = COPY[variant] || COPY.crash
-  const lottieSrc = c.icon ? null : (c.src || LOTTIE.error)
+  const lottieSrc = c.icon ? null : c.src
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#030712] flex items-center justify-center px-6 py-16">
