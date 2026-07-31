@@ -59,3 +59,24 @@ Sans clé : message d’aide en DEV ; en production, erreur claire à l’envoi.
 ## Déploiement
 
 Push sur `main` → workflow **Deploy to GitHub Pages**. Domaine custom via `public/CNAME` (`soz-dev.com`).
+
+### HTTPS (obligatoire côté GitHub)
+
+Le code utilise `https://soz-dev.com` (canonical, OG, sitemap, JSON-LD) et un redirect client HTTP→HTTPS sur `soz-dev.com` / `www` (pas sur localhost).
+
+**À cocher manuellement** (non fiable via API) :
+
+1. Repo → **Settings** → **Pages**
+2. Custom domain : `soz-dev.com` (doit matcher `public/CNAME`)
+3. Cocher **Enforce HTTPS** (disponible une fois le certificat Let’s Encrypt émis)
+
+Sans cette case, les visiteurs peuvent encore ouvrir `http://soz-dev.com` (navigateur « Non sécurisé »).
+
+### DNS (apex + www)
+
+| Hôte | Type | Valeur |
+|------|------|--------|
+| `@` (apex) | A | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| `www` | CNAME | `soz-dev.github.io` |
+
+GitHub redirige en général `www` ↔ apex selon le domaine principal défini dans Pages. Après un changement DNS, attendre la propagation puis vérifier que **Enforce HTTPS** n’est plus grisé.

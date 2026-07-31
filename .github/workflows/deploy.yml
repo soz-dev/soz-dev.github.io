@@ -1,3 +1,6 @@
+# Déploie sur GitHub Pages (domaine : soz-dev.com via public/CNAME).
+# HTTPS serveur : cocher « Enforce HTTPS » dans Settings → Pages (après émission du cert).
+# Le site inclut aussi un redirect client HTTP→HTTPS sur soz-dev.com / www.
 name: Deploy to GitHub Pages
 
 on:

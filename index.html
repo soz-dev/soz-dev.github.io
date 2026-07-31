@@ -6,6 +6,20 @@
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Filet HTTPS : ne touche pas localhost / 127.0.0.1 ; Enforce HTTPS GitHub Pages reste obligatoire -->
+    <script>
+      (function () {
+        var host = location.hostname
+        if (
+          location.protocol === 'http:' &&
+          (host === 'soz-dev.com' || host === 'www.soz-dev.com')
+        ) {
+          location.replace(
+            'https://' + host + location.pathname + location.search + location.hash,
+          )
+        }
+      })()
+    </script>
     <title>Sofyan Zarouri, développeur web &amp; iOS | SOZ-DEV</title>
     <meta name="description" content="Développeur freelance web &amp; iOS. Sites, boutiques Stripe, apps React et Swift. Devis en ligne, prix sous le marché." />
     <link rel="canonical" href="https://soz-dev.com/" />
