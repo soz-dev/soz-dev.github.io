@@ -55,7 +55,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
+            <span className="text-xs text-brand-400 tracking-[0.3em] uppercase block mb-4">
               Aller plus loin
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">

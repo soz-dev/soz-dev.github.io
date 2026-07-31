@@ -41,7 +41,7 @@ export default function PackCleEnMain() {
           </div>
           <div className="grid md:grid-cols-[1.05fr_0.95fr]">
             <div className="p-8 md:p-10 lg:p-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-400 text-[11px] font-mono font-semibold tracking-wider uppercase mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-400 text-[11px] font-semibold tracking-wider uppercase mb-5">
                 <Sparkles className="w-3.5 h-3.5" />
                 Pack recommandé
               </div>
@@ -81,7 +81,7 @@ export default function PackCleEnMain() {
             </div>
 
             <div className="p-8 md:p-10 lg:p-12 bg-gray-900 dark:bg-black/40 text-white md:border-l border-accent-500/20">
-              <p className="text-xs font-mono text-accent-400 tracking-[0.2em] uppercase mb-6">Tout inclus</p>
+              <p className="text-xs text-accent-400 tracking-[0.2em] uppercase mb-6">Tout inclus</p>
               <ul className="space-y-3.5">
                 {INCLUS.map((item, i) => (
                   <motion.li

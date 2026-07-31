@@ -61,7 +61,7 @@ export default function Process() {
           className="mb-16"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Comment ça marche
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">Mon processus</h2>
@@ -79,10 +79,10 @@ export default function Process() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, delay: i * 0.07 }}
               className={`rounded-2xl p-6 border transition-colors duration-300 flex items-start gap-5 ${
-                step.featured
-                  ? 'bg-white dark:bg-white/[0.04] border-cyan-200 dark:border-accent-500/20 shadow-sm dark:shadow-none'
-                  : 'glass border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
-              }`}
+ step.featured
+ ? 'bg-white dark:bg-white/[0.04] border-cyan-200 dark:border-accent-500/20 shadow-sm dark:shadow-none'
+ : 'glass border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
+ }`}
             >
               {/* Number + icon */}
               <div className="shrink-0 flex flex-col items-center gap-2">
@@ -92,7 +92,7 @@ export default function Process() {
                 >
                   <step.icon className="w-5 h-5" style={{ color: step.color }} />
                 </div>
-                <span className="text-xs font-mono font-bold" style={{ color: step.color }}>{step.number}</span>
+                <span className="text-xs font-bold" style={{ color: step.color }}>{step.number}</span>
               </div>
 
               <div className="pt-1 flex-1">

@@ -1,5 +1,5 @@
 /**
- * Eyebrow de section (label mono uppercase)
+ * Eyebrow de section (label uppercase, police body)
  * @param {'brand'|'accent'|'cyan'|'amber'} color
  */
 export default function Eyebrow({ color = 'brand', className = '', children, as: Comp = 'span', ...props }) {

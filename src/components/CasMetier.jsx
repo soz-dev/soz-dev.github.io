@@ -23,7 +23,7 @@ export default function CasMetier() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Cas client
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
@@ -59,7 +59,7 @@ export default function CasMetier() {
           </a>
 
           <div className="p-7 md:p-9 flex flex-col justify-center">
-            <p className="text-xs font-mono text-accent-400 tracking-wider uppercase mb-2">{CASE.secteur}</p>
+            <p className="text-xs text-accent-400 tracking-wider uppercase mb-2">{CASE.secteur}</p>
             <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-5">{CASE.name}</h3>
             <dl className="space-y-4 text-sm mb-8">
               <div>

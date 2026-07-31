@@ -26,7 +26,7 @@ export default function Stack() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Mon arsenal
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Technologies</h2>

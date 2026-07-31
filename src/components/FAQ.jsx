@@ -107,7 +107,7 @@ export default function FAQ() {
           className="mb-12 md:mb-14"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Questions fréquentes
           </span>
           <SectionLottie src={LOTTIE.faq} size="lg" />

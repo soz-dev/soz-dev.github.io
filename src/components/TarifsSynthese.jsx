@@ -32,7 +32,7 @@ export default function TarifsSynthese() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4"
+            className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4"
           >
             Inclus dans chaque projet
           </motion.p>
@@ -75,7 +75,7 @@ export default function TarifsSynthese() {
             Agence vs <span className="gradient-text">SOZ-DEV</span>
           </motion.h2>
           <div className="rounded-2xl border border-gray-100 dark:border-white/8 overflow-hidden max-w-2xl mx-auto">
-            <div className="grid grid-cols-[1fr_1fr_1fr] gap-0 text-xs font-mono uppercase tracking-wider text-slate-400 bg-gray-50 dark:bg-white/[0.03] px-4 py-2.5">
+            <div className="grid grid-cols-[1fr_1fr_1fr] gap-0 text-xs uppercase tracking-wider text-slate-400 bg-gray-50 dark:bg-white/[0.03] px-4 py-2.5">
               <span />
               <span className="text-center">Agence</span>
               <span className="text-center text-brand-500">SOZ-DEV</span>
@@ -84,8 +84,8 @@ export default function TarifsSynthese() {
               <div
                 key={row.label}
                 className={`grid grid-cols-[1fr_1fr_1fr] gap-2 px-4 py-3.5 text-sm items-center ${
-                  i % 2 === 0 ? 'bg-white dark:bg-transparent' : 'bg-gray-50/80 dark:bg-white/[0.02]'
-                }`}
+ i % 2 === 0 ? 'bg-white dark:bg-transparent' : 'bg-gray-50/80 dark:bg-white/[0.02]'
+ }`}
               >
                 <span className="text-slate-500 text-xs md:text-sm">{row.label}</span>
                 <span className="text-center text-slate-400 text-xs md:text-sm">{row.agence}</span>
@@ -100,7 +100,7 @@ export default function TarifsSynthese() {
 
         {/* Process court */}
         <div className="text-center">
-          <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-2">
+          <p className="text-xs text-accent-400 tracking-[0.3em] uppercase mb-2">
             Comment ça se passe
           </p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
@@ -113,7 +113,7 @@ export default function TarifsSynthese() {
             {STEPS.map((s, i) => (
               <div key={s} className="flex items-center gap-2 md:gap-3">
                 <span className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] text-sm font-medium text-gray-900 dark:text-white">
-                  <span className="font-mono text-[10px] text-brand-500">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-[10px] text-brand-500">{String(i + 1).padStart(2, '0')}</span>
                   {s}
                 </span>
                 {i < STEPS.length - 1 && (

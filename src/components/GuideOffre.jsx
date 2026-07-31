@@ -100,7 +100,7 @@ export default function GuideOffre() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase block mb-4">
             En 3 questions
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
@@ -120,7 +120,7 @@ export default function GuideOffre() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
               >
-                <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-6">
+                <p className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
                   1. Vous vendez des produits en ligne ?
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -148,7 +148,7 @@ export default function GuideOffre() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
               >
-                <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-6">
+                <p className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
                   2. Combien de pages environ ?
                 </p>
                 <div className="flex flex-col gap-3">
@@ -180,7 +180,7 @@ export default function GuideOffre() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
               >
-                <p className="font-display text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   3. Vous avez déjà un hébergement et un nom de domaine ?
                 </p>
                 <p className="text-sm text-slate-500 mb-6">
@@ -221,10 +221,10 @@ export default function GuideOffre() {
                   <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={1.5} />
                 </div>
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold mb-4 ${
-                  result.highlight
-                    ? 'bg-accent-500/15 text-accent-600 dark:text-accent-400'
-                    : 'bg-brand-500/10 text-brand-600 dark:text-brand-400'
-                }`}>
+ result.highlight
+ ? 'bg-accent-500/15 text-accent-600 dark:text-accent-400'
+ : 'bg-brand-500/10 text-brand-600 dark:text-brand-400'
+ }`}>
                   <Check className="w-3.5 h-3.5" />
                   Recommandé pour vous
                 </div>

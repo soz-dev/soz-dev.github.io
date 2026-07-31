@@ -845,7 +845,7 @@ function BrowserFrame({ url, label, tags, children, delay }) {
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
         </div>
-        <div className="flex-1 mx-1.5 bg-white/60 dark:bg-white/8 rounded-full px-3 py-0.5 text-[10px] text-gray-400 dark:text-slate-500 font-mono truncate">{url}</div>
+        <div className="flex-1 mx-1.5 bg-white/60 dark:bg-white/8 rounded-full px-3 py-0.5 text-[10px] text-gray-400 dark:text-slate-500 truncate">{url}</div>
         <Monitor size={10} className="text-gray-400 dark:text-slate-600 flex-shrink-0" />
       </div>
       <div
@@ -858,10 +858,10 @@ function BrowserFrame({ url, label, tags, children, delay }) {
         <p className="text-xs font-semibold text-gray-800 dark:text-white mb-1.5 font-display">{label}</p>
         <div className="flex flex-wrap gap-1.5">
           {tags.map(t => (
-            <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 dark:bg-brand-500/10 text-brand-600 dark:text-brand-300 font-mono">{t}</span>
+            <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 dark:bg-brand-500/10 text-brand-600 dark:text-brand-300 ">{t}</span>
           ))}
         </div>
-        <p className="text-[10px] text-slate-400 mt-1.5 font-mono">Défilez pour voir toute la page ↓</p>
+        <p className="text-[10px] text-slate-400 mt-1.5 ">Défilez pour voir toute la page ↓</p>
       </div>
     </motion.div>
   )
@@ -892,7 +892,7 @@ export default function WebShowcase() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">Inspiration</span>
+          <span className="text-xs text-accent-400 tracking-[0.3em] uppercase block mb-4">Inspiration</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Des univers{' '}<span className="gradient-text">sur mesure</span>
           </h2>

@@ -85,7 +85,7 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Réalisations
           </span>
           <SectionLottie src={LOTTIE.projects} size="2xl" />
@@ -128,7 +128,7 @@ export default function Projects() {
                   <img src={p.image} alt={p.title} loading="lazy" className="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md" onError={e => e.target.style.display='none'} />
                 )}
                 <div>
-                  <p className="text-xs font-mono mb-0.5" style={{ color: p.accentColor }}>{p.category} · {p.year}</p>
+                  <p className="text-xs mb-0.5" style={{ color: p.accentColor }}>{p.category} · {p.year}</p>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">{p.title}</h3>
                 </div>
               </div>

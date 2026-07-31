@@ -38,7 +38,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
       <div className="p-5 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
         <div className="overflow-visible">
           <BrandLogo variant="lockup" />
-          <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
+          <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 ">admin</p>
         </div>
         <button
           type="button"
@@ -57,10 +57,10 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
             type="button"
             onClick={() => navigate(id)}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition ${
-              view === id || (view === 'project' && id === 'clients') || (view === 'project-new' && id === 'clients')
-                ? 'bg-purple-100 dark:bg-brand-600/20 text-brand-700 dark:text-brand-300 font-medium'
-                : 'text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
-            }`}
+ view === id || (view === 'project' && id === 'clients') || (view === 'project-new' && id === 'clients')
+ ? 'bg-purple-100 dark:bg-brand-600/20 text-brand-700 dark:text-brand-300 font-medium'
+ : 'text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
+ }`}
           >
             <Icon size={15} />
             {label}
@@ -80,7 +80,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
       </div>
 
       <div className="px-3 pb-1 pt-2">
-        <p className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">Ressources</p>
+        <p className="px-3 text-[10px] uppercase tracking-wider text-slate-400 mb-1">Ressources</p>
         {LINKS.map(({ href, label, icon: Icon }) => (
           <a
             key={href}

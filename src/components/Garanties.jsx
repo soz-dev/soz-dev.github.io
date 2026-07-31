@@ -41,7 +41,7 @@ export default function Garanties() {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-xs text-accent-400 tracking-[0.3em] uppercase mb-3 block">
             Engagements
           </span>
           <SectionLottie src={LOTTIE.trust} size="xl" />

@@ -24,7 +24,7 @@ export default function Comparatif() {
           transition={{ duration: 0.65 }}
           className="text-center mb-12 md:mb-14"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Comparatif
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -38,10 +38,10 @@ export default function Comparatif() {
         {/* En-têtes colonnes */}
         <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-2 mb-3 px-1">
           <div />
-          <div className="text-center text-xs font-mono uppercase tracking-wider text-slate-400 py-2">
+          <div className="text-center text-xs uppercase tracking-wider text-slate-400 py-2">
             Agence classique
           </div>
-          <div className="text-center text-xs font-mono uppercase tracking-wider text-brand-500 dark:text-brand-400 py-2 rounded-t-xl bg-purple-50/80 dark:bg-purple-500/10">
+          <div className="text-center text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 py-2 rounded-t-xl bg-purple-50/80 dark:bg-purple-500/10">
             SOZ-DEV
           </div>
         </div>
@@ -55,8 +55,8 @@ export default function Comparatif() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, duration: 0.4 }}
               className={`grid grid-cols-[1.2fr_1fr_1fr] gap-2 items-stretch ${
-                i % 2 === 0 ? 'bg-white dark:bg-white/[0.02]' : 'bg-gray-50/80 dark:bg-white/[0.04]'
-              }`}
+ i % 2 === 0 ? 'bg-white dark:bg-white/[0.02]' : 'bg-gray-50/80 dark:bg-white/[0.04]'
+ }`}
             >
               <div className="px-4 py-3.5 text-sm font-semibold text-gray-800 dark:text-slate-200 flex items-center">
                 {row.label}

@@ -19,10 +19,10 @@ export default function Footer() {
             <Link to="/" className="overflow-visible">
               <BrandLogo variant="lockup" />
             </Link>
-            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-slate-400">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-slate-400">
               {BRAND_TAGLINE}
             </span>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs text-slate-400">
               Sites &amp; apps iOS dès {PRIX_BASE['site-vitrine']}€.
             </span>
           </div>

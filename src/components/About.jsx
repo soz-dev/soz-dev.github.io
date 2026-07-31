@@ -31,7 +31,7 @@ export default function About() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7 }}
           >
-            <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+            <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
               À propos
             </span>
             <SectionLottie src={LOTTIE.about} size="xl" className="mx-0 mb-3" />

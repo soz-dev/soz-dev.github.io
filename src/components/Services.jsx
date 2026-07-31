@@ -89,7 +89,7 @@ export default function Services() {
           className="mb-12 md:mb-16"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
           <SectionLottie src={LOTTIE.services} size="xl" />
@@ -145,7 +145,7 @@ export default function Services() {
                   )}
                 </div>
 
-                <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>
+                <p className="text-xs mb-1.5" style={{ color: s.accentColor }}>
                   {s.badge}
                 </p>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3">

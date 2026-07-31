@@ -47,7 +47,7 @@ export default function Temoignages() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase block mb-4">
             Preuve
           </span>
           <Quote className="w-8 h-8 mx-auto mb-4 text-brand-400/70" aria-hidden />
@@ -73,7 +73,7 @@ export default function Temoignages() {
                   </span>
                   <div>
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">{item.project}</p>
-                    <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">{item.kind}</p>
+                    <p className="text-[11px] uppercase tracking-wider text-slate-400">{item.kind}</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1 mb-5">

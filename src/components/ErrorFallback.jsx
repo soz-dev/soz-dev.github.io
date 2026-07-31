@@ -36,7 +36,7 @@ export default function ErrorFallback({
         <div className="w-64 h-64 mx-auto mb-6">
           <LottieIcon src={c.src} className="w-full h-full" />
         </div>
-        <p className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-3">
+        <p className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-3">
           {variant === 'offline' ? 'Hors ligne' : variant === 'notfound' ? '404' : 'Erreur'}
         </p>
         <h1 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">

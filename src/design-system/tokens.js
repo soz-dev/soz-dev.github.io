@@ -87,7 +87,6 @@ export const typeScale = [
   { name: 'Body', className: 'ds-body', sample: 'Devis sous 24h · Acompte 30 % · Support inclus.' },
   { name: 'Caption', className: 'ds-caption', sample: 'Délai typique · 1 à 2 semaines' },
   { name: 'Eyebrow', className: 'ds-eyebrow text-brand-500', sample: 'Investissement' },
-  { name: 'Mono', className: 'ds-mono text-ink-muted', sample: 'à partir de 390€' },
 ]
 
 export const brand = {

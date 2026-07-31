@@ -42,7 +42,7 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase block mb-4">
             Contact
           </span>
           <SectionLottie src={LOTTIE.contact} size="2xl" />
@@ -239,7 +239,7 @@ export default function Contact() {
           ].map(s => (
             <div key={s.label}>
               <div className="text-2xl font-bold gradient-text mb-1">{s.value}</div>
-              <div className="text-xs text-slate-500 dark:text-slate-600 font-mono">{s.label}</div>
+              <div className="text-xs text-slate-500 dark:text-slate-600 ">{s.label}</div>
             </div>
           ))}
         </motion.div>

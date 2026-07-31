@@ -126,7 +126,7 @@ export default function Pricing() {
           className="mb-10 md:mb-12"
           style={{ textAlign: 'center' }}
         >
-          <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-xs text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Grille
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
@@ -144,10 +144,10 @@ export default function Pricing() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className={`relative glass rounded-2xl p-7 border transition-all duration-300 flex flex-col ${
-                plan.popular
-                  ? 'border-purple-300 dark:border-brand-500/30 shadow-lg shadow-brand-100 dark:shadow-brand-900/10'
-                  : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
-              }`}
+ plan.popular
+ ? 'border-purple-300 dark:border-brand-500/30 shadow-lg shadow-brand-100 dark:shadow-brand-900/10'
+ : 'border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10'
+ }`}
             >
               {plan.popular && (
                 <div
@@ -158,13 +158,13 @@ export default function Pricing() {
                 </div>
               )}
 
-              <p className="text-xs font-mono mb-3 font-bold tracking-widest uppercase" style={{ color: plan.accentColor }}>
+              <p className="text-xs mb-3 font-bold tracking-widest uppercase" style={{ color: plan.accentColor }}>
                 {plan.name}
               </p>
 
               <div className="flex items-end gap-2 mb-3">
                 <div className="flex flex-col">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-0.5">
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 mb-0.5">
                     À partir de
                   </span>
                   {plan.originalPrice && !plan.noPromo && (

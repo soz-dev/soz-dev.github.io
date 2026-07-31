@@ -95,7 +95,7 @@ export default function DesignSystemPage() {
             <button
               type="button"
               onClick={() => setIsDark(d => !d)}
-              className="text-xs font-mono px-3 py-1.5 rounded-full border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5"
+              className="text-xs px-3 py-1.5 rounded-full border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5"
             >
               {isDark ? 'Light' : 'Dark'}
             </button>
@@ -121,7 +121,7 @@ export default function DesignSystemPage() {
               {item}
             </a>
           ))}
-          <p className="pt-6 text-[10px] font-mono text-slate-400 leading-relaxed">
+          <p className="pt-6 text-[10px] text-slate-400 leading-relaxed">
             /design-system
             <br />
             tokens.css + composants
@@ -151,21 +151,20 @@ export default function DesignSystemPage() {
                 SOZ_DEV
               </p>
               <p className="ds-h2 text-gray-900 dark:text-white mb-3 max-w-lg">{brand.tagline}</p>
-              <p className="text-sm text-slate-500 font-mono">{brand.url}</p>
-              <div className="mt-8 grid sm:grid-cols-3 gap-4 text-xs">
+              <p className="text-sm text-slate-500">{brand.url}</p>
+              <div className="mt-8 grid sm:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <p className="text-slate-400 mb-1">Display</p>
+                  <p className="text-slate-400 mb-1">Display · titres & marque</p>
                   <p className="font-display font-bold text-lg" style={{ fontFamily: fonts.display }}>Sora</p>
                 </div>
                 <div>
-                  <p className="text-slate-400 mb-1">Body</p>
+                  <p className="text-slate-400 mb-1">Body · texte & labels</p>
                   <p className="font-bold text-lg" style={{ fontFamily: fonts.sans }}>Manrope</p>
                 </div>
-                <div>
-                  <p className="text-slate-400 mb-1">Accent mono</p>
-                  <p className="font-mono text-sm">SF Mono / ui-monospace</p>
-                </div>
               </div>
+              <p className="mt-4 text-[11px] text-slate-400">
+                Mono système réservé au code / tokens techniques uniquement.
+              </p>
             </Surface>
           </Block>
 
@@ -206,7 +205,7 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap gap-3 items-center">
               <Button size="sm">CTA primaire</Button>
               <span className="gradient-text font-display font-bold text-lg">Texte gradient</span>
-              <span className="text-xs font-mono text-slate-400">actif · {paletteId}</span>
+              <span className="text-xs text-slate-400">actif · {paletteId}</span>
             </div>
           </Block>
 
@@ -244,7 +243,7 @@ export default function DesignSystemPage() {
             <div className="space-y-8">
               {typeScale.map(t => (
                 <div key={t.name} className="border-b border-gray-100 dark:border-white/5 pb-6">
-                  <p className="text-[10px] font-mono text-slate-400 mb-2">{t.name} · .{t.className}</p>
+                  <p className="text-[10px] text-slate-400 mb-2">{t.name} · .{t.className}</p>
                   <p className={`${t.className} text-gray-900 dark:text-white`}>{t.sample}</p>
                 </div>
               ))}
@@ -281,7 +280,7 @@ export default function DesignSystemPage() {
                     className="w-16 h-16 bg-brand-500/20 border border-brand-500/40 mb-2"
                     style={{ borderRadius: val }}
                   />
-                  <p className="text-[10px] font-mono">{name}</p>
+                  <p className="text-[10px] ">{name}</p>
                   <p className="text-[9px] text-slate-400">{val}</p>
                 </div>
               ))}
@@ -290,16 +289,16 @@ export default function DesignSystemPage() {
 
           <Block title="Ombres">
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-sm flex items-center justify-center text-xs font-mono">
+              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-sm flex items-center justify-center text-xs ">
                 shadow-sm
               </div>
-              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-md flex items-center justify-center text-xs font-mono">
+              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-md flex items-center justify-center text-xs ">
                 shadow-md
               </div>
-              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-lg flex items-center justify-center text-xs font-mono">
+              <div className="h-24 rounded-2xl bg-white dark:bg-[#0a0f1a] shadow-lg flex items-center justify-center text-xs ">
                 shadow-lg
               </div>
-              <div className="h-24 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 glow-purple flex items-center justify-center text-xs font-mono text-white">
+              <div className="h-24 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 glow-purple flex items-center justify-center text-xs text-white">
                 glow-purple
               </div>
             </div>
@@ -400,7 +399,7 @@ export default function DesignSystemPage() {
               </Surface>
               <Surface className="p-5">
                 <p className="font-semibold mb-1">Durées</p>
-                <p className="text-[11px] font-mono text-slate-400">
+                <p className="text-[11px] text-slate-400">
                   fast {motion.duration.fast}s · base {motion.duration.base}s · slow {motion.duration.slow}s
                 </p>
               </Surface>
@@ -412,7 +411,7 @@ export default function DesignSystemPage() {
             </div>
           </Block>
 
-          <footer className="pt-8 border-t border-gray-100 dark:border-white/10 text-xs text-slate-400 font-mono">
+          <footer className="pt-8 border-t border-gray-100 dark:border-white/10 text-xs text-slate-400 ">
             Import : <code className="text-brand-500">from &apos;./design-system&apos;</code>
             {' · '}
             Fichiers : <code>src/design-system/</code>

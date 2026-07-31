@@ -31,10 +31,10 @@ function QuestionField({ q, value, onChange }) {
           <label
             key={o.value}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition ${
-              value === o.value
-                ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10'
-                : 'border-gray-200 dark:border-white/10 bg-transparent hover:border-purple-300 dark:hover:border-brand-500/30'
-            }`}
+ value === o.value
+ ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10'
+ : 'border-gray-200 dark:border-white/10 bg-transparent hover:border-purple-300 dark:hover:border-brand-500/30'
+ }`}
           >
             <input
               type="radio"
@@ -64,10 +64,10 @@ function QuestionField({ q, value, onChange }) {
             <label
               key={o.value}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl border cursor-pointer transition text-sm select-none ${
-                checked
-                  ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10 text-brand-700 dark:text-brand-300'
-                  : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-brand-500/30'
-              }`}
+ checked
+ ? 'border-brand-500 bg-purple-50 dark:bg-purple-500/10 text-brand-700 dark:text-brand-300'
+ : 'border-gray-200 dark:border-white/10 text-gray-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-brand-500/30'
+ }`}
             >
               <input
                 type="checkbox"
@@ -196,7 +196,7 @@ export default function DevisPublic() {
           transition={{ duration: 0.7 }}
           className="text-center mb-10 md:mb-14"
         >
-          <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
+          <span className="text-xs text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
           <SectionLottie src={LOTTIE.devis} size="xl" />
@@ -215,7 +215,7 @@ export default function DevisPublic() {
             <span className="font-medium text-gray-700 dark:text-slate-300">
               Étape {step + 1}/{totalSteps} · {phaseLabel}
             </span>
-            <span className="font-mono tabular-nums">{progress}%</span>
+            <span className="tabular-nums">{progress}%</span>
           </div>
           <div
             className="h-1.5 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden"
@@ -232,7 +232,7 @@ export default function DevisPublic() {
               transition={{ duration: reduce ? 0 : 0.4, ease: 'easeInOut' }}
             />
           </div>
-          <ol className="mt-3 flex flex-wrap gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-slate-400" aria-hidden>
+          <ol className="mt-3 flex flex-wrap gap-2 text-[10px] sm:text-xs uppercase tracking-wider text-slate-400" aria-hidden>
             <li className={isContactStep ? 'text-brand-500 font-semibold' : step > 0 ? 'text-emerald-500' : ''}>1. Contact</li>
             <li className={!isContactStep && !isRecapStep ? 'text-brand-500 font-semibold' : isRecapStep ? 'text-emerald-500' : ''}>2. Projet</li>
             <li className={isRecapStep ? 'text-brand-500 font-semibold' : ''}>3. Envoi</li>
@@ -396,7 +396,7 @@ export default function DevisPublic() {
                         </div>
 
                         <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-4 text-sm space-y-1">
-                          <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Contact</p>
+                          <p className="text-[11px] uppercase tracking-wider text-slate-400 mb-2">Contact</p>
                           <p className="font-semibold text-gray-900 dark:text-white">{contact.nom || '—'}</p>
                           {contact.email && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.email}</p>}
                           {contact.telephone && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.telephone}</p>}
@@ -405,7 +405,7 @@ export default function DevisPublic() {
                         </div>
 
                         <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-4 text-sm">
-                          <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Projet</p>
+                          <p className="text-[11px] uppercase tracking-wider text-slate-400 mb-2">Projet</p>
                           <p className="text-slate-600 dark:text-slate-300 text-xs">
                             {answeredCount} réponse{answeredCount > 1 ? 's' : ''} enregistrée{answeredCount > 1 ? 's' : ''}
                             {questionnaire.type_projet ? ` · type : ${questionnaire.type_projet}` : ''}
@@ -492,7 +492,7 @@ export default function DevisPublic() {
           {/* Sticky pricing sidebar */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-2xl p-6 border" style={{ background: '#030712', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <p className="text-xs font-mono text-brand-400 tracking-wider uppercase mb-5">Estimation</p>
+              <p className="text-xs text-brand-400 tracking-wider uppercase mb-5">Estimation</p>
 
               {devis && devis.sousTotal > 0 ? (
                 <>
