@@ -7,12 +7,12 @@ export const LOTTIE = {
   scroll: '/lottie/scroll.json',
 
   devis: '/lottie/devis.json',
-  estimate: '/lottie/estimate.json',
+  estimate: '/lottie/pricing.json',
   contact: '/lottie/contact.json',
   pack: '/lottie/pack.json',
-  about: '/lottie/identity.json',
+  about: '/lottie/about.json',
   faq: '/lottie/search.json',
-  projects: '/lottie/projects.json',
+  projects: '/lottie/process.json',
   services: '/lottie/coding.json',
   trust: '/lottie/trust.json',
 
