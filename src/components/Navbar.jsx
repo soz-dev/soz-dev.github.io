@@ -109,6 +109,7 @@ export default function Navbar({ isDark, toggleDark }) {
             <NavLink
               key={link.to}
               to={link.to}
+              end={link.end}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `text-sm font-medium py-1 ${isActive ? 'text-brand-500' : 'text-slate-600 dark:text-slate-400'}`
