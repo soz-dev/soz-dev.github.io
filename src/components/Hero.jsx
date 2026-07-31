@@ -123,7 +123,7 @@ export default function Hero() {
         animate={{ opacity: reduce ? 0.4 : 0.6 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
-        <LottieIcon src={LOTTIE.scroll} />
+        <LottieIcon src={LOTTIE.scroll} className="w-full h-full" />
       </motion.div>
     </section>
   )

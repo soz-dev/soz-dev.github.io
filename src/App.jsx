@@ -11,6 +11,7 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ErrorBoundary from './components/ErrorBoundary'
+import { PageLoader } from './components/Skeleton'
 
 const AdminApp = lazy(() => import('./pages/AdminApp'))
 const DesignSystemPage = lazy(() => import('./pages/DesignSystemPage'))
@@ -30,14 +31,6 @@ function LegacyModeRedirect() {
   return null
 }
 
-function AdminFallback() {
-  return (
-    <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center">
-      <div className="w-5 h-5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <>
@@ -45,12 +38,12 @@ export default function App() {
       <LegacyModeRedirect />
       <Routes>
         <Route path="/admin" element={
-          <Suspense fallback={<AdminFallback />}>
+          <Suspense fallback={<PageLoader dark />}>
             <AdminApp />
           </Suspense>
         } />
         <Route path="/design-system" element={
-          <Suspense fallback={<div className="min-h-screen bg-white dark:bg-[#030712]" />}>
+          <Suspense fallback={<PageLoader />}>
             <DesignSystemPage />
           </Suspense>
         } />

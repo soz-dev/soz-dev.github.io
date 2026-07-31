@@ -97,3 +97,48 @@
     animation: none !important;
   }
 }
+
+/* ── Skeleton / shimmer (chargement contenu) ─────────────── */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background-color: color-mix(in srgb, var(--color-brand-500, #a855f7) 7%, #e8eef5);
+  background-image: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in srgb, var(--color-brand-500, #a855f7) 14%, transparent) 45%,
+    color-mix(in srgb, var(--color-accent-500, #06b6d4) 22%, transparent) 52%,
+    color-mix(in srgb, var(--color-brand-500, #a855f7) 14%, transparent) 58%,
+    transparent 68%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-shimmer 1.55s ease-in-out infinite;
+}
+
+html.dark .skeleton {
+  background-color: color-mix(in srgb, var(--color-brand-500, #a855f7) 12%, rgb(255 255 255 / 0.06));
+  background-image: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in srgb, var(--color-brand-400, #c084fc) 18%, transparent) 45%,
+    color-mix(in srgb, var(--color-accent-400, #22d3ee) 24%, transparent) 52%,
+    color-mix(in srgb, var(--color-brand-400, #c084fc) 18%, transparent) 58%,
+    transparent 68%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none !important;
+    background-image: none !important;
+  }
+}

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import Skeleton from '../Skeleton'
 
 /**
  * Wrapper Lottie lazy :
  * - charge lottie-react + JSON uniquement quand visible (IntersectionObserver)
+ * - skeleton / shimmer tant que hors viewport ou JSON en cours
  * - respects prefers-reduced-motion
  * - placeholder silencieux si import / JSON KO
  */
@@ -84,7 +86,11 @@ export default function LottieIcon({
   }
 
   if (!inView || !Lottie || !data) {
-    return <div ref={ref} className={className} style={style} aria-hidden />
+    return (
+      <div ref={ref} className={className} style={style} aria-hidden>
+        <Skeleton className="w-full h-full rounded-2xl" />
+      </div>
+    )
   }
 
   return (

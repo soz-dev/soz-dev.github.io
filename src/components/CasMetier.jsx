@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import LazyImage from './LazyImage'
 
 const CASE = {
   name: 'LocaZen 7',
@@ -46,13 +47,14 @@ export default function CasMetier() {
             rel="noopener noreferrer"
             className="relative block aspect-[16/10] md:aspect-auto md:min-h-[320px] bg-gray-100 dark:bg-white/5 overflow-hidden group"
           >
-            <img
+            <LazyImage
               src={CASE.image}
               alt={`Aperçu ${CASE.name}`}
-              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
               loading="lazy"
+              wrapperClassName="absolute inset-0"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 pointer-events-none" />
             <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-black/40 backdrop-blur px-3 py-1.5 rounded-full">
               Voir le site <ExternalLink className="w-3 h-3" />
             </span>

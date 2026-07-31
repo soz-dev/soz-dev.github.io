@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { BRAND_ALT, BRAND_NAME, LOGO } from '../lib/brand'
+import Skeleton from './Skeleton'
 
 /**
  * Logo SOZ_DEV.
@@ -19,6 +21,43 @@ function Wordmark({ className = '', style }) {
   )
 }
 
+function ThemeImgs({ light, dark, width, height, className: imgClass, imgBase }) {
+  const [lightOk, setLightOk] = useState(false)
+  const [darkOk, setDarkOk] = useState(false)
+  const ready = lightOk || darkOk
+
+  return (
+    <>
+      {!ready && (
+        <Skeleton
+          className="absolute inset-0 z-0"
+          rounded="rounded-2xl"
+        />
+      )}
+      <img
+        {...imgBase}
+        src={light}
+        width={width}
+        height={height}
+        className={`object-contain bg-transparent dark:hidden relative z-[1] transition-opacity duration-300 ${
+          lightOk ? 'opacity-100' : 'opacity-0'
+        } ${imgClass}`}
+        onLoad={() => setLightOk(true)}
+      />
+      <img
+        {...imgBase}
+        src={dark}
+        width={width}
+        height={height}
+        className={`object-contain bg-transparent hidden dark:block relative z-[1] transition-opacity duration-300 ${
+          darkOk ? 'opacity-100' : 'opacity-0'
+        } ${imgClass}`}
+        onLoad={() => setDarkOk(true)}
+      />
+    </>
+  )
+}
+
 export default function BrandLogo({
   variant = 'full',
   className = '',
@@ -30,25 +69,6 @@ export default function BrandLogo({
     decoding: priority ? 'sync' : 'async',
     ...(priority ? { fetchPriority: 'high' } : {}),
   }
-
-  const ThemeImgs = ({ light, dark, width, height, className: imgClass }) => (
-    <>
-      <img
-        {...imgBase}
-        src={light}
-        width={width}
-        height={height}
-        className={`object-contain bg-transparent dark:hidden ${imgClass}`}
-      />
-      <img
-        {...imgBase}
-        src={dark}
-        width={width}
-        height={height}
-        className={`object-contain bg-transparent hidden dark:block ${imgClass}`}
-      />
-    </>
-  )
 
   if (variant === 'mark') {
     return (
@@ -70,15 +90,16 @@ export default function BrandLogo({
     )
   }
 
-  // full
+  // full — PNG avec skeleton jusqu’au chargement (aspect réservé → pas de trou blanc)
   return (
-    <span className={`relative inline-block bg-transparent overflow-visible ${className}`}>
+    <span className={`relative inline-block aspect-square bg-transparent overflow-hidden ${className}`}>
       <ThemeImgs
         light={LOGO.fullLight}
         dark={LOGO.fullDark}
         width={500}
         height={500}
-        className="w-full h-auto"
+        imgBase={imgBase}
+        className="w-full h-full"
       />
     </span>
   )

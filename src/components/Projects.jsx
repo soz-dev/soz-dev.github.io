@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Smartphone } from 'lucide-react'
 import SectionLottie from './motion/SectionLottie'
+import LazyImage from './LazyImage'
 import { LOTTIE } from '../lib/lottieMap'
 import { track, AnalyticsEvents } from '../lib/analytics'
 
@@ -117,15 +118,26 @@ export default function Projects() {
 
               {/* Image */}
               {p.image && !p.appStore && (
-                <div className="mb-5 rounded-xl overflow-hidden border border-gray-100 dark:border-white/8" style={{ height: 140 }}>
-                  <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover object-top" onError={e => e.target.parentElement.style.display='none'} />
-                </div>
+                <LazyImage
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  wrapperClassName="mb-5 rounded-xl overflow-hidden border border-gray-100 dark:border-white/8 h-[140px]"
+                  className="w-full h-full object-cover object-top"
+                />
               )}
 
               {/* Meta + icon pour iOS */}
               <div className="flex items-center gap-3 mb-4">
                 {p.image && p.appStore && (
-                  <img src={p.image} alt={p.title} loading="lazy" className="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md" onError={e => e.target.style.display='none'} />
+                  <LazyImage
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    wrapperClassName="w-14 h-14 rounded-2xl flex-shrink-0 shadow-md overflow-hidden"
+                    className="w-full h-full object-cover"
+                    skeletonClassName="rounded-2xl"
+                  />
                 )}
                 <div>
                   <p className="text-xs mb-0.5" style={{ color: p.accentColor }}>{p.category} · {p.year}</p>
