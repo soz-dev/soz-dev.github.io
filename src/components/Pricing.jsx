@@ -129,7 +129,7 @@ export default function Pricing() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Grille
           </span>
-          <SectionLottie src={LOTTIE.pricing} size="lg" />
+          <SectionLottie src={LOTTIE.pricing} size="xl" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
             Prix affichés. Les barrés = ordre de grandeur agence / freelance classique.
@@ -195,7 +195,7 @@ export default function Pricing() {
               </ul>
 
               <div
-                className="text-xs font-mono px-3 py-1.5 rounded-lg mb-5 text-center"
+                className="text-xs font-medium px-3 py-1.5 rounded-lg mb-5 text-center"
                 style={{ background: `${plan.accentColor}10`, color: plan.accentColor }}
               >
                 Délai : {plan.delay}
@@ -225,22 +225,31 @@ export default function Pricing() {
           ))}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center text-sm text-slate-400 dark:text-slate-500 font-mono mt-10"
+          transition={{ delay: 0.2 }}
+          className="mt-12 max-w-2xl mx-auto text-center space-y-4"
         >
-          1 mois de support inclus · Acompte 30 % · Maintenance optionnelle (pas obligatoire) dès {PRIX_MAINTENANCE_MOIS} €/mois
-          <br />
-          <span className="text-slate-500 dark:text-slate-600 normal-case font-sans text-xs mt-1 inline-block">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-500 dark:text-slate-400">
+            <span>1 mois de support inclus</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-600" aria-hidden>·</span>
+            <span>Acompte 30 %</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-600" aria-hidden>·</span>
+            <span>Maintenance optionnelle dès {PRIX_MAINTENANCE_MOIS} €/mois</span>
+          </div>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
             Après le mois inclus, vous pouvez tout gérer seul si vous préférez.
-          </span>
-          <Link to="/tarifs#pack" className="text-accent-600 dark:text-accent-400 hover:underline mt-2 inline-block">
-            Pack clé en main (site + hébergement + domaine) → {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
+          </p>
+          <Link
+            to="/tarifs#pack"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 dark:text-accent-400 hover:underline"
+          >
+            Pack clé en main (site + hébergement + domaine) — {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.p>
+        </motion.div>
       </div>
     </section>
   )

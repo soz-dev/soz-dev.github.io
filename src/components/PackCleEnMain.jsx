@@ -56,8 +56,8 @@ export default function PackCleEnMain() {
                 <span className="text-sm text-slate-400 line-through">~{PACK_BARRE.toLocaleString('fr-FR')} €</span>
                 <span className="font-display text-5xl font-bold text-gray-900 dark:text-white">{PACK.toLocaleString('fr-FR')}€</span>
               </div>
-              <p className="text-xs text-slate-400 mb-8 font-mono">
-                Vitrine {VITRINE} € + hébergement/domaine ≈ {HEBERG_DOMAINE_SEPARE} € → pack à {PACK} €
+              <p className="text-xs text-slate-400 mb-8">
+                Vitrine {VITRINE.toLocaleString('fr-FR')} € + hébergement/domaine ≈ {HEBERG_DOMAINE_SEPARE} € → pack à {PACK.toLocaleString('fr-FR')} €
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -99,8 +99,8 @@ export default function PackCleEnMain() {
                   </motion.li>
                 ))}
               </ul>
-              <p className="mt-8 text-xs text-slate-500 font-mono">
-                Délai typique · 1 à 2 semaines
+              <p className="mt-8 text-xs text-slate-400">
+                Délai typique : 1 à 2 semaines
               </p>
               <p className="mt-3 text-xs text-slate-500 leading-relaxed">
                 Maintenance après le mois inclus : optionnelle. Vous pouvez gérer seul.

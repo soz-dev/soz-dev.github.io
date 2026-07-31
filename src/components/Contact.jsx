@@ -45,7 +45,7 @@ export default function Contact() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             Contact
           </span>
-          <SectionLottie src={LOTTIE.contact} size="xl" />
+          <SectionLottie src={LOTTIE.contact} size="2xl" />
           <h2 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>
             Vous avez un projet{' '}
             <span className="gradient-text">en tête&nbsp;?</span>

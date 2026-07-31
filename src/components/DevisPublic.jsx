@@ -182,7 +182,7 @@ export default function DevisPublic() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
-          <SectionLottie src={LOTTIE.devis} size="xl" />
+          <SectionLottie src={LOTTIE.devis} size="2xl" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre devis en{' '}
             <span className="gradient-text">ligne</span>
@@ -301,7 +301,7 @@ export default function DevisPublic() {
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                     {sent ? (
                       <div className="text-center py-4">
-                        <div className="mx-auto w-36 h-36 mb-4">
+                        <div className="mx-auto w-48 h-48 mb-4">
                           <LottieIcon src={LOTTIE.success} className="w-full h-full" loop={false} />
                         </div>
                         <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">

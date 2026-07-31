@@ -34,7 +34,7 @@ export default function About() {
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
               À propos
             </span>
-            <SectionLottie src={LOTTIE.about} size="lg" className="mx-0 mb-3" />
+            <SectionLottie src={LOTTIE.about} size="xl" className="mx-0 mb-3" />
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Qui suis-je
             </h2>

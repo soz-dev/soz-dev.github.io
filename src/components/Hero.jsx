@@ -79,12 +79,18 @@ export default function Hero() {
 
         <motion.p
           {...(reduce ? {} : line(0.8))}
-          className="font-mono text-sm text-brand-500 dark:text-brand-400 mb-12 sm:mb-14"
+          className="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-12 sm:mb-14"
         >
-          À partir de <span className="text-lg font-bold text-gray-900 dark:text-white">{PRIX_BASE['site-vitrine'].toLocaleString('fr-FR')}€</span>
-          <span className="text-slate-400 line-through ml-2">1 500€</span>
+          À partir de{' '}
+          <span className="font-display text-lg font-bold text-gray-900 dark:text-white">
+            {PRIX_BASE['site-vitrine'].toLocaleString('fr-FR')} €
+          </span>
+          <span className="text-slate-400 line-through ml-2">1 500 €</span>
           <span className="text-slate-400 mx-2">·</span>
-          apps iOS dès <span className="font-bold text-gray-900 dark:text-white">{PRIX_BASE['app-ios'].toLocaleString('fr-FR')}€+</span>
+          apps iOS dès{' '}
+          <span className="font-display font-bold text-gray-900 dark:text-white">
+            {PRIX_BASE['app-ios'].toLocaleString('fr-FR')} €+
+          </span>
         </motion.p>
 
         <motion.div
