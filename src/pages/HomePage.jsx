@@ -17,7 +17,7 @@ const TEASERS = [
     to: '/services',
     title: 'Mes services',
     desc: 'Site vitrine, boutique en ligne ou app iPhone : le format adapté à votre activité.',
-    lottie: LOTTIE.services,
+    lottie: LOTTIE.web,
   },
   {
     to: '/projets',
