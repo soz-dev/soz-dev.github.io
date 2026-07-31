@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ShieldCheck, RefreshCw, Headphones, Check, ArrowRight, GitBranch } from 'lucide-react'
-import SectionIcon from './motion/SectionIcon'
+import { ShieldCheck, RefreshCw, Headphones, Check, ArrowRight } from 'lucide-react'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const ENGAGEMENTS = [
   { icon: ShieldCheck, title: 'Acompte 30 %', desc: 'Solde à la livraison' },
@@ -26,19 +27,25 @@ const STEPS = [
 export default function TarifsSynthese() {
   return (
     <section className="py-16 md:py-20 border-t border-gray-100 dark:border-white/5">
-      <div className="max-w-5xl mx-auto px-8 lg:px-12 space-y-14">
+      <div className="max-w-5xl mx-auto px-8 lg:px-12 space-y-16">
         {/* Engagements */}
-        <div>
+        <div className="text-center">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase text-center mb-4"
+            className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-2"
           >
             Inclus dans chaque projet
           </motion.p>
-          <SectionIcon icon={ShieldCheck} color="#a855f7" size="lg" />
-          <div className="grid sm:grid-cols-3 gap-4">
+          <SectionLottie src={LOTTIE.engagements} size="xl" />
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+            Des garanties{' '}<span className="gradient-text">sans surprise</span>
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md mx-auto mb-8">
+            Paiement échelonné, retours jusqu’à validation, support après livraison.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 text-left">
             {ENGAGEMENTS.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -96,9 +103,15 @@ export default function TarifsSynthese() {
 
         {/* Process court */}
         <div className="text-center">
-          <SectionIcon icon={GitBranch} color="#06b6d4" size="lg" />
-          <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-6">
+          <SectionLottie src={LOTTIE.consultation} size="xl" />
+          <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-2">
             Comment ça se passe
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+            Devis → échange →{' '}<span className="gradient-text">mise en ligne</span>
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto mb-8">
+            Quatre étapes claires, sans jargon ni allers-retours inutiles.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8">
             {STEPS.map((s, i) => (

@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, ArrowRight, Building2 } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import SectionIcon from './motion/SectionIcon'
 
 const CASE = {
   name: 'LocaZen 7',
@@ -27,7 +26,6 @@ export default function CasMetier() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Cas client
           </span>
-          <SectionIcon icon={Building2} color="#06b6d4" size="xl" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Un projet réel,{' '}<span className="gradient-text">pas une démo</span>
           </h2>
@@ -50,40 +48,39 @@ export default function CasMetier() {
           >
             <img
               src={CASE.image}
-              alt={`Aperçu de ${CASE.name}`}
-              className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+              alt={`Aperçu ${CASE.name}`}
+              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
               loading="lazy"
             />
-            <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 text-white text-xs font-medium">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+            <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-black/40 backdrop-blur px-3 py-1.5 rounded-full">
               Voir le site <ExternalLink className="w-3 h-3" />
             </span>
           </a>
 
-          <div className="p-8 md:p-10 flex flex-col justify-center">
-            <p className="text-[11px] font-mono uppercase tracking-wider text-brand-500 mb-2">{CASE.secteur}</p>
-            <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-6">{CASE.name}</h3>
-
+          <div className="p-7 md:p-9 flex flex-col justify-center">
+            <p className="text-xs font-mono text-accent-400 tracking-wider uppercase mb-2">{CASE.secteur}</p>
+            <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-5">{CASE.name}</h3>
             <dl className="space-y-4 text-sm mb-8">
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Besoin</dt>
+                <dt className="text-slate-400 text-xs uppercase tracking-wider mb-1">Besoin</dt>
                 <dd className="text-slate-600 dark:text-slate-300 leading-relaxed">{CASE.besoin}</dd>
               </div>
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Livré</dt>
+                <dt className="text-slate-400 text-xs uppercase tracking-wider mb-1">Livrable</dt>
                 <dd className="text-slate-600 dark:text-slate-300 leading-relaxed">{CASE.livrable}</dd>
               </div>
-              <div className="flex gap-6">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Délai</dt>
+                  <dt className="text-slate-400 text-xs uppercase tracking-wider mb-1">Délai</dt>
                   <dd className="text-gray-900 dark:text-white font-medium">{CASE.delai}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Résultat</dt>
-                  <dd className="text-gray-900 dark:text-white font-medium">{CASE.resultat}</dd>
+                  <dt className="text-slate-400 text-xs uppercase tracking-wider mb-1">Résultat</dt>
+                  <dd className="text-gray-900 dark:text-white font-medium text-sm leading-snug">{CASE.resultat}</dd>
                 </div>
               </div>
             </dl>
-
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="/devis"

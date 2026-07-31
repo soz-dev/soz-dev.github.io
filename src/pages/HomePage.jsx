@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Compass, Globe, FolderKanban, BadgeEuro } from 'lucide-react'
+import { ArrowRight, Globe, FolderKanban, BadgeEuro } from 'lucide-react'
 import Hero from '../components/Hero'
 import PreuveLive from '../components/PreuveLive'
 import GuideOffre from '../components/GuideOffre'
@@ -8,7 +8,6 @@ import PackCleEnMain from '../components/PackCleEnMain'
 import Garanties from '../components/Garanties'
 import CasMetier from '../components/CasMetier'
 import Temoignages from '../components/Temoignages'
-import SectionIcon from '../components/motion/SectionIcon'
 
 const TEASERS = [
   {
@@ -56,7 +55,6 @@ export default function HomePage() {
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
               Aller plus loin
             </span>
-            <SectionIcon icon={Compass} color="#a855f7" size="lg" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
               Explorer{' '}<span className="gradient-text">le détail</span>
             </h2>

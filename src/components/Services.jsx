@@ -3,6 +3,7 @@ import { Globe, Zap, ShoppingBag, LayoutTemplate, Layers, Database, FormInput, S
 import { Link } from 'react-router-dom'
 import SectionLottie from './motion/SectionLottie'
 import LottieIcon from './motion/LottieIcon'
+import PhoneMock from './motion/PhoneMock'
 import { LOTTIE } from '../lib/lottieMap'
 
 const services = [
@@ -53,7 +54,8 @@ const services = [
   },
   {
     icon: Smartphone,
-    lottie: LOTTIE.phone,
+    lottie: null,
+    phoneMock: true,
     accentColor: '#007AFF',
     badge: 'App Store',
     title: 'Applications iOS',
@@ -125,7 +127,11 @@ export default function Services() {
               />
 
               <div className="w-40 h-40 md:w-48 md:h-48 mb-6">
-                <LottieIcon src={s.lottie} className="w-full h-full" />
+                {s.phoneMock ? (
+                  <PhoneMock color={s.accentColor} />
+                ) : (
+                  <LottieIcon src={s.lottie} className="w-full h-full" />
+                )}
               </div>
 
               <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ShieldCheck, RefreshCw, Headphones, Layers } from 'lucide-react'
-import SectionIcon from './motion/SectionIcon'
+import SectionLottie from './motion/SectionLottie'
+import { LOTTIE } from '../lib/lottieMap'
 
 const items = [
   {
@@ -43,10 +44,13 @@ export default function Garanties() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-3 block">
             Engagements
           </span>
-          <SectionIcon icon={ShieldCheck} color="#06b6d4" size="xl" />
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+          <SectionLottie src={LOTTIE.trust} size="xl" />
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
             Des engagements clairs
           </h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-md mx-auto">
+            Vous savez exactement ce qui est inclus avant de démarrer.
+          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -59,12 +63,14 @@ export default function Garanties() {
               transition={{ delay: i * 0.06, duration: 0.45 }}
               className="rounded-2xl p-5 border border-gray-100 dark:border-white/5 bg-white/50 dark:bg-white/[0.02] text-center sm:text-left"
             >
-              <div
+              <motion.div
                 className="inline-flex p-3 rounded-xl mb-3"
                 style={{ background: `${item.color}15` }}
+                whileHover={{ scale: 1.08, rotate: -3 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
               >
                 <item.icon className="w-6 h-6" style={{ color: item.color }} />
-              </div>
+              </motion.div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1.5">{item.title}</h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
             </motion.div>
