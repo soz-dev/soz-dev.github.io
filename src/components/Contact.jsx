@@ -1,25 +1,53 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send, CheckCircle2, RotateCcw } from 'lucide-react'
+import { ArrowRight, FileText, MessageSquare, ArrowLeft, Send, CheckCircle2, RotateCcw, Loader2, AlertCircle } from 'lucide-react'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
+import { sendSiteEmail, isEmailConfigured, getContactEmail } from '../lib/sendEmail'
 
 export default function Contact() {
   const navigate = useNavigate()
   const [mode, setMode] = useState(null) // null | 'info'
   const [form, setForm] = useState({ nom: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleDevis = () => {
     navigate('/devis')
   }
 
-  const handleSend = () => {
-    const subject = `Contact – ${form.nom || 'Visiteur'}`
-    const body = `Nom : ${form.nom}\nEmail : ${form.email}\n\n${form.message}`
-    window.location.href = `mailto:sofyan.devpro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
+  const handleSend = async () => {
+    if (status === 'loading') return
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      const subject = `Contact – ${form.nom || 'Visiteur'}`
+      const body = [
+        'Nouveau message depuis soz-dev.com',
+        '',
+        `Nom : ${form.nom}`,
+        `Email : ${form.email}`,
+        '',
+        form.message,
+      ].join('\n')
+
+      await sendSiteEmail({
+        subject,
+        message: body,
+        fromName: form.nom.trim() || 'Visiteur',
+        fromEmail: form.email.trim(),
+      })
+      setStatus('success')
+    } catch (err) {
+      setErrorMsg(err?.message || 'Échec de l’envoi.')
+      setStatus('error')
+    }
+  }
+
+  const resetFormView = () => {
+    setStatus('idle')
+    setErrorMsg('')
   }
 
   const canSend = form.nom.trim() && form.email.trim() && form.message.trim()
@@ -87,7 +115,7 @@ export default function Contact() {
 
               {/* Card Info */}
               <button
-                onClick={() => { setMode('info'); setSent(false) }}
+                onClick={() => { setMode('info'); resetFormView() }}
                 className="group text-left glass rounded-2xl p-7 border border-gray-100 dark:border-white/8 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)' }}>
@@ -116,7 +144,7 @@ export default function Contact() {
               <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                 <div className="flex items-center gap-3 mb-7">
                   <button
-                    onClick={() => { setMode(null); setSent(false) }}
+                    onClick={() => { setMode(null); resetFormView() }}
                     className="w-8 h-8 rounded-lg flex items-center justify-center border border-gray-200 dark:border-white/10 text-gray-400 hover:text-gray-600 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 transition"
                   >
                     <ArrowLeft size={14} />
@@ -127,7 +155,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {sent ? (
+                {status === 'success' ? (
                   <div className="text-center py-2">
                     <div
                       className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
@@ -136,36 +164,24 @@ export default function Contact() {
                       <CheckCircle2 className="w-7 h-7 text-emerald-500" />
                     </div>
                     <h4 className="font-bold text-emerald-700 dark:text-emerald-400 text-lg mb-2">
-                      Message prêt à envoyer
+                      Message envoyé
                     </h4>
                     <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
                       <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                        Votre client mail s&apos;est ouvert. Envoyez l&apos;email prérempli pour finaliser.
-                        Merci, nous vous recontactons rapidement.
-                      </p>
-                      <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">
-                        Nous ne pouvons pas confirmer l&apos;envoi depuis le site : finalisez dans votre application mail.
+                        Merci&nbsp;! Votre message a bien été transmis. Je vous réponds sous 24&nbsp;h.
                       </p>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                      <button
-                        type="button"
-                        onClick={handleSend}
-                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90"
-                        style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
-                      >
-                        <Send size={14} />
-                        Rouvrir l&apos;email
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setSent(false)}
-                        className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium"
-                      >
-                        <RotateCcw size={14} />
-                        Modifier / renvoyer
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setForm({ nom: '', email: '', message: '' })
+                        resetFormView()
+                      }}
+                      className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium"
+                    >
+                      <RotateCcw size={14} />
+                      Envoyer un autre message
+                    </button>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -177,7 +193,8 @@ export default function Contact() {
                           value={form.nom}
                           onChange={e => setForm(f => ({ ...f, nom: e.target.value }))}
                           placeholder="Jean Dupont"
-                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
+                          disabled={status === 'loading'}
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm disabled:opacity-60"
                         />
                       </div>
                       <div>
@@ -187,7 +204,8 @@ export default function Contact() {
                           value={form.email}
                           onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                           placeholder="jean@exemple.com"
-                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm"
+                          disabled={status === 'loading'}
+                          className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm disabled:opacity-60"
                         />
                       </div>
                     </div>
@@ -198,22 +216,48 @@ export default function Contact() {
                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                         placeholder="Bonjour, je souhaitais vous demander."
                         rows={5}
-                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm resize-none"
+                        disabled={status === 'loading'}
+                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/25 focus:outline-none focus:border-brand-500 transition text-sm resize-none disabled:opacity-60"
                       />
                     </div>
 
+                    {status === 'error' && (
+                      <div
+                        role="alert"
+                        className="flex items-start gap-2.5 rounded-xl border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 p-4 text-sm text-red-800 dark:text-red-200"
+                      >
+                        <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" aria-hidden />
+                        <p className="leading-relaxed">{errorMsg}</p>
+                      </div>
+                    )}
+
+                    {!isEmailConfigured() && import.meta.env.DEV && (
+                      <div className="rounded-xl border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
+                        DEV : définissez <code className="font-mono">VITE_WEB3FORMS_ACCESS_KEY</code> dans <code className="font-mono">.env.local</code> pour activer l’envoi (destinataire : {getContactEmail()}).
+                      </div>
+                    )}
+
                     <button
                       onClick={handleSend}
-                      disabled={!canSend}
+                      disabled={!canSend || status === 'loading'}
                       className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.01] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
                       style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
                     >
-                      <Send size={15} />
-                      Envoyer le message
+                      {status === 'loading' ? (
+                        <>
+                          <Loader2 size={15} className="animate-spin" />
+                          Envoi en cours…
+                        </>
+                      ) : (
+                        <>
+                          <Send size={15} />
+                          Envoyer le message
+                        </>
+                      )}
                     </button>
 
                     <p className="text-xs text-center text-slate-400 dark:text-slate-500">
-                      Votre application mail s&apos;ouvrira avec le message prérempli.
+                      Envoi sécurisé · réponse sous 24&nbsp;h
                     </p>
                   </div>
                 )}

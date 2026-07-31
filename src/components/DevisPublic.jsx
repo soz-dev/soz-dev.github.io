@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw, CheckCircle2, Clock, Shield } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw, CheckCircle2, Clock, Shield, Loader2, AlertCircle } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
 import { parseOpt, fmt } from '../lib/formatUtils'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
 import { track, AnalyticsEvents } from '../lib/analytics'
+import { sendSiteEmail, isEmailConfigured, getContactEmail } from '../lib/sendEmail'
 
 function QuestionField({ q, value, onChange }) {
   const opts = (q.options || []).map(parseOpt)
@@ -115,7 +116,8 @@ export default function DevisPublic() {
   const [questionnaire, setQuestionnaire] = useState({})
   const [step, setStep] = useState(0)
   const [copied, setCopied] = useState(false)
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   const visibleSections = useMemo(
     () => SECTIONS.filter(s => !s.conditional || s.conditional(questionnaire)),
@@ -149,18 +151,49 @@ export default function DevisPublic() {
     questionnaire
   ), [contact, questionnaire])
 
-  const handleSend = () => {
-    const subject = `Demande de devis – ${contact.projet_nom || 'Nouveau projet'}${contact.nom ? ' – ' + contact.nom : ''}`
-    window.location.href = `mailto:sofyan.devpro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`
-    setSent(true)
-    track(AnalyticsEvents.DEVIS_SUBMIT, {
-      type: questionnaire.type_projet || 'unknown',
-      estimate: devis?.sousTotal || 0,
-    })
+  const handleSend = async () => {
+    if (status === 'loading') return
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      const subject = `Demande de devis – ${contact.projet_nom || 'Nouveau projet'}${contact.nom ? ' – ' + contact.nom : ''}`
+      const estimateLine = devis?.sousTotal > 0
+        ? `Estimation indicative : ${fmt(devis.sousTotal)}${devis.acompte > 0 ? ` · acompte 30 % ≈ ${fmt(devis.acompte)}` : ''}`
+        : 'Estimation : non calculée (type de projet non sélectionné)'
+      const message = [
+        'Nouvelle demande de devis depuis soz-dev.com',
+        '',
+        `Nom : ${contact.nom}`,
+        `Email : ${contact.email}`,
+        contact.telephone ? `Téléphone : ${contact.telephone}` : null,
+        contact.entreprise ? `Société : ${contact.entreprise}` : null,
+        contact.projet_nom ? `Projet : ${contact.projet_nom}` : null,
+        estimateLine,
+        '',
+        '─'.repeat(40),
+        emailBody,
+      ].filter(Boolean).join('\n')
+
+      await sendSiteEmail({
+        subject,
+        message,
+        fromName: contact.nom.trim() || 'Visiteur',
+        fromEmail: contact.email.trim(),
+      })
+      setStatus('success')
+      track(AnalyticsEvents.DEVIS_SUBMIT, {
+        type: questionnaire.type_projet || 'unknown',
+        estimate: devis?.sousTotal || 0,
+      })
+    } catch (err) {
+      setErrorMsg(err?.message || 'Échec de l’envoi.')
+      setStatus('error')
+    }
   }
 
   const handleSendAgain = () => {
-    setSent(false)
+    setStatus('idle')
+    setErrorMsg('')
   }
 
   const handleCopy = async () => {
@@ -328,43 +361,30 @@ export default function DevisPublic() {
                 {/* RECAP / SEND */}
                 {isRecapStep && (
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
-                    {sent ? (
+                    {status === 'success' ? (
                       <div className="text-center py-4">
                         <div className="mx-auto w-20 h-20 mb-4 rounded-full bg-emerald-500/15 flex items-center justify-center">
                           <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">
-                          Demande prête — presque terminé
+                          Message envoyé
                         </h3>
                         <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-5 text-left space-y-3">
                           <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                            Votre application mail s&apos;est ouverte avec le message prérempli.
-                            <strong className="font-semibold"> Cliquez sur Envoyer</strong> dans votre messagerie pour finaliser.
+                            Votre demande de devis a bien été transmise. Je vous réponds sous 24&nbsp;h.
                           </p>
                           <ul className="text-xs text-emerald-800/90 dark:text-emerald-200/80 space-y-1.5">
                             <li className="flex items-start gap-2">
                               <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden />
-                              Réponse sous 24 h ouvrée (sofyan.devpro@gmail.com)
+                              Réponse sous 24 h ouvrée ({getContactEmail()})
                             </li>
                             <li className="flex items-start gap-2">
                               <Shield className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden />
                               Sans engagement tant que le devis n&apos;est pas validé · acompte 30 % au démarrage
                             </li>
                           </ul>
-                          <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 leading-relaxed">
-                            Si la fenêtre mail ne s&apos;est pas ouverte, utilisez « Copier le texte » puis collez-le dans un nouvel email.
-                          </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                          <button
-                            type="button"
-                            onClick={handleSend}
-                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                            style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
-                          >
-                            <Send size={14} />
-                            Rouvrir l&apos;email
-                          </button>
                           <button
                             type="button"
                             onClick={handleCopy}
@@ -428,24 +448,50 @@ export default function DevisPublic() {
                         </div>
 
                         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-7">
-                          En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre messagerie s&apos;ouvre avec le détail prérempli. Il reste à valider l&apos;envoi — sans engagement.
+                          En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre dossier est transmis automatiquement — sans ouvrir votre messagerie. Sans engagement.
                         </p>
+
+                        {status === 'error' && (
+                          <div
+                            role="alert"
+                            className="flex items-start gap-2.5 rounded-xl border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 p-4 mb-4 text-sm text-red-800 dark:text-red-200"
+                          >
+                            <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" aria-hidden />
+                            <p className="leading-relaxed">{errorMsg}</p>
+                          </div>
+                        )}
+
+                        {!isEmailConfigured() && import.meta.env.DEV && (
+                          <div className="rounded-xl border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 mb-4 text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
+                            DEV : définissez <code className="font-mono">VITE_WEB3FORMS_ACCESS_KEY</code> dans <code className="font-mono">.env.local</code> pour activer l’envoi (destinataire : {getContactEmail()}).
+                          </div>
+                        )}
 
                         <div className="flex flex-col sm:flex-row gap-3">
                           <button
                             type="button"
                             onClick={handleSend}
-                            disabled={!contact.nom || !contact.email}
+                            disabled={!contact.nom || !contact.email || status === 'loading'}
                             className="flex-1 flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                             style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
                           >
-                            <Send size={15} />
-                            Envoyer ma demande
+                            {status === 'loading' ? (
+                              <>
+                                <Loader2 size={15} className="animate-spin" />
+                                Envoi en cours…
+                              </>
+                            ) : (
+                              <>
+                                <Send size={15} />
+                                Envoyer ma demande
+                              </>
+                            )}
                           </button>
                           <button
                             type="button"
                             onClick={handleCopy}
-                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-brand-500 hover:text-purple-600 dark:hover:text-brand-400 transition text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                            disabled={status === 'loading'}
+                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-brand-500 hover:text-purple-600 dark:hover:text-brand-400 transition text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 disabled:opacity-40"
                           >
                             {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
                             {copied ? 'Copié' : 'Copier le texte'}

@@ -39,6 +39,8 @@ jobs:
           VITE_ADMIN_SUPABASE_URL: ${{ secrets.VITE_ADMIN_SUPABASE_URL }}
           VITE_ADMIN_SUPABASE_ANON_KEY: ${{ secrets.VITE_ADMIN_SUPABASE_ANON_KEY }}
           VITE_ADMIN_ALLOWED_EMAIL: ${{ secrets.VITE_ADMIN_ALLOWED_EMAIL }}
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
+          VITE_CONTACT_EMAIL: ${{ secrets.VITE_CONTACT_EMAIL }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v4

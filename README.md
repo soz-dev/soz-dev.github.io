@@ -12,7 +12,7 @@ Site portfolio & freelance (React + Vite) déployé sur GitHub Pages : [soz-dev.
 ## Développement
 
 ```bash
-cp .env.local.example .env.local   # renseigner les clés Supabase
+cp .env.local.example .env.local   # renseigner Supabase + Web3Forms
 npm install
 npm run dev
 ```
@@ -26,8 +26,20 @@ npm run dev
 |----------|------|
 | `VITE_ADMIN_SUPABASE_URL` | URL du projet Supabase |
 | `VITE_ADMIN_SUPABASE_ANON_KEY` | Clé anon (publique) |
+| `VITE_WEB3FORMS_ACCESS_KEY` | Access Key [Web3Forms](https://web3forms.com) (contact + devis) |
+| `VITE_CONTACT_EMAIL` | Destinataire affiché (défaut `sofyan.devpro@gmail.com`) |
 
 En production, les mêmes secrets sont injectés dans `.github/workflows/deploy.yml`.
+
+## Envoi email (Contact + Devis)
+
+Sans serveur (GitHub Pages), l’envoi passe par **Web3Forms** (gratuit) :
+
+1. Créer une Access Key sur [web3forms.com](https://web3forms.com) avec l’email **sofyan.devpro@gmail.com**.
+2. Mettre `VITE_WEB3FORMS_ACCESS_KEY=…` dans `.env.local`.
+3. Ajouter le secret GitHub Actions `VITE_WEB3FORMS_ACCESS_KEY` (et optionnellement `VITE_CONTACT_EMAIL`).
+
+Sans clé : message d’aide en DEV ; en production, erreur claire à l’envoi.
 
 ## Admin Supabase (une fois)
 
