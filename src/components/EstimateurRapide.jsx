@@ -90,7 +90,7 @@ export default function EstimateurRapide() {
           <span className="text-xs font-display tracking-[0.28em] uppercase text-purple-500 mb-4 block font-semibold">
             Estimation
           </span>
-          <SectionLottie src={LOTTIE.calc} />
+          <SectionLottie src={LOTTIE.estimate} />
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
             En quelques clics, une fourchette claire
           </h2>

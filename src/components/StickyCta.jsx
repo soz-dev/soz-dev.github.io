@@ -42,7 +42,7 @@ export default function StickyCta() {
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm"
             >
               <span className="w-7 h-7 shrink-0">
-                <LottieIcon src={LOTTIE.calc} className="w-full h-full" />
+                <LottieIcon src={LOTTIE.devis} className="w-full h-full" />
               </span>
               Devis
             </Link>

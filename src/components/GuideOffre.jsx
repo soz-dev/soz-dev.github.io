@@ -106,7 +106,7 @@ export default function GuideOffre() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             En 3 questions
           </span>
-          <SectionLottie src={LOTTIE.search} size="sm" />
+          <SectionLottie src={LOTTIE.guide} size="sm" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Quelle offre{' '}<span className="gradient-text">vous correspond ?</span>
           </h2>

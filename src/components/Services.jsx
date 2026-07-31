@@ -93,7 +93,7 @@ export default function Services() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
-          <SectionLottie src={LOTTIE.code} size="md" />
+          <SectionLottie src={LOTTIE.services} size="md" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Mes services
           </h2>

@@ -109,7 +109,7 @@ export default function FAQ() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Questions fréquentes
           </span>
-          <SectionLottie src={LOTTIE.chat} size="sm" />
+          <SectionLottie src={LOTTIE.faq} size="sm" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
           <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
             Prix, délais, iOS, paiement : réponses claires.

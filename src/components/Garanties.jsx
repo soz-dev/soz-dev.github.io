@@ -7,7 +7,7 @@ import { LOTTIE } from '../lib/lottieMap'
 const items = [
   {
     icon: ShieldCheck,
-    lottie: LOTTIE.money,
+    lottie: LOTTIE.payment,
     title: 'Acompte 30 %',
     desc: 'Vous démarrez sans tout payer. Solde à la livraison.',
     color: '#a855f7',
@@ -28,7 +28,7 @@ const items = [
   },
   {
     icon: Layers,
-    lottie: LOTTIE.shield,
+    lottie: LOTTIE.trust,
     title: 'Techno fiable',
     desc: 'Sites et apps modernes, rapides et évolutifs, pas de solution bloquée par des plugins.',
     color: '#0891b2',
@@ -49,7 +49,7 @@ export default function Garanties() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-3 block">
             Engagements
           </span>
-          <SectionLottie src={LOTTIE.shield} size="sm" />
+          <SectionLottie src={LOTTIE.trust} size="sm" />
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
             Des engagements clairs
           </h2>

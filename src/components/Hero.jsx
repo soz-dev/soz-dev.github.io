@@ -38,7 +38,7 @@ export default function Hero() {
           <LottieIcon src={LOTTIE.orbit} />
         </div>
         <div className="absolute left-[-10%] bottom-[12%] w-[220px] h-[220px] md:w-[300px] md:h-[300px] opacity-[0.25] dark:opacity-[0.35] pointer-events-none hidden md:block scale-x-[-1]">
-          <LottieIcon src={LOTTIE.growth} />
+          <LottieIcon src={LOTTIE.developer} />
         </div>
       </div>
 

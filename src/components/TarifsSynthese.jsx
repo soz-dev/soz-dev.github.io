@@ -38,7 +38,7 @@ export default function TarifsSynthese() {
           >
             Inclus dans chaque projet
           </motion.p>
-          <SectionLottie src={LOTTIE.shield} size="sm" />
+          <SectionLottie src={LOTTIE.trust} size="sm" />
           <div className="grid sm:grid-cols-3 gap-4">
             {ENGAGEMENTS.map((item, i) => (
               <motion.div

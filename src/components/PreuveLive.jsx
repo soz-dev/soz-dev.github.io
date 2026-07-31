@@ -51,7 +51,7 @@ export default function PreuveLive() {
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-8 md:py-10">
         <div className="flex justify-center mb-4">
           <div className="w-12 h-12 opacity-80">
-            <LottieIcon src={LOTTIE.star} className="w-full h-full" />
+            <LottieIcon src={LOTTIE.trust} className="w-full h-full" />
           </div>
         </div>
         <p className="text-center text-xs text-slate-500 dark:text-slate-400 mb-6">

@@ -129,7 +129,7 @@ export default function Pricing() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Grille
           </span>
-          <SectionLottie src={LOTTIE.money} size="sm" />
+          <SectionLottie src={LOTTIE.pricing} size="sm" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
             Prix affichés. Les barrés = ordre de grandeur agence / freelance classique.

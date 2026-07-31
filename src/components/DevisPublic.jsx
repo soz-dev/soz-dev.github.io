@@ -182,7 +182,7 @@ export default function DevisPublic() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
-          <SectionLottie src={LOTTIE.calc} />
+          <SectionLottie src={LOTTIE.devis} />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Votre devis en{' '}
             <span className="gradient-text">ligne</span>
