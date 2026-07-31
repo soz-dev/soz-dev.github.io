@@ -25,7 +25,9 @@ export default function LottieIcon({
   useEffect(() => {
     let cancelled = false
     import('lottie-react').then((mod) => {
-      if (!cancelled) setLottie(() => mod.default)
+      // Interop ESM/CJS : default peut être le namespace (object), pas le composant
+      const Comp = mod.default?.default ?? mod.LottiePlayer ?? mod.default
+      if (!cancelled && typeof Comp === 'function') setLottie(() => Comp)
     })
     return () => { cancelled = true }
   }, [])
