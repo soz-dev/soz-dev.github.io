@@ -1,5 +1,11 @@
 import ErrorFallback from '../components/ErrorFallback'
+import Seo, { PAGE_SEO } from '../components/Seo'
 
 export default function NotFoundPage() {
-  return <ErrorFallback variant="notfound" />
+  return (
+    <>
+      <Seo {...PAGE_SEO.notFound} noindex />
+      <ErrorFallback variant="notfound" />
+    </>
+  )
 }

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, Check, CheckCircle2 } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
-import SectionLottie from './motion/SectionLottie'
-import { LOTTIE } from '../lib/lottieMap'
 
 const RESULTS = {
   boutique: {
@@ -19,7 +17,7 @@ const RESULTS = {
     title: 'Pack clé en main',
     price: PRIX_PACK_CLE_EN_MAIN,
     blurb: 'Site vitrine + hébergement + domaine + support. L’offre la plus simple pour démarrer.',
-    to: '/tarifs#pack',
+    to: '/#pack',
     cta: 'Voir le pack',
     highlight: true,
   },
@@ -105,7 +103,6 @@ export default function GuideOffre() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
             En 3 questions
           </span>
-          <SectionLottie src={LOTTIE.guide} size="xl" />
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Quelle offre{' '}<span className="gradient-text">vous correspond ?</span>
           </h2>

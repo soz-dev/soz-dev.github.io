@@ -5,6 +5,7 @@ import { PRIX_BASE } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
+import { track, AnalyticsEvents } from '../lib/analytics'
 
 const PRESETS = [
   {
@@ -70,6 +71,7 @@ export default function EstimateurRapide() {
     setTypeId(preset.typeId)
     setScopeId(preset.scopeId)
     setStep(2)
+    track(AnalyticsEvents.ESTIMATEUR_PRESET, { preset: preset.id })
   }
 
   return (
@@ -91,11 +93,11 @@ export default function EstimateurRapide() {
             Estimation
           </span>
           <SectionLottie src={LOTTIE.estimate} size="2xl" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-            En quelques clics, une fourchette claire
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+            Estimateur · fourchette claire
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-            Choisissez un profil métier ou construisez votre estimation. Le devis détaillé affine ensuite.
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-lg max-w-xl mx-auto">
+            Choisissez un profil ou construisez votre estimation. Ensuite, le devis détaillé affine le montant.
           </p>
         </motion.div>
 
@@ -233,23 +235,28 @@ export default function EstimateurRapide() {
                 className="text-center py-6 md:py-10"
               >
                 <p className="font-display text-xs tracking-[0.2em] uppercase text-slate-400 mb-4 font-semibold">
-                  Estimation indicative
+                  Estimation indicative · à partir de
                 </p>
                 <p className="text-base text-slate-500 dark:text-slate-400 mb-4">
                   {type.label} · {scope.label}
                 </p>
-                <p className="font-display text-6xl md:text-7xl font-extrabold gradient-text mb-4 tracking-tight">
+                <p className="font-display text-5xl md:text-7xl font-extrabold gradient-text mb-4 tracking-tight">
                   ~{fmt(estimate)}&nbsp;€{type.suffix || ''}
                 </p>
-                <p className="text-sm text-slate-400 mb-10">
-                  Acompte 30&nbsp;% · solde à la livraison · 1 mois de support inclus
+                <p className="text-sm text-slate-400 mb-10 max-w-md mx-auto">
+                  Acompte 30&nbsp;% · solde à la livraison · 1 mois de support inclus. Affinez au devis pour un chiffrage précis.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     to="/devis"
-                    className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity"
+                    onClick={() => track(AnalyticsEvents.ESTIMATEUR_COMPLETE, {
+                      type: typeId,
+                      scope: scopeId,
+                      estimate,
+                    })}
+                    className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-display font-semibold text-base hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
                   >
-                    Affiner le devis
+                    Affiner au devis
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <button

@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
- * Wrapper Lottie lazy (code-split) + prefers-reduced-motion.
- * Ne crash jamais : placeholder silencieux si import / JSON KO.
+ * Wrapper Lottie lazy :
+ * - charge lottie-react + JSON uniquement quand visible (IntersectionObserver)
+ * - respects prefers-reduced-motion
+ * - placeholder silencieux si import / JSON KO
  */
 export default function LottieIcon({
   src,
@@ -10,7 +12,10 @@ export default function LottieIcon({
   loop = true,
   autoplay = true,
   style,
+  rootMargin = '120px',
 }) {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
   const [Lottie, setLottie] = useState(null)
   const [data, setData] = useState(null)
   const [reduce, setReduce] = useState(false)
@@ -25,6 +30,27 @@ export default function LottieIcon({
   }, [])
 
   useEffect(() => {
+    const el = ref.current
+    if (!el) return undefined
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return undefined
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin, threshold: 0.01 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [rootMargin])
+
+  useEffect(() => {
+    if (!inView) return undefined
     let cancelled = false
     import('lottie-react')
       .then((mod) => {
@@ -34,9 +60,10 @@ export default function LottieIcon({
       })
       .catch(() => { if (!cancelled) setFailed(true) })
     return () => { cancelled = true }
-  }, [])
+  }, [inView])
 
   useEffect(() => {
+    if (!inView) return undefined
     let cancelled = false
     setFailed(false)
     setData(null)
@@ -50,14 +77,18 @@ export default function LottieIcon({
       })
       .catch(() => { if (!cancelled) setFailed(true) })
     return () => { cancelled = true }
-  }, [src])
+  }, [src, inView])
 
-  if (failed || !Lottie || !data) {
-    return <div className={className} style={style} aria-hidden />
+  if (failed) {
+    return <div ref={ref} className={className} style={style} aria-hidden />
+  }
+
+  if (!inView || !Lottie || !data) {
+    return <div ref={ref} className={className} style={style} aria-hidden />
   }
 
   return (
-    <div className={className} style={style} aria-hidden>
+    <div ref={ref} className={className} style={style} aria-hidden>
       <Lottie
         animationData={data}
         loop={reduce ? false : loop}

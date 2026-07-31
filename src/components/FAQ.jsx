@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
@@ -10,12 +10,20 @@ const faqs = [
     a: 'Je travaille seul, sans structure lourde : vous payez le résultat, pas une agence. Les prix barrés reflètent l’ordre de grandeur du marché (agence / freelance classique).',
   },
   {
-    q: 'Comment se passe le paiement ?',
-    a: '30 % d’acompte au démarrage, solde à la livraison. Virement ou PayPal. Facture à chaque étape. Maintenance optionnelle à partir de 200 €/mois (mises à jour, sauvegardes, corrections).',
+    q: 'Quel délai pour un site ou une app iPhone ?',
+    a: 'Page d’accueil : 3–7 jours. Vitrine : 1–2 semaines. Site Pro : 2–3 semaines. Boutique en ligne : souvent 4–8 semaines. Outil web ou app iPhone : selon le projet (souvent 4–8 semaines pour iOS). Le planning exact est dans le devis, avec une marge réaliste.',
   },
   {
-    q: 'Quel délai pour un site ou une app iPhone ?',
-    a: 'Page d’accueil : 3–7 jours. Vitrine : 1–2 semaines. Site Pro : 2–3 semaines. Boutique en ligne : souvent 4–8 semaines. Outil web ou app iPhone : selon le projet (souvent 4–8 semaines pour iOS). Le planning est dans le devis.',
+    q: 'Comment fonctionne l’acompte ?',
+    a: '30 % d’acompte au démarrage pour réserver le créneau et lancer le design. Solde à la livraison / mise en ligne. Virement ou PayPal. Facture à chaque étape. Aucun engagement tant que le devis n’est pas validé.',
+  },
+  {
+    q: 'À qui appartient le code et le site ?',
+    a: 'À vous, une fois le solde réglé. Vous recevez les accès (hébergement, dépôt, comptes) et pouvez faire évoluer le projet avec moi ou un autre prestataire. Pas de lock-in propriétaire.',
+  },
+  {
+    q: 'La maintenance est-elle obligatoire ?',
+    a: 'Non. 1 mois de support inclus (bugs, petits ajustements). Ensuite vous gérez seul, ou vous prenez une maintenance optionnelle dès 200 €/mois (mises à jour, sauvegardes, corrections). Jamais forcée.',
   },
   {
     q: 'Proposez-vous aussi des apps iPhone ?',
@@ -26,10 +34,6 @@ const faqs = [
     a: 'Un vrai projet e-commerce : catalogue, panier, paiement sécurisé et suivi des commandes. Ce n’est pas un template à 2 000 € : le tarif démarre plus haut et s’affine selon le volume de produits et vos besoins.',
   },
   {
-    q: 'Le chat client, c’est inclus ?',
-    a: 'Un widget chat (Crisp / Tawk) est disponible en option (~90 €). Pas de messagerie custom coûteuse sauf besoin métier.',
-  },
-  {
     q: 'Je n’ai ni maquette ni brief, c’est possible ?',
     a: 'Oui. La plupart des clients arrivent avec une idée. L’échange + le devis en ligne structurent le projet. Design inclus ; pour les textes : aide basique ou orientation vers un copywriter.',
   },
@@ -37,13 +41,9 @@ const faqs = [
     q: 'WordPress / Wix ?',
     a: 'Non. Sites et apps modernes, rapides et évolutifs, sans plugins qui ralentissent ou bloquent votre site.',
   },
-  {
-    q: 'Et après la livraison ?',
-    a: '1 mois de support inclus (bugs, petits ajustements). Ensuite, vous pouvez gérer seul, ou prendre une maintenance optionnelle à partir de 200 €/mois (mises à jour, sauvegardes, corrections). Ce n’est jamais obligatoire.',
-  },
 ]
 
-function FAQItem({ item, isOpen, onToggle, id }) {
+function FAQItem({ item, isOpen, onToggle, id, reduce }) {
   const panelId = `faq-panel-${id}`
   const buttonId = `faq-button-${id}`
   return (
@@ -54,7 +54,7 @@ function FAQItem({ item, isOpen, onToggle, id }) {
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500"
       >
         <span className="text-sm md:text-base font-semibold text-gray-900 dark:text-white">{item.q}</span>
         <span
@@ -76,13 +76,13 @@ function FAQItem({ item, isOpen, onToggle, id }) {
             role="region"
             aria-labelledby={buttonId}
             key="answer"
-            initial={{ height: 0, opacity: 0 }}
+            initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: 'easeInOut' }}
+            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: reduce ? 0.01 : 0.28, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p className="px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="px-6 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {item.a}
             </p>
           </motion.div>
@@ -94,30 +94,31 @@ function FAQItem({ item, isOpen, onToggle, id }) {
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
+  const reduce = useReducedMotion()
 
   return (
-    <section id="faq" className="py-28">
+    <section id="faq" className="py-20 md:py-28" aria-labelledby="faq-title">
       <div className="max-w-3xl mx-auto px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduce ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="mb-14"
+          className="mb-12 md:mb-14"
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Questions fréquentes
           </span>
-          <SectionLottie src={LOTTIE.faq} size="xl" />
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">FAQ</h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg">
-            Prix, délais, iOS, paiement : réponses claires.
+          <SectionLottie src={LOTTIE.faq} size="lg" />
+          <h2 id="faq-title" className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">FAQ</h2>
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-lg">
+            Délais, acompte, propriété du code, maintenance : réponses claires.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={reduce ? false : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -125,9 +126,10 @@ export default function FAQ() {
         >
           {faqs.map((item, i) => (
             <FAQItem
-              key={i}
+              key={item.q}
               id={i}
               item={item}
+              reduce={reduce}
               isOpen={openIndex === i}
               onToggle={() => setOpenIndex(openIndex === i ? null : i)}
             />

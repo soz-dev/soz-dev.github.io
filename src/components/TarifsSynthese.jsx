@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ShieldCheck, RefreshCw, Headphones, Check, ArrowRight } from 'lucide-react'
-import SectionLottie from './motion/SectionLottie'
-import { LOTTIE } from '../lib/lottieMap'
 
 const ENGAGEMENTS = [
   { icon: ShieldCheck, title: 'Acompte 30 %', desc: 'Solde à la livraison' },
@@ -17,8 +15,8 @@ const VS = [
 ]
 
 const STEPS = [
-  'Devis en ligne',
-  'Échange 30 min',
+  'Estimateur',
+  'Devis détaillé',
   'Design & build',
   'Mise en ligne',
 ]
@@ -34,11 +32,10 @@ export default function TarifsSynthese() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-2"
+            className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4"
           >
             Inclus dans chaque projet
           </motion.p>
-          <SectionLottie src={LOTTIE.engagements} size="xl" />
           <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
             Des garanties{' '}<span className="gradient-text">sans surprise</span>
           </h2>
@@ -103,12 +100,11 @@ export default function TarifsSynthese() {
 
         {/* Process court */}
         <div className="text-center">
-          <SectionLottie src={LOTTIE.consultation} size="xl" />
           <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-2">
             Comment ça se passe
           </p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-            Devis → échange →{' '}<span className="gradient-text">mise en ligne</span>
+            Estimateur → devis →{' '}<span className="gradient-text">mise en ligne</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto mb-8">
             Quatre étapes claires, sans jargon ni allers-retours inutiles.
@@ -127,10 +123,10 @@ export default function TarifsSynthese() {
             ))}
           </div>
           <Link
-            to="/devis"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold hover:opacity-90"
+            to="/tarifs#estimateur"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
-            Lancer mon devis
+            Estimer mon projet
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -5,18 +5,19 @@ import LottieIcon from './motion/LottieIcon'
 import BrandLogo from './BrandLogo'
 import { LOTTIE } from '../lib/lottieMap'
 import { easeOutExpo } from '../lib/motionPresets'
+import { track, AnalyticsEvents } from '../lib/analytics'
 
 const line = (delay) => ({
-  initial: { opacity: 0, y: 40, filter: 'blur(8px)' },
+  initial: { opacity: 0, y: 28, filter: 'blur(6px)' },
   animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  transition: { delay, duration: 0.85, ease: easeOutExpo },
+  transition: { delay, duration: 0.7, ease: easeOutExpo },
 })
 
 export default function Hero() {
   const reduce = useReducedMotion()
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden grid-pattern pt-20 sm:pt-24">
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden grid-pattern pt-16 sm:pt-20 md:pt-24">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-brand-700/15 blur-[120px]"
@@ -42,70 +43,72 @@ export default function Hero() {
         }}
       />
 
-      {/* Logo principal — centré sous le header */}
       <motion.div
         {...(reduce ? {} : line(0.05))}
-        className="relative z-10 flex justify-center px-6 pt-2 sm:pt-4"
+        className="relative z-10 flex justify-center px-6 pt-1 sm:pt-3"
       >
         <BrandLogo
           priority
-          className="w-[min(72vw,280px)] sm:w-[300px] md:w-[340px]"
+          className="w-[min(58vw,220px)] sm:w-[280px] md:w-[320px]"
         />
       </motion.div>
 
-      <div className="relative z-10 flex-1 flex items-center justify-center w-full max-w-[44rem] mx-auto px-6 sm:px-10 lg:px-12 text-center pb-24 sm:pb-28">
+      <div className="relative z-10 flex-1 flex items-center justify-center w-full max-w-[44rem] mx-auto px-5 sm:px-10 lg:px-12 text-center pb-16 sm:pb-24">
         <div>
-          <h1 className="text-[clamp(2.1rem,5.8vw,4.25rem)] font-bold leading-[1.15] tracking-tight mb-10 sm:mb-12 text-gray-900 dark:text-white px-1">
-            <motion.span className="block" {...(reduce ? {} : line(0.22))}>
+          <h1 className="text-[clamp(1.85rem,5.2vw,4.25rem)] font-bold leading-[1.12] tracking-tight mb-5 sm:mb-10 text-gray-900 dark:text-white px-1">
+            <motion.span className="block" {...(reduce ? {} : line(0.18))}>
               Sites &amp; apps iOS
             </motion.span>
-            <motion.span className="block gradient-text pb-[0.12em]" {...(reduce ? {} : line(0.38))}>
+            <motion.span className="block gradient-text pb-[0.08em]" {...(reduce ? {} : line(0.3))}>
               qui convertissent
             </motion.span>
-            <motion.span className="block gradient-text pb-[0.12em]" {...(reduce ? {} : line(0.52))}>
+            <motion.span className="block gradient-text pb-[0.08em]" {...(reduce ? {} : line(0.42))}>
               sans prix agence.
             </motion.span>
           </h1>
 
           <motion.p
-            {...(reduce ? {} : line(0.68))}
-            className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed mb-5 max-w-lg mx-auto"
+            {...(reduce ? {} : line(0.55))}
+            className="text-slate-600 dark:text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-5 max-w-lg mx-auto"
           >
             Pour freelances, artisans et petits business qui veulent un site ou une app native, livré vite et propre.
           </motion.p>
 
           <motion.p
-            {...(reduce ? {} : line(0.8))}
-            className="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-10 sm:mb-12"
+            {...(reduce ? {} : line(0.65))}
+            className="text-sm text-slate-600 dark:text-slate-300 mb-6 sm:mb-10"
           >
             À partir de{' '}
-            <span className="font-display text-lg font-bold text-gray-900 dark:text-white">
+            <span className="font-display text-base sm:text-lg font-bold text-gray-900 dark:text-white">
               {PRIX_BASE['site-vitrine'].toLocaleString('fr-FR')} €
             </span>
             <span className="text-slate-400 line-through ml-2">1 500 €</span>
-            <span className="text-slate-400 mx-2">·</span>
-            apps iOS dès{' '}
-            <span className="font-display font-bold text-gray-900 dark:text-white">
-              {PRIX_BASE['app-ios'].toLocaleString('fr-FR')} €+
+            <span className="text-slate-400 mx-2 hidden sm:inline">·</span>
+            <span className="block sm:inline mt-1 sm:mt-0">
+              apps iOS dès{' '}
+              <span className="font-display font-bold text-gray-900 dark:text-white">
+                {PRIX_BASE['app-ios'].toLocaleString('fr-FR')} €+
+              </span>
             </span>
           </motion.p>
 
           <motion.div
-            {...(reduce ? {} : line(0.95))}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            {...(reduce ? {} : line(0.78))}
+            className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3"
           >
             <motion.div whileHover={reduce ? undefined : { scale: 1.03 }} whileTap={reduce ? undefined : { scale: 0.98 }}>
               <Link
-                to="/devis"
-                className="inline-flex px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                to="/tarifs#estimateur"
+                onClick={() => track(AnalyticsEvents.CTA_CLICK, { place: 'hero', to: 'estimateur' })}
+                className="inline-flex px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
               >
-                Estimer votre projet
+                Estimer mon projet
               </Link>
             </motion.div>
             <motion.div whileHover={reduce ? undefined : { scale: 1.03 }} whileTap={reduce ? undefined : { scale: 0.98 }}>
               <Link
                 to="/projets"
-                className="inline-flex px-8 py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-brand-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+                className="inline-flex px-7 sm:px-8 py-3 sm:py-3.5 rounded-full border border-gray-300 dark:border-white/15 text-gray-800 dark:text-white font-semibold text-sm hover:border-brand-500/50 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
               >
                 Voir les projets
               </Link>
@@ -115,10 +118,10 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 w-10 h-14 opacity-70 hidden sm:block"
+        className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 w-8 h-12 sm:w-10 sm:h-14 opacity-60 hidden sm:block"
         initial={{ opacity: 0 }}
-        animate={{ opacity: reduce ? 0.5 : 0.7 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
+        animate={{ opacity: reduce ? 0.4 : 0.6 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
       >
         <LottieIcon src={LOTTIE.scroll} />
       </motion.div>

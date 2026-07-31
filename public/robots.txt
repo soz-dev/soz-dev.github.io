@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Admin & design system — pas d’indexation utile
+Disallow: /admin
+Disallow: /design-system
+
+Sitemap: https://soz-dev.com/sitemap.xml

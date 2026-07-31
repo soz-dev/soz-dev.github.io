@@ -1,15 +1,13 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Globe, Zap, ShoppingBag, LayoutTemplate, Layers, Database, FormInput, Search, Smartphone, Store, Palette } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SectionLottie from './motion/SectionLottie'
-import LottieIcon from './motion/LottieIcon'
 import PhoneMock from './motion/PhoneMock'
 import { LOTTIE } from '../lib/lottieMap'
 
 const services = [
   {
     icon: Globe,
-    lottie: LOTTIE.web,
     accentColor: '#a855f7',
     badge: 'Sites web',
     title: 'Vitrines & sites pro',
@@ -24,7 +22,6 @@ const services = [
   },
   {
     icon: ShoppingBag,
-    lottie: LOTTIE.shop,
     accentColor: '#06b6d4',
     badge: 'Vente en ligne',
     title: 'Boutique en ligne',
@@ -39,7 +36,6 @@ const services = [
   },
   {
     icon: Database,
-    lottie: LOTTIE.tools,
     accentColor: '#8b5cf6',
     badge: 'Outils métier',
     title: 'Espaces & outils sur mesure',
@@ -54,7 +50,6 @@ const services = [
   },
   {
     icon: Smartphone,
-    lottie: null,
     phoneMock: true,
     accentColor: '#007AFF',
     badge: 'App Store',
@@ -72,89 +67,106 @@ const services = [
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12 } },
 }
 
 const cardVariants = {
-  hidden:  { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  hidden:  { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function Services() {
+  const reduce = useReducedMotion()
+
   return (
-    <section id="services" className="py-28">
+    <section id="services" className="py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduce ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
           style={{ textAlign: 'center' }}
         >
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
-          <SectionLottie src={LOTTIE.services} size="2xl" />
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
+          <SectionLottie src={LOTTIE.services} size="xl" />
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Mes services
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg leading-relaxed" style={{ maxWidth: '520px', margin: '0 auto', textAlign: 'center' }}>
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-lg leading-relaxed" style={{ maxWidth: '520px', margin: '0 auto', textAlign: 'center' }}>
             Sites, boutiques en ligne, outils métier et apps iPhone, livrés de A à Z.
           </p>
-          <Link to="/devis" className="inline-block mt-5 text-sm font-semibold text-purple-500 hover:text-brand-400 transition-colors">
-            Estimer votre projet →
+          <Link
+            to="/tarifs#estimateur"
+            className="inline-block mt-5 text-sm font-semibold text-purple-600 dark:text-purple-400 hover:text-brand-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded"
+          >
+            Estimer mon projet →
           </Link>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          variants={reduce ? undefined : containerVariants}
+          initial={reduce ? false : 'hidden'}
+          whileInView={reduce ? undefined : 'visible'}
           viewport={{ once: true, margin: '-60px' }}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 gap-5 md:gap-6"
         >
-          {services.map((s) => (
-            <motion.div
-              key={s.title}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.28 } }}
-              className="group gradient-border glass rounded-2xl p-8 relative overflow-hidden cursor-default"
-            >
-              <div
-                className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-0 group-hover:opacity-15 transition-opacity duration-700"
-                style={{ background: s.accentColor }}
-              />
+          {services.map((s) => {
+            const Icon = s.icon
+            return (
+              <motion.div
+                key={s.title}
+                variants={reduce ? undefined : cardVariants}
+                whileHover={reduce ? undefined : { y: -6, transition: { duration: 0.25 } }}
+                className="group gradient-border glass rounded-2xl p-7 md:p-8 relative overflow-hidden"
+              >
+                <div
+                  className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-0 group-hover:opacity-15 transition-opacity duration-700"
+                  style={{ background: s.accentColor }}
+                />
 
-              <div className="w-40 h-40 md:w-48 md:h-48 mb-6">
-                {s.phoneMock ? (
-                  <PhoneMock color={s.accentColor} />
-                ) : (
-                  <LottieIcon src={s.lottie} className="w-full h-full" />
-                )}
-              </div>
+                <div className="mb-5">
+                  {s.phoneMock ? (
+                    <div className="w-36 h-36 md:w-44 md:h-44">
+                      <PhoneMock color={s.accentColor} />
+                    </div>
+                  ) : (
+                    <motion.div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style={{ background: `${s.accentColor}18` }}
+                      whileHover={reduce ? undefined : { scale: 1.06, rotate: -3 }}
+                      aria-hidden
+                    >
+                      <Icon className="w-7 h-7" style={{ color: s.accentColor }} strokeWidth={1.5} />
+                    </motion.div>
+                  )}
+                </div>
 
-              <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>
-                {s.badge}
-              </p>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                {s.title}
-              </h3>
-              <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 text-sm">{s.description}</p>
+                <p className="text-xs font-mono mb-1.5" style={{ color: s.accentColor }}>
+                  {s.badge}
+                </p>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  {s.title}
+                </h3>
+                <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-6 text-sm">{s.description}</p>
 
-              <ul className="space-y-3">
-                {s.features.map((f) => (
-                  <li key={f.text} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full shrink-0"
-                      style={{ background: s.accentColor }}
-                    />
-                    {f.text}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                <ul className="space-y-2.5">
+                  {s.features.map((f) => (
+                    <li key={f.text} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                      <span
+                        className="w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ background: s.accentColor }}
+                      />
+                      {f.text}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

@@ -84,16 +84,16 @@ export default function CasMetier() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="/devis"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Un projet comme celui-ci
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                to="/projets"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 dark:border-white/15 text-sm font-semibold text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5"
+                to="/tarifs#estimateur"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 dark:border-white/15 text-sm font-semibold text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
-                Toutes les réalisations
+                Estimer mon projet
               </Link>
             </div>
           </div>

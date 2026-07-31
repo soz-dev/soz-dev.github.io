@@ -5,13 +5,16 @@ export const BRAND_TAGLINE = 'Développement & Solutions'
 export const BRAND_ALT = `${BRAND_NAME} — ${BRAND_TAGLINE}`
 
 /** Bust cache CDN / navigateur après remplacement d’assets. */
-export const LOGO_V = '4'
+export const LOGO_V = '5'
 
 const v = (path) => `${path}?v=${LOGO_V}`
 
 export const LOGO = {
   fullLight: v('/logo-light.png'),
   fullDark: v('/logo-dark.png'),
+  /** Monogramme SD vectoriel (nav / footer) — transparent, net. */
+  markSvg: v('/logo-mark.svg'),
+  /** PNG legacy (fallback / usages ponctuels). */
   markLight: v('/logo-mark-light.png'),
   markDark: v('/logo-mark-dark.png'),
 }

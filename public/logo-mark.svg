@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="sdGrad" x1="0" y1="20" x2="64" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="55%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <!-- Monogramme SD  traits tubulaires, caps ronds -->
+  <path
+    d="M28 6 H12 A8 8 0 0 0 12 22 H20 A6 6 0 0 1 20 34 H4"
+    stroke="url(#sdGrad)"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M36 6 H52 A14 14 0 0 1 52 34 H36"
+    stroke="url(#sdGrad)"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

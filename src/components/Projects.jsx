@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ExternalLink, Smartphone } from 'lucide-react'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
+import { track, AnalyticsEvents } from '../lib/analytics'
 
 const projects = [
   {
@@ -153,7 +154,8 @@ export default function Projects() {
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 mt-auto w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.03]"
+                  onClick={() => track(AnalyticsEvents.PROJECT_CLICK, { project: p.title })}
+                  className="inline-flex items-center justify-center gap-2 mt-auto w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                   style={{
                     background: `${p.accentColor}18`,
                     border: `1px solid ${p.accentColor}40`,

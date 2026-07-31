@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw, CheckCircle2 } from 'lucide-react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw, CheckCircle2, Clock, Shield } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
 import { parseOpt, fmt } from '../lib/formatUtils'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
+import { track, AnalyticsEvents } from '../lib/analytics'
 
 function QuestionField({ q, value, onChange }) {
   const opts = (q.options || []).map(parseOpt)
@@ -109,6 +110,7 @@ function QuestionField({ q, value, onChange }) {
 }
 
 export default function DevisPublic() {
+  const reduce = useReducedMotion()
   const [contact, setContact] = useState({ nom: '', email: '', telephone: '', entreprise: '', projet_nom: '' })
   const [questionnaire, setQuestionnaire] = useState({})
   const [step, setStep] = useState(0)
@@ -127,7 +129,13 @@ export default function DevisPublic() {
   const isContactStep = step === 0
   const isRecapStep = step === totalSteps - 1
   const currentSection = !isContactStep && !isRecapStep ? visibleSections[step - 1] : null
-  const progress = step === 0 ? 0 : Math.round((step / (totalSteps - 1)) * 100)
+  const progress = Math.round(((step + 1) / totalSteps) * 100)
+
+  const phaseLabel = isContactStep
+    ? 'Coordonnées'
+    : isRecapStep
+      ? 'Récapitulatif'
+      : currentSection?.title || 'Questionnaire'
 
   const setAnswer = (id, val) => setQuestionnaire(prev => ({ ...prev, [id]: val }))
   const toggleMulti = (id, opt) => setQuestionnaire(prev => {
@@ -145,6 +153,10 @@ export default function DevisPublic() {
     const subject = `Demande de devis – ${contact.projet_nom || 'Nouveau projet'}${contact.nom ? ' – ' + contact.nom : ''}`
     window.location.href = `mailto:sofyan.devpro@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`
     setSent(true)
+    track(AnalyticsEvents.DEVIS_SUBMIT, {
+      type: questionnaire.type_projet || 'unknown',
+      estimate: devis?.sousTotal || 0,
+    })
   }
 
   const handleSendAgain = () => {
@@ -154,13 +166,19 @@ export default function DevisPublic() {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(emailBody)
     setCopied(true)
+    track(AnalyticsEvents.DEVIS_COPY, {})
     setTimeout(() => setCopied(false), 2500)
   }
 
   const canProceed = !isContactStep || (contact.nom.trim().length > 0 && contact.email.trim().length > 0)
 
+  const answeredCount = Object.keys(questionnaire).filter((k) => {
+    const v = questionnaire[k]
+    return Array.isArray(v) ? v.length > 0 : Boolean(v)
+  }).length
+
   return (
-    <section id="devis" className="py-28 relative overflow-hidden">
+    <section id="devis" className="py-20 md:py-28 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[900px] h-[700px] rounded-full blur-[160px]" style={{ background: 'rgba(124,58,237,0.05)' }} />
@@ -172,41 +190,53 @@ export default function DevisPublic() {
 
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduce ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase block mb-4">
             Devis en ligne
           </span>
-          <SectionLottie src={LOTTIE.devis} size="2xl" />
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
+          <SectionLottie src={LOTTIE.devis} size="xl" />
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Votre devis en{' '}
             <span className="gradient-text">ligne</span>
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-base md:text-lg" style={{ maxWidth: '460px', margin: '0 auto' }}>
-            Estimation au fil des réponses, acompte 30 %, envoi par email. Sans engagement. Comptez quelques minutes pour un devis précis.
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-lg" style={{ maxWidth: '460px', margin: '0 auto' }}>
+            Estimation au fil des réponses, acompte 30 %, envoi par email. Sans engagement. Comptez quelques minutes.
           </p>
         </motion.div>
 
-        {/* Progress bar */}
-        <div className="max-w-2xl mx-auto mb-10">
-          <div className="flex items-center justify-between text-xs text-gray-400 dark:text-slate-500 mb-2">
-            <span className="font-medium">
-              {isContactStep ? 'Vos coordonnées' : isRecapStep ? 'Envoi de la demande' : currentSection?.title}
+        {/* Progress */}
+        <div className="max-w-2xl mx-auto mb-8 md:mb-10">
+          <div className="flex items-center justify-between text-xs text-gray-500 dark:text-slate-400 mb-2">
+            <span className="font-medium text-gray-700 dark:text-slate-300">
+              Étape {step + 1}/{totalSteps} · {phaseLabel}
             </span>
-            <span className="font-mono">{step + 1} / {totalSteps}</span>
+            <span className="font-mono tabular-nums">{progress}%</span>
           </div>
-          <div className="h-1 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+          <div
+            className="h-1.5 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden"
+            role="progressbar"
+            aria-valuenow={progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Progression du devis"
+          >
             <motion.div
               className="h-full rounded-full"
               style={{ background: 'linear-gradient(to right, #a855f7, #06b6d4)' }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              transition={{ duration: reduce ? 0 : 0.4, ease: 'easeInOut' }}
             />
           </div>
+          <ol className="mt-3 flex flex-wrap gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-slate-400" aria-hidden>
+            <li className={isContactStep ? 'text-brand-500 font-semibold' : step > 0 ? 'text-emerald-500' : ''}>1. Contact</li>
+            <li className={!isContactStep && !isRecapStep ? 'text-brand-500 font-semibold' : isRecapStep ? 'text-emerald-500' : ''}>2. Projet</li>
+            <li className={isRecapStep ? 'text-brand-500 font-semibold' : ''}>3. Envoi</li>
+          </ol>
         </div>
 
         {/* Two-column layout */}
@@ -304,22 +334,32 @@ export default function DevisPublic() {
                           <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">
-                          Demande prête à envoyer
+                          Demande prête — presque terminé
                         </h3>
-                        <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-6 text-left">
+                        <div className="rounded-xl border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-5 mb-5 text-left space-y-3">
                           <p className="text-sm text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                            Votre client mail s&apos;est ouvert. Envoyez l&apos;email prérempli pour finaliser.
-                            Merci, nous vous recontactons rapidement.
+                            Votre application mail s&apos;est ouverte avec le message prérempli.
+                            <strong className="font-semibold"> Cliquez sur Envoyer</strong> dans votre messagerie pour finaliser.
                           </p>
-                          <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 mt-3 leading-relaxed">
-                            Nous ne pouvons pas confirmer l&apos;envoi depuis le site : finalisez dans votre application mail.
+                          <ul className="text-xs text-emerald-800/90 dark:text-emerald-200/80 space-y-1.5">
+                            <li className="flex items-start gap-2">
+                              <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden />
+                              Réponse sous 24 h ouvrée (sofyan.devpro@gmail.com)
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <Shield className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden />
+                              Sans engagement tant que le devis n&apos;est pas validé · acompte 30 % au démarrage
+                            </li>
+                          </ul>
+                          <p className="text-xs text-emerald-700/80 dark:text-emerald-300/70 leading-relaxed">
+                            Si la fenêtre mail ne s&apos;est pas ouverte, utilisez « Copier le texte » puis collez-le dans un nouvel email.
                           </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
                           <button
                             type="button"
                             onClick={handleSend}
-                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90"
+                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-white text-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                             style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
                           >
                             <Send size={14} />
@@ -327,59 +367,85 @@ export default function DevisPublic() {
                           </button>
                           <button
                             type="button"
+                            onClick={handleCopy}
+                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 transition text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                          >
+                            {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                            {copied ? 'Copié' : 'Copier le texte'}
+                          </button>
+                          <button
+                            type="button"
                             onClick={handleSendAgain}
-                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium"
+                            className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                           >
                             <RotateCcw size={14} />
-                            Modifier / renvoyer
+                            Modifier
                           </button>
                         </div>
                       </div>
                     ) : (
                       <>
                         <div className="flex items-center gap-3 mb-6">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: '#06b6d415', border: '1px solid #06b6d430' }}>
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: '#06b6d415', border: '1px solid #06b6d430' }} aria-hidden>
                             ✉️
                           </div>
                           <div>
-                            <h3 className="font-bold text-gray-900 dark:text-white">Prêt à envoyer</h3>
-                            <p className="text-xs text-slate-400">Réponse sous 24h</p>
+                            <h3 className="font-bold text-gray-900 dark:text-white">Vérifiez avant d&apos;envoyer</h3>
+                            <p className="text-xs text-slate-400">Récap clair · réponse sous 24 h</p>
                           </div>
                         </div>
 
-                        {contact.nom && (
-                          <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6 text-sm">
-                            <p className="font-semibold text-gray-900 dark:text-white">{contact.nom}</p>
-                            {contact.email && <p className="text-gray-500 dark:text-slate-400 text-xs mt-0.5">{contact.email}</p>}
-                            {contact.entreprise && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.entreprise}</p>}
-                            {contact.projet_nom && <p className="text-purple-500 text-xs mt-1 font-medium">{contact.projet_nom}</p>}
-                          </div>
-                        )}
+                        <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-4 text-sm space-y-1">
+                          <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Contact</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{contact.nom || '—'}</p>
+                          {contact.email && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.email}</p>}
+                          {contact.telephone && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.telephone}</p>}
+                          {contact.entreprise && <p className="text-gray-500 dark:text-slate-400 text-xs">{contact.entreprise}</p>}
+                          {contact.projet_nom && <p className="text-purple-500 text-xs mt-1 font-medium">{contact.projet_nom}</p>}
+                        </div>
 
-                        {devis && devis.sousTotal > 0 && (
-                          <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-6">
-                            <p className="text-xs text-gray-500 dark:text-slate-400 mb-1">Estimation calculée</p>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">{fmt(devis.sousTotal)}</p>
-                          </div>
-                        )}
+                        <div className="bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/8 rounded-xl p-4 mb-4 text-sm">
+                          <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Projet</p>
+                          <p className="text-slate-600 dark:text-slate-300 text-xs">
+                            {answeredCount} réponse{answeredCount > 1 ? 's' : ''} enregistrée{answeredCount > 1 ? 's' : ''}
+                            {questionnaire.type_projet ? ` · type : ${questionnaire.type_projet}` : ''}
+                          </p>
+                          {devis && devis.sousTotal > 0 ? (
+                            <div className="mt-3 pt-3 border-t border-gray-100 dark:border-white/8">
+                              <p className="text-xs text-gray-500 dark:text-slate-400 mb-1">Estimation indicative</p>
+                              <p className="text-2xl font-bold text-gray-900 dark:text-white">{fmt(devis.sousTotal)}</p>
+                              {devis.acompte > 0 && (
+                                <p className="text-xs text-slate-500 mt-1">
+                                  Acompte 30 % ≈ {fmt(devis.acompte)} · solde à la livraison
+                                </p>
+                              )}
+                            </div>
+                          ) : (
+                            <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                              Sélectionnez un type de projet dans les étapes précédentes pour afficher une estimation.
+                            </p>
+                          )}
+                        </div>
 
                         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-7">
-                          En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre application mail s&apos;ouvre avec toutes vos réponses préremplies. Il reste à envoyer l&apos;email pour finaliser.
+                          En cliquant sur <strong className="text-gray-900 dark:text-white">Envoyer ma demande</strong>, votre messagerie s&apos;ouvre avec le détail prérempli. Il reste à valider l&apos;envoi — sans engagement.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-3">
                           <button
+                            type="button"
                             onClick={handleSend}
                             disabled={!contact.nom || !contact.email}
-                            className="flex-1 flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
+                            className="flex-1 flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                             style={{ background: 'linear-gradient(135deg, #9333ea, #06b6d4)' }}
                           >
                             <Send size={15} />
                             Envoyer ma demande
                           </button>
                           <button
+                            type="button"
                             onClick={handleCopy}
-                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-brand-500 hover:text-purple-600 dark:hover:text-brand-400 transition text-sm font-medium"
+                            className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-slate-300 hover:border-purple-400 dark:hover:border-brand-500 hover:text-purple-600 dark:hover:text-brand-400 transition text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                           >
                             {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
                             {copied ? 'Copié' : 'Copier le texte'}
@@ -387,8 +453,8 @@ export default function DevisPublic() {
                         </div>
 
                         {!contact.email && (
-                          <p className="text-xs text-amber-400 mt-3 flex items-center gap-1.5">
-                            <span>⚠</span>
+                          <p className="text-xs text-amber-600 dark:text-amber-400 mt-3 flex items-center gap-1.5">
+                            <span aria-hidden>⚠</span>
                             Retournez à l&apos;étape 1 pour renseigner votre nom et email.
                           </p>
                         )}

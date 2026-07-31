@@ -1,9 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Check, ArrowRight } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN, PRIX_MAINTENANCE_MOIS } from '../lib/pricingEngine'
 import { Link } from 'react-router-dom'
-import SectionLottie from './motion/SectionLottie'
-import { LOTTIE } from '../lib/lottieMap'
 
 /**
  * Prix sous le marché FR. Duo Sofyan + Cursor : web (React/Vite/Supabase/Stripe) + iOS (Swift/SwiftUI).
@@ -115,11 +113,13 @@ const plans = [
 ]
 
 export default function Pricing() {
+  const reduce = useReducedMotion()
+
   return (
     <section id="tarifs" className="py-16 md:py-20 bg-gray-50/60 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduce ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
@@ -129,10 +129,9 @@ export default function Pricing() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Grille
           </span>
-          <SectionLottie src={LOTTIE.pricing} size="xl" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Tous les tarifs</h2>
           <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
-            Prix affichés. Les barrés = ordre de grandeur agence / freelance classique.
+            Montants « à partir de » par offre. Les barrés = ordre de grandeur agence / freelance classique.
           </p>
         </motion.div>
 
@@ -165,6 +164,9 @@ export default function Pricing() {
 
               <div className="flex items-end gap-2 mb-3">
                 <div className="flex flex-col">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-0.5">
+                    À partir de
+                  </span>
                   {plan.originalPrice && !plan.noPromo && (
                     <span className="text-sm text-slate-400 line-through font-medium">{plan.originalPrice}€</span>
                   )}
@@ -174,8 +176,8 @@ export default function Pricing() {
                       <span className="text-slate-400 font-medium text-lg mb-0.5">{plan.suffix}</span>
                     )}
                   </div>
-                  {plan.noPromo && (
-                    <span className="text-[11px] text-slate-400 mt-1 font-medium">À partir de · sur devis</span>
+                  {(plan.suffix || plan.noPromo) && (
+                    <span className="text-[11px] text-slate-400 mt-1 font-medium">Fourchette affinée au devis</span>
                   )}
                 </div>
               </div>
@@ -203,7 +205,7 @@ export default function Pricing() {
 
               <Link
                 to="/devis"
-                className="group inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02]"
+                className="group inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 style={{
                   background: `${plan.accentColor}15`,
                   border: `1px solid ${plan.accentColor}40`,
@@ -218,7 +220,7 @@ export default function Pricing() {
                   e.currentTarget.style.borderColor = `${plan.accentColor}40`
                 }}
               >
-                Estimer votre projet
+                Affiner au devis
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </motion.div>
@@ -243,8 +245,8 @@ export default function Pricing() {
             Après le mois inclus, vous pouvez tout gérer seul si vous préférez.
           </p>
           <Link
-            to="/tarifs#pack"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 dark:text-accent-400 hover:underline"
+            to="/#pack"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 dark:text-accent-400 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded"
           >
             Pack clé en main (site + hébergement + domaine) — {PRIX_PACK_CLE_EN_MAIN.toLocaleString('fr-FR')} €
             <ArrowRight className="w-4 h-4" />
