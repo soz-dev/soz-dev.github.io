@@ -1,10 +1,11 @@
 /**
- * Logo SOZ_DEV principal.
- * - full : monogramme + SOZ_DEV + tagline (hero)
- * - mark : icône seule (navbar)
- *
- * Clair / sombre via la classe `dark` du site (pas prefers-color-scheme).
+ * Logo SOZ_DEV principal (PNG transparents).
+ * - light : texte sombre → thème clair
+ * - dark  : texte clair  → thème sombre
+ * - mark  : icône navbar
  */
+const LOGO_V = '3' // bust cache CDN / navigateur
+
 export default function BrandLogo({
   variant = 'full',
   className = '',
@@ -13,7 +14,7 @@ export default function BrandLogo({
   if (variant === 'mark') {
     return (
       <img
-        src="/logo-mark.png"
+        src={`/logo-mark.png?v=${LOGO_V}`}
         alt="SOZ_DEV"
         className={`object-contain ${className}`}
         width={40}
@@ -25,23 +26,23 @@ export default function BrandLogo({
 
   const imgProps = {
     alt: 'SOZ_DEV — Développement & solutions',
-    width: 512,
-    height: 512,
+    width: 500,
+    height: 500,
     decoding: priority ? 'sync' : 'async',
     ...(priority ? { fetchPriority: 'high' } : {}),
   }
 
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span className={`relative inline-block bg-transparent ${className}`}>
       <img
         {...imgProps}
-        src="/logo-light.png"
-        className="w-full h-auto object-contain dark:hidden"
+        src={`/logo-light.png?v=${LOGO_V}`}
+        className="w-full h-auto object-contain bg-transparent dark:hidden"
       />
       <img
         {...imgProps}
-        src="/logo-dark.png"
-        className="w-full h-auto object-contain hidden dark:block"
+        src={`/logo-dark.png?v=${LOGO_V}`}
+        className="w-full h-auto object-contain bg-transparent hidden dark:block"
       />
     </span>
   )
