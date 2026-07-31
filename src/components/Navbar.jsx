@@ -6,6 +6,7 @@ import ThemePicker from './ThemePicker'
 import BrandLogo from './BrandLogo'
 
 const links = [
+  { label: 'Accueil', to: '/', end: true },
   { label: 'Services', to: '/services' },
   { label: 'Tarifs', to: '/tarifs' },
   { label: 'Projets', to: '/projets' },
@@ -47,7 +48,7 @@ export default function Navbar({ isDark, toggleDark }) {
 
         <div className="hidden md:flex items-center gap-4">
           {links.map((link) => (
-            <NavLink key={link.to} to={link.to} className={navClass}>
+            <NavLink key={link.to} to={link.to} end={link.end} className={navClass}>
               {link.label}
             </NavLink>
           ))}
