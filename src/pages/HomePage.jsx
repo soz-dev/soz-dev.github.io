@@ -17,13 +17,13 @@ const TEASERS = [
     to: '/services',
     title: 'Mes services',
     desc: 'Site vitrine, boutique en ligne ou app iPhone : le format adapté à votre activité.',
-    lottie: LOTTIE.web,
+    lottie: LOTTIE.services,
   },
   {
     to: '/projets',
     title: 'Réalisations',
     desc: 'Des projets déjà en ligne pour freelances, commerces et apps natives.',
-    lottie: LOTTIE.project,
+    lottie: LOTTIE.rocket,
   },
   {
     to: '/tarifs',

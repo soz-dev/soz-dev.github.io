@@ -7,7 +7,7 @@ import { LOTTIE } from '../lib/lottieMap'
 const items = [
   {
     icon: ShieldCheck,
-    lottie: LOTTIE.payment,
+    lottie: LOTTIE.pack,
     title: 'Acompte 30 %',
     desc: 'Vous démarrez sans tout payer. Solde à la livraison.',
     color: '#a855f7',
@@ -28,7 +28,7 @@ const items = [
   },
   {
     icon: Layers,
-    lottie: LOTTIE.trust,
+    lottie: LOTTIE.coding,
     title: 'Techno fiable',
     desc: 'Sites et apps modernes, rapides et évolutifs, pas de solution bloquée par des plugins.',
     color: '#0891b2',
