@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
 import { PRIX_BASE } from '../lib/pricingEngine'
+import BrandLogo from './BrandLogo'
+import { BRAND_TAGLINE, NAV_LINKS } from '../lib/brand'
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   const footerLinks = [
-    { to: '/services', label: 'Services' },
-    { to: '/tarifs', label: 'Tarifs' },
-    { to: '/projets', label: 'Projets' },
+    ...NAV_LINKS.filter((l) => l.to !== '/'),
     { to: '/devis', label: 'Devis' },
-    { to: '/contact', label: 'Contact' },
   ]
 
   return (
@@ -17,23 +16,11 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-8 lg:px-12 flex flex-col gap-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-5">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <Link to="/" className="flex items-center gap-2.5">
-              <img
-                src="/logo-mark.png"
-                alt="SOZ_DEV"
-                className="h-9 w-9 object-contain flex-shrink-0"
-                width={36}
-                height={36}
-              />
-              <span
-                className="font-display gradient-text select-none"
-                style={{ fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.04em' }}
-              >
-                SOZ_DEV
-              </span>
+            <Link to="/" className="overflow-visible">
+              <BrandLogo variant="lockup" />
             </Link>
             <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-slate-400">
-              Développement &amp; Solutions
+              {BRAND_TAGLINE}
             </span>
             <span className="text-xs font-mono text-slate-400">
               Sites &amp; apps iOS dès {PRIX_BASE['site-vitrine']}€.

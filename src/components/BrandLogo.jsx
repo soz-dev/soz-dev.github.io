@@ -1,48 +1,89 @@
-/**
- * Logo SOZ_DEV principal (PNG transparents).
- * - light : texte sombre → thème clair
- * - dark  : texte clair  → thème sombre
- * - mark  : icône navbar
- */
-const LOGO_V = '3' // bust cache CDN / navigateur
+import { BRAND_ALT, BRAND_NAME, LOGO } from '../lib/brand'
 
+/**
+ * Logo SOZ_DEV.
+ * - full   : monogramme + nom + tagline (hero)
+ * - mark   : monogramme seul
+ * - lockup : monogramme + SOZ_DEV (navbar / footer / admin)
+ *
+ * Clair / sombre via la classe `dark` du site.
+ */
 export default function BrandLogo({
   variant = 'full',
   className = '',
+  markClassName = '',
   priority = false,
 }) {
-  if (variant === 'mark') {
-    return (
-      <img
-        src={`/logo-mark.png?v=${LOGO_V}`}
-        alt="SOZ_DEV"
-        className={`object-contain ${className}`}
-        width={40}
-        height={40}
-        decoding="async"
-      />
-    )
-  }
-
-  const imgProps = {
-    alt: 'SOZ_DEV — Développement & solutions',
-    width: 500,
-    height: 500,
+  const imgBase = {
+    alt: variant === 'full' ? BRAND_ALT : BRAND_NAME,
     decoding: priority ? 'sync' : 'async',
     ...(priority ? { fetchPriority: 'high' } : {}),
   }
 
-  return (
-    <span className={`relative inline-block bg-transparent ${className}`}>
+  const ThemeImgs = ({ light, dark, width, height, className: imgClass }) => (
+    <>
       <img
-        {...imgProps}
-        src={`/logo-light.png?v=${LOGO_V}`}
-        className="w-full h-auto object-contain bg-transparent dark:hidden"
+        {...imgBase}
+        src={light}
+        width={width}
+        height={height}
+        className={`object-contain bg-transparent dark:hidden ${imgClass}`}
       />
       <img
-        {...imgProps}
-        src={`/logo-dark.png?v=${LOGO_V}`}
-        className="w-full h-auto object-contain bg-transparent hidden dark:block"
+        {...imgBase}
+        src={dark}
+        width={width}
+        height={height}
+        className={`object-contain bg-transparent hidden dark:block ${imgClass}`}
+      />
+    </>
+  )
+
+  if (variant === 'mark') {
+    return (
+      <span className={`inline-flex items-center justify-center overflow-visible shrink-0 ${className}`}>
+        <ThemeImgs
+          light={LOGO.markLight}
+          dark={LOGO.markDark}
+          width={44}
+          height={44}
+          className={`h-full w-full max-h-full max-w-full ${markClassName}`}
+        />
+      </span>
+    )
+  }
+
+  if (variant === 'lockup') {
+    return (
+      <span className={`inline-flex items-center gap-2.5 select-none overflow-visible ${className}`}>
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-visible p-0.5">
+          <ThemeImgs
+            light={LOGO.markLight}
+            dark={LOGO.markDark}
+            width={44}
+            height={44}
+            className="h-full w-full"
+          />
+        </span>
+        <span
+          className="font-display gradient-text leading-none"
+          style={{ fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.04em' }}
+        >
+          {BRAND_NAME}
+        </span>
+      </span>
+    )
+  }
+
+  // full
+  return (
+    <span className={`relative inline-block bg-transparent overflow-visible ${className}`}>
+      <ThemeImgs
+        light={LOGO.fullLight}
+        dark={LOGO.fullDark}
+        width={500}
+        height={500}
+        className="w-full h-auto"
       />
     </span>
   )

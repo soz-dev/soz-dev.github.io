@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Lock, ArrowLeft } from 'lucide-react'
 import { signIn } from '../../lib/supabaseAdmin'
 import { Button, Input, Badge } from '../../design-system'
+import BrandLogo from '../BrandLogo'
 
 export default function AdminLogin({ onLogin, initialError = '' }) {
   const [email, setEmail] = useState('')
@@ -52,9 +53,8 @@ export default function AdminLogin({ onLogin, initialError = '' }) {
 
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2.5 mb-3">
-            <img src="/logo-mark.png" alt="SOZ_DEV" className="h-11 w-11 object-contain" width={44} height={44} />
-            <span className="gradient-text font-display font-extrabold tracking-[0.04em] text-xl">SOZ_DEV</span>
+          <div className="flex items-center justify-center gap-2.5 mb-3 overflow-visible">
+            <BrandLogo variant="lockup" className="scale-110 origin-center" />
           </div>
           <Badge tone="mono">Espace admin</Badge>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">
