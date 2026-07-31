@@ -93,7 +93,7 @@ export default function Services() {
           <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-4 block">
             Ce que je crée
           </span>
-          <SectionLottie src={LOTTIE.services} size="md" />
+          <SectionLottie src={LOTTIE.services} size="xl" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
             Mes services
           </h2>
@@ -124,7 +124,7 @@ export default function Services() {
                 style={{ background: s.accentColor }}
               />
 
-              <div className="w-16 h-16 mb-6">
+              <div className="w-28 h-28 mb-6">
                 <LottieIcon src={s.lottie} className="w-full h-full" />
               </div>
 

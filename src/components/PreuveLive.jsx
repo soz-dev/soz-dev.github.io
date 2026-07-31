@@ -49,8 +49,8 @@ export default function PreuveLive() {
   return (
     <section ref={ref} className="relative border-y border-gray-100 dark:border-white/5 bg-gray-50/80 dark:bg-white/[0.02]">
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-8 md:py-10">
-        <div className="flex justify-center mb-4">
-          <div className="w-12 h-12 opacity-80">
+        <div className="flex justify-center mb-5">
+          <div className="w-24 h-24 opacity-90">
             <LottieIcon src={LOTTIE.trust} className="w-full h-full" />
           </div>
         </div>

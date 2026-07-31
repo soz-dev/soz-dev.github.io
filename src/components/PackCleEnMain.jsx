@@ -36,7 +36,7 @@ export default function PackCleEnMain() {
           transition={{ duration: 0.65 }}
           className="rounded-3xl border border-accent-200/60 dark:border-accent-500/20 bg-gradient-to-br from-white via-white to-accent-50/40 dark:from-[#0a0f1a] dark:via-[#0a0f1a] dark:to-brand-900/30 overflow-hidden relative"
         >
-          <div className="absolute -right-8 -top-8 w-40 h-40 opacity-30 pointer-events-none hidden md:block">
+          <div className="absolute -right-4 -top-4 w-48 h-48 md:w-56 md:h-56 opacity-40 pointer-events-none hidden md:block">
             <LottieIcon src={LOTTIE.pack} />
           </div>
           <div className="grid md:grid-cols-[1.05fr_0.95fr]">

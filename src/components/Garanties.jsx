@@ -49,7 +49,7 @@ export default function Garanties() {
           <span className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-3 block">
             Engagements
           </span>
-          <SectionLottie src={LOTTIE.trust} size="sm" />
+          <SectionLottie src={LOTTIE.trust} size="lg" />
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
             Des engagements clairs
           </h2>
@@ -65,7 +65,7 @@ export default function Garanties() {
               transition={{ delay: i * 0.06, duration: 0.45 }}
               className="rounded-2xl p-5 border border-gray-100 dark:border-white/5 bg-white/50 dark:bg-white/[0.02] text-center sm:text-left"
             >
-              <div className="w-12 h-12 mx-auto sm:mx-0 mb-3">
+              <div className="w-20 h-20 mx-auto sm:mx-0 mb-3">
                 <LottieIcon src={item.lottie} className="w-full h-full" />
               </div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1.5">{item.title}</h3>

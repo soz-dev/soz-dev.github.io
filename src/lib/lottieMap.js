@@ -1,18 +1,19 @@
 /**
  * Personas Lottie alignés sur le sens du bloc.
- * Plusieurs clés peuvent pointer vers le même fichier (même scène).
+ * Fichiers « bizarres » (android/herbe, trophées, check croppé) remplacés.
  */
 export const LOTTIE = {
-  // Micro / ambient
   scroll: '/lottie/scroll.json',
   orbit: '/lottie/orbit.json',
 
-  // Personne qui rédige / se présente (Hello, main, visage)
+  // Personne qui rédige / se présente
   devis: '/lottie/devis.json',
   about: '/lottie/devis.json',
   hello: '/lottie/devis.json',
+  review: '/lottie/review.json', // = persona (pas trophées)
+  trust: '/lottie/trust.json',   // = persona (pas check croppé)
 
-  // Personne + étiquette prix (estimer, choisir offre, vendre, services)
+  // Personne + étiquette prix / ordi
   estimate: '/lottie/estimate.json',
   guide: '/lottie/estimate.json',
   services: '/lottie/estimate.json',
@@ -20,37 +21,29 @@ export const LOTTIE = {
   shop: '/lottie/estimate.json',
   developer: '/lottie/estimate.json',
   code: '/lottie/code.json',
+  design: '/lottie/design.json',
+  tools: '/lottie/design.json',
+  phone: '/lottie/phone.json', // persona tech (plus d’android/herbe)
 
-  // Envoi de message / support client
+  // Message / support / FAQ
   contact: '/lottie/contact.json',
   support: '/lottie/contact.json',
   mail: '/lottie/contact.json',
+  faq: '/lottie/contact.json',
 
-  // Duo personnages devant des écrans (processus, projets, cas)
+  // Duo personnages + écrans
   process: '/lottie/process.json',
   project: '/lottie/process.json',
   team: '/lottie/process.json',
 
-  // Trophées / récompenses (avis, FAQ)
-  review: '/lottie/review.json',
-  faq: '/lottie/review.json',
-
-  // Succès / confiance / pack livré
+  // Succès explicite (check) — réservé aux états “ok / pack livré”
   pack: '/lottie/pack.json',
-  trust: '/lottie/pack.json',
   success: '/lottie/pack.json',
 
-  // Argent / tarifs / acompte
+  // Argent / tarifs
   pricing: '/lottie/pricing.json',
   payment: '/lottie/pricing.json',
   money: '/lottie/pricing.json',
-
-  // Design / outils métier
-  design: '/lottie/design.json',
-  tools: '/lottie/design.json',
-
-  // Mobile / app
-  phone: '/lottie/phone.json',
 
   // Erreurs
   error: '/lottie/error.json',

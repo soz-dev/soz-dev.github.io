@@ -33,7 +33,7 @@ export default function ErrorFallback({
   return (
     <div className="min-h-screen bg-white dark:bg-[#030712] flex items-center justify-center px-6 py-16">
       <div className="max-w-md w-full text-center">
-        <div className="w-40 h-40 mx-auto mb-6">
+        <div className="w-52 h-52 mx-auto mb-6">
           <LottieIcon src={title ? LOTTIE.error : c.src} className="w-full h-full" />
         </div>
         <p className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-3">

@@ -38,7 +38,7 @@ export default function TarifsSynthese() {
           >
             Inclus dans chaque projet
           </motion.p>
-          <SectionLottie src={LOTTIE.trust} size="sm" />
+          <SectionLottie src={LOTTIE.trust} size="lg" />
           <div className="grid sm:grid-cols-3 gap-4">
             {ENGAGEMENTS.map((item, i) => (
               <motion.div
@@ -97,7 +97,7 @@ export default function TarifsSynthese() {
 
         {/* Process court */}
         <div className="text-center">
-          <SectionLottie src={LOTTIE.process} size="sm" />
+          <SectionLottie src={LOTTIE.process} size="lg" />
           <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-6">
             Comment ça se passe
           </p>
