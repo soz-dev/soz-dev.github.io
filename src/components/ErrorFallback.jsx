@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { RefreshCw, Home, Mail } from 'lucide-react'
+import { RefreshCw, Home, Mail, SearchX } from 'lucide-react'
 import LottieIcon from './motion/LottieIcon'
+import SectionIcon from './motion/SectionIcon'
 import { LOTTIE } from '../lib/lottieMap'
 
 const COPY = {
@@ -17,7 +18,7 @@ const COPY = {
   notfound: {
     title: 'Page introuvable',
     desc: 'Cette adresse n’existe pas (ou plus). Revenez à l’accueil pour continuer.',
-    src: LOTTIE.empty,
+    icon: SearchX,
   },
 }
 
@@ -29,13 +30,18 @@ export default function ErrorFallback({
   description,
 }) {
   const c = COPY[variant] || COPY.crash
+  const lottieSrc = c.icon ? null : (c.src || LOTTIE.error)
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#030712] flex items-center justify-center px-6 py-16">
       <div className="max-w-md w-full text-center">
-        <div className="w-64 h-64 mx-auto mb-6">
-          <LottieIcon src={title ? LOTTIE.error : c.src} className="w-full h-full" />
-        </div>
+        {lottieSrc ? (
+          <div className="w-64 h-64 mx-auto mb-6">
+            <LottieIcon src={lottieSrc} className="w-full h-full" />
+          </div>
+        ) : (
+          <SectionIcon icon={c.icon || SearchX} color="#a855f7" size="2xl" />
+        )}
         <p className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase mb-3">
           {variant === 'offline' ? 'Hors ligne' : variant === 'notfound' ? '404' : 'Erreur'}
         </p>

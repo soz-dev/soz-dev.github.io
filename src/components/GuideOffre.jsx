@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Check, CheckCircle2 } from 'lucide-react'
 import { PRIX_BASE, PRIX_PACK_CLE_EN_MAIN } from '../lib/pricingEngine'
-import LottieIcon from './motion/LottieIcon'
 import SectionLottie from './motion/SectionLottie'
 import { LOTTIE } from '../lib/lottieMap'
 
@@ -221,8 +220,8 @@ export default function GuideOffre() {
                 transition={{ type: 'spring', stiffness: 280, damping: 24 }}
                 className="text-center py-2"
               >
-                <div className="mx-auto w-48 h-48 mb-4">
-                  <LottieIcon src={LOTTIE.success} loop={false} />
+                <div className="mx-auto w-20 h-20 mb-4 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                  <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={1.5} />
                 </div>
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold mb-4 ${
                   result.highlight

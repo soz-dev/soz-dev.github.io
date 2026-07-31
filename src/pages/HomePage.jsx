@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Compass, Globe, FolderKanban, BadgeEuro } from 'lucide-react'
 import Hero from '../components/Hero'
 import PreuveLive from '../components/PreuveLive'
 import GuideOffre from '../components/GuideOffre'
@@ -8,28 +8,29 @@ import PackCleEnMain from '../components/PackCleEnMain'
 import Garanties from '../components/Garanties'
 import CasMetier from '../components/CasMetier'
 import Temoignages from '../components/Temoignages'
-import SectionLottie from '../components/motion/SectionLottie'
-import LottieIcon from '../components/motion/LottieIcon'
-import { LOTTIE } from '../lib/lottieMap'
+import SectionIcon from '../components/motion/SectionIcon'
 
 const TEASERS = [
   {
     to: '/services',
     title: 'Mes services',
     desc: 'Site vitrine, boutique en ligne ou app iPhone : le format adapté à votre activité.',
-    lottie: LOTTIE.services,
+    icon: Globe,
+    color: '#a855f7',
   },
   {
     to: '/projets',
     title: 'Réalisations',
     desc: 'Des projets déjà en ligne pour freelances, commerces et apps natives.',
-    lottie: LOTTIE.rocket,
+    icon: FolderKanban,
+    color: '#06b6d4',
   },
   {
     to: '/tarifs',
     title: 'Tous les tarifs',
     desc: 'Grille complète, estimateur et comparatif pour affiner votre budget.',
-    lottie: LOTTIE.pricing,
+    icon: BadgeEuro,
+    color: '#8b5cf6',
   },
 ]
 
@@ -55,7 +56,7 @@ export default function HomePage() {
             <span className="text-xs font-mono text-brand-400 tracking-[0.3em] uppercase block mb-4">
               Aller plus loin
             </span>
-            <SectionLottie src={LOTTIE.guide} size="xl" />
+            <SectionIcon icon={Compass} color="#a855f7" size="lg" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
               Explorer{' '}<span className="gradient-text">le détail</span>
             </h2>
@@ -77,8 +78,11 @@ export default function HomePage() {
                   to={t.to}
                   className="block h-full rounded-2xl border border-gray-100 dark:border-white/8 bg-gray-50/80 dark:bg-white/[0.02] p-6 hover:border-brand-500/40 transition-colors group"
                 >
-                  <div className="w-32 h-32 mb-4">
-                    <LottieIcon src={t.lottie} className="w-full h-full" />
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
+                    style={{ background: `${t.color}14` }}
+                  >
+                    <t.icon className="w-7 h-7" style={{ color: t.color }} strokeWidth={1.5} />
                   </div>
                   <h3 className="font-display font-bold text-gray-900 dark:text-white mb-2 group-hover:gradient-text transition-all">
                     {t.title}

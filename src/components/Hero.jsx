@@ -32,14 +32,6 @@ export default function Hero() {
           animate={reduce ? undefined : { x: [0, 25, -35, 0], y: [0, -25, 40, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
-
-        {/* Lottie décoratif */}
-        <div className="absolute right-[-8%] top-[18%] w-[280px] h-[280px] md:w-[380px] md:h-[380px] opacity-[0.35] dark:opacity-[0.45] pointer-events-none hidden sm:block">
-          <LottieIcon src={LOTTIE.orbit} />
-        </div>
-        <div className="absolute left-[-10%] bottom-[12%] w-[220px] h-[220px] md:w-[300px] md:h-[300px] opacity-[0.25] dark:opacity-[0.35] pointer-events-none hidden md:block scale-x-[-1]">
-          <LottieIcon src={LOTTIE.rocket} />
-        </div>
       </div>
 
       <div
@@ -94,13 +86,13 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          {...(reduce ? {} : line(0.92))}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          {...(reduce ? {} : line(0.95))}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <motion.div whileHover={reduce ? undefined : { scale: 1.04, y: -2 }} whileTap={reduce ? undefined : { scale: 0.98 }}>
+          <motion.div whileHover={reduce ? undefined : { scale: 1.03 }} whileTap={reduce ? undefined : { scale: 0.98 }}>
             <Link
               to="/devis"
-              className="group inline-flex px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm glow-purple shadow-lg shadow-brand-500/25"
+              className="inline-flex px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity"
             >
               Estimer votre projet
             </Link>
@@ -116,7 +108,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Indicateur scroll Lottie */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 w-10 h-14 opacity-70 hidden sm:block"
         initial={{ opacity: 0 }}

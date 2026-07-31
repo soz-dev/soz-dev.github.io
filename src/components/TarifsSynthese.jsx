@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ShieldCheck, RefreshCw, Headphones, Check, ArrowRight } from 'lucide-react'
-import SectionLottie from './motion/SectionLottie'
-import { LOTTIE } from '../lib/lottieMap'
+import { ShieldCheck, RefreshCw, Headphones, Check, ArrowRight, GitBranch } from 'lucide-react'
+import SectionIcon from './motion/SectionIcon'
 
 const ENGAGEMENTS = [
   { icon: ShieldCheck, title: 'Acompte 30 %', desc: 'Solde à la livraison' },
@@ -38,7 +37,7 @@ export default function TarifsSynthese() {
           >
             Inclus dans chaque projet
           </motion.p>
-          <SectionLottie src={LOTTIE.trust} size="xl" />
+          <SectionIcon icon={ShieldCheck} color="#a855f7" size="lg" />
           <div className="grid sm:grid-cols-3 gap-4">
             {ENGAGEMENTS.map((item, i) => (
               <motion.div
@@ -97,7 +96,7 @@ export default function TarifsSynthese() {
 
         {/* Process court */}
         <div className="text-center">
-          <SectionLottie src={LOTTIE.process} size="xl" />
+          <SectionIcon icon={GitBranch} color="#06b6d4" size="lg" />
           <p className="text-xs font-mono text-accent-400 tracking-[0.3em] uppercase mb-6">
             Comment ça se passe
           </p>

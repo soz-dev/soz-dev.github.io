@@ -1,11 +1,10 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Send, Check, Copy, RotateCcw, CheckCircle2 } from 'lucide-react'
 import { SECTIONS, generateEmailBody } from '../lib/questionnaire'
 import { calculateDevis } from '../lib/pricingEngine'
 import { parseOpt, fmt } from '../lib/formatUtils'
 import SectionLottie from './motion/SectionLottie'
-import LottieIcon from './motion/LottieIcon'
 import { LOTTIE } from '../lib/lottieMap'
 
 function QuestionField({ q, value, onChange }) {
@@ -301,8 +300,8 @@ export default function DevisPublic() {
                   <div className="glass rounded-2xl p-8 border border-gray-100 dark:border-white/8">
                     {sent ? (
                       <div className="text-center py-4">
-                        <div className="mx-auto w-48 h-48 mb-4">
-                          <LottieIcon src={LOTTIE.success} className="w-full h-full" loop={false} />
+                        <div className="mx-auto w-20 h-20 mb-4 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                          <CheckCircle2 className="w-10 h-10 text-emerald-500" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2">
                           Demande prête à envoyer
