@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
 import ThemePicker from './ThemePicker'
+import BrandLogo from './BrandLogo'
 
 const links = [
   { label: 'Services', to: '/services' },
@@ -35,13 +36,7 @@ export default function Navbar({ isDark, toggleDark }) {
           className="flex items-center gap-2.5 select-none min-w-0"
           aria-label="SOZ_DEV, accueil"
         >
-          <img
-            src="/logo-mark.png"
-            alt="SOZ_DEV"
-            className="h-10 w-10 object-contain flex-shrink-0"
-            width={40}
-            height={40}
-          />
+          <BrandLogo variant="mark" className="h-10 w-10 flex-shrink-0" />
           <span
             className="font-display gradient-text"
             style={{ fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.04em' }}
