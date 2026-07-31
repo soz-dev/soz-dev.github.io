@@ -13,7 +13,6 @@ import {
   FileText,
 } from 'lucide-react'
 import BrandLogo from '../BrandLogo'
-import { BRAND_NAME } from '../../lib/brand'
 
 const NAV = [
   { id: 'dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
@@ -37,14 +36,9 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
   const sidebar = (
     <>
       <div className="p-5 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
-        <div className="flex items-center gap-2.5 overflow-visible">
-          <BrandLogo variant="mark" className="h-8 w-8" />
-          <div>
-            <span className="font-display text-lg font-bold">
-              <span className="bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent">{BRAND_NAME}</span>
-            </span>
-            <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
-          </div>
+        <div className="overflow-visible">
+          <BrandLogo variant="lockup" />
+          <p className="text-[11px] text-gray-400 dark:text-slate-600 mt-0.5 font-mono">admin</p>
         </div>
         <button
           type="button"
@@ -123,12 +117,7 @@ export default function AdminLayout({ view, go, onLogout, isDark, toggleDark, ch
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a12] flex flex-col md:flex-row">
       <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#07070f]">
-        <div className="flex items-center gap-2 overflow-visible">
-          <BrandLogo variant="mark" className="h-7 w-7" />
-          <span className="font-display font-bold bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent tracking-wide">
-            {BRAND_NAME}
-          </span>
-        </div>
+        <BrandLogo variant="lockup" />
         <button
           type="button"
           onClick={() => setMobileOpen(true)}

@@ -12,9 +12,7 @@ const v = (path) => `${path}?v=${LOGO_V}`
 export const LOGO = {
   fullLight: v('/logo-light.png'),
   fullDark: v('/logo-dark.png'),
-  /** Monogramme SD vectoriel (nav / footer) — transparent, net. */
-  markSvg: v('/logo-mark.svg'),
-  /** PNG legacy (fallback / usages ponctuels). */
+  /** PNG legacy (usages ponctuels éventuels). */
   markLight: v('/logo-mark-light.png'),
   markDark: v('/logo-mark-dark.png'),
 }
